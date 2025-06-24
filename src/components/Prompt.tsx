@@ -36,12 +36,12 @@ const Prompt = ({
   onEnter: (value: string) => void;
 }): React.ReactNode => {
   // Hooks
-  const refPrompt = useRef(null);
+  const refPrompt = useRef<any>(null);
   const [editable, setEditable] = useState<boolean>(isEditable);
   const [blink, setBlink] = useState<boolean>(editable);
   const [content, setContent] = useState<string>(entry);
   const [historyPointer, setHistoryPointer] = useState<number>(
-    history.length > 1 ? history.length -1 : history.length,
+    history.length > 0 ? history.length - 1 : history.length,
   );
 
   useEffect(() => {
@@ -103,11 +103,13 @@ const Prompt = ({
   ): void => {
     const key = {
       [UP]: (): void => {
-        setHistoryPointer((state) => state - 1);
+        setHistoryPointer((state) => (state > 0 ? state - 1 : state));
         setContent(history[historyPointer]);
       },
       [DOWN]: (): void => {
-        setHistoryPointer((state) => state + 1);
+        setHistoryPointer((state) =>
+          state < history.length ? state + 1 : state - 1,
+        );
         setContent(history[historyPointer]);
       },
       [ENTER]: (): void => {
