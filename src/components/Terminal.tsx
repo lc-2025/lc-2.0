@@ -46,6 +46,7 @@ const Terminal = (): React.ReactNode => {
       {/* Next Prompts End */}
     </section>
     // Terminal End
+    /* TODO: Easter-Egg: listen for backslash press on window level to open a secret console */
   );
 };
 

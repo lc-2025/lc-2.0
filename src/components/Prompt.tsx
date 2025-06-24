@@ -7,7 +7,7 @@ import {
   DetailedHTMLProps,
   HTMLAttributes,
 } from 'react';
-import { KEY } from '@/utilities/constants';
+import { KEY, COMMAND } from '@/utilities/constants';
 
 /**
  * @description Terminal prompt component
@@ -43,11 +43,12 @@ const Prompt = ({
   const [historyPointer, setHistoryPointer] = useState<number>(
     history.length > 0 ? history.length - 1 : history.length,
   );
+  const [commandOutput, setCommandOutput] = useState<string>('');
 
   useEffect(() => {
     refPrompt.current.innerText = isEditable ? null : entry;
 
-    focusPrompt();
+    handleFocus();
   }, []);
 
   // Variables
@@ -55,19 +56,19 @@ const Prompt = ({
   let delay: NodeJS.Timeout;
 
   // Helpers
-  /**
-   * @description Prompt focus handler
-   * Sets the focus on the terminal prompt
-   * Works as an UX helper
-   * @author Luca Cattide
-   * @date 24/06/2025
-   */
-  const focusPrompt = (): void => {
-    refPrompt.current.focus();
+  const updateOutput = (): void => {
+    // Command check
+    if (
+      Object.values(COMMAND)
+        .map((command) => command.toLocaleLowerCase())
+        .includes(content)
+    ) {
+      setCommandOutput('foo');
+    }
   };
 
   /**
-   * @description History navigation handler
+   * @description History navigation helper
    * Navigates the history according to
    * user input
    * @author Luca Cattide
@@ -88,6 +89,17 @@ const Prompt = ({
   };
 
   // Handlers
+  /**
+   * @description Prompt focus handler
+   * Sets the focus on the terminal prompt
+   * Works as an UX helper
+   * @author Luca Cattide
+   * @date 24/06/2025
+   */
+  const handleFocus = (): void => {
+    refPrompt.current.focus();
+  };
+
   /**
    * @description Typing handler
    * Manages the content and the caret
@@ -135,6 +147,7 @@ const Prompt = ({
       case ENTER:
         setEditable(false);
         onEnter(content);
+        updateOutput();
         break;
 
       default:
@@ -143,10 +156,14 @@ const Prompt = ({
 
   return (
     // Prompt Start
-    <aside className="prompt flex w-full items-center">
+    <aside className="prompt flex w-full flex-wrap items-center">
+      <h6 className="prompt__title hidden">Prompt</h6>
+      {/* Command Output Start */}
+      <p className="prompt__output basis-full">{commandOutput}</p>
+      {/* Command Output End */}
       {/* Visible only with dark theme */}
       {/* Tag Start */}
-      <p className="prompt__tag" onClick={focusPrompt}>
+      <p className="prompt__tag hover:cursor-pointer" onClick={handleFocus}>
         <span className="tag__user">guest@lucatti.de</span>:
         {/* TODO: Set location based on pathname */}
         <span className="tag__location">~</span>$

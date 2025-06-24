@@ -3,5 +3,11 @@ const KEY = {
   DOWN: 'ArrowDown',
   ENTER: 'Enter',
 };
+const COMMAND = {
+  ABOUT: 'About',
+  PORTFOLIO: 'Portfolio',
+  CONTACTS: 'Contacts',
+  HELP: 'Help',
+};
 
-export { KEY };
+export { KEY, COMMAND };
