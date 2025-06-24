@@ -66,6 +66,27 @@ const Prompt = ({
     refPrompt.current.focus();
   };
 
+  /**
+   * @description History navigation handler
+   * Navigates the history according to
+   * user input
+   * @author Luca Cattide
+   * @date 24/06/2025
+   * @param {string} key
+   */
+  const navigateHistory = (key: string): void => {
+    setHistoryPointer((state) =>
+      key === UP
+        ? state > 0
+          ? state - 1
+          : state
+        : state < history.length
+          ? state + 1
+          : state - 1,
+    );
+    setContent(history[historyPointer]);
+  };
+
   // Handlers
   /**
    * @description Typing handler
@@ -101,24 +122,23 @@ const Prompt = ({
       HTMLParagraphElement
     >,
   ): void => {
-    const key = {
-      [UP]: (): void => {
-        setHistoryPointer((state) => (state > 0 ? state - 1 : state));
-        setContent(history[historyPointer]);
-      },
-      [DOWN]: (): void => {
-        setHistoryPointer((state) =>
-          state < history.length ? state + 1 : state - 1,
-        );
-        setContent(history[historyPointer]);
-      },
-      [ENTER]: (): void => {
+    // Key check
+    switch (e.key) {
+      case UP:
+        navigateHistory(UP);
+        break;
+
+      case DOWN:
+        navigateHistory(DOWN);
+        break;
+
+      case ENTER:
         setEditable(false);
         onEnter(content);
-      },
-    };
+        break;
 
-    key[e.key as keyof typeof key]();
+      default:
+    }
   };
 
   return (
