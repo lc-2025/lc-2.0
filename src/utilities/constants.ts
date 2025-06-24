@@ -1,4 +1,6 @@
 const KEY = {
+  UP: 'ArrowUp',
+  DOWN: 'ArrowDown',
   ENTER: 'Enter',
 };
 

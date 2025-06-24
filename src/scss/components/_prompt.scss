@@ -1,21 +1,24 @@
 // SCSS Start
 // Prompt
-.prompt__caret {
-  background-color: #000;
+.prompt {
 
-  &--blink {
-    animation: blink 0.5s alternate linear infinite;
+  &__caret {
+    background-color: #000;
+
+    &--blink {
+      animation: blink 1s steps(2, start) infinite;
+    }
+  }
+
+  &__input br {
+    display: none;
   }
 }
 
 // Animations
 @keyframes blink {
-  from {
-    opacity: 0;
-  }
-
   to {
-    opacity: 1;
+    visibility: hidden;
   }
 }
 // SCSS End
