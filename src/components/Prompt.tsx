@@ -45,7 +45,7 @@ const Prompt = ({
   );
 
   useEffect(() => {
-    refPrompt.current.textContent = isEditable ? null : entry;
+    refPrompt.current.innerText = isEditable ? null : entry;
 
     focusPrompt();
   }, []);
@@ -143,7 +143,7 @@ const Prompt = ({
 
   return (
     // Prompt Start
-    <aside className="prompt flex w-full items-center caret-transparent">
+    <aside className="prompt flex w-full items-center">
       {/* Visible only with dark theme */}
       {/* Tag Start */}
       <p className="prompt__tag" onClick={focusPrompt}>
@@ -154,14 +154,18 @@ const Prompt = ({
       {/* Tag End */}
       {/* Input Start */}
       <span
-        className="prompt__input inline-block pl-3 focus:outline-none"
+        className="prompt__input inline-block pl-3 caret-transparent focus:outline-none"
         contentEditable={editable}
-        //dangerouslySetInnerHTML={{ __html: content }}
         ref={refPrompt}
         onInput={handleInput}
         onKeyDown={handleKey}
       ></span>
       {/* Input End */}
+      {/* History Start */}
+      {isEditable && history.includes(content) && (
+        <span className="prompt__history">{content}</span>
+      )}
+      {/* History End */}
       {/* Caret Start */}
       {editable && (
         <span
@@ -170,7 +174,6 @@ const Prompt = ({
         ></span>
       )}
       {/* Caret End */}
-      {content}
     </aside>
     // Prompt End
   );
