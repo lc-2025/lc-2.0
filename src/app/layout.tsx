@@ -18,6 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>): React.ReactNode {
+  // TODO: Put some console.log presentational message for those who inspect the code
   return (
     // HTML Start
     // Localization
