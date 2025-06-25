@@ -2,10 +2,14 @@
 
 import { useState } from 'react';
 import Prompt from './Prompt';
+import { DEFAULT_STATE } from '@/utilities/constants';
+import { TCommandHistory } from '@/types/Command';
 
 const Terminal = (): React.ReactNode => {
   // Hooks
-  const [commandsHistory, setCommandsHistory] = useState<string[]>([]);
+  const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
+  // Variables
+  const { COMMAND_HISTORY } = DEFAULT_STATE;
 
   // Handlers
   /**
@@ -13,9 +17,9 @@ const Terminal = (): React.ReactNode => {
    * Manages the command history state
    * @author Luca Cattide
    * @date 24/06/2025
-   * @param {string} value
+   * @param {TCommandHistory} value
    */
-  const handleEnter = (value: string): void => {
+  const handleEnter = (value: TCommandHistory): void => {
     setCommandsHistory((state) => [...state, value]);
   };
 
@@ -27,7 +31,9 @@ const Terminal = (): React.ReactNode => {
       <Prompt
         key={crypto.randomUUID()}
         isEditable={commandsHistory.length === 0}
-        entry={commandsHistory.length > 0 ? commandsHistory[0] : ''}
+        entry={
+          commandsHistory.length > 0 ? commandsHistory[0] : COMMAND_HISTORY
+        }
         history={commandsHistory}
         onEnter={handleEnter}
       />
@@ -38,7 +44,7 @@ const Terminal = (): React.ReactNode => {
           <Prompt
             key={crypto.randomUUID() + i}
             isEditable={i === commandsHistory.length - 1}
-            entry={commandsHistory[i + 1]}
+            entry={commandsHistory[i + 1] ?? COMMAND_HISTORY}
             history={commandsHistory}
             onEnter={handleEnter}
           />

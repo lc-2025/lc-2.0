@@ -7,7 +7,8 @@ import {
   DetailedHTMLProps,
   HTMLAttributes,
 } from 'react';
-import { KEY, COMMAND } from '@/utilities/constants';
+import { KEY, COMMAND, COMMAND_OUTPUT } from '@/utilities/constants';
+import { TCommandHistory } from '@/types/Command';
 
 /**
  * @description Terminal prompt component
@@ -15,8 +16,8 @@ import { KEY, COMMAND } from '@/utilities/constants';
  * @date 24/06/2025
  * @param {{
  *   isEditable: boolean;
- *   entry: string;
- *   onEnter: (value: string) => void;
+ *   entry: TCommandHistory;
+ *   onEnter: (value: TCommandHistory) => void;
  * }} {
  *   isEditable,
  *   entry,
@@ -31,22 +32,22 @@ const Prompt = ({
   onEnter,
 }: {
   isEditable: boolean;
-  entry: string;
-  history: Array<string>;
-  onEnter: (value: string) => void;
+  entry: TCommandHistory;
+  history: Array<TCommandHistory>;
+  onEnter: (value: TCommandHistory) => void;
 }): React.ReactNode => {
   // Hooks
   const refPrompt = useRef<any>(null);
   const [editable, setEditable] = useState<boolean>(isEditable);
   const [blink, setBlink] = useState<boolean>(editable);
-  const [content, setContent] = useState<string>(entry);
+  const [content, setContent] = useState<string>(entry.command);
   const [historyPointer, setHistoryPointer] = useState<number>(
     history.length > 0 ? history.length - 1 : history.length,
   );
-  const [commandOutput, setCommandOutput] = useState<string>('');
+  const [commandOutput, setCommandOutput] = useState<string>(entry.output);
 
   useEffect(() => {
-    refPrompt.current.innerText = isEditable ? null : entry;
+    refPrompt.current.innerText = isEditable ? null : entry.command;
 
     handleFocus();
   }, []);
@@ -56,17 +57,6 @@ const Prompt = ({
   let delay: NodeJS.Timeout;
 
   // Helpers
-  const updateOutput = (): void => {
-    // Command check
-    if (
-      Object.values(COMMAND)
-        .map((command) => command.toLocaleLowerCase())
-        .includes(content)
-    ) {
-      setCommandOutput('foo');
-    }
-  };
-
   /**
    * @description History navigation helper
    * Navigates the history according to
@@ -77,15 +67,34 @@ const Prompt = ({
    */
   const navigateHistory = (key: string): void => {
     setHistoryPointer((state) =>
+      // Backward - Older
       key === UP
         ? state > 0
           ? state - 1
           : state
-        : state < history.length
+        : // Forward - Newer
+          state < history.length - 1
           ? state + 1
-          : state - 1,
+          : state,
     );
-    setContent(history[historyPointer]);
+    setContent(history[historyPointer].command);
+  };
+
+  const updateCommandOutput = (): string => {
+    const message = {
+      [COMMAND.HELP]: COMMAND_OUTPUT.HELP,
+    };
+
+    // Command check
+    if (
+      Object.values(COMMAND)
+        .map((command) => command)
+        .includes(content)
+    ) {
+      setCommandOutput(message[content]);
+    }
+
+    return message[content];
   };
 
   // Handlers
@@ -146,8 +155,10 @@ const Prompt = ({
 
       case ENTER:
         setEditable(false);
-        onEnter(content);
-        updateOutput();
+        onEnter({
+          command: content,
+          output: updateCommandOutput(),
+        });
         break;
 
       default:
@@ -158,9 +169,6 @@ const Prompt = ({
     // Prompt Start
     <aside className="prompt flex w-full flex-wrap items-center">
       <h6 className="prompt__title hidden">Prompt</h6>
-      {/* Command Output Start */}
-      <p className="prompt__output basis-full">{commandOutput}</p>
-      {/* Command Output End */}
       {/* Visible only with dark theme */}
       {/* Tag Start */}
       <p className="prompt__tag hover:cursor-pointer" onClick={handleFocus}>
@@ -179,9 +187,10 @@ const Prompt = ({
       ></span>
       {/* Input End */}
       {/* History Start */}
-      {isEditable && history.includes(content) && (
-        <span className="prompt__history">{content}</span>
-      )}
+      {isEditable &&
+        history.some((element) => element.command.includes(content)) && (
+          <span className="prompt__history">{content}</span>
+        )}
       {/* History End */}
       {/* Caret Start */}
       {editable && (
@@ -191,6 +200,13 @@ const Prompt = ({
         ></span>
       )}
       {/* Caret End */}
+      {/* Command Output Start */}
+      <p
+        className={`prompt__output basis-full ${commandOutput && 'mb-3'}`}
+      >
+        {commandOutput}
+      </p>
+      {/* Command Output End */}
     </aside>
     // Prompt End
   );
