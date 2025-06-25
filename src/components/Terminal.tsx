@@ -1,15 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import Menu from './Menu';
 import Prompt from './Prompt';
-import { DEFAULT_STATE } from '@/utilities/constants';
+import AnimationTyped from './AnimationTyped';
+import { ANIMATION_TYPE, DEFAULT_STATE } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/Command';
 
+/**
+ * @description Terminal component
+ * @author Luca Cattide
+ * @date 25/06/2025
+ * @returns {*}  {React.ReactNode}
+ */
 const Terminal = (): React.ReactNode => {
-  // Hooks
-  const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
   // Variables
   const { COMMAND_HISTORY } = DEFAULT_STATE;
+  // Hooks
+  const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
 
   // Handlers
   /**
@@ -26,7 +34,8 @@ const Terminal = (): React.ReactNode => {
   return (
     // Terminal Start
     <section className="terminal">
-      <h6 className="terminal__title hidden">Terminal</h6>
+      <AnimationTyped type={ANIMATION_TYPE.TITLES} content={['foo', 'bar']} />
+      <Menu />
       {/* First Prompt Start */}
       <Prompt
         key={crypto.randomUUID()}
