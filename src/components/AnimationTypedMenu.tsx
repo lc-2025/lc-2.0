@@ -14,6 +14,7 @@ import { TAnimationTyped } from '@/types/AnimationTyped';
  *   path,
  *   title,
  *   tabindex,
+ *   delay,
  *   content,
  * }
  * @returns {*}  {React.ReactNode}
