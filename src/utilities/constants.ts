@@ -37,9 +37,15 @@ const DEFAULT_STATE = {
     output: '',
   },
 };
-const ANIMATION_TYPE = {
-  TITLES: 'titles',
-  ARTICLE: 'article',
+const ANIMATION_OPTIONS = {
+  showCursor: false,
 };
 
-export { KEY, COMMAND, COMMAND_OUTPUT, ROUTE, DEFAULT_STATE, ANIMATION_TYPE };
+export {
+  KEY,
+  COMMAND,
+  COMMAND_OUTPUT,
+  ROUTE,
+  DEFAULT_STATE,
+  ANIMATION_OPTIONS
+};

@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Menu from './Menu';
 import Prompt from './Prompt';
-import AnimationTyped from './AnimationTyped';
-import { ANIMATION_TYPE, DEFAULT_STATE } from '@/utilities/constants';
+import AnimationTypedTitles from './AnimationTypedTitles';
+import AnimationTypedArticle from './AnimationTypedArticle';
+import { DEFAULT_STATE } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/Command';
 
 /**
@@ -34,7 +35,8 @@ const Terminal = (): React.ReactNode => {
   return (
     // Terminal Start
     <section className="terminal">
-      <AnimationTyped type={ANIMATION_TYPE.TITLES} content={['foo', 'bar']} />
+      <AnimationTypedTitles content={['foo', 'bar']} />
+      <AnimationTypedArticle content={['Lorem ipsum dolor sit amet']} />
       <Menu />
       {/* First Prompt Start */}
       <Prompt
