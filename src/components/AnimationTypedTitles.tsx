@@ -3,6 +3,17 @@ import Typed from 'typed.js';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/AnimationTyped';
 
+/**
+ * @description Typed animation component - Titles variant
+ * Cannot abstract to commont component due to the
+ * animation library limitations
+ * @author Luca Cattide
+ * @date 26/06/2025
+ * @param {TAnimationTyped} {
+ *   content,
+ * }
+ * @returns {*}  {React.ReactNode}
+ */
 const AnimationTypedTitles = ({
   content,
 }: TAnimationTyped): React.ReactNode => {

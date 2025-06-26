@@ -39,6 +39,7 @@ const DEFAULT_STATE = {
 };
 const ANIMATION_OPTIONS = {
   showCursor: false,
+  contentType: '',
 };
 
 export {
@@ -47,5 +48,5 @@ export {
   COMMAND_OUTPUT,
   ROUTE,
   DEFAULT_STATE,
-  ANIMATION_OPTIONS
+  ANIMATION_OPTIONS,
 };

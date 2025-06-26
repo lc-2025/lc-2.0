@@ -1,47 +1,59 @@
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/AnimationTyped';
 
 /**
- * @description Typed animation component - Article variant
+ * @description Typed animation component - Menu variant
  * Cannot abstract to commont component due to the
  * animation library limitations
  * @author Luca Cattide
  * @date 26/06/2025
  * @param {TAnimationTyped} {
+ *   path,
+ *   title,
+ *   tabindex,
  *   content,
  * }
  * @returns {*}  {React.ReactNode}
  */
-const AnimationTypedArticle = ({
+const AnimationTypedMenu = ({
+  path,
+  title,
+  tabIndex,
+  delay,
   content,
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
-  const article = useRef<any>(null);
+  const menu = useRef<any>(null);
 
   useEffect(() => {
-    const paragraph = new Typed(article.current, {
+    const option = new Typed(menu.current, {
       ...ANIMATION_OPTIONS,
       strings: content,
       typeSpeed: 50,
-      startDelay: 3000
+      startDelay: delay,
     });
 
     return () => {
-      paragraph.destroy();
+      option.destroy();
     };
   }, []);
 
   return (
-    // Titles End
-    // Article Start
-    <article className="content">
-      <h6 className="content__title hidden">Content</h6>
-      <p ref={article}></p>
-    </article>
+    // Entry Start
+    <li className="entries__entry">
+      <Link
+        className="entry__link"
+        href={path!}
+        title={title}
+        tabIndex={tabIndex}
+        ref={menu}
+      ></Link>
+    </li>
   );
-  // Article End
+  // Entry End
 };
 
-export default AnimationTypedArticle;
+export default AnimationTypedMenu;

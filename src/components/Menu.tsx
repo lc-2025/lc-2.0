@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ROUTE } from '@/utilities/constants';
 import { TRoute } from '@/types/Route';
+import AnimationTypedMenu from './AnimationTypedMenu';
 
 /**
  * @description Menu component
@@ -49,20 +49,16 @@ const Menu = (): React.ReactNode => {
     <nav className="menu flex flex-col">
       <h6 className="menu__title hidden">Menu</h6>
       {/* Entries Start */}
-      <ul className="menu__entries m-0 p-0">
+      <ul className="menu__entries">
         {Object.values(handleRoute()).map(({ LABEL, PATH }, i) => (
-          // Entry Start
-          <li className="entries__entry" key={crypto.randomUUID() + i}>
-            <Link
-              className="entry__link"
-              href={PATH}
-              title={`${setInitial(LABEL)}`}
-              tabIndex={i * 10}
-            >
-              {`${i + 1} - ${setInitial(LABEL)}`}
-            </Link>
-          </li>
-          // Entry End
+          <AnimationTypedMenu
+            key={crypto.randomUUID() + i}
+            path={PATH}
+            title={`${setInitial(LABEL)}`}
+            tabIndex={i * 10}
+            delay={i * 1000}
+            content={[`${i + 1} <ↄ ${setInitial(LABEL)}`]}
+          />
         ))}
       </ul>
       {/* Entries End */}
