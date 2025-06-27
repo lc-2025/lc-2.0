@@ -33,7 +33,7 @@ const AnimationTypedTitles = ({
       ...ANIMATION_OPTIONS,
       strings: [content[1]],
       typeSpeed: 50,
-      startDelay: 2000
+      startDelay: 2000,
     });
 
     return () => {
@@ -65,8 +65,8 @@ const AnimationTypedTitles = ({
         ),
       )}
     </hgroup>
+    // Titles End
   );
-  // Titles End
 };
 
 export default AnimationTypedTitles;

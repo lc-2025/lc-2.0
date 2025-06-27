@@ -53,8 +53,8 @@ const AnimationTypedMenu = ({
         ref={menu}
       ></Link>
     </li>
+    // Entry End
   );
-  // Entry End
 };
 
 export default AnimationTypedMenu;

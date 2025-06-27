@@ -25,7 +25,7 @@ const AnimationTypedArticle = ({
       ...ANIMATION_OPTIONS,
       strings: content,
       typeSpeed: 50,
-      startDelay: 3000
+      startDelay: 3000,
     });
 
     return () => {
@@ -34,14 +34,13 @@ const AnimationTypedArticle = ({
   }, []);
 
   return (
-    // Titles End
     // Article Start
     <article className="content">
       <h6 className="content__title hidden">Content</h6>
       <p ref={article}></p>
     </article>
+    // Article End
   );
-  // Article End
 };
 
 export default AnimationTypedArticle;
