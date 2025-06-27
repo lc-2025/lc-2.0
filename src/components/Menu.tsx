@@ -1,3 +1,5 @@
+'use client';
+
 import { usePathname } from 'next/navigation';
 import { ROUTE } from '@/utilities/constants';
 import { TRoute } from '@/types/Route';

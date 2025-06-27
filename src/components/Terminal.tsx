@@ -1,11 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Menu from './Menu';
+import { useRouter } from 'next/navigation';
 import Prompt from './Prompt';
-import AnimationTypedTitles from './AnimationTypedTitles';
-import AnimationTypedArticle from './AnimationTypedArticle';
-import { DEFAULT_STATE } from '@/utilities/constants';
+import { DEFAULT_STATE, ROUTE } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/Command';
 
 /**
@@ -18,6 +16,7 @@ const Terminal = (): React.ReactNode => {
   // Variables
   const { COMMAND_HISTORY } = DEFAULT_STATE;
   // Hooks
+  const router = useRouter();
   const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
 
   // Handlers
@@ -30,14 +29,12 @@ const Terminal = (): React.ReactNode => {
    */
   const handleEnter = (value: TCommandHistory): void => {
     setCommandsHistory((state) => [...state, value]);
+    router.push(ROUTE.ABOUT.PATH);
   };
 
   return (
     // Terminal Start
     <section className="terminal">
-      <AnimationTypedTitles content={['foo', 'bar']} />
-      <AnimationTypedArticle content={['Lorem ipsum dolor sit amet']} />
-      <Menu />
       {/* First Prompt Start */}
       <Prompt
         key={crypto.randomUUID()}

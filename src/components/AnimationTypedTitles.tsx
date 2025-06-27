@@ -3,6 +3,7 @@ import Typed from 'typed.js';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/AnimationTyped';
 
+// TODO: Check if needed anymore or not
 /**
  * @description Typed animation component - Titles variant
  * Cannot abstract to commont component due to the
@@ -27,7 +28,7 @@ const AnimationTypedTitles = ({
     const headline = new Typed(titles.headline.current, {
       ...ANIMATION_OPTIONS,
       strings: [content[0]],
-      typeSpeed: 50,
+      typeSpeed: 1,
     });
     const tagline = new Typed(titles.tagline.current, {
       ...ANIMATION_OPTIONS,

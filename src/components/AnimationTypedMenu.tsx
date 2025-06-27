@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Typed from 'typed.js';

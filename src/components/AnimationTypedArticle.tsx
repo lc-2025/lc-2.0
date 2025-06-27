@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
@@ -25,7 +27,6 @@ const AnimationTypedArticle = ({
       ...ANIMATION_OPTIONS,
       strings: content,
       typeSpeed: 50,
-      startDelay: 3000,
     });
 
     return () => {
