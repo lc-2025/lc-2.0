@@ -32,15 +32,6 @@ html {
 
     // Container
     .container {
-      // Sticky footer
-      &,
-      &#{__wrapper} {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-      }
-
       &#{__wrapper} {
         // Retro-compatibility notation
         -webkit-box-flex: 1 0 0;

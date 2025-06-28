@@ -167,7 +167,7 @@ const Prompt = ({
 
   return (
     // Prompt Start
-    <aside className="prompt flex w-full flex-wrap items-center">
+    <aside className="prompt flex w-full flex-wrap items-center p-6">
       <h6 className="prompt__title hidden">Prompt</h6>
       {/* Visible only with dark theme */}
       {/* Tag Start */}

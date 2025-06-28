@@ -51,7 +51,7 @@ const Menu = (): React.ReactNode => {
     <nav className="menu flex flex-col">
       <h6 className="menu__title hidden">Menu</h6>
       {/* Entries Start */}
-      <ul className="menu__entries">
+      <ul className="menu__entries p-6">
         {Object.values(handleRoute()).map(({ LABEL, PATH }, i) => (
           <AnimationTypedMenu
             key={crypto.randomUUID() + i}
