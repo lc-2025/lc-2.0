@@ -59,7 +59,8 @@ const Menu = (): React.ReactNode => {
             title={`${setInitial(LABEL)}`}
             tabIndex={i * 10}
             delay={i * 1000}
-            content={[`${i + 1} <ↄ ${setInitial(LABEL)}`]}
+            // TODO: Show ) or ↄ based on theme
+            content={[`${i + 1} <)ↄ ${setInitial(LABEL)}`]}
           />
         ))}
       </ul>

@@ -1,9 +1,38 @@
-import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 import '../scss/global.scss';
 import '../css/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Cookies from '@/components/Cookies';
+import type { Metadata, Viewport } from 'next';
+
+const vt323 = localFont({
+  src: '../fonts/vt323-regular-webfont.woff2',
+});
+const ubuntuMono = localFont({
+  src: [
+    {
+      path: '../fonts/ubuntumono-regular-webfont.woff2',
+      weight: '400',
+      style: 'regular',
+    },
+    {
+      path: '../fonts/ubuntumono-italic-webfont.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/ubuntumono-bold-webfont.woff2',
+      weight: '700',
+      style: 'bold',
+    },
+    {
+      path: '../fonts/ubuntumono-bolditalic-webfont.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: 'Luca Cattide',
@@ -25,7 +54,8 @@ export default function RootLayout({
   return (
     // HTML Start
     // Localization
-    <html className="max-h-screen min-h-screen" lang="en">
+    // TODO: Add font.classname based on current theme mode
+    <html className={`max-h-screen min-h-screen ${vt323.className /* ubuntuMono.className */}`} lang="en">
       {/* Head Start */}
       <head>
         {/* Content-Security Policy (vs. XSS) */}
@@ -40,9 +70,9 @@ export default function RootLayout({
       {/* Body Start */}
       <body className="max-h-screen min-h-screen antialiased">
         {/* JS fallback */}
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <noscript>You need to enable JavaScript to run this website.</noscript>
         {/* Container Start */}
-        <div className="main-container flex flex-col max-h-screen min-h-screen">
+        <div className="main-container flex max-h-screen min-h-screen flex-col">
           <Header />
           {/* Wrapper Start */}
           <main className="main-container__wrapper max-w-full overflow-auto">

@@ -196,7 +196,7 @@ const Prompt = ({
       {editable && (
         <span
           // TODO: Adapt caret height by theme
-          className={`prompt__caret ${blink && 'prompt__caret--blink'} h-6 w-4 select-none`}
+          className={`prompt__caret ${blink && 'prompt__caret--blink'} select-none`}
         ></span>
       )}
       {/* Caret End */}

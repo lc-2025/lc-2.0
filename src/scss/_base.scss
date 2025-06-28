@@ -1,37 +1,22 @@
 // Variables
-// Fonts
-// Using absolute units on layout & content for responsive
-$font-size-desktop: 1.4rem;
-$font-size-mobile: 1.2rem;
-$font-size-rem: 62.5%;
 // Resolutions
-// See: https://getbootstrap.com/docs/5.0/layout/breakpoints/
-$tablet: 768px;
+// See: https://tailwindcss.com/docs/responsive-design#overview
 $desktop: 992px;
 // Media Queries
-$media-tablet: 'min-width: #{$tablet}';
 $media-desktop: 'min-width: #{$desktop}';
+// Fonts
+$font-headeline: max(0.2rem, 1vmin);
+$font-tagline: max(0.1rem, 0.5vmin);
 
 // HTML
 html {
-  /**
-  * Setting this size ensures to achieve units correspondence
-  * - 62.5% of 16px user agent font size = 10px
-  * i.e. 1.2 * 10px = 12px -> 12px = 1.2rem
-  */
-  font-size: $font-size-rem;
 
   // Body
   body {
-    // Responsive base-font
-    font-size: $font-size-mobile;
-
-    @media ($media-tablet) {
-      font-size: $font-size-desktop;
-    }
 
     // Container
     .main-container {
+
       &#{__wrapper} {
         // Retro-compatibility notation
         -webkit-box-flex: 1 0 0;

@@ -1,4 +1,3 @@
 // Global custom styles
-@use 'base';
-@use './components/actionTypedTitles';
-@use './components/prompt';
+@import 'base';
+@import './components/actionTypedTitles';

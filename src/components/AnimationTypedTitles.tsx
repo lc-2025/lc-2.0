@@ -50,17 +50,22 @@ const AnimationTypedTitles = ({
       {content.map((entry, i) =>
         i === 0 ? (
           <div key={crypto.randomUUID() + i}>
-            <pre className="terminal__headline p-6 select-none" ref={titles.headline}></pre>
+            {/* SEO-friendly */}
             <h1 className="headline__placheholder hidden">Luca Cattide</h1>
+            <pre
+              className="terminal__headline p-6 select-none"
+              ref={titles.headline}
+            ></pre>
           </div>
         ) : (
           <div key={crypto.randomUUID() + i}>
+            {/* SEO-friendly */}
+            <h2 className="headline__placheholder hidden">Software Engineer</h2>
             <pre
               key={crypto.randomUUID() + i}
               className="terminal__tagline p-6 select-none"
               ref={titles.tagline}
             ></pre>
-            <h2 className="headline__placheholder hidden">Software Engineer</h2>
           </div>
         ),
       )}
