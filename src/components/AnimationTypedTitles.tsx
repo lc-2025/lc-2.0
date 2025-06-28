@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
@@ -33,8 +35,7 @@ const AnimationTypedTitles = ({
     const tagline = new Typed(titles.tagline.current, {
       ...ANIMATION_OPTIONS,
       strings: [content[1]],
-      typeSpeed: 50,
-      startDelay: 2000,
+      typeSpeed: 1,
     });
 
     return () => {
@@ -48,21 +49,19 @@ const AnimationTypedTitles = ({
     <hgroup className="terminal__titles">
       {content.map((entry, i) =>
         i === 0 ? (
-          <h1
-            key={crypto.randomUUID() + i}
-            className="terminal__headline"
-            ref={titles.headline}
-          >
-            <span className="headline__placheholder hidden">{entry}</span>
-          </h1>
+          <div key={crypto.randomUUID() + i}>
+            <pre className="terminal__headline p-6 select-none" ref={titles.headline}></pre>
+            <h1 className="headline__placheholder hidden">Luca Cattide</h1>
+          </div>
         ) : (
-          <h2
-            key={crypto.randomUUID() + i}
-            className="terminal__tagline"
-            ref={titles.tagline}
-          >
-            <span className="headline__placheholder hidden">{entry}</span>
-          </h2>
+          <div key={crypto.randomUUID() + i}>
+            <pre
+              key={crypto.randomUUID() + i}
+              className="terminal__tagline p-6 select-none"
+              ref={titles.tagline}
+            ></pre>
+            <h2 className="headline__placheholder hidden">Software Engineer</h2>
+          </div>
         ),
       )}
     </hgroup>

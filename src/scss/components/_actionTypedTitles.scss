@@ -1,0 +1,13 @@
+// SCSS Start
+// Titles
+.terminal__titles {
+  .terminal__headline {
+    // Responsive <PRE> content
+    font-size: max(0.2rem, 1vmin);
+  }
+
+  .terminal__tagline {
+    font-size: max(0.1rem, .5vmin);
+  }
+}
+// SCSS End

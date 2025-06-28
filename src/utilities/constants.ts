@@ -39,6 +39,9 @@ const DEFAULT_STATE = {
 };
 const ANIMATION_OPTIONS = {
   showCursor: false,
+};
+const ANIMATION_OPTIONS_GENERIC = {
+  ...ANIMATION_OPTIONS,
   contentType: '',
 };
 
@@ -49,4 +52,5 @@ export {
   ROUTE,
   DEFAULT_STATE,
   ANIMATION_OPTIONS,
+  ANIMATION_OPTIONS_GENERIC
 };

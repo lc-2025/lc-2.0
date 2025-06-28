@@ -42,10 +42,10 @@ export default function RootLayout({
         {/* JS fallback */}
         <noscript>You need to enable JavaScript to run this app.</noscript>
         {/* Container Start */}
-        <div className="container flex flex-col max-h-screen min-h-screen">
+        <div className="main-container flex flex-col max-h-screen min-h-screen">
           <Header />
           {/* Wrapper Start */}
-          <main className="container__wrapper max-w-full overflow-auto">
+          <main className="main-container__wrapper max-w-full overflow-auto">
             {children}
           </main>
           {/* Wrapper End */}

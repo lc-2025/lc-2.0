@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Typed from 'typed.js';
-import { ANIMATION_OPTIONS } from '@/utilities/constants';
+import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/AnimationTyped';
 
 /**
@@ -33,7 +33,7 @@ const AnimationTypedMenu = ({
 
   useEffect(() => {
     const option = new Typed(menu.current, {
-      ...ANIMATION_OPTIONS,
+      ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
       typeSpeed: 50,
       startDelay: delay,

@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
-import { ANIMATION_OPTIONS } from '@/utilities/constants';
+import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/AnimationTyped';
 
 /**
@@ -24,7 +24,7 @@ const AnimationTypedArticle = ({
 
   useEffect(() => {
     const paragraph = new Typed(article.current, {
-      ...ANIMATION_OPTIONS,
+      ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
       typeSpeed: 50,
     });
