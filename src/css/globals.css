@@ -2,18 +2,35 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Variables */
-:root {
+@theme {
   /*
     Fonts
     Using absolute units on layout & content for responsive
   */
-  --font-size-desktop: 3.8rem;
-  --font-size-mobile: 3rem;
-  --font-size-rem: 62.5%;
+  --text-desktop: 3.8rem;
+  --text-mobile: 3rem;
+  /**
+  * Setting this size ensures to achieve units correspondence
+  * - 62.5% of 16px user agent font size = 10px
+  * i.e. 1.2 * 10px = 12px -> 12px = 1.2rem
+  */
+  --text-rem: 62.5%;
   /* Colors */
-  --accent: #7c71da;
-  --primary: #3e32a2;
-  text-transform: uppercase;
+  --color-accent: #7c71da;
+  --color-primary: #3e32a2;
+  /* Sizes */
+  --height-caret-desktop: 32px;
+  --height-caret-mobile: 24px;
+  --width-caret-desktop: 32px;
+  --width-caret-mobile: 24px;
+  /* Animations */
+  --animate-blink: blink 1s steps(2, start) infinite;
+
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
 }
 
 /* Scrollbars */
@@ -23,64 +40,27 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--primary);
+  background: var(--color-primary);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
-}
-
-body {
-  background: var(--primary);
-  color: var(--accent);
-  /* Responsive base-font */
-  font-size: var(--font-size-mobile);
-
-  @media (min-width: 992px) {
-    font-size: var(--font-size-desktop);
-  }
-}
-
-html {
-  /**
-  * Setting this size ensures to achieve units correspondence
-  * - 62.5% of 16px user agent font size = 10px
-  * i.e. 1.2 * 10px = 12px -> 12px = 1.2rem
-  */
-  font-size: var(--font-size-rem);
+  background: var(--color-accent);
 }
 
 /* Dark Theme */
 .dark {
-  --accent: #00ff00;
-  --primary: #000;
-  text-transform: none;
+  /* Colors */
+  --color-accent: #00ff00;
+  --color-primary: #000;
+  /* Sizes */
+  --caret-height-desktop: 18px;
+  --caret-width-desktop: 16px;
+  --caret-height-mobile: 16px;
+  --caret-width-mobile: 14px;
 }
 
 /* Prompt */
-.prompt__caret {
-  background-color: var(--accent);
-}
-
-.prompt__caret--blink {
-  animation: blink 1s steps(2, start) infinite;
-  height: var(--font-size-mobile);
-  width: var(--font-size-mobile);
-
-  @media (min-width: 992px) {
-    height: var(--font-size-desktop);
-    width: var(--font-size-desktop);
-  }
-}
-
 .prompt__input br {
   display: none;
-}
-
-/* Animations */
-@keyframes blink {
-  to {
-    visibility: hidden;
-  }
 }

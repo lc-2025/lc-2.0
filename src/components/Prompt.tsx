@@ -195,15 +195,12 @@ const Prompt = ({
       {/* Caret Start */}
       {editable && (
         <span
-          // TODO: Adapt caret height by theme
-          className={`prompt__caret ${blink && 'prompt__caret--blink'} select-none`}
+          className={`prompt__caret ${blink && 'animate-blink'} bg-accent h-caret-mobile lg:h-caret-desktop w-caret-mobile lg:w-caret-desktop select-none`}
         ></span>
       )}
       {/* Caret End */}
       {/* Command Output Start */}
-      <p
-        className={`prompt__output basis-full ${commandOutput && 'mb-3'}`}
-      >
+      <p className={`prompt__output basis-full ${commandOutput && 'mb-3'}`}>
         {commandOutput}
       </p>
       {/* Command Output End */}

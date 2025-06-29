@@ -1,14 +1,16 @@
 // SCSS Start
+@use '../base';
+
 // Titles
 .terminal__titles {
 
   .terminal__headline {
     // Responsive <PRE> content
-    font-size: $font-headeline;
+    font-size: base.$font-headeline;
   }
 
   .terminal__tagline {
-    font-size: $font-tagline;
+    font-size: base.$font-tagline;
   }
 }
 // SCSS End

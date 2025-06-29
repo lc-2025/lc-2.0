@@ -1,32 +1,4 @@
 // Variables
-// Resolutions
-// See: https://tailwindcss.com/docs/responsive-design#overview
-$desktop: 992px;
-// Media Queries
-$media-desktop: 'min-width: #{$desktop}';
 // Fonts
 $font-headeline: max(0.2rem, 1vmin);
 $font-tagline: max(0.1rem, 0.5vmin);
-
-// HTML
-html {
-
-  // Body
-  body {
-
-    // Container
-    .main-container {
-
-      &#{__wrapper} {
-        // Retro-compatibility notation
-        -webkit-box-flex: 1 0 0;
-        -ms-flex: 1 0 0;
-        flex: 1;
-
-        @media ($media-desktop) {
-          max-width: $media-desktop;
-        }
-      }
-    }
-  }
-}

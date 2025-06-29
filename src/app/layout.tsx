@@ -51,11 +51,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): React.ReactNode {
   // TODO: Put some console.log presentational message for those who inspect the code
+  console.log('foo');
+
   return (
     // HTML Start
     // Localization
     // TODO: Add font.classname based on current theme mode
-    <html className={`max-h-screen min-h-screen ${vt323.className /* ubuntuMono.className */}`} lang="en">
+    <html
+      className={`max-h-screen min-h-screen text-rem ${vt323.className /* ubuntuMono.className */}`}
+      lang="en"
+    >
       {/* Head Start */}
       <head>
         {/* Content-Security Policy (vs. XSS) */}
@@ -68,14 +73,20 @@ export default function RootLayout({
       </head>
       {/* Head End */}
       {/* Body Start */}
-      <body className="max-h-screen min-h-screen antialiased">
+      {/* TODO: Uppercase only on light theme */}
+      <body
+        className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen uppercase antialiased`}
+      >
         {/* JS fallback */}
         <noscript>You need to enable JavaScript to run this website.</noscript>
         {/* Container Start */}
-        <div className="main-container flex max-h-screen min-h-screen flex-col">
+        <div className="main-container flex flex-col max-h-screen min-h-screen">
           <Header />
           {/* Wrapper Start */}
-          <main className="main-container__wrapper max-w-full overflow-auto">
+          {/* TODO: Flex/Padding/BG only on light theme */}
+          <main
+            className={`main-container__wrapper bg-accent flex flex-1 max-w-full flex-col overflow-x-hidden overflow-y-auto pr-32 pl-32`}
+          >
             {children}
           </main>
           {/* Wrapper End */}
