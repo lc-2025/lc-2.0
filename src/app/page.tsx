@@ -1,7 +1,7 @@
-import AnimationTypedTitles from '@/components/AnimationTypedTitles';
-import AnimationTypedArticle from '../components/AnimationTypedArticle';
-import Menu from '../components/Menu';
-import Terminal from '../components/Terminal';
+import AnimationTypedTitles from '@/components/Animation/AnimationTypedTitles';
+import AnimationTypedArticle from '../components/Animation/AnimationTypedArticle';
+import Menu from '@/components/Navigation/Menu';
+import Terminal from '@/components/Terminal/Terminal';
 import { TITLES } from '@/data/content';
 
 export default function Home(): React.ReactNode {

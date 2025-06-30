@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
-import { TAnimationTyped } from '@/types/AnimationTyped';
+import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
 /**
  * @description Typed animation component - Menu variant

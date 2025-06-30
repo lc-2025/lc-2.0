@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Prompt from './Prompt';
 import { DEFAULT_STATE, ROUTE } from '@/utilities/constants';
-import { TCommandHistory } from '@/types/Command';
+import { TCommandHistory } from '@/types/components/Command';
 
 /**
  * @description Terminal component

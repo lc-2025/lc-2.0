@@ -2,8 +2,8 @@
 
 import { usePathname } from 'next/navigation';
 import { ROUTE } from '@/utilities/constants';
-import { TRoute } from '@/types/Route';
-import AnimationTypedMenu from './AnimationTypedMenu';
+import { TRoute } from '@/types/navigation/Route';
+import AnimationTypedMenu from '../Animation/AnimationTypedMenu';
 
 /**
  * @description Menu component

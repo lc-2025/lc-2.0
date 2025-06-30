@@ -1,10 +1,10 @@
 import localFont from 'next/font/local';
+import Header from '@/components/Layout/Header';
+import Footer from '@/components/Layout/Footer';
+import Cookies from '@/components/Layout/Cookies';
+import type { Metadata, Viewport } from 'next';
 import '../scss/global.scss';
 import '../css/globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Cookies from '@/components/Cookies';
-import type { Metadata, Viewport } from 'next';
 
 const vt323 = localFont({
   src: '../fonts/vt323-regular-webfont.woff2',
@@ -55,7 +55,6 @@ export default function RootLayout({
 
   return (
     // HTML Start
-    // Localization
     // TODO: Add font.classname based on current theme mode
     <html
       className={`max-h-screen min-h-screen text-rem ${vt323.className /* ubuntuMono.className */}`}
@@ -63,12 +62,10 @@ export default function RootLayout({
     >
       {/* Head Start */}
       <head>
-        {/* Content-Security Policy (vs. XSS) */}
         <meta
           httpEquiv="Content-Security-Policy"
           content="default-src 'self' localhost:3000; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'self' localhost:3000; font-src 'self'; form-action 'self';"
         />
-        {/* Browser rendering version support (retro-compatibility) */}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       </head>
       {/* Head End */}
@@ -77,7 +74,6 @@ export default function RootLayout({
       <body
         className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen uppercase antialiased`}
       >
-        {/* JS fallback */}
         <noscript>You need to enable JavaScript to run this website.</noscript>
         {/* Container Start */}
         <div className="main-container flex flex-col max-h-screen min-h-screen">

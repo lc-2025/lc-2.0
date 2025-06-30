@@ -33,6 +33,11 @@
   }
 }
 
+:root {
+  /* Cursor */
+  cursor: url('../img/lc-pointer.svg'), auto;
+}
+
 /* Scrollbars */
 ::-webkit-scrollbar {
   width: 16px;
@@ -58,6 +63,18 @@
   --caret-width-desktop: 16px;
   --caret-height-mobile: 16px;
   --caret-width-mobile: 14px;
+  /* Cursor */
+  cursor: auto;
+}
+
+.dark .logo {
+  background-image: url('../img/lc-logo-dark.svg');
+}
+
+/* Logo */
+.logo {
+  /* Image-Replacement technique */
+  background-image: url('../img/lc-logo-light.svg');
 }
 
 /* Prompt */

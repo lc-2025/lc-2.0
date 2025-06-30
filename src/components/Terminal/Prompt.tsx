@@ -8,7 +8,7 @@ import {
   HTMLAttributes,
 } from 'react';
 import { KEY, COMMAND, COMMAND_OUTPUT } from '@/utilities/constants';
-import { TCommandHistory } from '@/types/Command';
+import { TCommandHistory } from '@/types/components/Command';
 
 /**
  * @description Terminal prompt component

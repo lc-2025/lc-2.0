@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
-import { TAnimationTyped } from '@/types/AnimationTyped';
+import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
 // TODO: Check if needed anymore or not
 /**
@@ -47,10 +47,9 @@ const AnimationTypedTitles = ({
   return (
     // Titles Start
     <hgroup className="terminal__titles">
-      {content.map((entry, i) =>
+      {content.map((_, i) =>
         i === 0 ? (
           <div key={crypto.randomUUID() + i}>
-            {/* SEO-friendly */}
             <h1 className="headline__placheholder hidden">Luca Cattide</h1>
             <pre
               className="terminal__headline p-6 select-none"
@@ -59,7 +58,6 @@ const AnimationTypedTitles = ({
           </div>
         ) : (
           <div key={crypto.randomUUID() + i}>
-            {/* SEO-friendly */}
             <h2 className="headline__placheholder hidden">Software Engineer</h2>
             <pre
               key={crypto.randomUUID() + i}
