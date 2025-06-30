@@ -171,7 +171,7 @@ const Prompt = ({
       <h6 className="prompt__title hidden">Prompt</h6>
       {/* Visible only with dark theme */}
       {/* Tag Start */}
-      <p className="prompt__tag hover:cursor-pointer" onClick={handleFocus}>
+      <p className="prompt__tag" onClick={handleFocus}>
         <span className="tag__user">guest@lucatti.de</span>:
         {/* TODO: Set location based on pathname */}
         <span className="tag__location">~</span>$

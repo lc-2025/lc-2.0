@@ -53,6 +53,12 @@
   background: var(--color-accent);
 }
 
+/* Links / Buttons */
+a,
+button {
+  cursor: url('../img/lc-pointer-1.svg'), auto;
+}
+
 /* Dark Theme */
 .dark {
   /* Colors */
@@ -67,17 +73,29 @@
   cursor: auto;
 }
 
+.dark a,
+.dark .prompt__tag {
+  cursor: auto;
+}
+
+.dark button {
+  cursor: pointer;
+}
+
 .dark .logo {
   background-image: url('../img/lc-logo-dark.svg');
 }
 
 /* Logo */
 .logo {
-  /* Image-Replacement technique */
   background-image: url('../img/lc-logo-light.svg');
 }
 
 /* Prompt */
 .prompt__input br {
   display: none;
+}
+
+.prompt__tag {
+  cursor: url('../img/lc-pointer-1.svg'), auto;
 }

@@ -44,6 +44,17 @@ const ANIMATION_OPTIONS_GENERIC = {
   ...ANIMATION_OPTIONS,
   contentType: '',
 };
+const COOKIES_ACTIONS = [
+  {
+    label: 'Accept',
+  },
+  {
+    label: 'Required',
+  },
+  {
+    label: 'Decline',
+  },
+];
 
 export {
   KEY,
@@ -52,5 +63,6 @@ export {
   ROUTE,
   DEFAULT_STATE,
   ANIMATION_OPTIONS,
-  ANIMATION_OPTIONS_GENERIC
+  ANIMATION_OPTIONS_GENERIC,
+  COOKIES_ACTIONS,
 };
