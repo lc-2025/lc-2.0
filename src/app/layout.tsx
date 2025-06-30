@@ -50,7 +50,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>): React.ReactNode {
-  // TODO: Put some console.log presentational message for those who inspect the code
+  // TODO: Put some console.log presentational message for those who inspect the code in a client component and run it once
   console.log('foo');
 
   return (
