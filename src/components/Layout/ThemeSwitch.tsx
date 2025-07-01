@@ -84,12 +84,12 @@ const ThemeSwitch = (): React.ReactNode => {
       <Switch
         checked={state.theme === DARK}
         onChange={handleTheme}
-        className="theme-switcher__field group bg-primary data-[checked]:bg-accent data-[focus]:outline-accent relative flex h-12 w-24 cursor-pointer p-1 focus:outline-none data-[focus]:outline-1"
+        className="theme-switcher__field group bg-primary data-[checked]:bg-accent data-[focus]:outline-accent relative flex h-19 w-38 cursor-pointer p-1 focus:outline-none data-[focus]:outline-1"
         tabIndex={3}
       >
         <span
           aria-hidden="true"
-          className="bg-accent group-data-[checked]:bg-primary pointer-events-none inline-block size-10 translate-x-0 shadow-lg ring-0 group-data-[checked]:translate-x-12"
+          className="bg-accent group-data-[checked]:bg-primary pointer-events-none inline-block size-17 translate-x-0 shadow-lg ring-0 group-data-[checked]:translate-x-12"
         />
       </Switch>
       <div className="theme-switch__icon theme-switch__icon--dark relative ml-6 h-auto w-full max-w-[48px] min-w-[48px] bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none"></div>
