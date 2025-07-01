@@ -43,31 +43,33 @@ const Cookies = (): React.ReactNode => {
 
   return (
     // Cookies Start
-    <aside
-      className={`cookies bg-accent border-accent text-primary flex flex-col justify-between border-16 ${isLightTheme(theme) && 'absolute right-6 bottom-[12rem] left-6 m-auto w-[calc(100%-12rem-30px)] overflow-hidden pr-6 pl-6'}`}
-    >
+    <aside className="cookies bg-accent text-primary">
       <h6 className="cookies__title hidden">Cookies</h6>
-      <p
-        className={`cookies__summary w-full ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
-      >
-        Lorem ipsum dolor sit amet.
-      </p>
-      {/* Actions Start */}
       <div
-        className={`cookies__actions pt-6 text-right ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+        className={`cookies__container bg-accent flex flex-col justify-between p-6 ${isLightTheme(theme) && 'border-primary m-auto w-[calc(100%-16rem)] overflow-hidden border-16'}`}
       >
-        {COOKIES.map((action, i) => (
-          <div key={crypto.randomUUID() + i} className="inline-block">
-            <Action action={action} />
-            {i < COOKIES.length - 1 && (
-              <span className="actions__separator pr-3 pl-3">
-                {isLightTheme(theme) ? '|' : ''}
-              </span>
-            )}
-          </div>
-        ))}
+        <p
+          className={`cookies__summary w-full ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+        >
+          Lorem ipsum dolor sit amet.
+        </p>
+        {/* Actions Start */}
+        <div
+          className={`cookies__actions pt-6 text-right ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+        >
+          {COOKIES.map((action, i) => (
+            <div key={crypto.randomUUID() + i} className="inline-block">
+              <Action action={action} />
+              {i < COOKIES.length - 1 && (
+                <span className="actions__separator pr-3 pl-3">
+                  {isLightTheme(theme) ? '|' : ''}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+        {/* Actions End */}
       </div>
-      {/* Actions End */}
     </aside>
     // Cookies End
   );

@@ -46,7 +46,7 @@ const AnimationTypedMenu = ({
 
   return (
     // Entry Start
-    <li className="entries__entry">
+    <li className="entries__entry select-none">
       <Link
         className="entry__link"
         href={path!}

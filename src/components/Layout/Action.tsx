@@ -21,7 +21,7 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
 
   return variant ? (
     <Link
-      className="actions__accept uppercase"
+      className="actions__accept uppercase select-none"
       href={label}
       title={label}
       tabIndex={index}
@@ -29,7 +29,9 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
       {setLabel()}
     </Link>
   ) : (
-    <button className="actions__accept uppercase">{setLabel()}</button>
+    <button className="actions__accept uppercase select-none">
+      {setLabel()}
+    </button>
   );
 };
 

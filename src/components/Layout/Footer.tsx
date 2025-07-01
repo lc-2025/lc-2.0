@@ -12,7 +12,7 @@ const Footer = (): React.ReactNode => {
   return (
     // Footer Start
     <footer
-      className={`footer p-6 ${isLightTheme(theme) ? 'bg-accent text-primary pr-32 pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
+      className={`footer p-6 ${isLightTheme(theme) ? 'bg-accent text-primary leading-mobile lg:leading-desktop pr-32 pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
     >
       {FOOTER.map((action, i) => (
         <div key={crypto.randomUUID() + i} className="inline-block">
