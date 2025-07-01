@@ -44,10 +44,18 @@ const ROUTE = {
   },
 };
 const DEFAULT_STATE = {
+  THEME: THEME.NAME.LIGHT,
   COMMAND_HISTORY: {
     command: '',
     output: '',
   },
+};
+const STATE = {
+  theme: DEFAULT_STATE.THEME,
+};
+const ACTION = {
+  THEME: THEME.LABEL,
+  RESET: '',
 };
 const ANIMATION_OPTIONS = {
   showCursor: false,
@@ -67,6 +75,9 @@ const COOKIES_ACTIONS = [
     label: 'Decline',
   },
 ];
+const ERROR = {
+  CONTEXT: 'Context must be used within a `Provider`',
+};
 
 export {
   WINDOW,
@@ -76,7 +87,10 @@ export {
   COMMAND_OUTPUT,
   ROUTE,
   DEFAULT_STATE,
+  STATE,
+  ACTION,
   ANIMATION_OPTIONS,
   ANIMATION_OPTIONS_GENERIC,
   COOKIES_ACTIONS,
+  ERROR,
 };

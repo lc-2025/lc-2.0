@@ -74,11 +74,8 @@ button {
 }
 
 .dark a,
+.dark button,
 .dark .prompt__tag {
-  cursor: auto;
-}
-
-.dark button {
   cursor: pointer;
 }
 
