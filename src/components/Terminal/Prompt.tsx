@@ -7,8 +7,11 @@ import {
   DetailedHTMLProps,
   HTMLAttributes,
 } from 'react';
+import { usePathname } from 'next/navigation';
+import { isHome, isLightTheme } from '@/utilities/utils';
 import { KEY, COMMAND, COMMAND_OUTPUT } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
+import { useStateContext } from '@/hooks/State';
 
 /**
  * @description Terminal prompt component
@@ -37,6 +40,7 @@ const Prompt = ({
   onEnter: (value: TCommandHistory) => void;
 }): React.ReactNode => {
   // Hooks
+  const pathname = usePathname();
   const refPrompt = useRef<any>(null);
   const [editable, setEditable] = useState<boolean>(isEditable);
   const [blink, setBlink] = useState<boolean>(editable);
@@ -45,6 +49,7 @@ const Prompt = ({
     history.length > 0 ? history.length - 1 : history.length,
   );
   const [commandOutput, setCommandOutput] = useState<string>(entry.output);
+  const { theme } = useStateContext();
 
   useEffect(() => {
     refPrompt.current.innerText = isEditable ? null : entry.command;
@@ -171,15 +176,26 @@ const Prompt = ({
       <h6 className="prompt__title hidden">Prompt</h6>
       {/* Visible only with dark theme */}
       {/* Tag Start */}
-      <p className="prompt__tag" onClick={handleFocus}>
-        <span className="tag__user">guest@lucatti.de</span>:
-        {/* TODO: Set location based on pathname */}
-        <span className="tag__location">~</span>$
+      <p
+        className={`prompt__tag ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop basis-full'}`}
+        onClick={handleFocus}
+      >
+        {isLightTheme(theme) ? (
+          <span className="tag__user">Ready.</span>
+        ) : (
+          <>
+            <span className="tag__user">guest@lucati.de</span>:
+            <span className="tag__location">
+              ~{!isHome(pathname) && pathname}
+            </span>
+            $
+          </>
+        )}
       </p>
       {/* Tag End */}
       {/* Input Start */}
       <span
-        className="prompt__input inline-block pl-3 caret-transparent focus:outline-none"
+        className={`prompt__input inline-block caret-transparent focus:outline-none ${isLightTheme(theme) ? 'leading-mobile lg:leading-desktop' : 'pl-3'}`}
         contentEditable={editable}
         ref={refPrompt}
         onInput={handleInput}
@@ -189,13 +205,17 @@ const Prompt = ({
       {/* History Start */}
       {isEditable &&
         history.some((element) => element.command.includes(content)) && (
-          <span className="prompt__history">{content}</span>
+          <span
+            className={`prompt__history ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+          >
+            {content}
+          </span>
         )}
       {/* History End */}
       {/* Caret Start */}
       {editable && (
         <span
-          className={`prompt__caret ${blink && 'animate-blink'} bg-accent h-caret-mobile lg:h-caret-desktop w-caret-mobile lg:w-caret-desktop select-none`}
+          className={`prompt__caret bg-accent h-caret-mobile lg:h-caret-desktop w-caret-mobile lg:w-caret-desktop select-none ${blink && 'animate-blink'}`}
         ></span>
       )}
       {/* Caret End */}

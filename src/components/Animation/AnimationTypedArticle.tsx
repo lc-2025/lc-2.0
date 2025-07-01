@@ -42,7 +42,7 @@ const AnimationTypedArticle = ({
     <article className="content">
       <h6 className="content__title hidden">Content</h6>
       <p
-        className={`content__entry ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'} p-6`}
+        className={`content__entry p-6 ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
         ref={article}
       ></p>
     </article>

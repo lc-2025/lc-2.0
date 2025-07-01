@@ -64,17 +64,25 @@ const ANIMATION_OPTIONS_GENERIC = {
   ...ANIMATION_OPTIONS,
   contentType: '',
 };
-const COOKIES_ACTIONS = [
-  {
-    label: 'Accept',
-  },
-  {
-    label: 'Required',
-  },
-  {
-    label: 'Decline',
-  },
-];
+const ACTIONS = {
+  COOKIES: [
+    {
+      label: 'Accept',
+    },
+    {
+      label: 'Required',
+    },
+    {
+      label: 'Decline',
+    },
+  ],
+  FOOTER: [
+    {
+      label: 'Links',
+    },
+    { label: 'Credits' },
+  ],
+};
 const ERROR = {
   CONTEXT: 'Context must be used within a `Provider`',
 };
@@ -91,6 +99,6 @@ export {
   ACTION,
   ANIMATION_OPTIONS,
   ANIMATION_OPTIONS_GENERIC,
-  COOKIES_ACTIONS,
+  ACTIONS,
   ERROR,
 };

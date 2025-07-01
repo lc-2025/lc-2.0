@@ -71,7 +71,7 @@ const AnimationTypedTitles = ({
             <h1 className="terminal__placheholder hidden">Luca Cattide</h1>
             {isLightTheme(theme) ? (
               <span
-                className="terminal__headline terminal__headline--light leading-mobile lg:leading-desktop m-auto block w-[44%]"
+                className={`terminal__headline terminal__headline--light leading-mobile lg:leading-desktop m-auto block w-[46%]`}
                 ref={titles.headline}
               ></span>
             ) : (
@@ -86,7 +86,7 @@ const AnimationTypedTitles = ({
             <h2 className="terminal__placheholder hidden">Software Engineer</h2>
             {isLightTheme(theme) ? (
               <span
-                className="terminal__tagline terminal__tagline--light leading-mobile lg:leading-desktop m-auto block w-[30%]"
+                className="terminal__tagline terminal__tagline--light leading-mobile lg:leading-desktop m-auto block w-[32%]"
                 ref={titles.tagline}
               ></span>
             ) : (

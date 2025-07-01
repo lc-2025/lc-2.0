@@ -3,21 +3,8 @@
 
 /* Variables */
 @theme {
-  /*
-    Fonts
-    Using absolute units on layout & content for responsive
-  */
-  --text-desktop: 3.8rem;
-  --text-mobile: 3rem;
-  --leading-desktop: var(--text-desktop);
-  --leading-mobile: var(--text-mobile);
-
-  /**
-  * Setting this size ensures to achieve units correspondence
-  * - 62.5% of 16px user agent font size = 10px
-  * i.e. 1.2 * 10px = 12px -> 12px = 1.2rem
-  */
-  --text-rem: 62.5%;
+  /* Animations */
+  --animate-blink: blink 1s steps(2, start) infinite;
   /* Colors */
   --color-accent: #7c71da;
   --color-primary: #3e32a2;
@@ -26,8 +13,20 @@
   --height-caret-mobile: 24px;
   --width-caret-desktop: 32px;
   --width-caret-mobile: 24px;
-  /* Animations */
-  --animate-blink: blink 1s steps(2, start) infinite;
+  /*
+    Fonts
+    Using absolute units on layout & content for responsive
+  */
+  --text-desktop: 3.8rem;
+  --text-mobile: 3rem;
+  --leading-desktop: var(--text-desktop);
+  --leading-mobile: var(--text-mobile);
+  /**
+  * Setting this size ensures to achieve units correspondence
+  * - 62.5% of 16px user agent font size = 10px
+  * i.e. 1.2 * 10px = 12px -> 12px = 1.2rem
+  */
+  --text-rem: 62.5%;
 
   @keyframes blink {
     to {
@@ -48,15 +47,15 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--color-primary);
+  background: var(--color-accent);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: var(--color-primary);
 }
 
-/* Links / Buttons */
+/* Links - Buttons */
 a,
 button {
   cursor: url('../img/lc-pointer-1.svg'), auto;
@@ -64,6 +63,16 @@ button {
 
 /* Dark Theme */
 .dark {
+  /* Colors */
+  --color-accent: #00ff00;
+  --color-primary: #000;
+  /* Cursor */
+  cursor: auto;
+  /* Sizes */
+  --height-caret-desktop: 18px;
+  --height-caret-mobile: 16px;
+  --width-caret-desktop: 16px;
+  --width-caret-mobile: 14px;
   /*
     Fonts
     Using absolute units on layout & content for responsive
@@ -72,16 +81,6 @@ button {
   --text-mobile: 1.4rem;
   --leading-desktop: var(--text-desktop);
   --leading-mobile: var(--text-mobile);
-  /* Colors */
-  --color-accent: #00ff00;
-  --color-primary: #000;
-  /* Sizes */
-  --caret-height-desktop: 18px;
-  --caret-width-desktop: 16px;
-  --caret-height-mobile: 16px;
-  --caret-width-mobile: 14px;
-  /* Cursor */
-  cursor: auto;
 }
 
 .dark a,
@@ -92,6 +91,14 @@ button {
 
 .dark .logo {
   background-image: url('../img/lc-logo-dark.svg');
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
 }
 
 /* Logo */

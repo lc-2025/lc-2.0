@@ -32,7 +32,7 @@ const DocumentNode = ({
   return (
     // Body Start
     <body
-      className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
+      className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
     >
       <noscript>You need to enable JavaScript to run this website.</noscript>
       {/* Container Start */}

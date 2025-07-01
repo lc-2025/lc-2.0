@@ -29,7 +29,7 @@ const Terminal = (): React.ReactNode => {
    */
   const handleEnter = (value: TCommandHistory): void => {
     setCommandsHistory((state) => [...state, value]);
-    router.push(ROUTE.ABOUT.PATH);
+    //router.push(ROUTE.ABOUT.PATH);
   };
 
   return (

@@ -1,5 +1,5 @@
 import { ActionDispatch } from 'react';
-import { THEME, ERROR } from './constants';
+import { THEME, ROUTE, ERROR } from './constants';
 import { TState, TStateAction } from '@/types/state/State';
 
 // Utilities
@@ -39,6 +39,16 @@ const checkContext = (
  * @param {string} theme
  * @returns {*}  {boolean}
  */
-const isLightTheme = (theme: string): boolean => theme === THEME.NAME.LIGHT
+const isLightTheme = (theme: string): boolean => theme === THEME.NAME.LIGHT;
 
-export { setInitial, checkContext, isLightTheme };
+/**
+ * @description Home page helper
+ * Verifies if the current page is the home
+ * @author Luca Cattide
+ * @date 01/07/2025
+ * @param {string} path
+ * @returns {*}  {boolean}
+ */
+const isHome = (path: string): boolean => path === ROUTE.HOME.PATH;
+
+export { setInitial, checkContext, isLightTheme, isHome };

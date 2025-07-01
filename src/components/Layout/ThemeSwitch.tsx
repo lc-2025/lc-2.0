@@ -84,7 +84,7 @@ const ThemeSwitch = (): React.ReactNode => {
       {isLightTheme(theme) ? (
         <div className="theme-switch__icon theme-switch__icon--light relative mr-6 h-auto w-full max-w-[48px] min-w-[48px] bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none"></div>
       ) : (
-        <span className="theme-switch__icon mr-6">☀️</span>
+        <span className="theme-switch__icon mr-6 select-none text-[3.8rem]">☀️</span>
       )}
       <Switch
         checked={!isLightTheme(theme)}
@@ -100,7 +100,7 @@ const ThemeSwitch = (): React.ReactNode => {
       {isLightTheme(theme) ? (
         <div className="theme-switch__icon theme-switch__icon--dark relative ml-6 h-auto w-full max-w-[48px] min-w-[48px] bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none"></div>
       ) : (
-        <span className="theme-switch__icon ml-6">🌙</span>
+        <span className="theme-switch__icon ml-6 select-none text-[3.8rem]">🌙</span>
       )}
     </aside>
     // Theme Switch End
