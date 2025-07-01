@@ -99,3 +99,12 @@ button {
 .prompt__tag {
   cursor: url('../img/lc-pointer-1.svg'), auto;
 }
+
+/* Theme Switch */
+.theme-switch__icon--light {
+  background-image: url('../img/lc-theme-light.svg');
+}
+
+.theme-switch__icon--dark {
+  background-image: url('../img/lc-theme-dark.svg');
+}

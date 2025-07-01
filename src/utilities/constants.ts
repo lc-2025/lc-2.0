@@ -1,3 +1,15 @@
+const WINDOW = {
+  MEDIA: {
+    THEME: '(prefers-color-scheme: dark)',
+  },
+};
+const THEME = {
+  LABEL: 'theme',
+  NAME: {
+    LIGHT: 'light',
+    DARK: 'dark',
+  },
+};
 const KEY = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
@@ -57,6 +69,8 @@ const COOKIES_ACTIONS = [
 ];
 
 export {
+  WINDOW,
+  THEME,
   KEY,
   COMMAND,
   COMMAND_OUTPUT,

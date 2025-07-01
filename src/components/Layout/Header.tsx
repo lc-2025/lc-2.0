@@ -1,5 +1,6 @@
 import { ROUTE } from '@/utilities/constants';
 import Link from 'next/link';
+import ThemeSwitch from './ThemeSwitch';
 
 const Header = (): React.ReactNode => {
   // Variables
@@ -7,7 +8,7 @@ const Header = (): React.ReactNode => {
 
   return (
     // Header Start
-    <header className="header bg-accent flex flex-nowrap text-primary pb-6 pl-32 pr-32 pt-6">
+    <header className="header bg-accent flex flex-nowrap justify-between text-primary pb-6 pl-32 pr-32 pt-6">
       <h6 className="header__title hidden">Header</h6>
       {/* Logo Start */}
       <Link
@@ -21,6 +22,7 @@ const Header = (): React.ReactNode => {
         </aside>
       </Link>
       {/* Logo End */}
+      <ThemeSwitch />
     </header>
     // Header End
   );
