@@ -1,5 +1,5 @@
 import { ActionDispatch } from 'react';
-import { ERROR } from './constants';
+import { THEME, ERROR } from './constants';
 import { TState, TStateAction } from '@/types/state/State';
 
 // Utilities
@@ -14,6 +14,14 @@ import { TState, TStateAction } from '@/types/state/State';
 const setInitial = (value: string): string =>
   value.charAt(0).toUpperCase() + value.slice(1);
 
+/**
+ * @description Context helper
+ * Checks if the context is properly defined
+ * @author Luca Cattide
+ * @date 01/07/2025
+ * @param {(TState | ActionDispatch<[action)} context
+ * @param {*} TStateAction
+ */
 const checkContext = (
   context: TState | ActionDispatch<[action: TStateAction]> | null,
 ): void => {
@@ -23,4 +31,14 @@ const checkContext = (
   }
 };
 
-export { setInitial, checkContext };
+/**
+ * @description Light theme helper
+ * Verifies if the current theme is the light one
+ * @author Luca Cattide
+ * @date 01/07/2025
+ * @param {string} theme
+ * @returns {*}  {boolean}
+ */
+const isLightTheme = (theme: string): boolean => theme === THEME.NAME.LIGHT
+
+export { setInitial, checkContext, isLightTheme };

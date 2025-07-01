@@ -1,8 +1,6 @@
 import localFont from 'next/font/local';
+import DocumentNode from '@/components/Layout/DocumentNode';
 import StateProvider from '@/components/StateProvider';
-import Header from '@/components/Layout/Header';
-import Footer from '@/components/Layout/Footer';
-import Cookies from '@/components/Layout/Cookies';
 import type { Metadata, Viewport } from 'next';
 import '../scss/global.scss';
 import '../css/globals.css';
@@ -51,16 +49,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>): React.ReactNode {
-  // TODO: Put some console.log presentational message for those who inspect the code in a client component and run it once
-  console.log('foo');
-
   return (
     // HTML Start
     <StateProvider>
-      <html
-        className={`text-rem max-h-screen min-h-screen ${vt323.className /* ubuntuMono.className */}`}
-        lang="en"
-      >
+      {/* HTML Start */}
+      <html className="text-rem max-h-screen min-h-screen" lang="en">
         {/* Head Start */}
         <head>
           <meta
@@ -70,32 +63,11 @@ export default function RootLayout({
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </head>
         {/* Head End */}
-        {/* Body Start */}
-        {/* TODO: Uppercase only on light theme */}
-        <body
-          className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen uppercase antialiased`}
-        >
-          <noscript>
-            You need to enable JavaScript to run this website.
-          </noscript>
-          {/* Container Start */}
-          <div className="main-container flex max-h-screen min-h-screen flex-col">
-            <Header />
-            {/* Wrapper Start */}
-            {/* TODO: Flex/Padding/BG only on light theme */}
-            <main
-              className={`main-container__wrapper bg-accent flex max-w-full flex-1 flex-col overflow-x-hidden overflow-y-auto pr-32 pl-32`}
-            >
-              {children}
-            </main>
-            {/* Wrapper End */}
-            <Cookies />
-            <Footer />
-          </div>
-          {/* Container End */}
-        </body>
-        {/* Body End */}
+        <DocumentNode fontLight={vt323.className} fontDark={ubuntuMono.className}>
+          {children}
+        </DocumentNode>
       </html>
+      {/* HTML End */}
     </StateProvider>
     // HTML End
   );

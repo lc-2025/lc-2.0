@@ -4,12 +4,12 @@
 // Titles
 .terminal__titles {
 
-  .terminal__headline {
+  .terminal__headline--dark {
     // Responsive <PRE> content
     font-size: base.$font-headeline;
   }
 
-  .terminal__tagline {
+  .terminal__tagline--dark {
     font-size: base.$font-tagline;
   }
 }

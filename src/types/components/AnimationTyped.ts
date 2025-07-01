@@ -1,6 +1,6 @@
 // Animation - Typed
 type TAnimationTyped = {
-  content: Array<string>;
+  content?: Array<string>;
   path?: string;
   title?: string;
   tabIndex?: number;

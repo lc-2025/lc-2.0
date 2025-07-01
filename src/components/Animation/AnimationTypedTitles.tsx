@@ -2,10 +2,12 @@
 
 import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
+import { useStateContext } from '@/hooks/State';
+import { TITLES } from '@/data/content';
+import { isLightTheme } from '@/utilities/utils';
 import { ANIMATION_OPTIONS } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
-// TODO: Check if needed anymore or not
 /**
  * @description Typed animation component - Titles variant
  * Cannot abstract to commont component due to the
@@ -20,6 +22,12 @@ import { TAnimationTyped } from '@/types/components/AnimationTyped';
 const AnimationTypedTitles = ({
   content,
 }: TAnimationTyped): React.ReactNode => {
+  const { theme } = useStateContext();
+  const { LIGHT, DARK } = TITLES.HOME;
+  let data: Array<string> =
+    (content ?? isLightTheme(theme))
+      ? [LIGHT.HEADLINE, LIGHT.TAGLINE]
+      : [DARK.HEADLINE, DARK.TAGLINE];
   // Hooks
   const titles = {
     headline: useRef<any>(null),
@@ -29,41 +37,65 @@ const AnimationTypedTitles = ({
   useEffect(() => {
     const headline = new Typed(titles.headline.current, {
       ...ANIMATION_OPTIONS,
-      strings: [content[0]],
-      typeSpeed: 1,
+      strings: [data[0]],
+      typeSpeed: setTypeSpeed(),
     });
     const tagline = new Typed(titles.tagline.current, {
       ...ANIMATION_OPTIONS,
-      strings: [content[1]],
-      typeSpeed: 1,
+      strings: [data[1]],
+      typeSpeed: setTypeSpeed(),
     });
 
     return () => {
       headline.destroy();
       tagline.destroy();
     };
-  }, []);
+  }, [data]);
+
+  // Helpers
+  /**
+   * @description Animation type speed setter
+   * Sets the animation speed based on theme
+   * @author Luca Cattide
+   * @date 01/07/2025
+   * @returns {*}  {number}
+   */
+  const setTypeSpeed = (): number => (isLightTheme(theme) ? 50 : 1);
 
   return (
     // Titles Start
     <hgroup className="terminal__titles">
-      {content.map((_, i) =>
+      {data.map((_, i) =>
         i === 0 ? (
           <div key={crypto.randomUUID() + i}>
-            <h1 className="headline__placheholder hidden">Luca Cattide</h1>
-            <pre
-              className="terminal__headline p-6 select-none"
-              ref={titles.headline}
-            ></pre>
+            <h1 className="terminal__placheholder hidden">Luca Cattide</h1>
+            {isLightTheme(theme) ? (
+              <span
+                className="terminal__headline terminal__headline--light leading-mobile lg:leading-desktop m-auto block w-[44%]"
+                ref={titles.headline}
+              ></span>
+            ) : (
+              <pre
+                className="terminal__headline terminal__headline--dark m-auto w-[80%] p-6 select-none"
+                ref={titles.headline}
+              ></pre>
+            )}
           </div>
         ) : (
           <div key={crypto.randomUUID() + i}>
-            <h2 className="headline__placheholder hidden">Software Engineer</h2>
-            <pre
-              key={crypto.randomUUID() + i}
-              className="terminal__tagline p-6 select-none"
-              ref={titles.tagline}
-            ></pre>
+            <h2 className="terminal__placheholder hidden">Software Engineer</h2>
+            {isLightTheme(theme) ? (
+              <span
+                className="terminal__tagline terminal__tagline--light leading-mobile lg:leading-desktop m-auto block w-[30%]"
+                ref={titles.tagline}
+              ></span>
+            ) : (
+              <pre
+                key={crypto.randomUUID() + i}
+                className="terminal__tagline terminal__tagline--dark m-auto w-[48%] p-6 select-none"
+                ref={titles.tagline}
+              ></pre>
+            )}
           </div>
         ),
       )}

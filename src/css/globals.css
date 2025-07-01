@@ -9,6 +9,9 @@
   */
   --text-desktop: 3.8rem;
   --text-mobile: 3rem;
+  --leading-desktop: var(--text-desktop);
+  --leading-mobile: var(--text-mobile);
+
   /**
   * Setting this size ensures to achieve units correspondence
   * - 62.5% of 16px user agent font size = 10px
@@ -61,6 +64,14 @@ button {
 
 /* Dark Theme */
 .dark {
+  /*
+    Fonts
+    Using absolute units on layout & content for responsive
+  */
+  --text-desktop: 1.6rem;
+  --text-mobile: 1.4rem;
+  --leading-desktop: var(--text-desktop);
+  --leading-mobile: var(--text-mobile);
   /* Colors */
   --color-accent: #00ff00;
   --color-primary: #000;

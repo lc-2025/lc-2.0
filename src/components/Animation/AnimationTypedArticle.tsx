@@ -4,6 +4,8 @@ import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
+import { isLightTheme } from '@/utilities/utils';
+import { useStateContext } from '@/hooks/State';
 
 /**
  * @description Typed animation component - Article variant
@@ -21,6 +23,7 @@ const AnimationTypedArticle = ({
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
   const article = useRef<any>(null);
+  const { theme } = useStateContext();
 
   useEffect(() => {
     const paragraph = new Typed(article.current, {
@@ -38,7 +41,10 @@ const AnimationTypedArticle = ({
     // Article Start
     <article className="content">
       <h6 className="content__title hidden">Content</h6>
-      <p className="content__entry p-6" ref={article}></p>
+      <p
+        className={`content__entry ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'} p-6`}
+        ref={article}
+      ></p>
     </article>
     // Article End
   );
