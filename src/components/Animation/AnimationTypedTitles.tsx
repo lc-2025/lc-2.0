@@ -64,7 +64,7 @@ const AnimationTypedTitles = ({
    * @date 01/07/2025
    * @returns {*}  {number}
    */
-  const setTypeSpeed = (): number => (isLightTheme(theme) ? 25 : 1);
+  const setTypeSpeed = (): number => (isLightTheme(theme) ? 5 : 1);
 
   return (
     // Titles Start

@@ -1,7 +1,24 @@
+const METADATA = {
+  NAME: 'Luca Cattide',
+  KEYWORD: 'Software Engineer',
+  BASEURL: 'https://lucati.de',
+  TITLE: {
+    HOME: {
+      LABEL: 'Home',
+      DESCRIPTION:
+        'Software Engineer <) Mobile <) Desktop and currently techniques',
+    },
+    ABOUT: 'About',
+    PORTFOLIO: 'Portfolio',
+    CONTACTS: 'Contacts',
+    SUFFIX: '<) Software Engineer <) Luca Cattide',
+  },
+  DESCRIPTION: 'Software Engineer <) Full-Stack on the Web all over the world',
+};
 const TITLES = {
   HOME: {
     LIGHT: {
-      HEADLINE: '**** Luca Cattide V2 ****',
+      HEADLINE: '**** Luca Cattide V3 ****',
       TAGLINE: 'Software Engineer',
     },
     DARK: {
@@ -11,4 +28,4 @@ const TITLES = {
   },
 };
 
-export { TITLES };
+export { METADATA, TITLES };

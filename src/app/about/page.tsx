@@ -1,7 +1,4 @@
 export default function About(): React.ReactNode {
-  return (
-    <>
-      About
-    </>
-  );
+  // TODO: Metadata
+  return <>About</>;
 }

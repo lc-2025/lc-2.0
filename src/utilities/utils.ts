@@ -67,10 +67,10 @@ const isHome = (path: string): boolean => path === HOME.PATH;
 const setTimeline = (path: string, type: string, themeLight: boolean): number => {
   const section = {
     [TITLES]: {
-      [HOME.PATH]: themeLight ? 1200: 0,
+      [HOME.PATH]: themeLight ? 600: 0,
     },
     [ARTICLE]: {
-      [HOME.PATH]: themeLight ? 1800 : 0,
+      [HOME.PATH]: themeLight ? 800 : 0,
     },
   };
 

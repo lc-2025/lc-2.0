@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ThemeSwitch from './ThemeSwitch';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
+import { METADATA } from '@/data/content';
 
 const Header = (): React.ReactNode => {
   // Variables
@@ -21,7 +22,7 @@ const Header = (): React.ReactNode => {
         <aside
           className={`link__logo logo relative h-auto w-full min-w-[48px] overflow-hidden bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none`}
         >
-          <h6 className="logo__title absolute right-full">Luca Cattide</h6>
+          <h6 className="logo__title absolute right-full">{METADATA.NAME}</h6>
         </aside>
       </Link>
       {/* Logo End */}

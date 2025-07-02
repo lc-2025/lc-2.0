@@ -2,11 +2,13 @@ import localFont from 'next/font/local';
 import DocumentNode from '@/components/Layout/DocumentNode';
 import StateProvider from '@/components/StateProvider';
 import { WINDOW } from '@/utilities/constants';
+import { METADATA } from '@/data/content';
 import type { Metadata, Viewport } from 'next';
 import '../scss/global.scss';
 import '../css/globals.css';
 
 const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
+const { NAME, DESCRIPTION, BASEURL, TITLE } = METADATA;
 const vt323 = localFont({
   src: '../fonts/vt323-regular-webfont.woff2',
 });
@@ -36,8 +38,13 @@ const ubuntuMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Luca Cattide',
-  description: 'Software Engineer',
+  // TODO: To be completed
+  title: {
+    template: `%s ${TITLE.SUFFIX}`,
+    default: NAME,
+  },
+  description: DESCRIPTION,
+  metadataBase: new URL(BASEURL),
   icons: {
     icon: [
       {
