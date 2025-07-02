@@ -23,7 +23,7 @@ const ThemeSwitch = (): React.ReactNode => {
 
       // User preference + system-aware detection
       isDark =
-        themeSaved === DARK || window.matchMedia(WINDOW.MEDIA.THEME).matches;
+        themeSaved === DARK || window.matchMedia(WINDOW.MEDIA.THEME.DARK).matches;
 
       handleState(
         { type: ACTION.THEME, element: isDark ? DARK : LIGHT },

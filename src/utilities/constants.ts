@@ -1,6 +1,9 @@
 const WINDOW = {
   MEDIA: {
-    THEME: '(prefers-color-scheme: dark)',
+    THEME: {
+      LIGHT: '(prefers-color-scheme: light)',
+      DARK: '(prefers-color-scheme: dark)',
+    }
   },
 };
 const THEME = {

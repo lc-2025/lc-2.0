@@ -1,10 +1,12 @@
 import localFont from 'next/font/local';
 import DocumentNode from '@/components/Layout/DocumentNode';
 import StateProvider from '@/components/StateProvider';
+import { WINDOW } from '@/utilities/constants';
 import type { Metadata, Viewport } from 'next';
 import '../scss/global.scss';
 import '../css/globals.css';
 
+const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
 const vt323 = localFont({
   src: '../fonts/vt323-regular-webfont.woff2',
 });
@@ -36,6 +38,20 @@ const ubuntuMono = localFont({
 export const metadata: Metadata = {
   title: 'Luca Cattide',
   description: 'Software Engineer',
+  icons: {
+    icon: [
+      {
+        media: LIGHT,
+        url: 'img/lc-favicon-light.svg',
+        href: 'img/lc-favicon-light.svg',
+      },
+      {
+        media: DARK,
+        url: 'img/lc-favicon-dark.svg',
+        href: 'img/lc-favicon-dark.svg',
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
@@ -63,7 +79,10 @@ export default function RootLayout({
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </head>
         {/* Head End */}
-        <DocumentNode fontLight={vt323.className} fontDark={ubuntuMono.className}>
+        <DocumentNode
+          fontLight={vt323.className}
+          fontDark={ubuntuMono.className}
+        >
           {children}
         </DocumentNode>
       </html>
