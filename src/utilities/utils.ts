@@ -64,13 +64,18 @@ const isHome = (path: string): boolean => path === HOME.PATH;
  * @param {string} type
  * @returns {*}  {number}
  */
-const setTimeline = (path: string, type: string, themeLight: boolean): number => {
+const setTimeline = (
+  path: string,
+  type: string,
+  themeLight: boolean,
+  delay?: number,
+): number => {
   const section = {
     [TITLES]: {
-      [HOME.PATH]: themeLight ? 600: 0,
+      [HOME.PATH]: delay ? delay : themeLight ? 600 : 0,
     },
     [ARTICLE]: {
-      [HOME.PATH]: themeLight ? 800 : 0,
+      [HOME.PATH]: delay ? delay : themeLight ? 800 : 0,
     },
   };
 

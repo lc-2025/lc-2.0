@@ -22,7 +22,8 @@ import { useStateContext } from '@/hooks/State';
 const AnimationTypedArticle = ({
   content,
   html,
-  speed
+  speed,
+  delay
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
   const pathname = usePathname();
@@ -35,7 +36,7 @@ const AnimationTypedArticle = ({
       contentType: html ? 'html' : '',
       strings: content,
       typeSpeed: speed ?? 25,
-      startDelay: setTimeline(pathname, SECTION.ARTICLE, isLightTheme(theme)),
+      startDelay: setTimeline(pathname, SECTION.ARTICLE, isLightTheme(theme), delay),
     });
 
     return () => {

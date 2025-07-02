@@ -6,14 +6,16 @@ import { useStateContext } from '@/hooks/State';
 import { setInitial, isLightTheme, isHome } from '@/utilities/utils';
 import { ROUTE } from '@/utilities/constants';
 import { TRoute } from '@/types/navigation/Route';
-
+type TAnimationMenu = {
+  delay?: number;
+};
 /**
  * @description Menu component
  * @author Luca Cattide
  * @date 25/06/2025
  * @returns {*}  {React.ReactNode}
  */
-const Menu = (): React.ReactNode => {
+const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
   // Hooks
   const pathname = usePathname();
   const { theme } = useStateContext();
@@ -28,10 +30,9 @@ const Menu = (): React.ReactNode => {
    * @returns {*}  {TRoute}
    */
   const handleRoute = (): TRoute => {
-    const path =
-      isHome(pathname)
-        ? ROUTE.HOME.LABEL.toUpperCase()
-        : pathname.replace('/', '').toUpperCase();
+    const path = isHome(pathname)
+      ? ROUTE.HOME.LABEL.toUpperCase()
+      : pathname.replace('/', '').toUpperCase();
     const { [path as keyof typeof ROUTE]: _, ...rest } = ROUTE;
 
     return rest;
@@ -45,13 +46,13 @@ const Menu = (): React.ReactNode => {
       <ul
         className={`menu__entries p-6 ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
       >
-        {Object.values(handleRoute()).map(({ LABEL, PATH }, i) => (
+        {Object.values(handleRoute()).map(({ LABEL, TITLE, PATH }, i) => (
           <AnimationTypedMenu
             key={crypto.randomUUID() + i}
             path={PATH}
-            title={`${setInitial(LABEL)}`}
+            title={`${TITLE}`}
             tabIndex={i * 10}
-            delay={i * 1000}
+            delay={delay ? delay + i * 700 : i * 700}
             content={[
               `${i + 1} <${isLightTheme(theme) ? ')' : 'ↄ'} ${setInitial(LABEL)}`,
             ]}

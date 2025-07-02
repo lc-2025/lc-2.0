@@ -67,6 +67,18 @@ export const viewport: Viewport = {
   width: 'device-width',
 };
 
+/**
+ * @description Main layout
+ * @author Luca Cattide
+ * @date 02/07/2025
+ * @export
+ * @param {Readonly<{
+ *   children: React.ReactNode;
+ * }>} {
+ *   children,
+ * }
+ * @returns {*}  {React.ReactNode}
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

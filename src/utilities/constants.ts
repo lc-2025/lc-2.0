@@ -37,18 +37,22 @@ const COMMAND_OUTPUT = {
 const ROUTE = {
   HOME: {
     LABEL: COMMAND.HOME,
+    TITLE: 'Developer <) Scholar and martial artist <) Luca Cattide',
     PATH: '/',
   },
   ABOUT: {
     LABEL: COMMAND.ABOUT,
+    TITLE: 'The story <) The qualities and passions <) Luca Cattide',
     PATH: `/${COMMAND.ABOUT}`,
   },
   PORTFOLIO: {
     LABEL: COMMAND.PORTFOLIO,
+    TITLE: 'Projects <) Web and Mobile selection <) Luca Cattide',
     PATH: `/${COMMAND.PORTFOLIO}`,
   },
   CONTACTS: {
     LABEL: COMMAND.CONTACTS,
+    TITLE: 'Communications and requests <> Direct line <> Luca Cattide',
     PATH: `/${COMMAND.CONTACTS}`,
   },
 };
