@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Action from './Action';
+import useShortcut from '@/hooks/Shortcut';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
@@ -12,6 +13,7 @@ const Cookies = (): React.ReactNode => {
   // Hooks
   const { theme } = useStateContext();
 
+  useShortcut();
   useEffect(() => {
     handleTicker();
   }, []);

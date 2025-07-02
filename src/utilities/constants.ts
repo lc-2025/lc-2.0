@@ -14,6 +14,12 @@ const KEY = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   ENTER: 'Enter',
+  SHIFT: 'Shift',
+  A: 'A',
+  R: 'R',
+  D: 'D',
+  C: 'C',
+  L: 'L',
 };
 const COMMAND = {
   HOME: 'home',
