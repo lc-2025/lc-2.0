@@ -31,7 +31,7 @@ const AnimationTypedArticle = ({
     const paragraph = new Typed(article.current, {
       ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
-      typeSpeed: 50,
+      typeSpeed: 25,
       startDelay: setTimeline(pathname, SECTION.ARTICLE, isLightTheme(theme)),
     });
 

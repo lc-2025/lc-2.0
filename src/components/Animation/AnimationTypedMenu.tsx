@@ -36,7 +36,7 @@ const AnimationTypedMenu = ({
     const option = new Typed(menu.current, {
       ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
-      typeSpeed: 50,
+      typeSpeed: 25,
       startDelay: delay,
     });
 
