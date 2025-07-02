@@ -1,8 +1,11 @@
 import { ActionDispatch } from 'react';
-import { THEME, ROUTE, ERROR } from './constants';
+import { THEME, ROUTE, ERROR, SECTION } from './constants';
 import { TState, TStateAction } from '@/types/state/State';
 
 // Utilities
+const { HOME, ABOUT, PORTFOLIO, CONTACTS } = ROUTE;
+const { TITLES, ARTICLE } = SECTION;
+
 /**
  * @description String capitalization helper
  * Capitalizes a string first letter
@@ -49,6 +52,29 @@ const isLightTheme = (theme: string): boolean => theme === THEME.NAME.LIGHT;
  * @param {string} path
  * @returns {*}  {boolean}
  */
-const isHome = (path: string): boolean => path === ROUTE.HOME.PATH;
+const isHome = (path: string): boolean => path === HOME.PATH;
 
-export { setInitial, checkContext, isLightTheme, isHome };
+/**
+ * @description Animation timeline setter
+ * Sets the animation delays
+ * according to the current page/section
+ * @author Luca Cattide
+ * @date 02/07/2025
+ * @param {string} path
+ * @param {string} type
+ * @returns {*}  {number}
+ */
+const setTimeline = (path: string, type: string, themeLight: boolean): number => {
+  const section = {
+    [TITLES]: {
+      [HOME.PATH]: themeLight ? 1200: 0,
+    },
+    [ARTICLE]: {
+      [HOME.PATH]: themeLight ? 1800 : 0,
+    },
+  };
+
+  return section[type][path];
+};
+
+export { setInitial, checkContext, isLightTheme, isHome, setTimeline };

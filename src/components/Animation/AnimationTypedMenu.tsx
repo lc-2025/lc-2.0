@@ -31,6 +31,7 @@ const AnimationTypedMenu = ({
   // Hooks
   const menu = useRef<any>(null);
 
+  // TODO: Animation timeline
   useEffect(() => {
     const option = new Typed(menu.current, {
       ...ANIMATION_OPTIONS_GENERIC,

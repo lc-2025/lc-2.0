@@ -1,10 +1,11 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Typed from 'typed.js';
-import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
+import { ANIMATION_OPTIONS_GENERIC, SECTION } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
-import { isLightTheme } from '@/utilities/utils';
+import { isLightTheme, setTimeline } from '@/utilities/utils';
 import { useStateContext } from '@/hooks/State';
 
 /**
@@ -22,6 +23,7 @@ const AnimationTypedArticle = ({
   content,
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
+  const pathname = usePathname();
   const article = useRef<any>(null);
   const { theme } = useStateContext();
 
@@ -30,12 +32,13 @@ const AnimationTypedArticle = ({
       ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
       typeSpeed: 50,
+      startDelay: setTimeline(pathname, SECTION.ARTICLE, isLightTheme(theme)),
     });
 
     return () => {
       paragraph.destroy();
     };
-  }, []);
+  }, [theme]);
 
   return (
     // Article Start

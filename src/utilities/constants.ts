@@ -92,6 +92,10 @@ const ACTIONS = {
 const ERROR = {
   CONTEXT: 'Context must be used within a `Provider`',
 };
+const SECTION = {
+  TITLES: 'titles',
+  ARTICLE: 'article',
+};
 
 export {
   WINDOW,
@@ -107,4 +111,5 @@ export {
   ANIMATION_OPTIONS_GENERIC,
   ACTIONS,
   ERROR,
+  SECTION,
 };

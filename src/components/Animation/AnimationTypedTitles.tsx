@@ -1,11 +1,12 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Typed from 'typed.js';
 import { useStateContext } from '@/hooks/State';
 import { TITLES } from '@/data/content';
-import { isLightTheme } from '@/utilities/utils';
-import { ANIMATION_OPTIONS } from '@/utilities/constants';
+import { isLightTheme, setTimeline } from '@/utilities/utils';
+import { ANIMATION_OPTIONS, SECTION } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
 /**
@@ -22,6 +23,8 @@ import { TAnimationTyped } from '@/types/components/AnimationTyped';
 const AnimationTypedTitles = ({
   content,
 }: TAnimationTyped): React.ReactNode => {
+  // Variables
+  const pathname = usePathname();
   const { theme } = useStateContext();
   const { LIGHT, DARK } = TITLES.HOME;
   let data: Array<string> =
@@ -44,6 +47,7 @@ const AnimationTypedTitles = ({
       ...ANIMATION_OPTIONS,
       strings: [data[1]],
       typeSpeed: setTypeSpeed(),
+      startDelay: setTimeline(pathname, SECTION.TITLES, isLightTheme(theme)),
     });
 
     return () => {
@@ -60,7 +64,7 @@ const AnimationTypedTitles = ({
    * @date 01/07/2025
    * @returns {*}  {number}
    */
-  const setTypeSpeed = (): number => (isLightTheme(theme) ? 50 : 1);
+  const setTypeSpeed = (): number => (isLightTheme(theme) ? 25 : 1);
 
   return (
     // Titles Start
