@@ -1,38 +1,31 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import Link from 'next/link';
 import Typed from 'typed.js';
 import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
 /**
- * @description Typed animation component - Menu variant
+ * @description Typed animation component - List variant
  * Cannot abstract to commont component due to the
  * animation library limitations
  * @author Luca Cattide
- * @date 26/06/2025
+ * @date 03/07/2025
  * @param {TAnimationTyped} {
- *   path,
- *   title,
- *   tabindex,
  *   delay,
  *   content,
  * }
  * @returns {*}  {React.ReactNode}
  */
-const AnimationTypedMenu = ({
-  path,
-  title,
-  tabIndex,
+const AnimationTypedList = ({
   delay,
   content,
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
-  const menu = useRef<any>(null);
+  const list = useRef<any>(null);
 
   useEffect(() => {
-    const option = new Typed(menu.current, {
+    const option = new Typed(list.current, {
       ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
       typeSpeed: 25,
@@ -47,17 +40,11 @@ const AnimationTypedMenu = ({
   return (
     // Entry Start
     <li className="entries__entry select-none">
-      <span className='entry__placeholder hidden'>{content}</span>
-      <Link
-        className="entry__link font-bold"
-        href={path!}
-        title={title}
-        tabIndex={tabIndex}
-        ref={menu}
-      ></Link>
+      <span className="entry__placeholder hidden">{content}</span>
+      <span className="entry__link" ref={list}></span>
     </li>
     // Entry End
   );
 };
 
-export default AnimationTypedMenu;
+export default AnimationTypedList;

@@ -89,16 +89,18 @@ button {
   cursor: pointer;
 }
 
+.dark .picture--light,
+.picture--dark,
+.prompt__input br {
+  display: none;
+}
+
 .dark .logo {
   background-image: url('../img/lc-logo-dark.svg');
 }
 
-.dark .picture--light {
-  display: none;
-}
-
 .dark .picture--dark {
-  display: unset;
+  display: block;
 }
 
 .dark ::-webkit-scrollbar-track {
@@ -114,16 +116,13 @@ button {
   background-image: url('../img/lc-logo-light.svg');
 }
 
-/* Picture */
-.picture--dark {
-  display: none;
+/* SEO */
+mark {
+  background-color: transparent;
+  color: inherit;
 }
 
 /* Prompt */
-.prompt__input br {
-  display: none;
-}
-
 .prompt__tag {
   cursor: url('../img/lc-pointer-1.svg'), auto;
 }
@@ -144,6 +143,6 @@ button {
   }
 
   .picture--dark {
-    display: unset;
+    display: block;
   }
 }

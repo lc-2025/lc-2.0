@@ -6,9 +6,8 @@ import { useStateContext } from '@/hooks/State';
 import { setInitial, isLightTheme, isHome } from '@/utilities/utils';
 import { ROUTE } from '@/utilities/constants';
 import { TRoute } from '@/types/navigation/Route';
-type TAnimationMenu = {
-  delay?: number;
-};
+import { TAnimationMenu } from '@/types/components/AnimationTypedMenu';
+
 /**
  * @description Menu component
  * @author Luca Cattide
