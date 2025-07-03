@@ -17,11 +17,11 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
    * @returns {*}  {string}
    */
   const setLabel = (): string =>
-    `${isLightTheme(theme) ? `${label.charAt(0)}=` : `(${label.charAt(0)}) `}${label}`;
+    `${isLightTheme(theme) ? `⇧${label.charAt(0)}=` : `(⇧${label.charAt(0)}) `}${label}`;
 
   return variant ? (
     <Link
-      className="actions__accept uppercase select-none"
+      className="actions__action uppercase select-none"
       href={label}
       title={label}
       tabIndex={index}
@@ -29,7 +29,7 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
       {setLabel()}
     </Link>
   ) : (
-    <button className="actions__accept uppercase select-none">
+    <button className="actions__action uppercase select-none">
       {setLabel()}
     </button>
   );

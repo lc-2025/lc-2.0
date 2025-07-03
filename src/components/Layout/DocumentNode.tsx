@@ -6,6 +6,7 @@ import Footer from '@/components/Layout/Footer';
 import Cookies from '@/components/Layout/Cookies';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
+import { ERROR } from '@/utilities/constants';
 
 const DocumentNode = ({
   fontLight,
@@ -34,7 +35,7 @@ const DocumentNode = ({
     <body
       className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
     >
-      <noscript>You need to enable JavaScript to run this website.</noscript>
+      <noscript>{ERROR.JS}</noscript>
       {/* Container Start */}
       <div className="main-container flex max-h-screen min-h-screen flex-col">
         <Header />

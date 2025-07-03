@@ -6,6 +6,7 @@ import useShortcut from '@/hooks/Shortcut';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
+import { METADATA } from '@/data/content';
 
 const Cookies = (): React.ReactNode => {
   // Variables
@@ -46,14 +47,15 @@ const Cookies = (): React.ReactNode => {
   return (
     // Cookies Start
     <aside className="cookies bg-accent text-primary">
-      <h6 className="cookies__title hidden">Cookies</h6>
+      <h6 className="cookies__title hidden">{METADATA.TITLE.COOKIES}</h6>
       <div
         className={`cookies__container bg-accent flex flex-col justify-between p-6 ${isLightTheme(theme) && 'border-primary m-auto w-[calc(100%-16rem)] overflow-hidden border-16'}`}
       >
         <p
-          className={`cookies__summary w-full ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+          className={`cookies__summary w-max ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
         >
-          Lorem ipsum dolor sit amet.
+          This site uses cookies - technical and third-party - to offer the best
+          possible web experience. By accepting, you consent to their use.
         </p>
         {/* Actions Start */}
         <div

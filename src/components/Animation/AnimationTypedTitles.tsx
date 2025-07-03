@@ -7,6 +7,7 @@ import { useStateContext } from '@/hooks/State';
 import { TITLES } from '@/data/content';
 import { isLightTheme, setTimeline } from '@/utilities/utils';
 import { ANIMATION_OPTIONS, SECTION } from '@/utilities/constants';
+import { METADATA } from '@/data/content';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
 /**
@@ -24,6 +25,7 @@ const AnimationTypedTitles = ({
   content,
 }: TAnimationTyped): React.ReactNode => {
   // Variables
+  const { NAME, KEYWORD } = METADATA;
   const pathname = usePathname();
   const { theme } = useStateContext();
   const { LIGHT, DARK } = TITLES.HOME;
@@ -72,7 +74,7 @@ const AnimationTypedTitles = ({
       {data.map((_, i) =>
         i === 0 ? (
           <div key={crypto.randomUUID() + i}>
-            <h1 className="terminal__placheholder hidden">Luca Cattide</h1>
+            <h1 className="terminal__placheholder hidden">{NAME}</h1>
             {isLightTheme(theme) ? (
               <span
                 className={`terminal__headline terminal__headline--light leading-mobile lg:leading-desktop m-auto block w-[46%]`}
@@ -87,7 +89,7 @@ const AnimationTypedTitles = ({
           </div>
         ) : (
           <div key={crypto.randomUUID() + i}>
-            <h2 className="terminal__placheholder hidden">Software Engineer</h2>
+            <h2 className="terminal__placheholder hidden">{KEYWORD}</h2>
             {isLightTheme(theme) ? (
               <span
                 className="terminal__tagline terminal__tagline--light leading-mobile lg:leading-desktop m-auto block w-[32%]"

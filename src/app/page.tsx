@@ -5,9 +5,11 @@ import Terminal from '@/components/Terminal/Terminal';
 import { Metadata } from 'next';
 import { METADATA } from '@/data/content';
 
+// Variables
 const { HOME } = METADATA.TITLE;
 const { LABEL, DESCRIPTION } = HOME;
 
+// Metadata
 export const metadata: Metadata = {
   title: LABEL,
   description: DESCRIPTION,
@@ -24,24 +26,21 @@ export default function Home(): React.ReactNode {
   return (
     // Home Start
     <section className="home bg-primary flex-1">
-      <h6 className="home__title hidden">Home</h6>
+      <h6 className="home__title hidden">{LABEL}</h6>
       <AnimationTypedTitles />
       <AnimationTypedArticle
         content={[
-          'Welcome to the latest LC version.<br />Please choose your destination:',
+          'Welcome to the latest LC version.<br />Please choose your destination (enter or click):',
         ]}
         html={true}
       />
-      {/* <AnimationTypedArticle content={['Software Engineer on different platforms and enthusiast researcher', 'Discover my own story']} />
-      <AnimationTypedArticle content={['Software Engineer and new horizons explorer on the Web and beyond', `An interest throughout a lifetime, in constant evolution.<br />For over 25 years, I've been overwhelmed in the Computer Science world, so much to make this love my job. Software Engineer by vocation, I space on all the possibilities that the field has to offer, on the Web and more.<br />I love venturing on the latest Full-Stack technologies and accepting the challenges that arise during their use.<br />My only limit? Never stop improving myself, not just as a Software Engineer, by aiming to achieve goals increasingly advanced targets.<br />Everything thanks to a good dose of creativity and enthusiasm - essential components to feed my projects and conquer future goals.`]} speed={10} html={true} /> */}
-      {/* TODO: Decide if these two comps will be part of page or layout (use global state or not) */}
-      <Menu delay={3200} />
+      <Menu delay={3800} />
       <AnimationTypedArticle
-        content={['Trouble? Enter "help" for the command list.']}
+        content={['Or type "intro" for a brief summary.<br />Trouble? Enter "help" for the command list.']}
         html={true}
-        delay={5200}
+        delay={6000}
       />
-      <Terminal delay={6900} />
+      <Terminal delay={9000} />
     </section>
     // Home End
   );

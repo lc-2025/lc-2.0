@@ -18,8 +18,8 @@ const Header = (): React.ReactNode => {
     >
       <h6 className="header__title hidden">Header</h6>
       {/* Logo Start */}
-      <Link className="header__link" href={PATH} title="Software Engineer <) Luca
-Cattide <) Back to the Home Page" tabIndex={0}>
+      <Link className="header__link" href={PATH} title="Software Engineer <ↄ Luca
+Cattide <ↄ Back to the Home Page" tabIndex={0}>
         <aside
           className={`link__logo logo relative h-auto w-full min-w-[48px] overflow-hidden bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none`}
         >

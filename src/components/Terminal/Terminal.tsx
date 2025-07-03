@@ -40,7 +40,8 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
    */
   const handleEnter = (value: TCommandHistory): void => {
     setCommandsHistory((state) => [...state, value]);
-    router.push(ROUTE.ABOUT.PATH);
+    // TODO: Navigation
+    //router.push(ROUTE.ABOUT.PATH);
   };
 
   return (

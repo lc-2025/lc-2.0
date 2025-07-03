@@ -3,7 +3,7 @@ const WINDOW = {
     THEME: {
       LIGHT: '(prefers-color-scheme: light)',
       DARK: '(prefers-color-scheme: dark)',
-    }
+    },
   },
 };
 const THEME = {
@@ -26,6 +26,7 @@ const KEY = {
 };
 const COMMAND = {
   HOME: 'home',
+  INTRO: 'intro',
   ABOUT: 'about',
   PORTFOLIO: 'portfolio',
   CONTACTS: 'contacts',
@@ -37,17 +38,23 @@ const COMMAND_OUTPUT = {
 const ROUTE = {
   HOME: {
     LABEL: COMMAND.HOME,
-    TITLE: 'Developer <) Scholar and martial artist <) Luca Cattide',
+    TITLE: 'Developer <ↄ Scholar and martial artist <ↄ Luca Cattide',
     PATH: '/',
+    SUB: {
+      INTRO: {
+        LABEL: COMMAND.INTRO,
+        PATH: '/intro',
+      },
+    },
   },
   ABOUT: {
     LABEL: COMMAND.ABOUT,
-    TITLE: 'The story <) The qualities and passions <) Luca Cattide',
+    TITLE: 'The story <ↄ The qualities and passions <ↄ Luca Cattide',
     PATH: `/${COMMAND.ABOUT}`,
   },
   PORTFOLIO: {
     LABEL: COMMAND.PORTFOLIO,
-    TITLE: 'Projects <) Web and Mobile selection <) Luca Cattide',
+    TITLE: 'Projects <ↄ Web and Mobile selection <ↄ Luca Cattide',
     PATH: `/${COMMAND.PORTFOLIO}`,
   },
   CONTACTS: {
@@ -98,6 +105,7 @@ const ACTIONS = {
 };
 const ERROR = {
   CONTEXT: 'Context must be used within a `Provider`',
+  JS: 'You need to enable JavaScript to run this website.',
 };
 const SECTION = {
   TITLES: 'titles',

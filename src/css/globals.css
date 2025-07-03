@@ -93,6 +93,14 @@ button {
   background-image: url('../img/lc-logo-dark.svg');
 }
 
+.dark .picture--light {
+  display: none;
+}
+
+.dark .picture--dark {
+  display: unset;
+}
+
 .dark ::-webkit-scrollbar-track {
   background: var(--color-primary);
 }
@@ -104,6 +112,11 @@ button {
 /* Logo */
 .logo {
   background-image: url('../img/lc-logo-light.svg');
+}
+
+/* Picture */
+.picture--dark {
+  display: none;
 }
 
 /* Prompt */
@@ -122,4 +135,15 @@ button {
 
 .theme-switch__icon--dark {
   background-image: url('../img/lc-theme-dark.svg');
+}
+
+/* Media Queries */
+@media (prefers-color-scheme: dark) {
+  .picture--light {
+    display: none;
+  }
+
+  .picture--dark {
+    display: unset;
+  }
 }

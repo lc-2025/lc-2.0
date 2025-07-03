@@ -6,20 +6,21 @@ const METADATA = {
     HOME: {
       LABEL: 'Home',
       DESCRIPTION:
-        'Software Engineer <) Mobile <) Desktop and currently techniques',
+        'Software Engineer <ↄ Mobile <ↄ Desktop and currently techniques',
     },
     ABOUT: 'About',
     PORTFOLIO: 'Portfolio',
     CONTACTS: 'Contacts',
-    SUFFIX: '<) Software Engineer <) Luca Cattide',
+    COOKIES: 'Cookies',
+    SUFFIX: '<ↄ Software Engineer <ↄ Luca Cattide',
   },
-  DESCRIPTION: 'Software Engineer <) Full-Stack on the Web all over the world',
+  DESCRIPTION: 'Software Engineer <ↄ Full-Stack on the Web all over the world',
 };
 const TITLES = {
   HOME: {
     LIGHT: {
-      HEADLINE: '**** Luca Cattide V3 ****',
-      TAGLINE: 'Software Engineer',
+      HEADLINE: `**** ${METADATA.NAME} V3 ****`,
+      TAGLINE: METADATA.KEYWORD,
     },
     DARK: {
       HEADLINE: `░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░ ░▒▓██████▓▒░        ░▒▓██████▓▒░ ░▒▓██████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ \n░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        \n░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        \n░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓████████▓▒░      ░▒▓█▓▒░      ░▒▓████████▓▒░ ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   \n░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        \n░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        \n░▒▓████████▓▒░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░       ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ \n                                                                                                                                               \n                                                                                                                                               `,

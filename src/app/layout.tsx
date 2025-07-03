@@ -7,8 +7,10 @@ import type { Metadata, Viewport } from 'next';
 import '../scss/global.scss';
 import '../css/globals.css';
 
+// Variables
 const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
 const { NAME, DESCRIPTION, BASEURL, TITLE } = METADATA;
+// Fonts
 const vt323 = localFont({
   src: '../fonts/vt323-regular-webfont.woff2',
 });
@@ -37,6 +39,7 @@ const ubuntuMono = localFont({
   ],
 });
 
+// Metadata
 export const metadata: Metadata = {
   // TODO: To be completed
   title: {
