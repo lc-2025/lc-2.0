@@ -8,7 +8,10 @@ const METADATA = {
       DESCRIPTION:
         'Software Engineer <ↄ Mobile <ↄ Desktop and currently techniques',
     },
-    ABOUT: 'About',
+    ABOUT: {
+      LABEL: 'About',
+      DESCRIPTION: 'Biography <ↄ Past and adventures in my career'
+    },
     PORTFOLIO: 'Portfolio',
     CONTACTS: 'Contacts',
     COOKIES: 'Cookies',
