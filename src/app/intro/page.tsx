@@ -65,7 +65,7 @@ export default function Intro(): React.ReactNode {
       <AnimationTypedArticle
         content={[
           'My reality as a Software Engineer from the Matrix to the Source',
-          `<a href="${ROUTE.PORTFOLIO.PATH}" title="Projects <) Web and Mobile selection <) Luca Cattide" tabindex="11"><strong>Follow my own path <)</strong></a>`,
+          `<a href="${ROUTE.PORTFOLIO.PATH}" title="Projects <ↄ Web and Mobile selection <ↄ Luca Cattide" tabindex="11"><strong>Follow my own path <)</strong></a>`,
         ]}
         html={true}
         delay={18800}

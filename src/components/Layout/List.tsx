@@ -11,7 +11,7 @@ import { TAnimationList } from '@/types/components/AnimationTypedList';
  * @date 03/07/2025
  * @returns {*}  {React.ReactNode}
  */
-const List = ({ list, delay }: TAnimationList): React.ReactNode => {
+const List = ({ list, speed, delay }: TAnimationList): React.ReactNode => {
   // Hooks
   const { theme } = useStateContext();
 
@@ -24,6 +24,7 @@ const List = ({ list, delay }: TAnimationList): React.ReactNode => {
       {list.map((entry, i) => (
         <AnimationTypedList
           key={crypto.randomUUID() + i}
+          speed={speed}
           delay={delay ? delay + i * 700 : i * 700}
           content={[
             `${setInitial(entry)}`,

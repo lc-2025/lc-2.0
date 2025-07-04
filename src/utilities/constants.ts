@@ -59,7 +59,7 @@ const ROUTE = {
   },
   CONTACTS: {
     LABEL: COMMAND.CONTACTS,
-    TITLE: 'Communications and requests <> Direct line <> Luca Cattide',
+    TITLE: 'Communications and requests <ↄ Direct line <ↄ Luca Cattide',
     PATH: `/${COMMAND.CONTACTS}`,
   },
 };

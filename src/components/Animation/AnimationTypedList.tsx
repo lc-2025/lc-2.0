@@ -12,14 +12,16 @@ import { TAnimationTyped } from '@/types/components/AnimationTyped';
  * @author Luca Cattide
  * @date 03/07/2025
  * @param {TAnimationTyped} {
- *   delay,
  *   content,
+ *   speed,
+ *   delay
  * }
  * @returns {*}  {React.ReactNode}
  */
 const AnimationTypedList = ({
-  delay,
   content,
+  speed,
+  delay,
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
   const list = useRef<any>(null);
@@ -28,7 +30,7 @@ const AnimationTypedList = ({
     const option = new Typed(list.current, {
       ...ANIMATION_OPTIONS_GENERIC,
       strings: content,
-      typeSpeed: 25,
+      typeSpeed: speed ?? 25,
       startDelay: delay,
     });
 
