@@ -10,10 +10,13 @@ const METADATA = {
     },
     ABOUT: {
       LABEL: 'About',
-      DESCRIPTION: 'Biography <ↄ Past and adventures in my career'
+      DESCRIPTION: 'Biography <ↄ Past and adventures in my career',
     },
     PORTFOLIO: 'Portfolio',
-    CONTACTS: 'Contacts',
+    CONTACTS: {
+      LABEL: 'Contacts',
+      DESCRIPTION: 'International online and offline availability',
+    },
     COOKIES: 'Cookies',
     SUFFIX: '<ↄ Software Engineer <ↄ Luca Cattide',
   },

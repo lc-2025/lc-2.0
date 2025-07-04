@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
+import Title from '@/components/Layout/Title';
 import Picture from '@/components/Layout/Picture';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
-import List from '@/components/Layout/List';
 import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
 import { METADATA } from '@/data/content';
@@ -27,17 +27,15 @@ export default function About(): React.ReactNode {
   return (
     // About Start
     <section className="about bg-primary flex-1">
-      <h1 className="about__title hidden">
-        <mark>
-          <strong>Software Engineer</strong>
-        </mark>{' '}
-        {`<)`} Tireless creative and Martial Artist
-      </h1>
+      <Title
+        keyword={'Software Engineer'}
+        content={'<) Tireless creative and Martial Artist'}
+      />
       {/* Headline Start */}
       <Picture
         className="intro__picture"
-        srcLight="/img/about-summary-lc-light.png"
-        srcDark="/img/about-summary-lc-dark.png"
+        srcLight="/img/about-lc-light.png"
+        srcDark="/img/about-lc-dark.png"
         alt={DESCRIPTION}
         width={4896}
         height={3672}

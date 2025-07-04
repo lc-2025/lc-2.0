@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Title from '@/components/Layout/Title';
 import Picture from '@/components/Layout/Picture';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import List from '@/components/Layout/List';
@@ -29,17 +30,15 @@ export default function Intro(): React.ReactNode {
   return (
     // Intro Start
     <section className="intro bg-primary flex-1">
-      <h1 className="intro__title hidden">
-        <mark>
-          <strong>Software Engineer</strong>
-        </mark>{' '}
-        on different platforms and enthusiast researcher
-      </h1>
+      <Title
+        keyword={'Software Engineer'}
+        content={'on different platforms and enthusiast researcher'}
+      />
       {/* Summary Start */}
       <Picture
         className="intro__picture"
-        srcLight="/img/intro-summary-lc-light.png"
-        srcDark="/img/intro-summary-lc-dark.png"
+        srcLight="/img/intro-lc-light.png"
+        srcDark="/img/intro-lc-dark.png"
         alt={DESCRIPTION}
         width={1920}
         height={1080}
