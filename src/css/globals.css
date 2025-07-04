@@ -57,8 +57,18 @@
 
 /* Links - Buttons */
 a,
+.audio__icon,
 button {
   cursor: url('../img/lc-pointer-1.svg'), auto;
+}
+
+/* Audio */
+.audio__icon--light-on {
+  background-image: url('../img/lc-audio-on.svg');
+}
+
+.audio__icon--light-off {
+  background-image: url('../img/lc-audio-off.svg');
 }
 
 /* Dark Theme */
