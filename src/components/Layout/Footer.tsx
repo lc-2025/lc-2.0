@@ -9,11 +9,22 @@ const Footer = (): React.ReactNode => {
   // Hooks
   const { theme } = useStateContext();
 
+  // Handlers
+  /**
+   * @description Date handler
+   * Returns the current year for the credits line
+   * @author Luca Cattide
+   * @date 04/07/2025
+   * @returns {*}  {number}
+   */
+  const handleDate = (): number => new Date().getFullYear();
+
   return (
     // Footer Start
     <footer
-      className={`footer p-6 ${isLightTheme(theme) ? 'bg-accent text-primary leading-mobile lg:leading-desktop pr-32 pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
+      className={`footer flex justify-between p-6 ${isLightTheme(theme) ? 'bg-accent text-primary leading-mobile lg:leading-desktop pr-32 pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
     >
+      {/* Actions Start */}
       {FOOTER.map((action, i) => (
         <div key={crypto.randomUUID() + i} className="inline-block">
           <Action action={action} variant={true} index={i} />
@@ -24,6 +35,10 @@ const Footer = (): React.ReactNode => {
           )}
         </div>
       ))}
+      {/* Actions End */}
+      <div className="footer__credits">
+        &copy; {handleDate()} {'<)'} All Rights reserved.
+      </div>
     </footer>
     // Footer End
   );

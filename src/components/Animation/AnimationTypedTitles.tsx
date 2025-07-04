@@ -77,12 +77,12 @@ const AnimationTypedTitles = ({
             <h1 className="terminal__placheholder hidden">{NAME}</h1>
             {isLightTheme(theme) ? (
               <span
-                className={`terminal__headline terminal__headline--light leading-mobile lg:leading-desktop m-auto block w-[46%]`}
+                className={`terminal__headline terminal__headline--light leading-mobile lg:leading-desktop m-auto block max-w-[300px] lg:max-w-[380px]`}
                 ref={titles.headline}
               ></span>
             ) : (
               <pre
-                className="terminal__headline terminal__headline--dark m-auto w-[80%] p-6 select-none"
+                className="terminal__headline terminal__headline--dark m-auto flex justify-center p-6 select-none"
                 ref={titles.headline}
               ></pre>
             )}
@@ -92,13 +92,13 @@ const AnimationTypedTitles = ({
             <h2 className="terminal__placheholder hidden">{KEYWORD}</h2>
             {isLightTheme(theme) ? (
               <span
-                className="terminal__tagline terminal__tagline--light leading-mobile lg:leading-desktop m-auto block w-[32%]"
+                className="terminal__tagline terminal__tagline--light leading-mobile lg:leading-desktop m-auto block max-w-[204px] lg:max-w-[260px]"
                 ref={titles.tagline}
               ></span>
             ) : (
               <pre
                 key={crypto.randomUUID() + i}
-                className="terminal__tagline terminal__tagline--dark m-auto w-[48%] p-6 select-none"
+                className="terminal__tagline terminal__tagline--dark m-auto flex justify-center p-6 select-none"
                 ref={titles.tagline}
               ></pre>
             )}

@@ -89,17 +89,18 @@ const Prompt = ({
     const message = {
       [COMMAND.HELP]: COMMAND_OUTPUT.HELP,
     };
+    const currentContent = content.toLowerCase();
 
     // Command check
     if (
       Object.values(COMMAND)
         .map((command) => command)
-        .includes(content)
+        .includes(currentContent)
     ) {
-      setCommandOutput(message[content]);
+      setCommandOutput(message[currentContent]);
     }
 
-    return message[content];
+    return message[currentContent];
   };
 
   // Handlers
@@ -220,7 +221,7 @@ const Prompt = ({
       )}
       {/* Caret End */}
       {/* Command Output Start */}
-      <p className={`prompt__output basis-full ${commandOutput && 'mb-3'}`}>
+      <p className={`prompt__output basis-full ${commandOutput && 'leading-mobile lg:leading-desktop mb-3 whitespace-pre-wrap'}`}>
         {commandOutput}
       </p>
       {/* Command Output End */}

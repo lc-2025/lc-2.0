@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
+import { METADATA } from '@/data/content';
 import { TAction } from '@/types/components/Action';
 
 const Action = ({ action, variant, index }: TAction): React.ReactNode => {
@@ -23,7 +24,7 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
     <Link
       className="actions__action uppercase select-none"
       href={label}
-      title={label}
+      title={`${label} ${METADATA.TITLE.SUFFIX}`}
       tabIndex={index}
     >
       {setLabel()}

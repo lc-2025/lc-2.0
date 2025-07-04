@@ -25,19 +25,27 @@ const KEY = {
   L: 'L',
 };
 const COMMAND = {
-  HOME: 'home',
   INTRO: 'intro',
-  ABOUT: 'about',
-  PORTFOLIO: 'portfolio',
-  CONTACTS: 'contacts',
   HELP: 'help',
 };
 const COMMAND_OUTPUT = {
-  HELP: 'Lorem ipsum dolor sit amet.',
+  HELP: `LC V3 Terminal
+
+List of available shell commands:
+
+[1-n]            Select a menu entry
+intro            Navigate to the summary
+help             Show the help reference
+⇧[Shift]+[A-Z]   Keyboard shortcut
+
+Features:
+
+- Command history
+- Auto-suggestion`,
 };
 const ROUTE = {
   HOME: {
-    LABEL: COMMAND.HOME,
+    LABEL: 'home',
     TITLE: 'Developer <ↄ Scholar and martial artist <ↄ Luca Cattide',
     PATH: '/',
     SUB: {
@@ -48,19 +56,19 @@ const ROUTE = {
     },
   },
   ABOUT: {
-    LABEL: COMMAND.ABOUT,
+    LABEL: 'about',
     TITLE: 'The story <ↄ The qualities and passions <ↄ Luca Cattide',
-    PATH: `/${COMMAND.ABOUT}`,
+    PATH: '/about',
   },
   PORTFOLIO: {
-    LABEL: COMMAND.PORTFOLIO,
+    LABEL: 'portfolio',
     TITLE: 'Projects <ↄ Web and Mobile selection <ↄ Luca Cattide',
-    PATH: `/${COMMAND.PORTFOLIO}`,
+    PATH: '/portfolio',
   },
   CONTACTS: {
-    LABEL: COMMAND.CONTACTS,
+    LABEL: 'contacts',
     TITLE: 'Communications and requests <ↄ Direct line <ↄ Luca Cattide',
-    PATH: `/${COMMAND.CONTACTS}`,
+    PATH: '/contacts',
   },
 };
 const DEFAULT_STATE = {
@@ -100,7 +108,6 @@ const ACTIONS = {
     {
       label: 'Links',
     },
-    { label: 'Credits' },
   ],
 };
 const ERROR = {
