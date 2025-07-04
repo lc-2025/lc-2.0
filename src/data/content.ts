@@ -4,7 +4,7 @@ const METADATA = {
   BASEURL: 'https://lucati.de',
   TITLE: {
     HOME: {
-      LABEL: 'Home',
+      LABEL: 'Home <ↄ Software Engineer <ↄ Luca Cattide',
       DESCRIPTION:
         'Software Engineer <ↄ Mobile <ↄ Desktop and currently techniques',
     },
