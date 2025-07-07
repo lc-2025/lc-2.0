@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react';
+
 // Cookies
 type TAction = {
   action: TActionProps;
@@ -6,6 +8,7 @@ type TAction = {
 };
 type TActionProps = {
   label: string;
+  callback?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export type { TAction };

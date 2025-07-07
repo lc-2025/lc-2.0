@@ -77,8 +77,9 @@ const setTimeline = (
     [ARTICLE]: {
       [HOME.PATH]: delay ? delay : themeLight ? 800 : 0,
       [HOME.SUB.INTRO.PATH]: delay ? delay : themeLight ? 100 : 0,
-      [ABOUT.PATH]: delay ? delay : themeLight ? 100 : 0,
-      [CONTACTS.PATH]: delay ? delay : themeLight ? 100 : 0,
+      [ABOUT.PATH]: delay ? delay : themeLight ? 200 : 0,
+      [PORTFOLIO.PATH]: delay ? delay : themeLight ? 300 : 0,
+      [CONTACTS.PATH]: delay ? delay : themeLight ? 400 : 0,
     },
   };
 

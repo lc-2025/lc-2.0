@@ -57,18 +57,9 @@
 
 /* Links - Buttons */
 a,
-.audio__icon,
-button {
+button,
+.project__preview {
   cursor: url('../img/lc-pointer-1.svg'), auto;
-}
-
-/* Audio */
-.audio__icon--light-on {
-  background-image: url('../img/lc-audio-on.svg');
-}
-
-.audio__icon--light-off {
-  background-image: url('../img/lc-audio-off.svg');
 }
 
 /* Dark Theme */
@@ -95,6 +86,7 @@ button {
 
 .dark a,
 .dark button,
+.dark .project__preview,
 .dark .prompt__tag {
   cursor: pointer;
 }

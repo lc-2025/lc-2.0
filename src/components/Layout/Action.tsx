@@ -4,6 +4,13 @@ import { isLightTheme } from '@/utilities/utils';
 import { METADATA } from '@/data/content';
 import { TAction } from '@/types/components/Action';
 
+/**
+ * @description Action component
+ * @author Luca Cattide
+ * @date 07/07/2025
+ * @param {TAction} { action, variant, index }
+ * @returns {*}  {React.ReactNode}
+ */
 const Action = ({ action, variant, index }: TAction): React.ReactNode => {
   // Variables
   const { label } = action;
@@ -30,7 +37,10 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
       {setLabel()}
     </Link>
   ) : (
-    <button className="actions__action uppercase select-none">
+    <button
+      className="actions__action uppercase select-none"
+      onClick={action.callback ?? undefined}
+    >
       {setLabel()}
     </button>
   );

@@ -17,9 +17,8 @@ const List = ({ list, speed, delay }: TAnimationList): React.ReactNode => {
 
   return (
     // List Start
-
     <ul
-      className={`menu__entries p-6 ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+      className={`list__entries p-6 ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
     >
       {list.map((entry, i) => (
         <AnimationTypedList
