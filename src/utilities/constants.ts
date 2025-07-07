@@ -36,7 +36,7 @@ List of available shell commands:
 [1-n]            Select a menu entry
 intro            Navigate to the summary
 help             Show the help reference
-⇧[Shift]+[A-Z]   Keyboard shortcut
+⇧[Shift]+[A-Z]  Keyboard shortcut
 
 Features:
 

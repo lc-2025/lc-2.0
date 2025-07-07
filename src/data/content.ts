@@ -12,7 +12,10 @@ const METADATA = {
       LABEL: 'About',
       DESCRIPTION: 'Biography <ↄ Past and adventures in my career',
     },
-    PORTFOLIO: 'Portfolio',
+    PORTFOLIO: {
+      LABEL: 'Portfolio',
+      DESCRIPTION: 'Websites and application development catalogue'
+    },
     CONTACTS: {
       LABEL: 'Contacts',
       DESCRIPTION: 'International online and offline availability',
