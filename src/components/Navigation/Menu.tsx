@@ -3,7 +3,12 @@
 import { usePathname } from 'next/navigation';
 import AnimationTypedMenu from '../Animation/AnimationTypedMenu';
 import { useStateContext } from '@/hooks/State';
-import { setInitial, isLightTheme, isHome } from '@/utilities/utils';
+import {
+  setInitial,
+  isLightTheme,
+  isHome,
+  getReverseC,
+} from '@/utilities/utils';
 import { ROUTE } from '@/utilities/constants';
 import { TRoute } from '@/types/navigation/Route';
 import { TAnimationMenu } from '@/types/components/AnimationTypedMenu';
@@ -53,7 +58,7 @@ const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
             tabIndex={i * 10}
             delay={delay ? delay + i * 700 : i * 700}
             content={[
-              `${i + 1} <${isLightTheme(theme) ? ')' : 'ↄ'} ${setInitial(LABEL)}`,
+              `${i + 1} <${getReverseC(isLightTheme(theme))} ${setInitial(LABEL)}`,
             ]}
           />
         ))}

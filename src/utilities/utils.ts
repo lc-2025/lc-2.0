@@ -85,4 +85,15 @@ const setTimeline = (
   return section[type][path];
 };
 
-export { setInitial, checkContext, isLightTheme, isHome, setTimeline };
+/**
+ * @description Reverse symbol getter
+ * Retrieves the reverse C symbol based on the
+ * current theme
+ * @author Luca Cattide
+ * @date 07/07/2025
+ * @param {boolean} themeLight
+ * @returns {*}  {string}
+ */
+const getReverseC = (themeLight: boolean): string => themeLight ? ')' : 'ↄ'
+
+export { setInitial, checkContext, isLightTheme, isHome, setTimeline, getReverseC };

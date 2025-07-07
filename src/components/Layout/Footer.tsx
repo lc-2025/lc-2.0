@@ -1,6 +1,6 @@
 import Action from './Action';
 import { useStateContext } from '@/hooks/State';
-import { isLightTheme } from '@/utilities/utils';
+import { getReverseC, isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
 
 const Footer = (): React.ReactNode => {
@@ -37,7 +37,7 @@ const Footer = (): React.ReactNode => {
       ))}
       {/* Actions End */}
       <div className="footer__credits">
-        &copy; {handleDate()} {'<)'} All Rights reserved.
+        &copy; {handleDate()} {`<${getReverseC(isLightTheme(theme))}`} All Rights reserved.
       </div>
     </footer>
     // Footer End
