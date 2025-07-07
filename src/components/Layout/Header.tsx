@@ -35,18 +35,6 @@ const Header = (): React.ReactNode => {
         </aside>
       </Link>
       {/* Logo End */}
-      {/* Audio Start */}
-      <aside className="audio">
-        <h6 className="audio__title hidden">Audio</h6>
-        {isLightTheme(theme) ? (
-          <div className="audio__icon audio__icon--light-on relative mr-6 h-auto w-full max-w-[48px] min-w-[48px] cursor-pointer bg-size-[100%] bg-left-top bg-no-repeat pb-[5.1rem] select-none"></div>
-        ) : (
-          <span className="audio__icon mr-6 cursor-pointer text-[3.8rem] select-none">
-            🔊
-          </span>
-        )}
-      </aside>
-      {/* Audio End */}
       <ThemeSwitch />
     </header>
     // Header End
