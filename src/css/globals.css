@@ -92,6 +92,7 @@ button,
 }
 
 .dark .picture--light,
+.dark .picture--dark.hidden,
 .picture--dark,
 .prompt__input br {
   display: none;
