@@ -8,7 +8,7 @@ type TAction = {
 };
 type TActionProps = {
   label: string;
-  callback?: MouseEventHandler<HTMLButtonElement>;
+  callback?: MouseEventHandler<HTMLButtonElement> | void;
 };
 
 export type { TAction };

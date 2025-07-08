@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Picture from './Picture';
 import { TCarousel } from '@/types/components/Carousel';
-import Action from './Action';
 
 /**
  * @description Carousel component
@@ -25,12 +24,13 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
    * @param {number} action
    */
   const handleAction = (action: number): void => {
-    const selectedAction = {
-      1: setCurrent((state) => (state > 0 ? state - 1 : state)),
-      2: setCurrent((state) => (state < images.length - 1 ? state + 1 : state)),
-    };
-
-    selectedAction[action as keyof typeof selectedAction];
+    setCurrent((state) =>
+      action === 1 && state > 0
+        ? state - 1
+        : action === 2 && state < images.length - 1
+          ? state + 1
+          : state,
+    );
   };
 
   return (
@@ -53,23 +53,22 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
         </div>
         // Container End
       ))}
-      {/* Actions Start */}
-      <div className="slideshow__actions">
-        {/* <span
-          className="actions__action select-none"
+      {/* Navigation Start */}
+      <div className="slideshow__navigation">
+        <button
+          className="navigation__action navigation__action--previous mr-6 uppercase select-none"
           onClick={() => handleAction(1)}
         >
           Previous
-        </span>
-        <span
-          className="actions__action select-none"
+        </button>
+        <button
+          className="navigation__action navigation__action--next ml-6 uppercase select-none"
           onClick={() => handleAction(2)}
         >
           Next
-        </span> */}
-        <Action action={{label: 'Previous', callback: handleAction(1)}} />
+        </button>
       </div>
-      {/* Actions End */}
+      {/* Navigation End */}
     </div>
     // Slideshow End
   );
