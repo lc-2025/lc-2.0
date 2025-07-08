@@ -1,8 +1,15 @@
 import Action from './Action';
+import Modal from './Modal';
 import { useStateContext } from '@/hooks/State';
 import { getReverseC, isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
 
+/**
+ * @description Footer component
+ * @author Luca Cattide
+ * @date 08/07/2025
+ * @returns {*}  {React.ReactNode}
+ */
 const Footer = (): React.ReactNode => {
   // Variables
   const { FOOTER } = ACTIONS;
@@ -36,9 +43,14 @@ const Footer = (): React.ReactNode => {
         </div>
       ))}
       {/* Actions End */}
+      <Modal open={true} title="Links">
+        <ul><li>Foo</li></ul>
+      </Modal>
+      {/* Credits Start */}
       <div className="footer__credits">
         &copy; {handleDate()} {`<${getReverseC(isLightTheme(theme))}`} All Rights reserved.
       </div>
+      {/* Credits End */}
     </footer>
     // Footer End
   );

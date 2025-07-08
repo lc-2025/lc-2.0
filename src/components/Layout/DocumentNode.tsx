@@ -8,6 +8,21 @@ import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ERROR } from '@/utilities/constants';
 
+/**
+ * @description Body component
+ * @author Luca Cattide
+ * @date 08/07/2025
+ * @param {{
+ *   fontLight: string;
+ *   fontDark: string;
+ *   children: React.ReactNode;
+ * }} {
+ *   fontLight,
+ *   fontDark,
+ *   children,
+ * }
+ * @returns {*}  {React.ReactNode}
+ */
 const DocumentNode = ({
   fontLight,
   fontDark,

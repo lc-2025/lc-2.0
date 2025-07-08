@@ -8,6 +8,12 @@ import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 
+/**
+ * @description Cookies component
+ * @author Luca Cattide
+ * @date 08/07/2025
+ * @returns {*}  {React.ReactNode}
+ */
 const Cookies = (): React.ReactNode => {
   // Variables
   const { COOKIES } = ACTIONS;
