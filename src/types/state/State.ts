@@ -1,6 +1,7 @@
 // State Management
 type TState = {
   theme: string;
+  cookies: string;
 };
 
 type TStateAction = {

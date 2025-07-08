@@ -1,8 +1,16 @@
+import { useState } from 'react';
+import Link from 'next/link';
 import Action from './Action';
 import Modal from './Modal';
 import { useStateContext } from '@/hooks/State';
 import { getReverseC, isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
+import { LINKS } from '@/data/content';
+
+type TModalOpen = {
+  links: boolean;
+  cookies: boolean;
+};
 
 /**
  * @description Footer component
@@ -14,7 +22,11 @@ const Footer = (): React.ReactNode => {
   // Variables
   const { FOOTER } = ACTIONS;
   // Hooks
-  const { theme } = useStateContext();
+  const { theme, cookies } = useStateContext();
+  const [open, setOpen] = useState<TModalOpen>({
+    links: false,
+    cookies: false,
+  });
 
   // Handlers
   /**
@@ -26,30 +38,84 @@ const Footer = (): React.ReactNode => {
    */
   const handleDate = (): number => new Date().getFullYear();
 
+  /**
+   * @description Modal opening handler
+   * @author Luca Cattide
+   * @date 08/07/2025
+   * @param {string} type
+   */
+  const handleOpen = (type: string): void => {
+    setOpen((state) => ({
+      ...state,
+      [type]: !open[type as keyof typeof open],
+    }));
+  };
+
   return (
     // Footer Start
     <footer
       className={`footer flex justify-between p-6 ${isLightTheme(theme) ? 'bg-accent text-primary leading-mobile lg:leading-desktop pr-32 pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
     >
       {/* Actions Start */}
-      {FOOTER.map((action, i) => (
-        <div key={crypto.randomUUID() + i} className="inline-block">
-          <Action action={action} variant={true} index={i} />
-          {i < FOOTER.length - 1 && (
-            <span className="actions__separator pr-3 pl-3">
-              {isLightTheme(theme) ? '|' : ''}
-            </span>
-          )}
-        </div>
-      ))}
+      <ul className="footer__actions flex justify-start">
+        {FOOTER.map(
+          (action, i) =>
+            (i === 0 || (i > 0 && cookies)) && (
+              <li key={crypto.randomUUID() + i} className="actions__action">
+                <Action
+                  action={{
+                    ...action,
+                    callback: () => handleOpen(action.label.toLowerCase()),
+                  }}
+                  index={i}
+                />
+                {i < FOOTER.length - 1 && cookies && (
+                  <span className="action__separator pr-3 pl-3">
+                    {isLightTheme(theme) ? '|' : ''}
+                  </span>
+                )}
+              </li>
+            ),
+        )}
+      </ul>
       {/* Actions End */}
-      <Modal open={true} title="Links">
-        <ul><li>Foo</li></ul>
+      {/* Links Start */}
+      <Modal
+        open={open.links}
+        title={ACTIONS.FOOTER[0].label}
+        callback={() => handleOpen(ACTIONS.FOOTER[0].label.toLowerCase())}
+      >
+        <ul className="footer__links">
+          {LINKS.map(({ label, title, link }, i) => (
+            // Link Start
+            <li
+              className="links__link pt-6 pb-6 text-center"
+              key={crypto.randomUUID() + i}
+            >
+              <Link href={link} title={title} tabIndex={20 + i} target="_blank">
+                {label}
+              </Link>
+            </li>
+            // Link End
+          ))}
+        </ul>
       </Modal>
+      {/* Links End */}
+      {/* Cookies Start */}
+      <Modal
+        open={open.cookies}
+        title={ACTIONS.FOOTER[1].label}
+        callback={() => handleOpen(ACTIONS.FOOTER[1].label.toLowerCase())}
+      >
+        TODO:
+      </Modal>
+      {/* Cookies End */}
       {/* Credits Start */}
-      <div className="footer__credits">
-        &copy; {handleDate()} {`<${getReverseC(isLightTheme(theme))}`} All Rights reserved.
-      </div>
+      <aside className="footer__credits">
+        <h6 className="credits__title hidden">Credits</h6>
+        &copy; {handleDate()} {`<${getReverseC(isLightTheme(theme))}`} All
+        Rights reserved.
+      </aside>
       {/* Credits End */}
     </footer>
     // Footer End

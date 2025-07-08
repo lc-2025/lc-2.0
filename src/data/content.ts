@@ -14,13 +14,16 @@ const METADATA = {
     },
     PORTFOLIO: {
       LABEL: 'Portfolio',
-      DESCRIPTION: 'Websites and application development catalogue'
+      DESCRIPTION: 'Websites and application development catalogue',
     },
     CONTACTS: {
       LABEL: 'Contacts',
       DESCRIPTION: 'International online and offline availability',
     },
-    COOKIES: 'Cookies',
+    COOKIES: {
+      LABEL: 'Cookies',
+      DESCRIPTION: 'Cookies <ↄ Management <ↄ Functioning and protection',
+    },
     SUFFIX: '<ↄ Software Engineer <ↄ Luca Cattide',
   },
   DESCRIPTION: 'Software Engineer <ↄ Full-Stack on the Web all over the world',
@@ -37,5 +40,17 @@ const TITLES = {
     },
   },
 };
+const LINKS = [
+  {
+    label: 'LinkedIn',
+    title: 'Follow Luca Cattide on the LinkedIn professional profile',
+    link: 'https://tinyurl.com/5556a4en',
+  },
+  {
+    label: 'GitHub',
+    title: 'Follow Luca Cattide on the GitHub digital repository',
+    link: 'https://tinyurl.com/2przrwrx',
+  },
+];
 
-export { METADATA, TITLES };
+export { METADATA, TITLES, LINKS };

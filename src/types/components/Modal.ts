@@ -2,6 +2,7 @@
 type TModal = {
   open: boolean;
   title: string;
+  callback: () => void;
   children: React.ReactNode;
 };
 

@@ -80,10 +80,17 @@ const DEFAULT_STATE = {
 };
 const STATE = {
   theme: DEFAULT_STATE.THEME,
+  cookies: '',
 };
 const ACTION = {
   THEME: THEME.LABEL,
+  COOKIES: 'cookies',
   RESET: '',
+};
+const COOKIES_STATE = {
+  ACCEPTED: 'accepted',
+  REQUIRED: 'required',
+  DECLINED: 'declined',
 };
 const ANIMATION_OPTIONS = {
   showCursor: false,
@@ -108,7 +115,9 @@ const ACTIONS = {
     {
       label: 'Links',
     },
+    { label: 'Cookies' },
   ],
+  MODAL: [{ label: 'Close' }],
 };
 const ERROR = {
   CONTEXT: 'Context must be used within a `Provider`',
@@ -129,6 +138,7 @@ export {
   DEFAULT_STATE,
   STATE,
   ACTION,
+  COOKIES_STATE,
   ANIMATION_OPTIONS,
   ANIMATION_OPTIONS_GENERIC,
   ACTIONS,
