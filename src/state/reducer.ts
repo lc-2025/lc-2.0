@@ -31,7 +31,7 @@ const reducer = (state: Partial<TState>, action: TStateAction): TState => {
       stateReducer = STATE;
   }
 
-  return stateReducer;
+  return stateReducer as TState;
 };
 
 export default reducer;
