@@ -7,8 +7,6 @@ import { LINKS } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
 import { ACTION } from '@/utilities/constants';
 
-// TODO: Move localStorage management to custom hook
-
 /**
  * @description Cookies consent component
  * @author Luca Cattide
