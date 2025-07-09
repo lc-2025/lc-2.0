@@ -4,7 +4,7 @@ import Action from './Action';
 import Modal from './Modal';
 import CookiesConsent from '../Cookies/CookiesConsent';
 import { useStateContext } from '@/hooks/State';
-import { getReverseC, isLightTheme } from '@/utilities/utils';
+import { getReverseC, isCookieActive, isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
 import { TModalOpen } from '@/types/components/Modal';
 import { LINKS } from '@/data/content';
@@ -83,24 +83,28 @@ const Footer = (): React.ReactNode => {
         callback={() => handleOpen(ACTIONS.FOOTER[0].label.toLowerCase())}
       >
         <ul className="footer__links">
-          {LINKS.map(({ label, title, link }, i) => (
-            // Link Start
-            <li
-              className="links__link leading-mobile lg:leading-desktop pt-6 pb-6 text-center"
-              key={crypto.randomUUID() + i}
-            >
-              <Link
-                href={link}
-                title={title}
-                tabIndex={20 + i}
-                target={i > 1 ? '_blank' : 'self'}
-                rel={i < 2 ? 'nofollow' : ''}
-              >
-                {label}
-              </Link>
-            </li>
-            // Link End
-          ))}
+          {LINKS.map(
+            ({ label, title, link }, i) =>
+              (i < 2 || isCookieActive(cookies.active, label)) && (
+                // Link Start
+                <li
+                  className="links__entry leading-mobile lg:leading-desktop pt-6 pb-6 text-center"
+                  key={crypto.randomUUID() + i}
+                >
+                  <Link
+                    className="entry__link font-bold"
+                    href={link}
+                    title={title}
+                    tabIndex={20 + i}
+                    target={i > 1 ? '_blank' : 'self'}
+                    rel={i < 2 ? 'nofollow' : ''}
+                  >
+                    {label}
+                  </Link>
+                </li>
+                // Link End
+              ),
+          )}
         </ul>
       </Modal>
       {/* Links End */}

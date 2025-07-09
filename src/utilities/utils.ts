@@ -1,5 +1,6 @@
 import { ActionDispatch } from 'react';
 import { THEME, ROUTE, ERROR, SECTION } from './constants';
+import { Cookie } from '@/types/state/State';
 import { TState, TStateAction } from '@/types/state/State';
 
 // Utilities
@@ -95,6 +96,26 @@ const setTimeline = (
  * @param {boolean} themeLight
  * @returns {*}  {string}
  */
-const getReverseC = (themeLight: boolean): string => themeLight ? ')' : 'ↄ'
+const getReverseC = (themeLight: boolean): string => (themeLight ? ')' : 'ↄ');
 
-export { setInitial, checkContext, isLightTheme, isHome, setTimeline, getReverseC };
+/**
+ * @description Acrive cookies checker
+ * Verifies if the selected cookies is active
+ * @author Luca Cattide
+ * @date 09/07/2025
+ * @param {Array<Cookie>} cookies
+ * @param {string} cookie
+ * @returns {*}  {boolean}
+ */
+const isCookieActive = (cookies: Array<Cookie>, cookie: string): boolean =>
+  Object.values(cookies).includes(cookie.toLowerCase() as Cookie);
+
+export {
+  setInitial,
+  checkContext,
+  isLightTheme,
+  isHome,
+  setTimeline,
+  getReverseC,
+  isCookieActive,
+};

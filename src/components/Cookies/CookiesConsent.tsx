@@ -6,6 +6,7 @@ import handleState from '@/state/actions';
 import { LINKS } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
 import { ACTION } from '@/utilities/constants';
+import {isCookieActive} from '@/utilities/utils';
 
 /**
  * @description Cookies consent component
@@ -76,9 +77,7 @@ const CookiesConsent = (): React.ReactNode => {
                 id={label}
                 type="checkbox"
                 title={title}
-                defaultChecked={Object.values(active).includes(
-                  label.toLowerCase() as Cookie,
-                )}
+                defaultChecked={isCookieActive(active, label)}
                 onChange={() => handleCookie(label.toLowerCase())}
               />
               <span className="label__copy pl-6">{label}</span>

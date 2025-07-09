@@ -29,7 +29,7 @@ const Modal = ({
         <aside
           className={`overlay__modal bg-accent border-primary flex max-h-2/3 w-2/3 max-w-2/3 flex-col items-center overflow-x-hidden overflow-y-auto border-16 pt-30 pr-30 pb-6 pl-30 ${!isLightTheme(theme) && 'text-primary'}`}
         >
-          <h2 className="modal__title mb-6 font-bold">{title}</h2>
+          <h2 className="modal__title mb-6">{title}</h2>
           {children}
           <div className="modal__action mt-10 self-start">
             <Action action={{ ...ACTIONS.MODAL[0], callback }} />
