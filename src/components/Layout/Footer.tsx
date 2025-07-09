@@ -4,7 +4,12 @@ import Action from './Action';
 import Modal from './Modal';
 import CookiesConsent from '../Cookies/CookiesConsent';
 import { useStateContext } from '@/hooks/State';
-import { getReverseC, isCookieActive, isLightTheme } from '@/utilities/utils';
+import {
+  getReverseC,
+  isCookieActive,
+  isLightTheme,
+  setInitial,
+} from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
 import { TModalOpen } from '@/types/components/Modal';
 import { LINKS } from '@/data/content';
@@ -99,7 +104,7 @@ const Footer = (): React.ReactNode => {
                     target={i > 1 ? '_blank' : 'self'}
                     rel={i < 2 ? 'nofollow' : ''}
                   >
-                    {label}
+                    {setInitial(label)}
                   </Link>
                 </li>
                 // Link End
