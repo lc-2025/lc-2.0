@@ -2,15 +2,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Action from './Action';
 import Modal from './Modal';
+import CookiesConsent from '../Cookies/CookiesConsent';
 import { useStateContext } from '@/hooks/State';
 import { getReverseC, isLightTheme } from '@/utilities/utils';
 import { ACTIONS } from '@/utilities/constants';
+import { TModalOpen } from '@/types/components/Modal';
 import { LINKS } from '@/data/content';
-
-type TModalOpen = {
-  links: boolean;
-  cookies: boolean;
-};
 
 /**
  * @description Footer component
@@ -89,10 +86,16 @@ const Footer = (): React.ReactNode => {
           {LINKS.map(({ label, title, link }, i) => (
             // Link Start
             <li
-              className="links__link pt-6 pb-6 text-center"
+              className="links__link leading-mobile lg:leading-desktop pt-6 pb-6 text-center"
               key={crypto.randomUUID() + i}
             >
-              <Link href={link} title={title} tabIndex={20 + i} target="_blank">
+              <Link
+                href={link}
+                title={title}
+                tabIndex={20 + i}
+                target={i > 1 ? '_blank' : 'self'}
+                rel={i < 2 ? 'nofollow' : ''}
+              >
                 {label}
               </Link>
             </li>
@@ -107,7 +110,7 @@ const Footer = (): React.ReactNode => {
         title={ACTIONS.FOOTER[1].label}
         callback={() => handleOpen(ACTIONS.FOOTER[1].label.toLowerCase())}
       >
-        TODO:
+        <CookiesConsent />
       </Modal>
       {/* Cookies End */}
       {/* Credits Start */}

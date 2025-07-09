@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Header from '@/components/Layout/Header';
 import Footer from '@/components/Layout/Footer';
-import Cookies from '@/components/Layout/Cookies';
+import CookiesBanner from '../Cookies/CookiesBanner';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ERROR } from '@/utilities/constants';
@@ -61,7 +61,7 @@ const DocumentNode = ({
           {children}
         </main>
         {/* Wrapper End */}
-        <Cookies />
+        <CookiesBanner />
         <Footer />
       </div>
       {/* Container End */}

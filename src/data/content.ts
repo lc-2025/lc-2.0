@@ -1,3 +1,6 @@
+import { LINKS_STRUCTURAL } from '@/utilities/constants';
+
+const { PRIVACY, COOKIES } = LINKS_STRUCTURAL;
 const METADATA = {
   NAME: 'Luca Cattide',
   KEYWORD: 'Software Engineer',
@@ -41,6 +44,16 @@ const TITLES = {
   },
 };
 const LINKS = [
+  {
+    label: PRIVACY.LABEL,
+    title: PRIVACY.TITLE,
+    link: PRIVACY.PATH,
+  },
+  {
+    label: COOKIES.LABEL,
+    title: COOKIES.TITLE,
+    link: COOKIES.PATH,
+  },
   {
     label: 'LinkedIn',
     title: 'Follow Luca Cattide on the LinkedIn professional profile',

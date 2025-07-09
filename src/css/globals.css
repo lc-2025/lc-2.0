@@ -55,9 +55,11 @@
   background: var(--color-primary);
 }
 
-/* Links - Buttons */
+/* Links - Buttons - Form - Project */
 a,
 button,
+.container__label,
+.label__checkbox,
 .project__preview {
   cursor: url('../img/lc-pointer-1.svg'), auto;
 }
@@ -86,6 +88,8 @@ button,
 
 .dark a,
 .dark button,
+.dark .container__label,
+.dark .label__checkbox,
 .dark .project__preview,
 .dark .prompt__tag {
   cursor: pointer;

@@ -1,3 +1,5 @@
+import { Cookie, Status } from '@/types/state/State';
+
 const WINDOW = {
   MEDIA: {
     THEME: {
@@ -71,6 +73,18 @@ const ROUTE = {
     PATH: '/contacts',
   },
 };
+const LINKS_STRUCTURAL = {
+  PRIVACY: {
+    LABEL: 'privacy',
+    TITLE: 'Personal data processing policy <ↄ Luca Cattide',
+    PATH: '/privacy',
+  },
+  COOKIES: {
+    LABEL: 'cookies',
+    TITLE: 'UE <ↄ e-Privacy Directive <ↄ Law Decree text',
+    PATH: '/cookies',
+  },
+};
 const DEFAULT_STATE = {
   THEME: THEME.NAME.LIGHT,
   COMMAND_HISTORY: {
@@ -80,7 +94,11 @@ const DEFAULT_STATE = {
 };
 const STATE = {
   theme: DEFAULT_STATE.THEME,
-  cookies: '',
+  cookies: {
+    open: false,
+    status: Status.None,
+    active: [Cookie.None],
+  },
 };
 const ACTION = {
   THEME: THEME.LABEL,
@@ -135,6 +153,7 @@ export {
   COMMAND,
   COMMAND_OUTPUT,
   ROUTE,
+  LINKS_STRUCTURAL,
   DEFAULT_STATE,
   STATE,
   ACTION,

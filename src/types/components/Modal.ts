@@ -6,4 +6,9 @@ type TModal = {
   children: React.ReactNode;
 };
 
-export type { TModal };
+type TModalOpen = {
+  links: boolean;
+  cookies: boolean;
+};
+
+export type { TModal, TModalOpen };

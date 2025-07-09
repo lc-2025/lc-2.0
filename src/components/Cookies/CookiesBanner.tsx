@@ -1,27 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Action from './Action';
+import { useEffect } from 'react';
+import Action from '../Layout/Action';
 import useShortcut from '@/hooks/Shortcut';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS, ACTION, COOKIES_STATE } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
+import { Cookie, Status } from '@/types/state/State';
+
+// TODO: Move localStorage management to custom hook
 
 /**
- * @description Cookies component
+ * @description Cookies banner component
  * @author Luca Cattide
  * @date 08/07/2025
  * @returns {*}  {React.ReactNode}
  */
-const Cookies = (): React.ReactNode => {
+const CookiesBanner = (): React.ReactNode => {
   // Variables
   const { COOKIES } = ACTIONS;
   // Hooks
-  const { theme } = useStateContext();
+  const { theme, cookies } = useStateContext();
+  const { open } = cookies;
   const dispatch = useDispatchContext();
-  const [open, setOpen] = useState<boolean>(false);
 
   useShortcut();
   useEffect(() => {
@@ -42,10 +45,21 @@ const Cookies = (): React.ReactNode => {
   const initCookies = (): void => {
     // LocalStorage check
     if (window.localStorage) {
-      const cookies = localStorage.getItem(ACTION.COOKIES) ?? '';
+      const cookiesSaved = localStorage.getItem(ACTION.COOKIES)
+        ? JSON.parse(localStorage.getItem(ACTION.COOKIES)!)
+        : '';
 
-      handleState({ type: ACTION.COOKIES, element: cookies }, dispatch);
-      setOpen(cookies ? false : true);
+      handleState(
+        {
+          type: ACTION.COOKIES,
+          element: {
+            open: cookiesSaved ? false : true,
+            status: cookiesSaved.status ?? cookies.status,
+            active: cookiesSaved.active ?? cookies.active,
+          },
+        },
+        dispatch,
+      );
     }
   };
 
@@ -58,9 +72,8 @@ const Cookies = (): React.ReactNode => {
    */
   const handleTicker = (): void => {
     const element = document.getElementsByClassName(
-      'cookies__summary',
+      'container__summary',
     )[0] as HTMLElement;
-
     const elementWidth = element.offsetWidth;
     const parentWidth = element.parentElement!.offsetWidth;
     let flag = 0;
@@ -75,33 +88,60 @@ const Cookies = (): React.ReactNode => {
     }, 10);
   };
 
+  /**
+   * @description Cookies selection handler
+   * Manages the selected cookies
+   * @author Luca Cattide
+   * @date 09/07/2025
+   * @param {string} option
+   */
   const handleCookies = (option: string): void => {
+    const cookiesList = {
+      [Status.Accepted]: [Cookie.LinkedIn, Cookie.GitHub],
+      [Status.Required]: [],
+      [Status.Declined]: [],
+    };
+    const selection = {
+      open: false,
+      status: option,
+      active: cookiesList[option as keyof typeof cookiesList],
+    };
+
     // LocalStorage check
     if (window.localStorage) {
-      localStorage.setItem(ACTION.COOKIES, option);
+      localStorage.setItem(ACTION.COOKIES, JSON.stringify(selection));
     }
 
-    handleState({ type: ACTION.COOKIES, element: option }, dispatch);
-    setOpen(false);
+    handleState(
+      {
+        type: ACTION.COOKIES,
+        element: selection,
+      },
+      dispatch,
+    );
   };
 
   return (
     // Cookies Start
-    <aside className={`cookies bg-accent text-primary ${!open && 'hidden'}`}>
-      <h6 className="cookies__title hidden">{METADATA.TITLE.COOKIES.LABEL}</h6>
+    <aside
+      className={`cookies-banner bg-accent text-primary ${!open && 'hidden'}`}
+    >
+      <h6 className="cookies-banner__title hidden">
+        {METADATA.TITLE.COOKIES.LABEL}
+      </h6>
       {/* Container Start */}
       <div
-        className={`cookies__container bg-accent flex flex-col justify-between p-6 ${isLightTheme(theme) && 'border-primary m-auto w-[calc(100%-16rem)] overflow-hidden border-16'}`}
+        className={`cookies-banner__container bg-accent flex flex-col justify-between p-6 ${isLightTheme(theme) && 'border-primary m-auto w-[calc(100%-16rem)] overflow-hidden border-16'}`}
       >
         <p
-          className={`cookies__summary w-max ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+          className={`container__summary w-max ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
         >
           This site uses cookies - technical and third-party - to offer the best
           possible web experience. By accepting, you consent to their use.
         </p>
         {/* Actions Start */}
         <ul
-          className={`cookies__actions pt-6 text-right ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+          className={`container__actions pt-6 text-right ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
         >
           {COOKIES.map((action, i) => (
             // Action Start
@@ -130,4 +170,4 @@ const Cookies = (): React.ReactNode => {
   );
 };
 
-export default Cookies;
+export default CookiesBanner;
