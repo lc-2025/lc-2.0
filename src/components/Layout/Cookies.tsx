@@ -26,8 +26,12 @@ const Cookies = (): React.ReactNode => {
   useShortcut();
   useEffect(() => {
     initCookies();
-    handleTicker();
-  }, []);
+
+    // Banner check
+    if (open) {
+      handleTicker();
+    }
+  }, [open]);
 
   // Helpers
   /**
@@ -57,21 +61,18 @@ const Cookies = (): React.ReactNode => {
       'cookies__summary',
     )[0] as HTMLElement;
 
-    // Existing check
-    if (element) {
-      const elementWidth = element.offsetWidth;
-      const parentWidth = element.parentElement!.offsetWidth;
-      let flag = 0;
+    const elementWidth = element.offsetWidth;
+    const parentWidth = element.parentElement!.offsetWidth;
+    let flag = 0;
 
-      setInterval(() => {
-        element.style.marginLeft = --flag + 'px';
+    setInterval(() => {
+      element.style.marginLeft = --flag + 'px';
 
-        // Position Check
-        if (elementWidth === -flag) {
-          flag = parentWidth;
-        }
-      }, 10);
-    }
+      // Position Check
+      if (elementWidth === -flag) {
+        flag = parentWidth;
+      }
+    }, 10);
   };
 
   const handleCookies = (option: string): void => {
