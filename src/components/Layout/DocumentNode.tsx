@@ -56,7 +56,7 @@ const DocumentNode = ({
         <Header />
         {/* Wrapper Start */}
         <main
-          className={`main-container__wrapper max-w-full flex-1 overflow-x-hidden overflow-y-auto ${isLightTheme(theme) && 'bg-accent flex flex-col pr-32 pl-32'}`}
+          className={`main-container__wrapper max-w-full flex-1 overflow-x-hidden overflow-y-auto ${isLightTheme(theme) && 'bg-accent flex flex-col pr-6 pl-6 md:pr-32 md:pl-32'}`}
         >
           {children}
         </main>

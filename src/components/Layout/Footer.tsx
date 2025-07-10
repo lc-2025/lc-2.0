@@ -62,10 +62,10 @@ const Footer = (): React.ReactNode => {
   return (
     // Footer Start
     <footer
-      className={`footer flex justify-between p-6 ${isLightTheme(theme) ? 'bg-accent text-primary leading-mobile lg:leading-desktop pr-32 pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
+      className={`footer flex flex-col items-center justify-center pt-6 pb-6 md:flex-row md:justify-between ${isLightTheme(theme) ? 'bg-accent text-primary leading-mobile lg:leading-desktop pr-6 pl-6 md:pr-32 md:pl-32' : 'bg-primary text-accent pr-6 pl-6'}`}
     >
       {/* Actions Start */}
-      <ul className="footer__actions flex justify-start">
+      <ul className="footer__actions mb-6 flex justify-start md:mb-0">
         {FOOTER.map(
           (action, i) =>
             (i === 0 || (i > 0 && cookies.status)) && (
@@ -129,7 +129,7 @@ const Footer = (): React.ReactNode => {
       </Modal>
       {/* Cookies End */}
       {/* Credits Start */}
-      <aside className="footer__credits">
+      <aside className="footer__credits text-center md:text-left">
         <h6 className="credits__title hidden">Credits</h6>
         &copy; {handleDate()} {`<${getReverseC(isLightTheme(theme))}`} All
         Rights reserved.
