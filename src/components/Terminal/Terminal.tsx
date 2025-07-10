@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import Prompt from './Prompt';
 import { DEFAULT_STATE, ROUTE } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
-type TTerminal = {
-  delay?: number;
-};
+import { TTerminal } from '@/types/components/Terminal';
+
 /**
  * @description Terminal component
  * @author Luca Cattide
