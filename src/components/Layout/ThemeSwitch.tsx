@@ -7,6 +7,8 @@ import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
 import { WINDOW, THEME, ACTION } from '@/utilities/constants';
 
+// TODO: Move localStorage management into custom hook?
+
 const ThemeSwitch = (): React.ReactNode => {
   // Variables
   const { LABEL } = THEME;

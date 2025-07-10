@@ -9,6 +9,8 @@ import { ACTIONS, ACTION, COOKIES_STATE } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
 
+// TODO: Move localStorage management into custom hook?
+
 /**
  * @description Cookies banner component
  * @author Luca Cattide

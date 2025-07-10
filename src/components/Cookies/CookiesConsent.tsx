@@ -8,6 +8,8 @@ import { Cookie, Status } from '@/types/state/State';
 import { ACTION } from '@/utilities/constants';
 import {isCookieActive} from '@/utilities/utils';
 
+// TODO: Move localStorage management into custom hook?
+
 /**
  * @description Cookies consent component
  * @author Luca Cattide
