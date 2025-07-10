@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
+import { ACTIONS, KEY } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { TAction } from '@/types/components/Action';
 
@@ -19,13 +20,25 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
 
   // Helpers
   /**
-   * @description Sets the element label based on action
+   * @description Label getter
+   * Gets the element label based on action
+   * @author Luca Cattide
+   * @date 10/07/2025
+   * @param {string} label
+   * @returns {*}  {string}
+   */
+  const getLabel = (label: string): string =>
+    label === ACTIONS.MODAL[0].label ? KEY.X : label;
+
+  /**
+   * @description Label setter
+   * Sets the element label based on action
    * @author Luca Cattide
    * @date 01/07/2025
    * @returns {*}  {string}
    */
   const setLabel = (): string =>
-    `${isLightTheme(theme) ? `⇧${label.charAt(0)}=` : `(⇧${label.charAt(0)}) `}${label}`;
+    `${isLightTheme(theme) ? `⇧${getLabel(label).charAt(0)}=` : `(⇧${getLabel(label).charAt(0)}) `}${label}`;
 
   return variant ? (
     <Link
