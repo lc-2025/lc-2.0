@@ -1,4 +1,4 @@
-import { Cookie, Status } from '@/types/state/State';
+import { Status } from '@/types/state/State';
 
 const WINDOW = {
   MEDIA: {
@@ -20,11 +20,9 @@ const KEY = {
   DOWN: 'ArrowDown',
   ENTER: 'Enter',
   SHIFT: 'Shift',
-  A: 'A',
-  R: 'R',
-  D: 'D',
   C: 'C',
   L: 'L',
+  X: 'X',
 };
 const COMMAND = {
   INTRO: 'intro',
@@ -97,12 +95,17 @@ const STATE = {
   cookies: {
     open: false,
     status: Status.None,
-    active: [Cookie.None],
+    active: [],
+  },
+  modal: {
+    links: false,
+    cookies: false,
   },
 };
 const ACTION = {
   THEME: THEME.LABEL,
   COOKIES: 'cookies',
+  MODAL: 'modal',
   RESET: '',
 };
 const COOKIES_STATE = {

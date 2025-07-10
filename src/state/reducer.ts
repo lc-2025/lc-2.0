@@ -23,6 +23,10 @@ const reducer = (state: Partial<TState>, action: TStateAction): TState => {
       stateReducer = { ...state, cookies: element };
       break;
 
+    case ACTION.MODAL:
+      stateReducer = {...state, modal: element};
+      break;
+
     case ACTION.RESET:
       stateReducer = STATE;
       break;

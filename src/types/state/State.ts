@@ -1,7 +1,10 @@
+import { TModalOpen } from '../components/Modal';
+
 // State Management
 type TState = {
   theme: string;
   cookies: TStateCookies;
+  modal: TModalOpen;
 };
 
 type TStateAction = {
@@ -23,7 +26,6 @@ enum Status {
 }
 
 enum Cookie {
-  None = '',
   LinkedIn = 'linkedin',
   GitHub = 'github',
 }

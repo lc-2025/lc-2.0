@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import Action from '../Layout/Action';
-import useShortcut from '@/hooks/Shortcut';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
@@ -24,7 +23,6 @@ const CookiesBanner = (): React.ReactNode => {
   const { open } = cookies;
   const dispatch = useDispatchContext();
 
-  useShortcut();
   useEffect(() => {
     initCookies();
 
