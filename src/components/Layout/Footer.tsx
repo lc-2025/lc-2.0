@@ -108,7 +108,7 @@ const Footer = (): React.ReactNode => {
                     title={title}
                     tabIndex={20 + i}
                     target={i > 1 ? '_blank' : 'self'}
-                    rel={i < 2 ? 'nofollow' : ''}
+                    rel={i < 2 ? 'noindex nofollow' : undefined}
                   >
                     {setInitial(label)}
                   </Link>

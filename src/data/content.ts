@@ -23,6 +23,10 @@ const METADATA = {
       LABEL: 'Contacts',
       DESCRIPTION: 'International online and offline availability',
     },
+    PRIVACY: {
+      LABEL: 'Privacy',
+      DESCRIPTION: 'Decrees <ↄ Laws and systems on the reserved indication',
+    },
     COOKIES: {
       LABEL: 'Cookies',
       DESCRIPTION: 'Cookies <ↄ Management <ↄ Functioning and protection',

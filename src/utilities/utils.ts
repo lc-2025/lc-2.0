@@ -1,10 +1,11 @@
 import { ActionDispatch } from 'react';
-import { THEME, ROUTE, ERROR, SECTION } from './constants';
+import { THEME, ROUTE, ERROR, SECTION, LINKS_STRUCTURAL } from './constants';
 import { Cookie } from '@/types/state/State';
 import { TState, TStateAction } from '@/types/state/State';
 
 // Utilities
 const { HOME, ABOUT, PORTFOLIO, CONTACTS } = ROUTE;
+const { PRIVACY, COOKIES } = LINKS_STRUCTURAL;
 const { TITLES, ARTICLE } = SECTION;
 
 /**
@@ -81,6 +82,8 @@ const setTimeline = (
       [ABOUT.PATH]: delay ? delay : themeLight ? 200 : 0,
       [PORTFOLIO.PATH]: delay ? delay : themeLight ? 300 : 0,
       [CONTACTS.PATH]: delay ? delay : themeLight ? 400 : 0,
+      [PRIVACY.PATH]: delay ? delay : themeLight ? 500 : 0,
+      [COOKIES.PATH]: delay ? delay : themeLight ? 700 : 0,
     },
   };
 
