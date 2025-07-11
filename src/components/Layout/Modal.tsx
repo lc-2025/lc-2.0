@@ -27,7 +27,7 @@ const Modal = ({
     open && (
       <div className="overlay fixed top-0 right-0 bottom-0 left-0 z-40 flex h-full w-full flex-col items-center justify-center overflow-hidden">
         <aside
-          className={`overlay__modal bg-accent border-primary flex max-h-2/3 w-2/3 max-w-2/3 flex-col items-center overflow-x-hidden overflow-y-auto border-16 pt-30 pr-30 pb-6 pl-30 ${!isLightTheme(theme) && 'text-primary'}`}
+          className={`overlay__modal bg-accent border-primary flex flex-col items-center max-w-3/3 w-3/3 overflow-x-hidden overflow-y-auto border-16 pt-6 pr-6 pb-6 pl-6 max-h-2/3 md:w-2/3 md:max-w-2/3 md:pt-30 md:pr-30 md:pl-30 ${!isLightTheme(theme) && 'text-primary'}`}
         >
           <h2 className="modal__title mb-6">{title}</h2>
           {children}
