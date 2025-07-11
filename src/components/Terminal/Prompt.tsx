@@ -8,10 +8,16 @@ import {
   HTMLAttributes,
 } from 'react';
 import { usePathname } from 'next/navigation';
-import { isHome, isLightTheme } from '@/utilities/utils';
-import { KEY, COMMAND, COMMAND_OUTPUT } from '@/utilities/constants';
-import { TCommandHistory } from '@/types/components/Command';
 import { useStateContext } from '@/hooks/State';
+import { isHome, isLightTheme, setRoute } from '@/utilities/utils';
+import {
+  KEY,
+  COMMAND,
+  COMMAND_OUTPUT,
+  MENU_LOADING,
+  PROMPT_ERROR,
+} from '@/utilities/constants';
+import { TCommandHistory } from '@/types/components/Command';
 
 /**
  * @description Terminal prompt component
@@ -85,11 +91,20 @@ const Prompt = ({
     setContent(history[historyPointer].command);
   };
 
+  /**
+   * @description Command output helper
+   * Sets the propt output based on the
+   * command entered
+   * @author Luca Cattide
+   * @date 11/07/2025
+   * @returns {*}  {string}
+   */
   const updateCommandOutput = (): string => {
     const message = {
       [COMMAND.HELP]: COMMAND_OUTPUT.HELP,
     };
     const currentContent = content.toLowerCase();
+    let prompt = '';
 
     // Command check
     if (
@@ -97,10 +112,22 @@ const Prompt = ({
         .map((command) => command)
         .includes(currentContent)
     ) {
-      setCommandOutput(message[currentContent]);
+      prompt = message[currentContent];
+    } else if (
+      Object.keys(setRoute(pathname))
+        .map((_, i) => `${i + 1}`)
+        .includes(currentContent)
+    ) {
+      prompt = isLightTheme(theme) ? MENU_LOADING.LIGHT : MENU_LOADING.DARK;
+    } else {
+      prompt = isLightTheme(theme)
+        ? PROMPT_ERROR.LIGHT
+        : `${currentContent}: ${PROMPT_ERROR.DARK}`;
     }
 
-    return message[currentContent];
+    setCommandOutput(prompt);
+
+    return prompt;
   };
 
   // Handlers
@@ -221,7 +248,9 @@ const Prompt = ({
       )}
       {/* Caret End */}
       {/* Command Output Start */}
-      <p className={`prompt__output basis-full ${commandOutput && 'leading-mobile lg:leading-desktop mb-3 whitespace-pre-wrap'}`}>
+      <p
+        className={`prompt__output basis-full ${commandOutput && 'leading-mobile lg:leading-desktop mb-3 whitespace-pre-wrap'}`}
+      >
         {commandOutput}
       </p>
       {/* Command Output End */}

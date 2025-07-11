@@ -168,6 +168,14 @@ const COLOR = {
   AZURE: '#0088FF',
   GREY3: '#888',
 };
+const MENU_LOADING = {
+  LIGHT: 'Run',
+  DARK: 'Loading...',
+};
+const PROMPT_ERROR = {
+  LIGHT: '?Syntax error',
+  DARK: ': command not found',
+};
 
 export {
   WINDOW,
@@ -187,4 +195,6 @@ export {
   ERROR,
   SECTION,
   COLOR,
+  MENU_LOADING,
+  PROMPT_ERROR,
 };

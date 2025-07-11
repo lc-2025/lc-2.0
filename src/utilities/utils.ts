@@ -2,6 +2,7 @@ import { ActionDispatch } from 'react';
 import { THEME, ROUTE, ERROR, SECTION, LINKS_STRUCTURAL } from './constants';
 import { Cookie } from '@/types/state/State';
 import { TState, TStateAction } from '@/types/state/State';
+import { TRoute } from '@/types/navigation/Route';
 
 // Utilities
 const { HOME, ABOUT, PORTFOLIO, CONTACTS } = ROUTE;
@@ -113,6 +114,23 @@ const getReverseC = (themeLight: boolean): string => (themeLight ? ')' : 'ↄ');
 const isCookieActive = (cookies: Array<Cookie>, cookie: string): boolean =>
   Object.values(cookies).includes(cookie.toLowerCase() as Cookie);
 
+/**
+ * @description Menu route helper
+ * Sets the menu entries according to the current path
+ * by removing it from the list
+ * @author Luca Cattide
+ * @date 25/06/2025
+ * @returns {*}  {TRoute}
+ */
+const setRoute = (pathname: string): TRoute => {
+  const path = isHome(pathname)
+    ? ROUTE.HOME.LABEL.toUpperCase()
+    : pathname.replace('/', '').toUpperCase();
+  const { [path as keyof typeof ROUTE]: _, ...rest } = ROUTE;
+
+  return rest;
+};
+
 export {
   setInitial,
   checkContext,
@@ -121,4 +139,5 @@ export {
   setTimeline,
   getReverseC,
   isCookieActive,
+  setRoute,
 };

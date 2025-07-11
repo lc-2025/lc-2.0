@@ -5,4 +5,8 @@ type TRoute = {
   };
 };
 
-export type { TRoute };
+type TRoutePrompt = {
+  [x: string]: string
+};
+
+export type { TRoute, TRoutePrompt };

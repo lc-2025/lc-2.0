@@ -6,11 +6,9 @@ import { useStateContext } from '@/hooks/State';
 import {
   setInitial,
   isLightTheme,
-  isHome,
   getReverseC,
+  setRoute,
 } from '@/utilities/utils';
-import { ROUTE } from '@/utilities/constants';
-import { TRoute } from '@/types/navigation/Route';
 import { TAnimationMenu } from '@/types/components/AnimationTypedMenu';
 
 /**
@@ -24,24 +22,6 @@ const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
   const pathname = usePathname();
   const { theme } = useStateContext();
 
-  // Handlers
-  /**
-   * @description Menu route handler
-   * Sets the menu entries according to the current path
-   * by removing it from the list
-   * @author Luca Cattide
-   * @date 25/06/2025
-   * @returns {*}  {TRoute}
-   */
-  const handleRoute = (): TRoute => {
-    const path = isHome(pathname)
-      ? ROUTE.HOME.LABEL.toUpperCase()
-      : pathname.replace('/', '').toUpperCase();
-    const { [path as keyof typeof ROUTE]: _, ...rest } = ROUTE;
-
-    return rest;
-  };
-
   return (
     // Menu Start
     <nav className="menu flex flex-col">
@@ -50,7 +30,7 @@ const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
       <ul
         className={`menu__entries p-6 ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
       >
-        {Object.values(handleRoute()).map(({ LABEL, TITLE, PATH }, i) => (
+        {Object.values(setRoute(pathname)).map(({ LABEL, TITLE, PATH }, i) => (
           <AnimationTypedMenu
             key={crypto.randomUUID() + i}
             path={PATH}

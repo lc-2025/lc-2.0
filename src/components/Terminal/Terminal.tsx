@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Prompt from './Prompt';
 import useAnimation from '@/hooks/Animation';
-import { DEFAULT_STATE, ROUTE } from '@/utilities/constants';
+import { setRoute } from '@/utilities/utils';
+import { DEFAULT_STATE } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
 import { TTerminal } from '@/types/components/Terminal';
+import { TRoutePrompt } from '@/types/navigation/Route';
 
 /**
  * @description Terminal component
@@ -18,6 +21,7 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   let timeout = delay ?? 0;
   const { COMMAND_HISTORY } = DEFAULT_STATE;
   // Hooks
+  const pathname = usePathname();
   const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
   const [visibility, setVisibility] = useState<boolean>(false);
   const { navigate } = useAnimation();
@@ -38,9 +42,17 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
    * @param {TCommandHistory} value
    */
   const handleEnter = (value: TCommandHistory): void => {
+    const { command } = value;
+    const route: TRoutePrompt = Object.values(setRoute(pathname))
+      .map((entry, i) => ({ [`${i + 1}` as keyof typeof route]: entry.PATH }))
+      .reduce((object, prop) => Object.assign(object, prop), {});
+
     setCommandsHistory((state) => [...state, value]);
-    // TODO: Navigation
-    //navigate(ROUTE.ABOUT.PATH);
+
+    // Existing check
+    if (Object.keys(route).includes(command)) {
+      navigate(route[command]);
+    }
   };
 
   return (
