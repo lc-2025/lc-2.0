@@ -68,7 +68,7 @@ const AnimationPage = (): React.ReactNode => {
         <div
           key={i}
           style={{ backgroundColor: color }}
-          className="page-transition__color h-[6.25%] w-full"
+          className="page-transition__color h-[6.25%] w-full -skew-1"
           ref={
             ((e: HTMLDivElement) =>
               (bars.current[i] = e)) as unknown as Ref<HTMLDivElement>
