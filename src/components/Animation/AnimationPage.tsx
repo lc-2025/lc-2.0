@@ -4,6 +4,7 @@ import { useEffect, useRef, Ref } from 'react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
 import { ACTION } from '@/utilities/constants';
+import { isLightTheme } from '@/utilities/utils';
 
 /**
  * @description Page transition component
@@ -33,24 +34,27 @@ const AnimationPage = (): React.ReactNode => {
   };
   // Hooks
   const bars = useRef<Array<HTMLDivElement>>([]);
-  const { loading } = useStateContext();
+  const { theme, loading } = useStateContext();
   const dispatch = useDispatchContext();
 
   useEffect(() => {
-    setInterval(() => {
-      handleColor();
-    }, 100);
+    // Theme check
+    if (isLightTheme(theme)) {
+      setInterval(() => {
+        handleColor();
+      }, 100);
 
-    const timer = setTimeout(() => {
-      handleState(
-        {
-          type: ACTION.LOADING,
-          element: false,
-        },
-        dispatch,
-      );
-      clearTimeout(timer);
-    }, 500);
+      const timer = setTimeout(() => {
+        handleState(
+          {
+            type: ACTION.LOADING,
+            element: false,
+          },
+          dispatch,
+        );
+        clearTimeout(timer);
+      }, 500);
+    }
   }, [loading]);
 
   // TODO: animation + viewTransition API (library) - https://www.youtube.com/watch?v=YID_QG07_qU&t=69s
@@ -67,7 +71,10 @@ const AnimationPage = (): React.ReactNode => {
     const keys = Object.keys(rainbow);
 
     bars.current.forEach((bar) => {
-      bar.style.backgroundColor = keys[Math.floor(Math.random() * keys.length)];
+      if (bar) {
+        bar.style.backgroundColor =
+          keys[Math.floor(Math.random() * keys.length)];
+      }
     });
   };
 
