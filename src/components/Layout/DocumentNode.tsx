@@ -34,7 +34,7 @@ const DocumentNode = ({
   children: React.ReactNode;
 }): React.ReactNode => {
   // Hooks
-  const { theme } = useStateContext();
+  const { theme, loading } = useStateContext();
 
   useEffect(() => {
     // TODO: Put some console.log presentational message for those who inspect the code in a client component and run it once
@@ -52,7 +52,7 @@ const DocumentNode = ({
       className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
     >
       <noscript>{ERROR.JS}</noscript>
-      {isLightTheme(theme) && <AnimationPage />}
+      {isLightTheme(theme) && loading && <AnimationPage />}
       {/* Container Start */}
       <div className="main-container flex max-h-screen min-h-screen flex-col">
         <Header />

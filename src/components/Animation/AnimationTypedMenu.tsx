@@ -3,6 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Typed from 'typed.js';
+import useAnimation from '@/hooks/Animation';
 import { ANIMATION_OPTIONS_GENERIC } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
@@ -30,6 +31,7 @@ const AnimationTypedMenu = ({
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
   const menu = useRef<any>(null);
+  const { navigate } = useAnimation();
 
   useEffect(() => {
     const option = new Typed(menu.current, {
@@ -47,13 +49,14 @@ const AnimationTypedMenu = ({
   return (
     // Entry Start
     <li className="entries__entry select-none">
-      <span className='entry__placeholder hidden'>{content}</span>
+      <span className="entry__placeholder hidden">{content}</span>
       <Link
         className="entry__link font-bold"
         href={path!}
         title={title}
         tabIndex={tabIndex}
         ref={menu}
+        onClick={(e) => navigate(path!, e)}
       ></Link>
     </li>
     // Entry End

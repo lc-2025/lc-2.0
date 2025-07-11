@@ -3,7 +3,7 @@
 import { useEffect, useRef, Ref } from 'react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
-import { ACTION } from '@/utilities/constants';
+import { ACTION, COLOR } from '@/utilities/constants';
 import { isLightTheme } from '@/utilities/utils';
 
 /**
@@ -13,25 +13,6 @@ import { isLightTheme } from '@/utilities/utils';
  * @returns {*}  {React.ReactNode}
  */
 const AnimationPage = (): React.ReactNode => {
-  // Variables
-  const rainbow = {
-    black: '#000',
-    white: '#fff',
-    red: '#880000',
-    cyan: '#AAFFEE',
-    magenta: '#CC44CC',
-    green1: '#00CC55',
-    blue: '#0000AA',
-    yellow: '#EEEE77',
-    orange: '#DD8855',
-    brown: '#664400',
-    pink: '#FF7777',
-    grey1: '#333',
-    grey2: '#777',
-    green2: '#AAFF66',
-    azure: '#0088FF',
-    grey3: '#888',
-  };
   // Hooks
   const bars = useRef<Array<HTMLDivElement>>([]);
   const { theme, loading } = useStateContext();
@@ -55,10 +36,7 @@ const AnimationPage = (): React.ReactNode => {
         clearTimeout(timer);
       }, 500);
     }
-  }, [loading]);
-
-  // TODO: animation + viewTransition API (library) - https://www.youtube.com/watch?v=YID_QG07_qU&t=69s
-  // Component visibility state on/off on global state context - triggered via viewT. API
+  }, []);
 
   /**
    * @description Loader color handler
@@ -68,9 +46,10 @@ const AnimationPage = (): React.ReactNode => {
    * @date 11/07/2025
    */
   const handleColor = (): void => {
-    const keys = Object.keys(rainbow);
+    const keys = Object.keys(COLOR);
 
     bars.current.forEach((bar) => {
+      // Existing check
       if (bar) {
         bar.style.backgroundColor =
           keys[Math.floor(Math.random() * keys.length)];
@@ -84,7 +63,8 @@ const AnimationPage = (): React.ReactNode => {
       className={`page-transition pointer-events-none fixed z-50 flex h-full w-full flex-col overflow-hidden select-none ${!loading && 'hidden'}`}
     >
       <h6 className="page-transition__title hidden">Transition</h6>
-      {Object.values(rainbow).map((color, i) => (
+      {Object.values(COLOR).map((color, i) => (
+        // Bar Start
         <div
           key={i}
           style={{ backgroundColor: color }}
@@ -94,6 +74,7 @@ const AnimationPage = (): React.ReactNode => {
               (bars.current[i] = e)) as unknown as Ref<HTMLDivElement>
           }
         ></div>
+        // Bar End
       ))}
     </aside>
     // Page Transition End

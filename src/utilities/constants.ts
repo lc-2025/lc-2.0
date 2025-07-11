@@ -150,6 +150,24 @@ const SECTION = {
   TITLES: 'titles',
   ARTICLE: 'article',
 };
+const COLOR = {
+  BLACK: '#000',
+  WHITE: '#fff',
+  RED: '#880000',
+  CYAN: '#AAFFEE',
+  MAGENTA: '#CC44CC',
+  GREEN1: '#00CC55',
+  BLUE: '#0000AA',
+  YELLOW: '#EEEE77',
+  ORANGE: '#DD8855',
+  BROWN: '#664400',
+  PINK: '#FF7777',
+  GREY1: '#333',
+  GREY2: '#777',
+  GREEN2: '#AAFF66',
+  AZURE: '#0088FF',
+  GREY3: '#888',
+};
 
 export {
   WINDOW,
@@ -168,4 +186,5 @@ export {
   ACTIONS,
   ERROR,
   SECTION,
+  COLOR,
 };
