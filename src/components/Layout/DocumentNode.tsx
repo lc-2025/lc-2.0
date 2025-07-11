@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import AnimationPage from '../Animation/AnimationPage';
 import Header from '@/components/Layout/Header';
 import Footer from '@/components/Layout/Footer';
 import CookiesBanner from '../Cookies/CookiesBanner';
@@ -51,6 +52,7 @@ const DocumentNode = ({
       className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
     >
       <noscript>{ERROR.JS}</noscript>
+      {isLightTheme(theme) && <AnimationPage />}
       {/* Container Start */}
       <div className="main-container flex max-h-screen min-h-screen flex-col">
         <Header />

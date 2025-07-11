@@ -4,6 +4,7 @@ import Modal from './Modal';
 import CookiesConsent from '../Cookies/CookiesConsent';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useShortcut from '@/hooks/Shortcut';
+import useAnimation from '@/hooks/Animation';
 import handleState from '@/state/actions';
 import {
   getReverseC,
@@ -27,6 +28,7 @@ const Footer = (): React.ReactNode => {
   // Hooks
   const { theme, cookies, modal } = useStateContext();
   const dispatch = useDispatchContext();
+  const { navigate } = useAnimation();
 
   useShortcut();
 
@@ -109,6 +111,14 @@ const Footer = (): React.ReactNode => {
                     tabIndex={20 + i}
                     target={i > 1 ? '_blank' : 'self'}
                     rel={i < 2 ? 'noindex nofollow' : undefined}
+                    onClick={
+                      i < 2
+                        ? (e) => {
+                            navigate(link, e);
+                            handleOpen(FOOTER[0].label.toLowerCase());
+                          }
+                        : undefined
+                    }
                   >
                     {setInitial(label)}
                   </Link>

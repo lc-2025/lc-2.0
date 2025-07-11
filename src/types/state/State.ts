@@ -5,6 +5,7 @@ type TState = {
   theme: string;
   cookies: TStateCookies;
   modal: TModalOpen;
+  loading: boolean;
 };
 
 type TStateAction = {

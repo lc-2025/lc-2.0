@@ -101,11 +101,13 @@ const STATE = {
     links: false,
     cookies: false,
   },
+  loading: false,
 };
 const ACTION = {
   THEME: THEME.LABEL,
   COOKIES: 'cookies',
   MODAL: 'modal',
+  LOADING: 'loading',
   RESET: '',
 };
 const COOKIES_STATE = {

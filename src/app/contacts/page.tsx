@@ -45,17 +45,18 @@ export default function Contacts(): React.ReactNode {
           `<mark><strong>Software Engineer</strong></mark> &lt;&rpar; Talks and professional appointments`,
         ]}
         html={true}
+        delay={500}
       />
       {/* Headline End */}
       {/* Summary Start */}
       <AnimationTypedArticle
         content={['Please reach me out at lucacattide[at]pm[dot]me']}
         html={true}
-        delay={2500}
+        delay={300}
       />
       {/* Summary End */}
-      <Menu delay={4400} />
-      <Terminal delay={6400} />
+      <Menu delay={4900} />
+      <Terminal delay={6900} />
     </section>
     // Contacts End
   );

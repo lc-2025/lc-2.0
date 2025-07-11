@@ -49,6 +49,7 @@ export default function Intro(): React.ReactNode {
           `<a href="${ROUTE.ABOUT.PATH}" title="Reveal my origins and experience in the field" tabindex="10"><strong>Discover my own story <)</strong></a>`,
         ]}
         html={true}
+        delay={500}
       />
       <AnimationTypedArticle
         content={[
@@ -57,7 +58,7 @@ export default function Intro(): React.ReactNode {
         ]}
         html={true}
         speed={10}
-        delay={4700}
+        delay={5200}
       />
       {/* Summary End */}
       {/* Portfolio Start */}
@@ -67,7 +68,7 @@ export default function Intro(): React.ReactNode {
           `<a href="${ROUTE.PORTFOLIO.PATH}" title="Projects <ↄ Web and Mobile selection <ↄ Luca Cattide" tabindex="11"><strong>Follow my own path <)</strong></a>`,
         ]}
         html={true}
-        delay={18800}
+        delay={19300}
       />
       {/* Portfolio End */}
       {/* Indicators Start */}
@@ -80,7 +81,7 @@ export default function Intro(): React.ReactNode {
           '2 Spoken languages',
           '5 Honors and awards earned',
         ]}
-        delay={22900}
+        delay={23400}
       />
       {/* Indicators End */}
       {/* Portfolio Start */}
@@ -91,11 +92,11 @@ export default function Intro(): React.ReactNode {
         ]}
         html={true}
         speed={5}
-        delay={27400}
+        delay={27900}
       />
       {/* Portfolio End */}
-      <Menu delay={63000} />
-      <Terminal delay={66000} />
+      <Menu delay={63500} />
+      <Terminal delay={66500} />
     </section>
     // Intro End
   );

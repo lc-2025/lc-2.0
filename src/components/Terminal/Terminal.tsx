@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Prompt from './Prompt';
+import useAnimation from '@/hooks/Animation';
 import { DEFAULT_STATE, ROUTE } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
 import { TTerminal } from '@/types/components/Terminal';
@@ -18,9 +18,9 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   let timeout = delay ?? 0;
   const { COMMAND_HISTORY } = DEFAULT_STATE;
   // Hooks
-  const router = useRouter();
   const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
   const [visibility, setVisibility] = useState<boolean>(false);
+  const { navigate } = useAnimation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,7 +40,7 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   const handleEnter = (value: TCommandHistory): void => {
     setCommandsHistory((state) => [...state, value]);
     // TODO: Navigation
-    //router.push(ROUTE.ABOUT.PATH);
+    //navigate(ROUTE.ABOUT.PATH);
   };
 
   return (

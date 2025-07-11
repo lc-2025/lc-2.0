@@ -45,6 +45,7 @@ export default function About(): React.ReactNode {
           `<mark><strong>Software Engineer</strong></mark> &lt;&rpar; Holistic enthusiast and Martial Artist`,
         ]}
         html={true}
+        delay={500}
       />
       {/* Headline End */}
       {/* Summary Start */}
@@ -55,7 +56,7 @@ export default function About(): React.ReactNode {
         ]}
         html={true}
         speed={10}
-        delay={2500}
+        delay={3000}
       />
       {/* Summary End */}
       {/* Timeline Start */}
@@ -66,7 +67,7 @@ export default function About(): React.ReactNode {
         ]}
         html={true}
         speed={5}
-        delay={33000}
+        delay={38000}
       />
       {/* Timeline End */}
       <AnimationTypedArticle
@@ -74,10 +75,10 @@ export default function About(): React.ReactNode {
           `<a href="/doc/luca-cattide-resume.pdf" title="Resume <ↄ Luca Cattide [PDF <ↄ 78.5 KB]" tabIndex="10" target="_blank"><mark><strong>Download now the resume &lt;&rpar;</strong></mark></a>`,
         ]}
         html={true}
-        delay={58500}
+        delay={5900}
       />
-      <Menu delay={59500} />
-      <Terminal delay={61500} />
+      <Menu delay={6000} />
+      <Terminal delay={6200} />
     </section>
     // About End
   );

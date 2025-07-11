@@ -2,6 +2,7 @@ import { ROUTE } from '@/utilities/constants';
 import Link from 'next/link';
 import ThemeSwitch from './ThemeSwitch';
 import { useStateContext } from '@/hooks/State';
+import useAnimation from '@/hooks/Animation';
 import { isLightTheme } from '@/utilities/utils';
 import { METADATA } from '@/data/content';
 
@@ -14,6 +15,7 @@ import { METADATA } from '@/data/content';
 const Header = (): React.ReactNode => {
   // Hooks
   const { theme } = useStateContext();
+  const { navigate } = useAnimation();
 
   return (
     // Header Start
@@ -27,6 +29,7 @@ const Header = (): React.ReactNode => {
         href={ROUTE.HOME.PATH}
         title="Software Engineer <ↄ Luca Cattide <ↄ Back to the Home Page"
         tabIndex={0}
+        onClick={(e) => navigate(ROUTE.HOME.PATH, e)}
       >
         <aside
           className={`link__logo logo relative h-auto w-full min-w-[48px] overflow-hidden bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none`}

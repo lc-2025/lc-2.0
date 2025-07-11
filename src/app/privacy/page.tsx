@@ -28,6 +28,7 @@ export default function Privacy(): React.ReactNode {
           'Perosnal data processing information',
           'Last update: 07/10/2025',
         ]}
+        delay={500}
       />
       <AnimationTypedArticle
         content={[
@@ -35,7 +36,7 @@ export default function Privacy(): React.ReactNode {
         ]}
         html={true}
         speed={5}
-        delay={3500}
+        delay={400}
       />
       <AnimationTypedArticle
         content={[
@@ -44,10 +45,10 @@ export default function Privacy(): React.ReactNode {
         ]}
         html={true}
         speed={5}
-        delay={76500}
+        delay={77000}
       />
-      <Menu delay={107500} />
-      <Terminal delay={110500} />
+      <Menu delay={108000} />
+      <Terminal delay={111000} />
     </section>
     // Privacy End
   );

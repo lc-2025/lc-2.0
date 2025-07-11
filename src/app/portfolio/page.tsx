@@ -54,7 +54,7 @@ export default function Portfolio(): React.ReactNode {
       </div>
       {/* Portfolio End */}
       <Menu />
-      <Terminal delay={2000} />
+      <Terminal delay={2500} />
     </section>
     // Portfolio End
   );

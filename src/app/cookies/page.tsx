@@ -35,6 +35,7 @@ export default function Cookies(): React.ReactNode {
           'EU e-Privacy Directive <) Code and information',
           'Last update: 07/10/2025',
         ]}
+        delay={500}
       />
       <AnimationTypedArticle
         content={[
@@ -42,10 +43,10 @@ export default function Cookies(): React.ReactNode {
         ]}
         html={true}
         speed={10}
-        delay={4200}
+        delay={4700}
       />
-      <Menu delay={34200} />
-      <Terminal delay={37000} />
+      <Menu delay={34700} />
+      <Terminal delay={37500} />
     </section>
     // Cookies End
   );
