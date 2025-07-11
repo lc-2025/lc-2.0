@@ -192,6 +192,7 @@ const Prompt = ({
           command: content,
           output: updateCommandOutput(),
         });
+        /* TODO: Easter-Egg: listen for secret command to open the c64 baloon animation */
         break;
 
       default:

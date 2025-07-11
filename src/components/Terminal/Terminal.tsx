@@ -85,7 +85,6 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
       </section>
     )
     // Terminal End
-    /* TODO: Easter-Egg: listen for backslash press on window level to open a secret console */
   );
 };
 
