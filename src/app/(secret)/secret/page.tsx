@@ -1,0 +1,21 @@
+import EasterEgg from '@/components/Layout/EasterEgg';
+import Script from 'next/script';
+
+/**
+ * @description Secret page
+ * @author Luca Cattide
+ * @date 12/07/2025
+ * @export
+ * @returns {*}  {React.ReactNode}
+ */
+export default function Secret(): React.ReactNode {
+  // TODO: Check if commandhistory has BALLOON else redirect to index
+  return (
+    // Secret Start
+    <>
+      <EasterEgg />
+      <Script src="js/c64.js" strategy="afterInteractive" />
+    </>
+    // Secret End
+  );
+}

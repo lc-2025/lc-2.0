@@ -102,6 +102,7 @@ const Prompt = ({
   const updateCommandOutput = (): string => {
     const message = {
       [COMMAND.HELP]: COMMAND_OUTPUT.HELP,
+      [COMMAND.BALLOON]: COMMAND_OUTPUT.BALLOON,
     };
     const currentContent = content.toLowerCase();
     let prompt = '';
@@ -192,7 +193,7 @@ const Prompt = ({
           command: content,
           output: updateCommandOutput(),
         });
-        /* TODO: Easter-Egg: listen for secret command to open the c64 baloon animation */
+        /* TODO: Easter-Egg: listen for secret command to open the c64 balloon animation */
         break;
 
       default:

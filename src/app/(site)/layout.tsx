@@ -5,35 +5,35 @@ import StateProvider from '@/components/StateProvider';
 import { WINDOW } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import type { Metadata, Viewport } from 'next';
-import '../scss/global.scss';
-import '../css/globals.css';
+import '../../scss/global.scss';
+import '../../css/globals.css';
 
 // Variables
 const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
 const { NAME, DESCRIPTION, BASEURL, TITLE } = METADATA;
 // Fonts
 const vt323 = localFont({
-  src: '../fonts/vt323-regular-webfont.woff2',
+  src: '../../fonts/vt323-regular-webfont.woff2',
 });
 const ubuntuMono = localFont({
   src: [
     {
-      path: '../fonts/ubuntumono-regular-webfont.woff2',
+      path: '../../fonts/ubuntumono-regular-webfont.woff2',
       weight: '400',
       style: 'regular',
     },
     {
-      path: '../fonts/ubuntumono-italic-webfont.woff2',
+      path: '../../fonts/ubuntumono-italic-webfont.woff2',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../fonts/ubuntumono-bold-webfont.woff2',
+      path: '../../fonts/ubuntumono-bold-webfont.woff2',
       weight: '700',
       style: 'bold',
     },
     {
-      path: '../fonts/ubuntumono-bolditalic-webfont.woff2',
+      path: '../../fonts/ubuntumono-bolditalic-webfont.woff2',
       weight: '700',
       style: 'italic',
     },

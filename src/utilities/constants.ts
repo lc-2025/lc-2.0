@@ -27,6 +27,7 @@ const KEY = {
 const COMMAND = {
   INTRO: 'intro',
   HELP: 'help',
+  BALLOON: 'balloon',
 };
 const COMMAND_OUTPUT = {
   HELP: `LC V3 Terminal
@@ -42,6 +43,7 @@ Features:
 
 - Command history
 - Auto-suggestion`,
+  BALLOON: 'up, up and away!',
 };
 const ROUTE = {
   HOME: {
@@ -52,6 +54,10 @@ const ROUTE = {
       INTRO: {
         LABEL: COMMAND.INTRO,
         PATH: '/intro',
+      },
+      BALLOON: {
+        LABEL: COMMAND.BALLOON,
+        PATH: '/secret',
       },
     },
   },
