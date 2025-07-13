@@ -8,7 +8,7 @@ function audioDetected() {
 
 function loadFiles() {
   var base64EncodedFile =
-    'AQgYCAFcMDBcOEYgVVAsIFVQLCBBTkQgQVdBWVwwMCcIBVwwMFw5OSAiRU5KT1khIlwwMEwIDQpcMDBWXEIyNTMyNDggOiBcOEYgQkFTSVNBRFJFU1NFIERFUyBWSUNcMDBxCAtcMDBcOTcgVlxBQTIxLDQgOiBcOEYgU1BSSVRFIDIgQUtUSVZJRVJFTlwwMFxBMggMXDAwXDk3IDIwNDIsMTMgOiBcOEYgREFURU4gRlVFUiBTUFJJVEUgMiBBVVMgQkxLIDEzXDAwXEM4CBRcMDBcODEgTlxCMjAgXEE0IDYyIDogXDg3IFEgOiBcOTcgODMyXEFBTiwgUSA6IFw4MlwwMFxEOAgeXDAwXDgxIFhcQjIwIFxBNCAyMDBcMDBcRkEIKFwwMFw5NyBWXEFBNCxYIDogXDhGIE5FVUUgWCBLT09SRElOQVRFXDAwHAkyXDAwXDk3IFZcQUE1LFggOiBcOEYgTkVVRSBZLUtPT1JESU5BVEVcMDAkCTxcMDBcODIgWFwwMC0JRlwwMFw4OSAzMFwwMFkJXEM4XDAwXDgzIDAsMTI3LDAsMSwyNTUsMTkyLDMsMjU1LDIyNCwzLDIzMSwyMjRcMDBcODcJXEQyXDAwXDgzIDcsMjE3LDI0MCw3LDIyMywyNDAsNywyMTcsMjQwLDMsMjMxLDIyNFwwMFxCNAlcRENcMDBcODMgMywyNTUsMjI0LDMsMjU1LDIyNCwyLDI1NSwxNjAsMSwxMjcsNjRcMDBcRTYJXEU2XDAwXDgzIDEsNjIsNjQsMCwxNTYsMTI4LDAsMTU2LDEyOCwwLDczLDAsMCw3MywwLDBcMDAGDQpcRjBcMDBcODMgNjIsMCwwLDYyLDAsMCw2MiwwLDAsMjgsMFwwMFwwMFwwMA==';
+    '';
 
   FS.createDataFile(
     '/',
@@ -19,7 +19,7 @@ function loadFiles() {
   );
 }
 
-var viceArguments = ['-autostart', 'disk-image.d64'].concat(
+var viceArguments = ['-autostartprgdiskimage', 'balloon.prg'].concat(
   audioDetected()
     ? ['-soundsync', 0, '-soundrate', 22050, '-soundfragsize', 2]
     : ['-sound'],
