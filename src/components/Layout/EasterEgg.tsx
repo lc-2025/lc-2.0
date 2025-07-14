@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { COMMAND, ROUTE } from '@/utilities/constants';
+
 /**
  * @description Easter Egg component
  * @author Luca Cattide
@@ -7,6 +11,16 @@
  * @returns {*}  {React.ReactNode}
  */
 const EasterEgg = (): React.ReactNode => {
+  // Hooks
+  const router = useRouter();
+
+  useEffect(() => {
+    // Session storage check
+    if (window.sessionStorage && !sessionStorage.getItem(COMMAND.BALLOON)) {
+      router.push(ROUTE.HOME.PATH);
+    }
+  }, []);
+
   return (
     // Easter Egg Start
     <canvas

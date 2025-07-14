@@ -9,7 +9,6 @@ import Script from 'next/script';
  * @returns {*}  {React.ReactNode}
  */
 export default function Secret(): React.ReactNode {
-  // TODO: Check if commandhistory has BALLOON else redirect to index
   return (
     // Secret Start
     <>

@@ -53,7 +53,11 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
     if (Object.keys(route).includes(command)) {
       navigate(route[command]);
     } else if (command.toLowerCase() === COMMAND.BALLOON) {
-      // TODO: Flag the command into state to allow redirect to the secret page
+      // Session storage check
+      if (window.sessionStorage) {
+        sessionStorage.setItem(COMMAND.BALLOON, 'true');
+      }
+
       navigate(ROUTE.HOME.SUB.BALLOON.PATH);
     }
   };
