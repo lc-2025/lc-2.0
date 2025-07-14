@@ -23,10 +23,19 @@ const EasterEgg = (): React.ReactNode => {
 
   return (
     // Easter Egg Start
-    <canvas
-      id="canvas"
-      className="easter-egg h-full max-h-screen min-h-screen w-full border-0 p-0"
-    ></canvas>
+    <>
+      <div id="status"></div>
+      <progress id="progress" className="hidden" value={0} max={1}></progress>
+      <canvas
+        id="canvas"
+        className="easter-egg h-full max-h-screen min-h-screen w-full border-0 p-0"
+      ></canvas>
+      <div
+        id="c64TextInputReceiver"
+        className="hidden"
+        contentEditable={false}
+      ></div>
+    </>
     // Easter Egg End
   );
 };

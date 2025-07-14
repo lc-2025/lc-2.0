@@ -13,6 +13,7 @@ export default function Secret(): React.ReactNode {
     // Secret Start
     <>
       <EasterEgg />
+      <Script src="js/secret.js" strategy="afterInteractive" />
       <Script src="js/c64.js" strategy="afterInteractive" />
     </>
     // Secret End
