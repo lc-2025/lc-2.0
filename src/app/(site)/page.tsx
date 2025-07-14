@@ -4,6 +4,7 @@ import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
 import { Metadata } from 'next';
 import { METADATA } from '@/data/content';
+import AnimationIntro from '@/components/Animation/AnimationIntro';
 
 // Variables
 const { HOME } = METADATA.TITLE;
@@ -26,6 +27,8 @@ export default function Home(): React.ReactNode {
   return (
     // Home Start
     <section className="home bg-primary flex-1">
+      {/* TODO: Conditional rendering starting animation - based on localStorage flag */}
+      <AnimationIntro />
       <h6 className="home__title hidden">{LABEL}</h6>
       <AnimationTypedTitles />
       <AnimationTypedArticle
