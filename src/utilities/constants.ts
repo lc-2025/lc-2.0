@@ -38,6 +38,7 @@ List of available shell commands:
 intro            Navigate to the summary
 help             Show the help reference
 ⇧[Shift]+[A-Z]  Keyboard shortcut
+בַּלוֹן              ???
 
 Features:
 
@@ -182,6 +183,10 @@ const PROMPT_ERROR = {
   LIGHT: '?Syntax error',
   DARK: ': command not found',
 };
+const CONSOLE_TYPE = {
+  TITLE: 'title',
+  SUBTITLE: 'subtitle',
+};
 
 export {
   WINDOW,
@@ -203,4 +208,5 @@ export {
   COLOR,
   MENU_LOADING,
   PROMPT_ERROR,
+  CONSOLE_TYPE,
 };

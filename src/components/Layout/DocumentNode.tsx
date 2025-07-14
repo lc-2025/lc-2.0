@@ -7,7 +7,8 @@ import Footer from '@/components/Layout/Footer';
 import CookiesBanner from '../Cookies/CookiesBanner';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
-import { ERROR } from '@/utilities/constants';
+import { ERROR, CONSOLE_TYPE } from '@/utilities/constants';
+import { EASTER_EGG, TITLES } from '@/data/content';
 
 /**
  * @description Body component
@@ -33,18 +34,36 @@ const DocumentNode = ({
   fontDark: string;
   children: React.ReactNode;
 }): React.ReactNode => {
+  // Variables
+  const { HOME } = TITLES;
+  const { HEADLINE, TAGLINE, SUMMARY } = EASTER_EGG;
+  const { TITLE, SUBTITLE } = CONSOLE_TYPE;
   // Hooks
   const { theme, loading } = useStateContext();
 
   useEffect(() => {
-    // TODO: Put some console.log presentational message for those who inspect the code in a client component and run it once
     console.log(
-      '%cLorem ipsum dolor sit amet',
-      `font-family: ${isLightTheme(theme) ? 'VT323' : '"Ubuntu Mono"'}, sans-serif;
-      color: ${isLightTheme(theme) ? '#000' : '#00ff00'};
-      font-size: 32px`,
+      `%c${isLightTheme(theme) ? HOME.LIGHT.HEADLINE : HEADLINE}\n${isLightTheme(theme) ? HOME.LIGHT.TAGLINE : TAGLINE}\n`,
+      getMessageStyle(TITLE),
     );
-  }, []);
+    console.log(`%c\n${SUMMARY}`, getMessageStyle(SUBTITLE));
+  }, [theme]);
+
+  // Helpers
+  /**
+   * @description Console message style getter
+   * Manages the console message style based on the selected theme
+   * @author Luca Cattide
+   * @date 14/07/2025
+   * @param {string} type
+   * @returns {*}  {string}
+   */
+  const getMessageStyle = (
+    type: string,
+  ): string => `font-family: ${isLightTheme(theme) ? 'VT323' : '"Ubuntu Mono"'}, sans-serif;
+      color: ${isLightTheme(theme) ? '#3e32a2' : '#00ff00'};
+      ${type === TITLE ? `font-size: ${isLightTheme(theme) ? '32px' : 'inherit'};` : `font-size: ${isLightTheme(theme) ? '24' : '32'}px;`}
+      ${!isLightTheme(theme) && 'background-color: #000;'}`;
 
   return (
     // Body Start
