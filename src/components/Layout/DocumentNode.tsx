@@ -9,6 +9,7 @@ import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ERROR, CONSOLE_TYPE } from '@/utilities/constants';
 import { EASTER_EGG, TITLES } from '@/data/content';
+import { TDocumentNode } from '@/types/components/DocumentNode';
 
 /**
  * @description Body component
@@ -29,11 +30,7 @@ const DocumentNode = ({
   fontLight,
   fontDark,
   children,
-}: {
-  fontLight: string;
-  fontDark: string;
-  children: React.ReactNode;
-}): React.ReactNode => {
+}: TDocumentNode): React.ReactNode => {
   // Variables
   const { HOME } = TITLES;
   const { HEADLINE, TAGLINE, SUMMARY } = EASTER_EGG;

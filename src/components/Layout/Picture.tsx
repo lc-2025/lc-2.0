@@ -22,6 +22,8 @@ const Picture = (props: TPictureProps): React.ReactNode => {
   // Hooks
   const { theme } = useStateContext();
 
+  // TODO: Add pixel-reveal animation https://gsap.com/community/forums/topic/36528-image-reveal-animation-pixel-art/#comment-182673
+
   return isLightTheme(theme) ? (
     <Image
       {...rest}

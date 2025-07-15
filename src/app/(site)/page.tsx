@@ -27,8 +27,7 @@ export default function Home(): React.ReactNode {
   return (
     // Home Start
     <section className="home bg-primary flex-1">
-      {/* TODO: Conditional rendering starting animation - based on localStorage flag */}
-      <AnimationIntro />
+      {/* TODO: Redirect to title page - based on localStorage flag */}
       <h6 className="home__title hidden">{LABEL}</h6>
       <AnimationTypedTitles />
       <AnimationTypedArticle
