@@ -11,7 +11,7 @@ import { TState, TStateAction } from '@/types/state/State';
  * @returns {*}  {TState}
  */
 const reducer = (state: Partial<TState>, action: TStateAction): TState => {
-  const { THEME, COOKIES, MODAL, LOADING, RESET } = ACTION;
+  const { THEME, COOKIES, MODAL, LOADING, TITLE, RESET } = ACTION;
   const { type, element } = action;
   let stateReducer = null;
 
@@ -31,6 +31,9 @@ const reducer = (state: Partial<TState>, action: TStateAction): TState => {
     case LOADING:
       stateReducer = { ...state, loading: element };
       break;
+
+    case TITLE:
+      stateReducer = { ...state, title: element };
 
     case RESET:
       stateReducer = STATE;

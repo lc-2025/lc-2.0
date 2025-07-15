@@ -1,6 +1,13 @@
+'use client';
+
+import { useEffect } from 'react';
+import { ACTION, ROUTE } from '@/utilities/constants';
+import { useRouter } from 'next/navigation';
 import AnimationIntroLogo from './AnimationIntroLogo';
 import AnimationIntroImage from './AnimationIntroLogoImage';
 import AnimationIntroTagline from './AnimationIntroTagline';
+import handleState from '@/state/actions';
+import { useDispatchContext } from '@/hooks/State';
 import { AnimationIntroType } from '@/types/components/AnimationIntroImage';
 
 /**
@@ -10,6 +17,37 @@ import { AnimationIntroType } from '@/types/components/AnimationIntroImage';
  * @returns {*}  {React.ReactNode}
  */
 const AnimationIntro = (): React.ReactNode => {
+  // Variables
+  const { TITLE } = ACTION;
+  // Hooks
+  const router = useRouter();
+  const dispatch = useDispatchContext();
+
+  useEffect(() => {
+    handleTitle();
+  }, []);
+
+  // Handlers
+  /**
+   * @description Title handler
+   * Manages the title execution and the eventual redirect
+   * @author Luca Cattide
+   * @date 15/07/2025
+   */
+  const handleTitle = (): void => {
+    // Local Storage check
+    if (window.localStorage) {
+      const title = localStorage.getItem(TITLE);
+
+      // Title check
+      if (title) {
+        handleState({ type: TITLE, element: title }, dispatch);
+
+        router.push(ROUTE.HOME.PATH);
+      }
+    }
+  };
+
   return (
     // Intro Animation Start
     <section className="animation-intro flex w-full flex-col items-center justify-center">

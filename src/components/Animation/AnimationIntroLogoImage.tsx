@@ -1,8 +1,12 @@
 'use client';
 
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import handleState from '@/state/actions';
+import { useDispatchContext } from '@/hooks/State';
+import { ROUTE, ACTION } from '@/utilities/constants';
 import {
   AnimationIntroType,
   TAnimationIntroImage,
@@ -21,31 +25,94 @@ const AnimationIntroImage = ({
   type,
   children,
 }: TAnimationIntroImage): React.ReactNode => {
+  // Variables
+  const { TITLE } = ACTION;
   // Hooks
   const image = useRef(null);
+  const router = useRouter();
+  const dispatch = useDispatchContext();
 
   gsap.registerPlugin(useGSAP);
 
   useGSAP(
     () => {
-      // Animation type check
-      if (type === AnimationIntroType.Logo) {
-        gsap.to('.image__mask:nth-child(odd)', {
-          width: 0,
-          stagger: {
-            each: 0.3,
-          },
-        });
-      } else {
-        gsap.to('.caret', {
-          fill: '#000',
-          ease: 'none',
-          repeat: -1,
-        });
-      }
+      handleTitle();
     },
     { scope: image },
   );
+
+  // Helpers
+  const setTitle = (): void => {
+    // Local Storage check
+    if (window.localStorage) {
+      localStorage.setItem(TITLE, 'true');
+
+      handleState(
+        {
+          type: TITLE,
+          element: true,
+        },
+        dispatch,
+      );
+    }
+  };
+
+  // Handlers
+  /**
+   * @description Title animations handler
+   * @author Luca Cattide
+   * @date 15/07/2025
+   */
+  const handleTitle = (): void => {
+    const colors = {
+      default: {
+        fill: '#3E32A1',
+      },
+      variant: {
+        fill: '#7C71DA',
+      },
+    };
+    const transition = {
+      start: colors,
+    };
+    const { start } = transition;
+
+    // Animation type check
+    if (type === AnimationIntroType.Logo) {
+      gsap.to('.image__mask:nth-child(odd)', {
+        width: 0,
+        stagger: {
+          each: 0.3,
+        },
+      });
+    } else {
+      gsap.to('.tagline__image', {
+        opacity: 1,
+        delay: 9.2,
+      });
+      gsap.fromTo('.caret', start.default, {
+        delay: 9.5,
+        ease: 'step(2)',
+        repeat: 3,
+        repeatDelay: 0.1,
+        yoyo: true,
+        fill: '#7C71DA',
+      });
+      gsap.fromTo(['.letter', '.power'], start.variant, {
+        delay: 9.5,
+        ease: 'step(2)',
+        repeat: 3,
+        repeatDelay: 0.1,
+        yoyo: true,
+        fill: '#3E32A1',
+        /* onComplete: () => {
+          setTitle();
+
+          router.push(ROUTE.HOME.PATH);
+        }, */
+      });
+    }
+  };
 
   return (
     // Logo Start

@@ -46,6 +46,14 @@ Features:
 - Auto-suggestion`,
   BALLOON: 'up, up and away!',
 };
+const ACTION = {
+  THEME: THEME.LABEL,
+  COOKIES: 'cookies',
+  MODAL: 'modal',
+  LOADING: 'loading',
+  TITLE: 'title',
+  RESET: '',
+};
 const ROUTE = {
   HOME: {
     LABEL: 'home',
@@ -59,6 +67,10 @@ const ROUTE = {
       BALLOON: {
         LABEL: COMMAND.BALLOON,
         PATH: '/secret',
+      },
+      TITLE: {
+        LABEL: ACTION.TITLE,
+        PATH: '/title',
       },
     },
   },
@@ -109,13 +121,7 @@ const STATE = {
     cookies: false,
   },
   loading: false,
-};
-const ACTION = {
-  THEME: THEME.LABEL,
-  COOKIES: 'cookies',
-  MODAL: 'modal',
-  LOADING: 'loading',
-  RESET: '',
+  title: false,
 };
 const COOKIES_STATE = {
   ACCEPTED: 'accepted',

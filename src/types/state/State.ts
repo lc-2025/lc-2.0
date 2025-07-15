@@ -6,6 +6,7 @@ type TState = {
   cookies: TStateCookies;
   modal: TModalOpen;
   loading: boolean;
+  title: boolean;
 };
 
 type TStateAction = {
