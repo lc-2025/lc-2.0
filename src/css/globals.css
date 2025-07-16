@@ -60,7 +60,7 @@ a,
 button,
 .container__label,
 .label__checkbox,
-.project__preview {
+.preview__overlay {
   cursor: url('../img/lc-pointer-1.svg'), auto;
 }
 
@@ -90,7 +90,7 @@ button,
 .dark button,
 .dark .container__label,
 .dark .label__checkbox,
-.dark .project__preview,
+.dark .preview__overlay,
 .dark .prompt__tag {
   cursor: pointer;
 }

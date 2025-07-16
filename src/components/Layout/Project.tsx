@@ -31,9 +31,13 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
       {/* Cover Start */}
       <div
         style={{ backgroundImage: `url(${images[0]})` }}
-        className="project__preview cursor-pointer bg-cover pb-[66.66%]"
-        onClick={handleOpen}
-      ></div>
+        className="project__preview [&:nth-child(odd)>*]:bg-accent [&:nth-child(even)>*]:bg-primary relative bg-cover bg-center object-cover pb-[66.66%]"
+      >
+        <div
+          className="preview__overlay absolute top-0 left-0 z-10 h-full w-full cursor-pointer opacity-25 hover:opacity-0"
+          onClick={handleOpen}
+        ></div>
+      </div>
       {/* Cover End */}
       {/* Project Start */}
       {open && (
@@ -45,22 +49,18 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
             <h3 className="titles__subtitle">{caseStudy.title}</h3>
           </hgroup>
           <AnimationTypedArticle content={[name]} speed={10} />
-          <AnimationTypedArticle content={[title]} speed={10} delay={1500} />
+          <AnimationTypedArticle content={[title]} speed={10} />
           {/* Titles End */}
           <p className="study__description hidden">{description}</p>
           <AnimationTypedArticle
             content={[description]}
             speed={5}
-            delay={3000}
+            html={true}
           />
           {/* Technologies Start */}
           <h4 className="study__technologies hidden">Technologies</h4>
-          <AnimationTypedArticle
-            content={['Technologies']}
-            speed={10}
-            delay={5000}
-          />
-          <List list={technologies} speed={5} delay={4000} />
+          <AnimationTypedArticle content={['Technologies']} speed={10} />
+          <List list={technologies} speed={5} />
           {/* Technologies End */}
         </aside>
       )}

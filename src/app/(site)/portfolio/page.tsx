@@ -3,7 +3,7 @@ import Title from '@/components/Layout/Title';
 import Project from '@/components/Layout/Project';
 import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
-import { METADATA } from '@/data/content';
+import { METADATA, PORTFOLIO as WORKS } from '@/data/content';
 
 // Variables
 const { PORTFOLIO } = METADATA.TITLE;
@@ -23,22 +23,6 @@ export const metadata: Metadata = {
  * @returns {*}  {React.ReactNode}
  */
 export default function Portfolio(): React.ReactNode {
-  const demo = [
-    {
-      name: 'Project 1',
-      cover: {
-        light: '/img/about-lc-light.png',
-        dark: '/img/about-lc-dark.png',
-      },
-      images: ['/img/about-lc-light.png', '/img/about-lc-dark.png'],
-      caseStudy: {
-        title: 'Project 1 website',
-        description: 'Lorem ipsum dolor sit amet',
-      },
-      technologies: ['react', 'css'],
-    },
-  ];
-
   return (
     // Portfolio Start
     <section className="portfolio bg-primary flex-1">
@@ -48,7 +32,7 @@ export default function Portfolio(): React.ReactNode {
       />
       {/* Portfolio Start */}
       <div className="portfolio__container flex flex-wrap">
-        {demo.map((project, i) => (
+        {WORKS.map((project, i) => (
           <Project key={crypto.randomUUID() + i} project={project} />
         ))}
       </div>

@@ -47,8 +47,8 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
             srcLight={image}
             srcDark={image}
             alt={`${alt}-${i}`}
-            width={300}
-            height={300}
+            width={2560}
+            height={1361}
           />
         </div>
         // Container End
