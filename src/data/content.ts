@@ -301,6 +301,7 @@ const PORTFOLIO = [
     },
     technologies: ['HTML', 'CSS', 'Compass', 'JavaScript', 'SilverStripe'],
   },
+  // TODO: Add LC v2, eNeFTi
 ];
 
 export {
