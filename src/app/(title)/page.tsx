@@ -1,5 +1,4 @@
-import dynamic from 'next/dynamic';
-import AnimationIntro from '@/components/Animation/AnimationIntro';
+import AnimationWrapper from '@/components/Animation/AnimationWrapper';
 
 /**
  * @description Title page
@@ -9,5 +8,5 @@ import AnimationIntro from '@/components/Animation/AnimationIntro';
  * @returns {*}  {React.ReactNode}
  */
 export default function Title(): React.ReactNode {
-  return <AnimationIntro />;
+  return <AnimationWrapper />;
 }
