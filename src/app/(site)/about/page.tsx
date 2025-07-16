@@ -67,7 +67,7 @@ export default function About(): React.ReactNode {
         ]}
         html={true}
         speed={5}
-        delay={38000}
+        delay={34000}
       />
       {/* Timeline End */}
       <AnimationTypedArticle
@@ -75,10 +75,10 @@ export default function About(): React.ReactNode {
           `<a href="/doc/luca-cattide-resume.pdf" title="Resume <ↄ Luca Cattide [PDF <ↄ 78.5 KB]" tabIndex="10" target="_blank"><mark><strong>Download now the resume &lt;&rpar;</strong></mark></a>`,
         ]}
         html={true}
-        delay={5900}
+        delay={59000}
       />
-      <Menu delay={6000} />
-      <Terminal delay={6200} />
+      <Menu delay={60000} />
+      <Terminal delay={62000} />
     </section>
     // About End
   );

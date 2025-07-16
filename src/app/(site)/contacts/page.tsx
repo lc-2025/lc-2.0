@@ -52,7 +52,7 @@ export default function Contacts(): React.ReactNode {
       <AnimationTypedArticle
         content={['Please reach me out at lucacattide[at]pm[dot]me']}
         html={true}
-        delay={300}
+        delay={3000}
       />
       {/* Summary End */}
       <Menu delay={4900} />
