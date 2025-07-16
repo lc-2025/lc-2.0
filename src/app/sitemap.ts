@@ -1,5 +1,14 @@
 import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
+/**
+ * @description Sitemap generator
+ * @author Luca Cattide
+ * @date 16/07/2025
+ * @export
+ * @returns {*}  {MetadataRoute.Sitemap}
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {

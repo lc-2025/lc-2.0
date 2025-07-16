@@ -1,6 +1,8 @@
 import { METADATA } from '@/data/content';
 import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 /**
  * @description Robots generator
  * @author Luca Cattide
