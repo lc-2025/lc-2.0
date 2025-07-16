@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import handleState from '@/state/actions';
 import { useDispatchContext } from '@/hooks/State';
-import { ROUTE, ACTION } from '@/utilities/constants';
+import { ROUTE, ACTION, ANIMATION_TIMELINE } from '@/utilities/constants';
 import {
   AnimationIntroType,
   TAnimationIntroImage,
@@ -27,6 +27,7 @@ const AnimationIntroImage = ({
 }: TAnimationIntroImage): React.ReactNode => {
   // Variables
   const { TITLE } = ACTION;
+  const { CURSOR } = ANIMATION_TIMELINE;
   // Hooks
   const image = useRef(null);
   const router = useRouter();
@@ -64,60 +65,57 @@ const AnimationIntroImage = ({
    * @date 15/07/2025
    */
   const handleTitle = (): void => {
-    const colors = {
-      default: {
-        fill: '#3E32A1',
-      },
-      variant: {
-        fill: '#7C71DA',
-      },
-    };
-    const transition = {
-      start: colors,
-    };
-    const { start } = transition;
-
     // Animation type check
     if (type === AnimationIntroType.Logo) {
       gsap.to('.image__mask:nth-child(odd)', {
-        width: 0,
         stagger: {
           each: 0.3,
         },
+        width: 0,
       });
     } else {
-      gsap.to('.tagline__image', {
-        opacity: 1,
-        delay: 9.2,
-      });
-      gsap.fromTo('.caret', start.default, {
-        delay: 9.5,
-        ease: 'step(2)',
-        repeat: 3,
-        repeatDelay: 0.1,
-        yoyo: true,
-        fill: '#7C71DA',
-      });
-      gsap.fromTo(['.letter', '.power'], start.variant, {
-        delay: 9.5,
-        ease: 'step(2)',
-        repeat: 3,
-        repeatDelay: 0.1,
-        yoyo: true,
-        fill: '#3E32A1',
-        onComplete: () => {
-          setTitle();
+      const timeline = gsap.timeline();
 
-          router.push(ROUTE.HOME.PATH);
-        },
-      });
+      timeline
+        .to('.tagline__image', {
+          delay: 9.2,
+          opacity: 1,
+        })
+        .add(CURSOR, 9.5)
+        .to(
+          '.caret',
+          {
+            ease: 'step(2)',
+            fill: '#7C71DA',
+            repeat: 3,
+            repeatDelay: 0.1,
+            yoyo: true,
+          },
+          CURSOR,
+        )
+        .to(
+          ['.letter', '.power'],
+          {
+            ease: 'step(2)',
+            fill: '#3E32A1',
+            repeat: 3,
+            repeatDelay: 0.1,
+            yoyo: true,
+            onComplete: () => {
+              setTitle();
+
+              router.push(ROUTE.HOME.PATH);
+            },
+          },
+          CURSOR,
+        );
     }
   };
 
   return (
     // Logo Start
     <aside
-      className="animation-intro__image pointer-events-none flex h-auto w-2/3 justify-center select-none"
+      className="animation-intro__image pointer-events-none mt-6 mr-auto mb-6 ml-auto p-6 select-none"
       ref={image}
     >
       <h6 className="image__title hidden">Title</h6>
