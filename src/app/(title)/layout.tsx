@@ -1,43 +1,12 @@
 import StateProvider from '@/components/StateProvider';
-import { WINDOW, ERROR } from '@/utilities/constants';
-import { METADATA } from '@/data/content';
+import { ERROR } from '@/utilities/constants';
+import { METADATA_LAYOUT, METADATA_VIEWPORT } from '@/data/content';
 import '../../css/globals.css';
 import type { Metadata, Viewport } from 'next';
 
-// Variables
-const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
-const { NAME, DESCRIPTION, BASEURL, TITLE } = METADATA;
-
 // Metadata
-export const metadata: Metadata = {
-  // TODO: To be completed
-  title: {
-    template: `%s ${TITLE.SUFFIX}`,
-    default: NAME,
-  },
-  description: DESCRIPTION,
-  metadataBase: new URL(BASEURL),
-  icons: {
-    icon: [
-      {
-        media: LIGHT,
-        url: 'img/lc-favicon-light.svg',
-        href: 'img/lc-favicon-light.svg',
-      },
-      {
-        media: DARK,
-        url: 'img/lc-favicon-dark.svg',
-        href: 'img/lc-favicon-dark.svg',
-      },
-    ],
-  },
-};
-
-export const viewport: Viewport = {
-  minimumScale: 1,
-  initialScale: 1,
-  width: 'device-width',
-};
+export const metadata: Metadata = METADATA_LAYOUT;
+export const viewport: Viewport = METADATA_VIEWPORT;
 
 /**
  * @description Title layout

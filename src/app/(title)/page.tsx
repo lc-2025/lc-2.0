@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import AnimationIntro from '@/components/Animation/AnimationIntro';
 
 /**

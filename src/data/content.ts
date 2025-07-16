@@ -1,5 +1,6 @@
-import { LINKS_STRUCTURAL } from '@/utilities/constants';
+import { LINKS_STRUCTURAL, WINDOW } from '@/utilities/constants';
 
+const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
 const { PRIVACY, COOKIES } = LINKS_STRUCTURAL;
 const METADATA = {
   NAME: 'Luca Cattide',
@@ -34,6 +35,45 @@ const METADATA = {
     SUFFIX: '<ↄ Software Engineer <ↄ Luca Cattide',
   },
   DESCRIPTION: 'Software Engineer <ↄ Full-Stack on the Web all over the world',
+};
+const { NAME, KEYWORD, BASEURL, DESCRIPTION, TITLE } = METADATA;
+const METADATA_LAYOUT = {
+  applicationName: 'LC V3',
+  keywords: [
+    `${KEYWORD} front end back end web full stack mobile desktop consulting italy world`,
+  ],
+  authors: [
+    {
+      name: NAME,
+      url: BASEURL,
+    },
+  ],
+  creator: NAME,
+  title: {
+    template: `%s ${TITLE.SUFFIX}`,
+    default: NAME,
+  },
+  description: DESCRIPTION,
+  metadataBase: new URL(BASEURL),
+  icons: {
+    icon: [
+      {
+        media: LIGHT,
+        url: 'img/lc-favicon-light.svg',
+        href: 'img/lc-favicon-light.svg',
+      },
+      {
+        media: DARK,
+        url: 'img/lc-favicon-dark.svg',
+        href: 'img/lc-favicon-dark.svg',
+      },
+    ],
+  },
+};
+const METADATA_VIEWPORT = {
+  minimumScale: 1,
+  initialScale: 1,
+  width: 'device-width',
 };
 const TITLES = {
   HOME: {
@@ -90,4 +130,11 @@ const EASTER_EGG = {
   SUMMARY: 'This website keeps a secret. Will you find it?',
 };
 
-export { METADATA, TITLES, LINKS, EASTER_EGG };
+export {
+  METADATA,
+  METADATA_LAYOUT,
+  METADATA_VIEWPORT,
+  TITLES,
+  LINKS,
+  EASTER_EGG,
+};

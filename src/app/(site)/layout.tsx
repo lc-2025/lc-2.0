@@ -2,15 +2,11 @@ import localFont from 'next/font/local';
 import { ViewTransitions } from 'next-view-transitions';
 import DocumentNode from '@/components/Layout/DocumentNode';
 import StateProvider from '@/components/StateProvider';
-import { WINDOW } from '@/utilities/constants';
-import { METADATA } from '@/data/content';
+import { METADATA_VIEWPORT, METADATA_LAYOUT } from '@/data/content';
 import type { Metadata, Viewport } from 'next';
 import '../../scss/global.scss';
 import '../../css/globals.css';
 
-// Variables
-const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
-const { NAME, DESCRIPTION, BASEURL, TITLE } = METADATA;
 // Fonts
 const vt323 = localFont({
   src: '../../fonts/vt323-regular-webfont.woff2',
@@ -41,35 +37,8 @@ const ubuntuMono = localFont({
 });
 
 // Metadata
-export const metadata: Metadata = {
-  // TODO: To be completed
-  title: {
-    template: `%s ${TITLE.SUFFIX}`,
-    default: NAME,
-  },
-  description: DESCRIPTION,
-  metadataBase: new URL(BASEURL),
-  icons: {
-    icon: [
-      {
-        media: LIGHT,
-        url: 'img/lc-favicon-light.svg',
-        href: 'img/lc-favicon-light.svg',
-      },
-      {
-        media: DARK,
-        url: 'img/lc-favicon-dark.svg',
-        href: 'img/lc-favicon-dark.svg',
-      },
-    ],
-  },
-};
-
-export const viewport: Viewport = {
-  minimumScale: 1,
-  initialScale: 1,
-  width: 'device-width',
-};
+export const metadata: Metadata = METADATA_LAYOUT;
+export const viewport: Viewport = METADATA_VIEWPORT;
 
 /**
  * @description Main layout
