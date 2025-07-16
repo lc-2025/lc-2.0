@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { TPictureProps } from '@/types/components/Picture';
+import PixelMask from './PixelMask';
 
 /**
  * @description Picture component
@@ -22,24 +23,26 @@ const Picture = (props: TPictureProps): React.ReactNode => {
   // Hooks
   const { theme } = useStateContext();
 
-  // TODO: Add pixel-reveal animation https://gsap.com/community/forums/topic/36528-image-reveal-animation-pixel-art/#comment-182673
-
   return isLightTheme(theme) ? (
-    <Image
-      {...rest}
-      className={`${rest.className} picture--light ${classes}`}
-      src={srcLight}
-      sizes={sizes}
-      priority={true}
-    />
+    <PixelMask>
+      <Image
+        {...rest}
+        className={`${rest.className} picture--light ${classes}`}
+        src={srcLight}
+        sizes={sizes}
+        priority={true}
+      />
+    </PixelMask>
   ) : (
-    <Image
-      {...rest}
-      className={`${rest.className} picture--dark ${classes}`}
-      src={srcDark}
-      sizes={sizes}
-      priority={true}
-    />
+    <PixelMask>
+      <Image
+        {...rest}
+        className={`${rest.className} picture--dark ${classes}`}
+        src={srcDark}
+        sizes={sizes}
+        priority={true}
+      />
+    </PixelMask>
   );
 };
 
