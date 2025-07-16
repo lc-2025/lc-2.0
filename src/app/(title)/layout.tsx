@@ -32,10 +32,6 @@ export default function SecretLayout({
       <html className="text-rem max-h-screen min-h-screen" lang="en">
         {/* Head Start */}
         <head>
-          <meta
-            httpEquiv="Content-Security-Policy"
-            content="default-src 'self' localhost:3000; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'self' localhost:3000; font-src 'self'; form-action 'self';"
-          />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </head>
         {/* Head End */}
