@@ -1,5 +1,5 @@
 import AnimationTypedTitles from '@/components/Animation/AnimationTypedTitles';
-import AnimationTypedArticle from '../../components/Animation/AnimationTypedArticle';
+import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
 import { Metadata } from 'next';

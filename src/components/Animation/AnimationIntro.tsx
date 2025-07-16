@@ -22,6 +22,9 @@ const AnimationIntro = (): React.ReactNode => {
   // Hooks
   const router = useRouter();
   const dispatch = useDispatchContext();
+  const titleStorage = window.localStorage
+    ? localStorage.getItem(TITLE)
+    : false;
 
   useEffect(() => {
     handleTitle();
@@ -36,29 +39,26 @@ const AnimationIntro = (): React.ReactNode => {
    */
   const handleTitle = (): void => {
     // Local Storage check
-    if (window.localStorage) {
-      const title = localStorage.getItem(TITLE);
+    if (titleStorage) {
+      handleState({ type: TITLE, element: titleStorage }, dispatch);
 
-      // Title check
-      if (title) {
-        handleState({ type: TITLE, element: title }, dispatch);
-
-        router.push(ROUTE.HOME.PATH);
-      }
+      router.push(ROUTE.HOME.PATH);
     }
   };
 
   return (
-    // Intro Animation Start
-    <section className="animation-intro flex w-full flex-col items-center justify-center">
-      <h6 className="animation-intro__title hidden">Intro</h6>
-      <AnimationIntroImage type={AnimationIntroType.Logo}>
-        <AnimationIntroLogo />
-      </AnimationIntroImage>
-      <AnimationIntroImage type={AnimationIntroType.Tagline}>
-        <AnimationIntroTagline />
-      </AnimationIntroImage>
-    </section>
+    !titleStorage && (
+      // Intro Animation Start
+      <section className="animation-intro flex w-full flex-col items-center justify-center">
+        <h6 className="animation-intro__title hidden">Intro</h6>
+        <AnimationIntroImage type={AnimationIntroType.Logo}>
+          <AnimationIntroLogo />
+        </AnimationIntroImage>
+        <AnimationIntroImage type={AnimationIntroType.Tagline}>
+          <AnimationIntroTagline />
+        </AnimationIntroImage>
+      </section>
+    )
     // Intro Animation End
   );
 };

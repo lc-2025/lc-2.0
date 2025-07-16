@@ -6,7 +6,7 @@ import Typed from 'typed.js';
 import { useStateContext } from '@/hooks/State';
 import { TITLES } from '@/data/content';
 import { isLightTheme, setTimeline } from '@/utilities/utils';
-import { ANIMATION_OPTIONS, ROUTE, SECTION } from '@/utilities/constants';
+import { ANIMATION_OPTIONS, SECTION } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
@@ -27,8 +27,7 @@ const AnimationTypedTitles = ({
   // Variables
   const { NAME, KEYWORD } = METADATA;
   const pathname = usePathname();
-  const router = useRouter();
-  const { theme, title } = useStateContext();
+  const { theme } = useStateContext();
   const { LIGHT, DARK } = TITLES.HOME;
   let data: Array<string> =
     (content ?? isLightTheme(theme))
@@ -41,11 +40,6 @@ const AnimationTypedTitles = ({
   };
 
   useEffect(() => {
-    // Title check
-    /* if (!title) {
-      router.push(ROUTE.HOME.SUB.TITLE.PATH);
-    } */
-
     const headline = new Typed(titles.headline.current, {
       ...ANIMATION_OPTIONS,
       strings: [data[0]],

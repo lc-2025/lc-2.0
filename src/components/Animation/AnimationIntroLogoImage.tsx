@@ -105,11 +105,11 @@ const AnimationIntroImage = ({
         repeatDelay: 0.1,
         yoyo: true,
         fill: '#3E32A1',
-        /* onComplete: () => {
+        onComplete: () => {
           setTitle();
 
           router.push(ROUTE.HOME.PATH);
-        }, */
+        },
       });
     }
   };

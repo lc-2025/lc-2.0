@@ -58,7 +58,7 @@ const ROUTE = {
   HOME: {
     LABEL: 'home',
     TITLE: 'Developer <ↄ Scholar and martial artist <ↄ Luca Cattide',
-    PATH: '/',
+    PATH: '/home',
     SUB: {
       INTRO: {
         LABEL: COMMAND.INTRO,
@@ -70,7 +70,7 @@ const ROUTE = {
       },
       TITLE: {
         LABEL: ACTION.TITLE,
-        PATH: '/title',
+        PATH: '/',
       },
     },
   },
