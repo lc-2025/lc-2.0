@@ -15,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/.next'],
+        allow: ['/out'],
         disallow: ['/node_modules/', '/src/', '/*.*', '/.*'],
       },
     ],
