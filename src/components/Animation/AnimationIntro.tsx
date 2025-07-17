@@ -8,6 +8,7 @@ import AnimationIntroImage from './AnimationIntroLogoImage';
 import AnimationIntroTagline from './AnimationIntroTagline';
 import handleState from '@/state/actions';
 import { useDispatchContext } from '@/hooks/State';
+import { getStorage } from '@/utilities/utils';
 import { AnimationIntroType } from '@/types/components/AnimationIntroImage';
 
 /**
@@ -22,9 +23,7 @@ const AnimationIntro = (): React.ReactNode => {
   // Hooks
   const router = useRouter();
   const dispatch = useDispatchContext();
-  const titleStorage = window.localStorage
-    ? localStorage.getItem(TITLE)
-    : false;
+  const titleStorage = getStorage(TITLE) ?? false;
 
   useEffect(() => {
     handleTitle();

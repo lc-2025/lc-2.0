@@ -4,10 +4,8 @@ import { useEffect } from 'react';
 import { Switch } from '@headlessui/react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
-import { isLightTheme } from '@/utilities/utils';
+import { isLightTheme, getStorage } from '@/utilities/utils';
 import { WINDOW, THEME, ACTION } from '@/utilities/constants';
-
-// TODO: Move localStorage management into custom hook?
 
 const ThemeSwitch = (): React.ReactNode => {
   // Variables
@@ -19,20 +17,17 @@ const ThemeSwitch = (): React.ReactNode => {
   const dispatch = useDispatchContext();
 
   useEffect(() => {
-    // LocalStorage check
-    if (window.localStorage) {
-      const themeSaved = localStorage.getItem(LABEL) ?? '';
+    const themeSaved = getStorage(LABEL) ?? '';
 
-      // User preference + system-aware detection
-      isDark =
-        themeSaved === DARK || window.matchMedia(WINDOW.MEDIA.THEME.DARK).matches;
+    // User preference + system-aware detection
+    isDark =
+      themeSaved === DARK || window.matchMedia(WINDOW.MEDIA.THEME.DARK).matches;
 
-      handleState(
-        { type: ACTION.THEME, element: isDark ? DARK : LIGHT },
-        dispatch,
-      );
-      enableTheme(isDark);
-    }
+    handleState(
+      { type: ACTION.THEME, element: isDark ? DARK : LIGHT },
+      dispatch,
+    );
+    enableTheme(isDark);
   }, []);
 
   // Helpers
@@ -86,7 +81,9 @@ const ThemeSwitch = (): React.ReactNode => {
       {isLightTheme(theme) ? (
         <div className="theme-switch__icon theme-switch__icon--light relative mr-6 h-auto w-full max-w-[48px] min-w-[48px] bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none"></div>
       ) : (
-        <span className="theme-switch__icon mr-6 select-none text-[3.8rem]">☀️</span>
+        <span className="theme-switch__icon mr-6 text-[3.8rem] select-none">
+          ☀️
+        </span>
       )}
       <Switch
         checked={!isLightTheme(theme)}
@@ -102,7 +99,9 @@ const ThemeSwitch = (): React.ReactNode => {
       {isLightTheme(theme) ? (
         <div className="theme-switch__icon theme-switch__icon--dark relative ml-6 h-auto w-full max-w-[48px] min-w-[48px] bg-size-[100%] bg-left-top bg-no-repeat pb-[4.8rem] select-none"></div>
       ) : (
-        <span className="theme-switch__icon ml-6 select-none text-[3.8rem]">🌙</span>
+        <span className="theme-switch__icon ml-6 text-[3.8rem] select-none">
+          🌙
+        </span>
       )}
     </aside>
     // Theme Switch End

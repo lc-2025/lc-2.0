@@ -6,9 +6,7 @@ import handleState from '@/state/actions';
 import { LINKS } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
 import { ACTION } from '@/utilities/constants';
-import {isCookieActive} from '@/utilities/utils';
-
-// TODO: Move localStorage management into custom hook?
+import { isCookieActive, setStorage } from '@/utilities/utils';
 
 /**
  * @description Cookies consent component
@@ -42,11 +40,7 @@ const CookiesConsent = (): React.ReactNode => {
         : [...active, cookie],
     };
 
-    // LocalStorage check
-    if (window.localStorage) {
-      localStorage.setItem(ACTION.COOKIES, JSON.stringify(selection));
-    }
-
+    setStorage(ACTION.COOKIES, JSON.stringify(selection));
     handleState(
       {
         type: ACTION.COOKIES,

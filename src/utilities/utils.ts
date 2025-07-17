@@ -131,6 +131,40 @@ const setRoute = (pathname: string): TRoute => {
   return rest;
 };
 
+/**
+ * @description Storage getter
+ * Retrieves an item from Local Storage if present
+ * @author Luca Cattide
+ * @date 17/07/2025
+ * @param {string} item
+ * @returns {*}  {(string | null)}
+ */
+const getStorage = (item: string): string | null => {
+  let element = null;
+
+  // Local Storage check
+  if (window.localStorage) {
+    element = localStorage.getItem(item);
+  }
+
+  return element;
+};
+
+/**
+ * @description Storage setter
+ * Saves an item to the Local Storage
+ * @author Luca Cattide
+ * @date 17/07/2025
+ * @param {string} item
+ * @param {string} value
+ */
+const setStorage = (item: string, value: string): void => {
+  // Local Storage check
+  if (window.localStorage) {
+    localStorage.setItem(item, value);
+  }
+};
+
 export {
   setInitial,
   checkContext,
@@ -140,4 +174,6 @@ export {
   getReverseC,
   isCookieActive,
   setRoute,
+  getStorage,
+  setStorage,
 };

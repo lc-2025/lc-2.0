@@ -4,12 +4,10 @@ import { useEffect } from 'react';
 import Action from '../Layout/Action';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
-import { isLightTheme } from '@/utilities/utils';
+import { isLightTheme, getStorage, setStorage } from '@/utilities/utils';
 import { ACTIONS, ACTION, COOKIES_STATE } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
-
-// TODO: Move localStorage management into custom hook?
 
 /**
  * @description Cookies banner component
@@ -41,24 +39,21 @@ const CookiesBanner = (): React.ReactNode => {
    * @date 08/07/2025
    */
   const initCookies = (): void => {
-    // LocalStorage check
-    if (window.localStorage) {
-      const cookiesSaved = localStorage.getItem(ACTION.COOKIES)
-        ? JSON.parse(localStorage.getItem(ACTION.COOKIES)!)
-        : '';
+    const cookiesSaved = getStorage(ACTION.COOKIES)
+      ? JSON.parse(getStorage(ACTION.COOKIES)!)
+      : '';
 
-      handleState(
-        {
-          type: ACTION.COOKIES,
-          element: {
-            open: cookiesSaved ? false : true,
-            status: cookiesSaved.status ?? cookies.status,
-            active: cookiesSaved.active ?? cookies.active,
-          },
+    handleState(
+      {
+        type: ACTION.COOKIES,
+        element: {
+          open: cookiesSaved ? false : true,
+          status: cookiesSaved.status ?? cookies.status,
+          active: cookiesSaved.active ?? cookies.active,
         },
-        dispatch,
-      );
-    }
+      },
+      dispatch,
+    );
   };
 
   // Handlers
@@ -105,11 +100,7 @@ const CookiesBanner = (): React.ReactNode => {
       active: cookiesList[option as keyof typeof cookiesList],
     };
 
-    // LocalStorage check
-    if (window.localStorage) {
-      localStorage.setItem(ACTION.COOKIES, JSON.stringify(selection));
-    }
-
+    setStorage(ACTION.COOKIES, JSON.stringify(selection));
     handleState(
       {
         type: ACTION.COOKIES,

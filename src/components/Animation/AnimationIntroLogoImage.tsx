@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import handleState from '@/state/actions';
 import { useDispatchContext } from '@/hooks/State';
+import { setStorage } from '@/utilities/utils';
 import { ROUTE, ACTION, ANIMATION_TIMELINE } from '@/utilities/constants';
 import {
   AnimationIntroType,
@@ -44,18 +45,14 @@ const AnimationIntroImage = ({
 
   // Helpers
   const setTitle = (): void => {
-    // Local Storage check
-    if (window.localStorage) {
-      localStorage.setItem(TITLE, 'true');
-
-      handleState(
-        {
-          type: TITLE,
-          element: true,
-        },
-        dispatch,
-      );
-    }
+    setStorage(TITLE, 'true');
+    handleState(
+      {
+        type: TITLE,
+        element: true,
+      },
+      dispatch,
+    );
   };
 
   // Handlers
