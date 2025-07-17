@@ -47,7 +47,7 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
 
     setOpen(!open);
 
-    carousel.current!.parentElement!.classList.add('basis-full')
+    carousel.current!.parentElement!.classList.add('basis-full');
     wrapper.scrollTo({
       top: carousel.current!.offsetTop + carousel.current!.offsetHeight,
       behavior: 'smooth',
@@ -56,17 +56,17 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
 
   return (
     // Element Start
-    <div className="container__project flex-1/3">
+    <div className="container__project [&:nth-child(odd)>div>div]:bg-accent [&:nth-child(even)>div>div]:bg-primary flex-1/3">
       {/* Cover Start */}
       <div
         ref={carousel}
         style={{
           backgroundImage: `url(${isLightTheme(theme) ? light : dark})`,
         }}
-        className={`project__preview [&:nth-child(odd)>*]:bg-accent [&:nth-child(even)>*]:bg-primary relative bg-cover bg-center object-cover pb-[66.66%]`}
+        className={`project__preview relative bg-cover bg-center object-cover pb-[66.66%]`}
       >
         <div
-          className="preview__overlay absolute top-0 left-0 z-10 h-full w-full cursor-pointer opacity-25 hover:opacity-0"
+          className="preview__overlay absolute top-0 left-0 z-10 h-full w-full cursor-pointer opacity-50 hover:opacity-0"
           onClick={handleOpen}
         ></div>
       </div>
