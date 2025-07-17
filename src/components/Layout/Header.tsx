@@ -20,7 +20,7 @@ const Header = (): React.ReactNode => {
   return (
     // Header Start
     <header
-      className={`header text-primary flex flex-nowrap justify-between pb-6 ${isLightTheme(theme) ? 'bg-accent pr-6 pl-6 md:pr-32 md:pl-32' : 'bg-primary pr-6 pl-6'} pt-6`}
+      className={`header text-primary flex flex-nowrap justify-between items-center pb-6 ${isLightTheme(theme) ? 'bg-accent pr-6 pl-6 md:pr-32 md:pl-32' : 'bg-primary pr-6 pl-6'} pt-6`}
     >
       <h6 className="header__title hidden">Header</h6>
       {/* Logo Start */}
