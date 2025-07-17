@@ -62,7 +62,7 @@ export default function RootLayout({
     <StateProvider>
       <ViewTransitions>
         {/* HTML Start */}
-        <html className="text-rem max-h-screen min-h-screen" lang="en">
+        <html className="text-rem max-h-dvh min-h-dvh" lang="en">
           {/* Head Start */}
           <head>
             <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />

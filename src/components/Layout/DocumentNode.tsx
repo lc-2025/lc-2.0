@@ -65,12 +65,12 @@ const DocumentNode = ({
   return (
     // Body Start
     <body
-      className={`bg-primary text-accent text-mobile lg:text-desktop max-h-screen min-h-screen overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
+      className={`bg-primary text-accent text-mobile lg:text-desktop max-h-dvh min-h-dvh overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
     >
       <noscript>{ERROR.JS}</noscript>
       {isLightTheme(theme) && loading && <AnimationPage />}
       {/* Container Start */}
-      <div className="main-container flex max-h-screen min-h-screen flex-col">
+      <div className="main-container flex max-h-dvh min-h-dvh flex-col">
         <Header />
         {/* Wrapper Start */}
         <main

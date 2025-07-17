@@ -29,17 +29,17 @@ export default function SecretLayout({
     // HTML Start
     <StateProvider>
       {/* HTML Start */}
-      <html className="text-rem max-h-screen min-h-screen" lang="en">
+      <html className="text-rem max-h-dvh min-h-dvh" lang="en">
         {/* Head Start */}
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </head>
         {/* Head End */}
         {/* Body Start */}
-        <body className="body bg-accent max-h-screen min-h-screen overflow-hidden antialiased">
+        <body className="body bg-accent max-h-dvh min-h-dvh overflow-hidden antialiased">
           <noscript>{ERROR.JS}</noscript>
           {/* Container Start */}
-          <div className="main-container flex max-h-screen min-h-screen flex-col">
+          <div className="main-container flex max-h-dvh min-h-dvh flex-col">
             {/* Wrapper Start */}
             <main className="main-container__wrapper flex max-w-full flex-1 flex-col items-center justify-center overflow-hidden">
               {children}

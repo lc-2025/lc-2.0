@@ -28,7 +28,7 @@ const EasterEgg = (): React.ReactNode => {
       <progress id="progress" className="hidden" value={0} max={1}></progress>
       <canvas
         id="canvas"
-        className="easter-egg h-full max-h-screen min-h-screen w-full border-0 p-0"
+        className="easter-egg h-full max-h-dvh min-h-dvh w-full border-0 p-0"
       ></canvas>
       <div
         id="c64TextInputReceiver"
