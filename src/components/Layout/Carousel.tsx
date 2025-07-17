@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Picture from './Picture';
+import PixelMask from './PixelMask';
 import { TCarousel } from '@/types/components/Carousel';
 
 /**
@@ -42,14 +42,12 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
           key={crypto.randomUUID() + i}
           className="slideshow__container relative w-full"
         >
-          <Picture
-            className={`container__image ${i !== current && 'hidden'}`}
-            srcLight={image}
-            srcDark={image}
-            alt={`${alt}-${i}`}
-            width={2560}
-            height={1361}
-          />
+          <PixelMask>
+            <div
+              className={`container__image mr-auto mb-6 ml-auto w-[62%] bg-contain bg-center bg-no-repeat pb-[38%] ${i !== current && 'hidden'}`}
+              style={{ backgroundImage: `url(${image})` }}
+            ></div>
+          </PixelMask>
         </div>
         // Container End
       ))}

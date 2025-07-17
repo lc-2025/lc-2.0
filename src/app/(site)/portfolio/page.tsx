@@ -31,7 +31,7 @@ export default function Portfolio(): React.ReactNode {
         content="The stages of the chosen path"
       />
       {/* Portfolio Start */}
-      <div className="portfolio__container flex flex-wrap">
+      <div className="portfolio__container flex flex-col md:flex-row md:flex-wrap">
         {WORKS.map((project, i) => (
           <Project key={crypto.randomUUID() + i} project={project} />
         ))}
