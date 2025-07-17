@@ -46,25 +46,22 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
     const route: TRoutePrompt = Object.values(setRoute(pathname))
       .map((entry, i) => ({ [`${i + 1}` as keyof typeof route]: entry.PATH }))
       .reduce((object, prop) => Object.assign(object, prop), {});
-    let destination = '';
 
     setCommandsHistory((state) => [...state, value]);
 
     // Existing check
     if (Object.keys(route).includes(command)) {
-      destination = route[command];
+      navigate(route[command]);
     } else if (command.toLowerCase() === COMMAND.INTRO) {
-      destination = ROUTE.HOME.SUB.INTRO.PATH;
+      navigate(ROUTE.HOME.SUB.INTRO.PATH);
     } else if (command.toLowerCase() === COMMAND.BALLOON) {
       // Session storage check
       if (window.sessionStorage) {
         sessionStorage.setItem(COMMAND.BALLOON, 'true');
       }
 
-      destination = ROUTE.HOME.SUB.BALLOON.PATH;
+      navigate(ROUTE.HOME.SUB.BALLOON.PATH);
     }
-
-    navigate(destination);
   };
 
   return (
