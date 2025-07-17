@@ -130,7 +130,7 @@ const CookiesBanner = (): React.ReactNode => {
         </p>
         {/* Actions Start */}
         <ul
-          className={`container__actions pt-6 text-right ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
+          className={`container__actions pt-6 text-center md:text-right ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
         >
           {COOKIES.map((action, i) => (
             // Action Start
