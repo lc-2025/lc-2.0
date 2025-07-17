@@ -44,7 +44,7 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
         >
           <PixelMask>
             <div
-              className={`container__image mr-auto mb-6 ml-auto w-[62%] bg-contain bg-center bg-no-repeat pb-[38%] ${i !== current && 'hidden'}`}
+              className={`container__image mr-auto mb-6 ml-auto w-full lg:w-[62%] bg-contain bg-center bg-no-repeat pb-[66%] lg:pb-[38%] ${i !== current && 'hidden'}`}
               style={{ backgroundImage: `url(${image})` }}
             ></div>
           </PixelMask>
