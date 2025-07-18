@@ -76,7 +76,7 @@ const CookiesConsentForm = ({
             element.level === COOKIE_LEVEL.OPTIONAL,
         ),
     };
-    console.log(status, condition[status as keyof typeof condition]);
+
     return condition[status as keyof typeof condition];
   };
 
