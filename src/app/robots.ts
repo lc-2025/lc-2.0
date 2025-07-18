@@ -1,8 +1,6 @@
 import { METADATA } from '@/data/content';
 import type { MetadataRoute } from 'next';
 
-export const dynamic = 'force-static';
-
 /**
  * @description Robots generator
  * @author Luca Cattide
@@ -15,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/out'],
+        allow: ['/.next', '/public'],
         disallow: ['/node_modules/', '/src/', '/*.*', '/.*'],
       },
     ],
