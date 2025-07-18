@@ -40,6 +40,10 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
 
     for (let project of projects) {
       project.classList.remove('basis-full');
+      project.classList.add(
+        '[&:nth-child(odd)>div>div]:bg-accent',
+        '[&:nth-child(even)>div>div]:bg-primary',
+      );
     }
     for (let carousel of carousels) {
       carousel.classList.add('hidden');
@@ -48,6 +52,10 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
     setOpen(!open);
 
     carousel.current!.parentElement!.classList.add('basis-full');
+    carousel.current!.parentElement!.classList.remove(
+      '[&:nth-child(odd)>div>div]:bg-accent',
+      '[&:nth-child(even)>div>div]:bg-primary',
+    );
     wrapper.scrollTo({
       top: carousel.current!.offsetTop + carousel.current!.offsetHeight,
       behavior: 'smooth',
@@ -56,7 +64,7 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
 
   return (
     // Element Start
-    <div className="container__project [&:nth-child(odd)>div>div]:bg-accent [&:nth-child(even)>div>div]:bg-primary flex-1/3">
+    <div className="container__project flex-1/3">
       {/* Cover Start */}
       <div
         ref={carousel}
