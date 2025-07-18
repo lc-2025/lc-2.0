@@ -90,8 +90,8 @@ const CookiesBanner = (): React.ReactNode => {
    */
   const handleCookies = (option: string): void => {
     const cookiesList = {
-      [Status.Accepted]: [Cookie.LinkedIn, Cookie.GitHub],
-      [Status.Required]: [],
+      [Status.Accepted]: Object.values(Cookie),
+      [Status.Required]: [Cookie.Essentials],
       [Status.Declined]: [],
     };
     const selection = {

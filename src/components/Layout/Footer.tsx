@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Action from './Action';
 import Modal from './Modal';
-import CookiesConsent from '../Cookies/CookiesConsent';
+import CookiesConsentForm from '../Cookies/CookiesConsentForm';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useShortcut from '@/hooks/Shortcut';
 import useAnimation from '@/hooks/Animation';
@@ -12,7 +12,7 @@ import {
   isLightTheme,
   setInitial,
 } from '@/utilities/utils';
-import { ACTIONS, ACTION } from '@/utilities/constants';
+import { ACTIONS, ACTION, COOKIES, COOKIE_LEVEL } from '@/utilities/constants';
 import { LINKS } from '@/data/content';
 
 /**
@@ -135,7 +135,10 @@ const Footer = (): React.ReactNode => {
         title={ACTIONS.FOOTER[1].label}
         callback={() => handleOpen(ACTIONS.FOOTER[1].label.toLowerCase())}
       >
-        <CookiesConsent />
+        <div className="cookies-consent">
+          <CookiesConsentForm title="Required" fields={[COOKIES[0]]} />
+          <CookiesConsentForm title="Optional" fields={COOKIES.filter((cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL)} />
+        </div>
       </Modal>
       {/* Cookies End */}
       {/* Credits Start */}

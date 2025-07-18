@@ -128,6 +128,24 @@ const COOKIES_STATE = {
   REQUIRED: 'required',
   DECLINED: 'declined',
 };
+const COOKIE_LEVEL = {
+  ESSENTIAL: 'essential',
+  OPTIONAL: 'optional',
+};
+const COOKIES = [
+  {
+    name: 'Essentials',
+    level: COOKIE_LEVEL.ESSENTIAL,
+  },
+  {
+    name: 'Linkedin',
+    level: COOKIE_LEVEL.OPTIONAL,
+  },
+  {
+    name: 'Github',
+    level: COOKIE_LEVEL.OPTIONAL,
+  },
+];
 const ANIMATION_OPTIONS = {
   showCursor: false,
 };
@@ -209,6 +227,8 @@ export {
   STATE,
   ACTION,
   COOKIES_STATE,
+  COOKIE_LEVEL,
+  COOKIES,
   ANIMATION_OPTIONS,
   ANIMATION_OPTIONS_GENERIC,
   ANIMATION_TIMELINE,

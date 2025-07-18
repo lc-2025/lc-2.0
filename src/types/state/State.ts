@@ -24,10 +24,12 @@ enum Status {
   None = '',
   Accepted = 'accepted',
   Required = 'required',
+  Optional = 'optional',
   Declined = 'declined',
 }
 
 enum Cookie {
+  Essentials = 'essentials',
   LinkedIn = 'linkedin',
   GitHub = 'github',
 }
