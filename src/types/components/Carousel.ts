@@ -1,6 +1,5 @@
 // Carousel
 type TCarousel = {
-  alt: string;
   images: Array<string>;
 };
 

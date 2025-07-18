@@ -8,10 +8,10 @@ import { TCarousel } from '@/types/components/Carousel';
  * @description Carousel component
  * @author Luca Cattide
  * @date 07/07/2025
- * @param {TCarousel} { alt, images }
+ * @param {TCarousel} { images }
  * @returns {*}  {React.ReactNode}
  */
-const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
+const Carousel = ({ images }: TCarousel): React.ReactNode => {
   // Hooks
   const [current, setCurrent] = useState<number>(0);
 
@@ -44,7 +44,7 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
         >
           <PixelMask>
             <div
-              className={`container__image mr-auto mb-6 ml-auto w-full lg:w-[62%] bg-contain bg-center bg-no-repeat pb-[66%] lg:pb-[38%] ${i !== current && 'hidden'}`}
+              className={`container__image mr-auto mb-6 ml-auto w-full bg-contain bg-center bg-no-repeat pb-[66%] lg:w-[62%] lg:pb-[38%] ${i !== current && 'hidden'}`}
               style={{ backgroundImage: `url(${image})` }}
             ></div>
           </PixelMask>
@@ -54,13 +54,13 @@ const Carousel = ({ alt, images }: TCarousel): React.ReactNode => {
       {/* Navigation Start */}
       <div className="slideshow__navigation">
         <button
-          className="navigation__action navigation__action--previous mr-6 uppercase select-none"
+          className={`navigation__action navigation__action--previous mr-6 uppercase select-none ${current === 0 && 'opacity-50'}`}
           onClick={() => handleAction(1)}
         >
           Previous
         </button>
         <button
-          className="navigation__action navigation__action--next ml-6 uppercase select-none"
+          className={`navigation__action navigation__action--next ml-6 uppercase select-none ${current === images.length - 1 && 'opacity-50'}`}
           onClick={() => handleAction(2)}
         >
           Next
