@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Switch } from '@headlessui/react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
-import { isLightTheme, getStorage } from '@/utilities/utils';
+import { isLightTheme, getStorage, setStorage } from '@/utilities/utils';
 import { WINDOW, THEME, ACTION } from '@/utilities/constants';
 
 const ThemeSwitch = (): React.ReactNode => {
@@ -57,17 +57,7 @@ const ThemeSwitch = (): React.ReactNode => {
    */
   const handleTheme = (value: boolean): void => {
     enableTheme(value);
-
-    // LocalStorage check
-    if (window.localStorage) {
-      // Theme check
-      if (value) {
-        localStorage.setItem(LABEL, DARK);
-      } else {
-        localStorage.setItem(LABEL, LIGHT);
-      }
-    }
-
+    setStorage(LABEL, value ? LIGHT : DARK);
     handleState(
       { type: ACTION.THEME, element: value ? DARK : LIGHT },
       dispatch,
