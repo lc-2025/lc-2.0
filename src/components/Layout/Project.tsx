@@ -73,7 +73,7 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
       {/* Cover End */}
       {/* Project Start */}
       <aside className={`project__study p-6 ${!open && 'hidden'}`}>
-        <Carousel alt={name} images={images} />
+        <Carousel images={images} />
         {/* Titles Start */}
         <hgroup className="study__titles hidden">
           <h2 className="titles__title">{name}</h2>
