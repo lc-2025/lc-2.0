@@ -190,7 +190,7 @@ const MENU_LOADING = {
 };
 const PROMPT_ERROR = {
   LIGHT: '?Syntax error',
-  DARK: ': command not found',
+  DARK: 'command not found',
 };
 const CONSOLE_TYPE = {
   TITLE: 'title',
