@@ -1,7 +1,5 @@
 import type { MetadataRoute } from 'next';
 
-export const dynamic = 'force-static';
-
 /**
  * @description Sitemap generator
  * @author Luca Cattide
