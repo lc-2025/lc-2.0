@@ -1,7 +1,13 @@
 import { ActionDispatch } from 'react';
-import { THEME, ROUTE, ERROR, SECTION, LINKS_STRUCTURAL } from './constants';
-import { Cookie } from '@/types/state/State';
-import { TState, TStateAction } from '@/types/state/State';
+import {
+  THEME,
+  ROUTE,
+  ERROR,
+  SECTION,
+  LINKS_STRUCTURAL,
+  ACTION,
+} from './constants';
+import { TState, TStateAction, Status, Cookie } from '@/types/state/State';
 import { TRoute } from '@/types/navigation/Route';
 
 // Utilities
@@ -158,9 +164,29 @@ const getStorage = (item: string): string | null => {
  * @param {string} item
  * @param {string} value
  */
-const setStorage = (item: string, value: string): void => {
-  // Local Storage check
-  if (window.localStorage) {
+const setStorage = (
+  item: string,
+  value: string,
+  cookieStatusCurrent?: string,
+): void => {
+  // TODO: Manage consent - To be refined
+  const cookiesOptional = Object.values(Cookie).slice(1);
+  const cookiesStatus = {
+    [Status.Required]: [ACTION.TITLE, THEME.LABEL],
+    [Status.Accepted]: [ACTION.TITLE, THEME.LABEL, ...cookiesOptional],
+    [Status.Optional]: cookiesOptional,
+  };
+
+  // Local Storage & consent check
+  if (
+    window.localStorage /* &&
+    Object.values(Status)
+      .slice(1)
+      .includes(cookieStatusCurrent as Status) &&
+    cookiesStatus[cookieStatusCurrent as keyof typeof cookiesStatus].some(
+      (cookie) => cookie === item,
+    ) */
+  ) {
     localStorage.setItem(item, value);
   }
 };

@@ -120,7 +120,7 @@ const CookiesBanner = (): React.ReactNode => {
       </h6>
       {/* Container Start */}
       <div
-        className={`cookies-banner__container bg-accent flex flex-col justify-between p-6 ${isLightTheme(theme) && 'border-primary m-auto w-[calc(100%-3rem)] md:w-[calc(100%-16rem)] overflow-hidden border-16'}`}
+        className={`cookies-banner__container bg-accent flex flex-col justify-between p-6 ${isLightTheme(theme) && 'border-primary m-auto w-[calc(100%-3rem)] overflow-hidden border-16 md:w-[calc(100%-16rem)]'}`}
       >
         <p
           className={`container__summary w-max ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
