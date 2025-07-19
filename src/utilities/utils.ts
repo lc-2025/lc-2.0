@@ -140,6 +140,7 @@ const setRoute = (pathname: string): TRoute => {
 /**
  * @description Storage getter
  * Retrieves an item from Local Storage if present
+ * TODO: Move to a new "Storage" hook
  * @author Luca Cattide
  * @date 17/07/2025
  * @param {string} item
@@ -159,6 +160,7 @@ const getStorage = (item: string): string | null => {
 /**
  * @description Storage setter
  * Saves an item to the Local Storage
+ * TODO: Move to a new "Storage" hook
  * @author Luca Cattide
  * @date 17/07/2025
  * @param {string} item
@@ -191,6 +193,23 @@ const setStorage = (
   }
 };
 
+/**
+ * @description Storage removal
+ * Deletes an item from the Local Storage
+ * TODO: Move to a new "Storage" hook
+ * @author Luca Cattide
+ * @date 19/07/2025
+ * @param {Array<string>} items
+ */
+const deleteStorages = (items: Array<string>): void => {
+  // Local Storage check
+  if (window.localStorage) {
+    items.forEach((item) => {
+      localStorage.removeItem(item);
+    });
+  }
+};
+
 export {
   setInitial,
   checkContext,
@@ -202,4 +221,5 @@ export {
   setRoute,
   getStorage,
   setStorage,
+  deleteStorages,
 };

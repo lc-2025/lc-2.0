@@ -5,13 +5,14 @@ import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import handleState from '@/state/actions';
-import { useDispatchContext } from '@/hooks/State';
-import { setStorage } from '@/utilities/utils';
+import { useDispatchContext, useStateContext } from '@/hooks/State';
+import { getStorage, setStorage } from '@/utilities/utils';
 import { ROUTE, ACTION, ANIMATION_TIMELINE } from '@/utilities/constants';
 import {
   AnimationIntroType,
   TAnimationIntroImage,
 } from '@/types/components/AnimationIntroImage';
+import { Cookie } from '@/types/state/State';
 
 /**
  * @description Intro animation component - Logo/Tagline
@@ -27,11 +28,13 @@ const AnimationIntroImage = ({
   children,
 }: TAnimationIntroImage): React.ReactNode => {
   // Variables
-  const { TITLE } = ACTION;
+  const { TITLE, COOKIES } = ACTION;
   const { CURSOR } = ANIMATION_TIMELINE;
+  const cookiesStorage = getStorage(COOKIES);
   // Hooks
   const image = useRef(null);
   const router = useRouter();
+  const { cookies } = useStateContext();
   const dispatch = useDispatchContext();
 
   gsap.registerPlugin(useGSAP);
@@ -45,7 +48,15 @@ const AnimationIntroImage = ({
 
   // Helpers
   const setTitle = (): void => {
-    setStorage(TITLE, 'true');
+    // TODO: Move to a new "Storage" hook
+    // Storage + state check
+    if (
+      (cookiesStorage && JSON.parse(cookiesStorage).status) ||
+      cookies.active.includes(Cookie.Essentials)
+    ) {
+      setStorage(TITLE, 'true');
+    }
+
     handleState(
       {
         type: TITLE,

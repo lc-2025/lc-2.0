@@ -1,4 +1,5 @@
 // Local Storage
+// TODO: To be completed
 type TUseStorage = {
   getStorage: (item: string) => string | null;
   setStorage: (item: string, value: string) => void;

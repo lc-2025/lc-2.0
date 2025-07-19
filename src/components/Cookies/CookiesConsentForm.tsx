@@ -4,7 +4,7 @@ import Form from 'next/form';
 import handleState from '@/state/actions';
 import { Cookie, Status } from '@/types/state/State';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
-import { isCookieActive, setStorage } from '@/utilities/utils';
+import { isCookieActive, setStorage, deleteStorages } from '@/utilities/utils';
 import { ACTION, COOKIE_LEVEL, COOKIES } from '@/utilities/constants';
 import { TCookiesConsentForm } from '@/types/components/Cookies';
 
@@ -103,6 +103,12 @@ const CookiesConsentForm = ({
             : Status.Declined,
       active: activeCookies,
     };
+
+    // Non-cookies storage items check
+    if (!selection.active.includes(Cookie.Essentials)) {
+      // TODO: Move to a new "Storage" hook
+      deleteStorages([ACTION.TITLE, ACTION.THEME]);
+    }
 
     setStorage(ACTION.COOKIES, JSON.stringify(selection));
     handleState(
