@@ -8,7 +8,7 @@ import AnimationIntroImage from './AnimationIntroLogoImage';
 import AnimationIntroTagline from './AnimationIntroTagline';
 import handleState from '@/state/actions';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
-import { getStorage } from '@/utilities/utils';
+import useStorage from '@/hooks/Storage';
 import { AnimationIntroType } from '@/types/components/AnimationIntroImage';
 
 /**
@@ -22,6 +22,7 @@ const AnimationIntro = (): React.ReactNode => {
   const { TITLE } = ACTION;
   // Hooks
   const router = useRouter();
+  const { getStorage } = useStorage();
   const { title } = useStateContext();
   const dispatch = useDispatchContext();
   const titleStorage = getStorage(TITLE) ?? false;
@@ -38,7 +39,6 @@ const AnimationIntro = (): React.ReactNode => {
    * @date 15/07/2025
    */
   const handleTitle = (): void => {
-    // TODO: Move to a new "Storage" hook
     // Storage + state check
     if (titleStorage || title) {
       handleState({ type: TITLE, element: titleStorage }, dispatch);

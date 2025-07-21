@@ -4,7 +4,8 @@ import Form from 'next/form';
 import handleState from '@/state/actions';
 import { Cookie, Status } from '@/types/state/State';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
-import { isCookieActive, setStorage, deleteStorages } from '@/utilities/utils';
+import useStorage from '@/hooks/Storage';
+import { isCookieActive } from '@/utilities/utils';
 import { ACTION, COOKIE_LEVEL, COOKIES } from '@/utilities/constants';
 import { TCookiesConsentForm } from '@/types/components/Cookies';
 
@@ -23,6 +24,7 @@ const CookiesConsentForm = ({
   fields,
 }: TCookiesConsentForm): React.ReactNode => {
   // Hooks
+  const { setStorage, deleteStorages } = useStorage();
   const { cookies } = useStateContext();
   const { active } = cookies;
   const dispatch = useDispatchContext();
@@ -38,6 +40,7 @@ const CookiesConsentForm = ({
    * @returns {*}  {boolean}
    */
   const getStatus = (status: Status, activeCookies: Array<string>): boolean => {
+    // TODO: activeCookies condition refactor to single-shared variable
     const condition = {
       [Status.Required]:
         (activeCookies.length === 1 &&
@@ -106,7 +109,6 @@ const CookiesConsentForm = ({
 
     // Non-cookies storage items check
     if (!selection.active.includes(Cookie.Essentials)) {
-      // TODO: Move to a new "Storage" hook
       deleteStorages([ACTION.TITLE, ACTION.THEME]);
     }
 

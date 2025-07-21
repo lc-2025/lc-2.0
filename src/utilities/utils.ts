@@ -1,13 +1,11 @@
 import { ActionDispatch } from 'react';
+import { THEME, ROUTE, ERROR, SECTION, LINKS_STRUCTURAL } from './constants';
 import {
-  THEME,
-  ROUTE,
-  ERROR,
-  SECTION,
-  LINKS_STRUCTURAL,
-  ACTION,
-} from './constants';
-import { TState, TStateAction, Status, Cookie } from '@/types/state/State';
+  TState,
+  TStateAction,
+  TStateCookies,
+  Cookie,
+} from '@/types/state/State';
 import { TRoute } from '@/types/navigation/Route';
 
 // Utilities
@@ -137,78 +135,8 @@ const setRoute = (pathname: string): TRoute => {
   return rest;
 };
 
-/**
- * @description Storage getter
- * Retrieves an item from Local Storage if present
- * TODO: Move to a new "Storage" hook
- * @author Luca Cattide
- * @date 17/07/2025
- * @param {string} item
- * @returns {*}  {(string | null)}
- */
-const getStorage = (item: string): string | null => {
-  let element = null;
-
-  // Local Storage check
-  if (window.localStorage) {
-    element = localStorage.getItem(item);
-  }
-
-  return element;
-};
-
-/**
- * @description Storage setter
- * Saves an item to the Local Storage
- * TODO: Move to a new "Storage" hook
- * @author Luca Cattide
- * @date 17/07/2025
- * @param {string} item
- * @param {string} value
- */
-const setStorage = (
-  item: string,
-  value: string,
-  cookieStatusCurrent?: string,
-): void => {
-  // TODO: Manage consent - To be refined
-  const cookiesOptional = Object.values(Cookie).slice(1);
-  const cookiesStatus = {
-    [Status.Required]: [ACTION.TITLE, THEME.LABEL],
-    [Status.Accepted]: [ACTION.TITLE, THEME.LABEL, ...cookiesOptional],
-    [Status.Optional]: cookiesOptional,
-  };
-
-  // Local Storage & consent check
-  if (
-    window.localStorage /* &&
-    Object.values(Status)
-      .slice(1)
-      .includes(cookieStatusCurrent as Status) &&
-    cookiesStatus[cookieStatusCurrent as keyof typeof cookiesStatus].some(
-      (cookie) => cookie === item,
-    ) */
-  ) {
-    localStorage.setItem(item, value);
-  }
-};
-
-/**
- * @description Storage removal
- * Deletes an item from the Local Storage
- * TODO: Move to a new "Storage" hook
- * @author Luca Cattide
- * @date 19/07/2025
- * @param {Array<string>} items
- */
-const deleteStorages = (items: Array<string>): void => {
-  // Local Storage check
-  if (window.localStorage) {
-    items.forEach((item) => {
-      localStorage.removeItem(item);
-    });
-  }
-};
+const checkCookiesRequired = (cookies: TStateCookies): boolean =>
+  cookies.active.includes(Cookie.Essentials);
 
 export {
   setInitial,
@@ -219,7 +147,5 @@ export {
   getReverseC,
   isCookieActive,
   setRoute,
-  getStorage,
-  setStorage,
-  deleteStorages,
+  checkCookiesRequired,
 };

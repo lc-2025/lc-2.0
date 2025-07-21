@@ -3,8 +3,9 @@
 import { useEffect } from 'react';
 import Action from '../Layout/Action';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
+import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
-import { isLightTheme, getStorage, setStorage } from '@/utilities/utils';
+import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS, ACTION, COOKIES_STATE } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
@@ -19,6 +20,7 @@ const CookiesBanner = (): React.ReactNode => {
   // Variables
   const { COOKIES } = ACTIONS;
   // Hooks
+  const { getStorage, setStorage } = useStorage();
   const { theme, cookies } = useStateContext();
   const { open } = cookies;
   const dispatch = useDispatchContext();

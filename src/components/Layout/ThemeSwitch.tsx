@@ -3,19 +3,20 @@
 import { useEffect } from 'react';
 import { Switch } from '@headlessui/react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
+import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
-import { isLightTheme, getStorage, setStorage } from '@/utilities/utils';
+import { isLightTheme, checkCookiesRequired } from '@/utilities/utils';
 import { WINDOW, THEME, ACTION } from '@/utilities/constants';
-import { Cookie } from '@/types/state/State';
 
 const ThemeSwitch = (): React.ReactNode => {
   // Variables
+  let isDark = false;
   const { LABEL } = THEME;
   const { LIGHT, DARK } = THEME.NAME;
+  // Hooks
+  const { getStorage, setStorage } = useStorage();
   const themeSaved = getStorage(LABEL) ?? '';
   const cookiesStorage = getStorage(ACTION.COOKIES);
-  let isDark = false;
-  // Hooks
   const { theme } = useStateContext();
   const dispatch = useDispatchContext();
 
@@ -59,12 +60,10 @@ const ThemeSwitch = (): React.ReactNode => {
   const handleTheme = (value: boolean): void => {
     enableTheme(value);
 
-    // TODO: Move to a new "Storage" hook
     // Storage + state check
     if (
       themeSaved !== '' ||
-      (cookiesStorage &&
-        JSON.parse(cookiesStorage).active.includes(Cookie.Essentials))
+      (cookiesStorage && checkCookiesRequired(JSON.parse(cookiesStorage)))
     ) {
       setStorage(LABEL, value ? LIGHT : DARK);
     }

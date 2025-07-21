@@ -6,7 +6,8 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import handleState from '@/state/actions';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
-import { getStorage, setStorage } from '@/utilities/utils';
+import useStorage from '@/hooks/Storage';
+import { checkCookiesRequired } from '@/utilities/utils';
 import { ROUTE, ACTION, ANIMATION_TIMELINE } from '@/utilities/constants';
 import {
   AnimationIntroType,
@@ -30,10 +31,11 @@ const AnimationIntroImage = ({
   // Variables
   const { TITLE, COOKIES } = ACTION;
   const { CURSOR } = ANIMATION_TIMELINE;
-  const cookiesStorage = getStorage(COOKIES);
   // Hooks
   const image = useRef(null);
   const router = useRouter();
+  const { getStorage, setStorage } = useStorage();
+  const cookiesStorage = getStorage(COOKIES);
   const { cookies } = useStateContext();
   const dispatch = useDispatchContext();
 
@@ -48,11 +50,10 @@ const AnimationIntroImage = ({
 
   // Helpers
   const setTitle = (): void => {
-    // TODO: Move to a new "Storage" hook
     // Storage + state check
     if (
       (cookiesStorage && JSON.parse(cookiesStorage).status) ||
-      cookies.active.includes(Cookie.Essentials)
+      checkCookiesRequired(cookies)
     ) {
       setStorage(TITLE, 'true');
     }

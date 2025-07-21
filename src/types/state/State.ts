@@ -35,4 +35,4 @@ enum Cookie {
 }
 
 export { Status, Cookie };
-export type { TState, TStateAction };
+export type { TState, TStateAction, TStateCookies };
