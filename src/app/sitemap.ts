@@ -10,37 +10,37 @@ import type { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://lucati.de',
+      url: 'https://lucati.dev',
       lastModified: new Date(),
       changeFrequency: 'never',
       priority: 0,
     },
     {
-      url: 'https://lucati.de/home',
+      url: 'https://lucati.dev/home',
       lastModified: new Date(),
       changeFrequency: 'never',
       priority: 1,
     },
     {
-      url: 'https://lucati.de/intro',
+      url: 'https://lucati.dev/intro',
       lastModified: new Date(),
       changeFrequency: 'never',
       priority: 0.9,
     },
     {
-      url: 'https://lucati.de/about',
+      url: 'https://lucati.dev/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://lucati.de/portfolio',
+      url: 'https://lucati.dev/portfolio',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://lucati.de/contacts',
+      url: 'https://lucati.dev/contacts',
       lastModified: new Date(),
       changeFrequency: 'never',
       priority: 0.6,

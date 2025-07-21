@@ -5,7 +5,7 @@ const { PRIVACY, COOKIES } = LINKS_STRUCTURAL;
 const METADATA = {
   NAME: 'Luca Cattide',
   KEYWORD: 'Software Engineer',
-  BASEURL: 'https://lucati.de',
+  BASEURL: 'https://lucati.dev',
   TITLE: {
     HOME: {
       LABEL: 'Home <ↄ Software Engineer <ↄ Luca Cattide',
