@@ -31,6 +31,23 @@ const CookiesConsentForm = ({
 
   // Helpers
   /**
+   * @description Existing cookie level helper
+   * Checks if a cookie exists and verifies its type
+   * @author Luca Cattide
+   * @date 21/07/2025
+   * @param {Array<string>} cookies
+   * @param {(typeof COOKIES)[0]} item
+   * @param {string} level
+   * @returns {*}  {boolean}
+   */
+  const checkExistingCookiesLevel = (
+    cookies: Array<string>,
+    item: (typeof COOKIES)[0],
+    level: string,
+  ): boolean =>
+    cookies.includes(item.name.toLowerCase()) && item.level === level;
+
+  /**
    * @description Cookies status validator
    * Checks which kind of cookies the user enabled/disabled
    * @author Luca Cattide
@@ -40,43 +57,32 @@ const CookiesConsentForm = ({
    * @returns {*}  {boolean}
    */
   const getStatus = (status: Status, activeCookies: Array<string>): boolean => {
-    // TODO: activeCookies condition refactor to single-shared variable
     const condition = {
       [Status.Required]:
         (activeCookies.length === 1 &&
-          COOKIES.find(
-            (element) =>
-              activeCookies.includes(element.name.toLowerCase()) &&
-              element.level === COOKIE_LEVEL.ESSENTIAL,
+          COOKIES.find((element) =>
+            checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.ESSENTIAL),
           )) ||
         (activeCookies.length > 0 &&
-          COOKIES.every(
-            (element) =>
-              activeCookies.includes(element.name.toLowerCase()) &&
-              element.level === COOKIE_LEVEL.ESSENTIAL,
+          COOKIES.every((element) =>
+            checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.ESSENTIAL),
           ))
           ? true
           : false,
       [Status.Accepted]:
         activeCookies.length > 0 &&
-        COOKIES.some(
-          (element) =>
-            activeCookies.includes(element.name.toLowerCase()) &&
-            element.level === COOKIE_LEVEL.OPTIONAL,
+        COOKIES.some((element) =>
+          checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.OPTIONAL),
         ) &&
-        COOKIES.find(
-          (element) =>
-            activeCookies.includes(element.name.toLowerCase()) &&
-            element.level === COOKIE_LEVEL.ESSENTIAL,
+        COOKIES.find((element) =>
+          checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.ESSENTIAL),
         )
           ? true
           : false,
       [Status.Optional]:
         activeCookies.length > 0 &&
-        COOKIES.some(
-          (element) =>
-            activeCookies.includes(element.name.toLowerCase()) &&
-            element.level === COOKIE_LEVEL.OPTIONAL,
+        COOKIES.some((element) =>
+          checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.OPTIONAL),
         ),
     };
 
