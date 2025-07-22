@@ -179,6 +179,10 @@ const ACTIONS = {
 const ERROR = {
   CONTEXT: 'Context must be used within a `Provider`',
   JS: 'You need to enable JavaScript to run this website.',
+  FETCH: {
+    TITLE: 'Fetching error',
+    MESSAGE: 'No page data available',
+  },
 };
 const SECTION = {
   TITLES: 'titles',
