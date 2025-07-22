@@ -5,8 +5,7 @@ import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
 import { METADATA } from '@/data/content';
 import { queryHome } from '@/sanity/queries';
-import { fetchData } from '@/sanity/services';
-import type { SanityDocument } from 'next-sanity';
+import useFetch from '@/hooks/Fetch';
 
 // Variables
 const { HOME } = METADATA.TITLE;
@@ -26,23 +25,25 @@ export const metadata: Metadata = {
  * @returns {*}  {Promise<React.ReactNode>}
  */
 export default async function Home(): Promise<React.ReactNode> {
-  const page = await fetchData(queryHome);
-  const { metadata, articles } = (page as SanityDocument[])[0];
+  const { data, error } = await useFetch(queryHome);
+  const { metadata, articles } = data[0];
 
   return (
-    // Home Start
-    <section className="home bg-primary flex-1">
-      <h6 className="home__title hidden">{metadata.title}</h6>
-      <AnimationTypedTitles />
-      <AnimationTypedArticle content={articles[0].contents} html={true} />
-      <Menu delay={3800} />
-      <AnimationTypedArticle
-        content={articles[1].contents}
-        html={true}
-        delay={articles[1].animationDelay}
-      />
-      <Terminal delay={9000} />
-    </section>
-    // Home End
+    error ?? (
+      // Home Start
+      <section className="home bg-primary flex-1">
+        <h6 className="home__title hidden">{metadata.title}</h6>
+        <AnimationTypedTitles />
+        <AnimationTypedArticle content={articles[0].contents} html={true} />
+        <Menu delay={3800} />
+        <AnimationTypedArticle
+          content={articles[1].contents}
+          html={true}
+          delay={articles[1].animationDelay}
+        />
+        <Terminal delay={9000} />
+      </section>
+      // Home End
+    )
   );
 }
