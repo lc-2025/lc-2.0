@@ -62,10 +62,10 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
     } else if (command.toLowerCase() === COMMAND.BALLOON) {
       // Session storage check
       if (
-        (window.sessionStorage &&
-          cookiesStorage &&
+        window.sessionStorage &&
+          ((cookiesStorage &&
           JSON.parse(cookiesStorage).status) ||
-        checkCookiesRequired(cookies)
+        checkCookiesRequired(cookies))
       ) {
         sessionStorage.setItem(COMMAND.BALLOON, 'true');
       }
