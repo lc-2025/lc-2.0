@@ -26,24 +26,28 @@ export const metadata: Metadata = {
  */
 export default async function Home(): Promise<React.ReactNode> {
   const { data, error } = await useFetch(queryHome);
+
+  // Error check
+  if (error) {
+    return error;
+  }
+
   const { metadata, articles } = data[0];
 
   return (
-    error ?? (
-      // Home Start
-      <section className="home bg-primary flex-1">
-        <h6 className="home__title hidden">{metadata.title}</h6>
-        <AnimationTypedTitles />
-        <AnimationTypedArticle content={articles[0].contents} html={true} />
-        <Menu delay={3800} />
-        <AnimationTypedArticle
-          content={articles[1].contents}
-          html={true}
-          delay={articles[1].animationDelay}
-        />
-        <Terminal delay={9000} />
-      </section>
-      // Home End
-    )
+    // Home Start
+    <section className="home bg-primary flex-1">
+      <h6 className="home__title hidden">{metadata.title}</h6>
+      <AnimationTypedTitles />
+      <AnimationTypedArticle content={articles[0].contents} html={true} />
+      <Menu delay={3800} />
+      <AnimationTypedArticle
+        content={articles[1].contents}
+        html={true}
+        delay={articles[1].animationDelay}
+      />
+      <Terminal delay={9000} />
+    </section>
+    // Home End
   );
 }

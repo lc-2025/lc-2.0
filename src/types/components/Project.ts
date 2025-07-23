@@ -5,16 +5,11 @@ type TPorfolio = {
 
 type TProject = {
   name: string;
-  cover: TProjectCover;
+  cover: string;
   images: Array<string>;
   caseStudy: TProjectCaseStudy;
   technologies: Array<string>;
 };
-
-type TProjectCover = {
-  light: string;
-  dark: string;
-}
 
 type TProjectCaseStudy = {
   title: string;

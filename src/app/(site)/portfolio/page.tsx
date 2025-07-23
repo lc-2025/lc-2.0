@@ -3,7 +3,11 @@ import Title from '@/components/Layout/Title';
 import Project from '@/components/Layout/Project';
 import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
-import { METADATA, PORTFOLIO as WORKS } from '@/data/content';
+import { METADATA } from '@/data/content';
+import useFetch from '@/hooks/Fetch';
+import { getImageUrl } from '@/sanity/client';
+import { queryPortfolio } from '@/sanity/queries';
+import type { SanityDocument } from 'next-sanity';
 
 // Variables
 const { PORTFOLIO } = METADATA.TITLE;
@@ -18,23 +22,43 @@ export const metadata: Metadata = {
 /**
  * @description Portfolio page
  * @author Luca Cattide
- * @date 07/07/2025
+ * @date 23/07/2025
  * @export
- * @returns {*}  {React.ReactNode}
+ * @returns {*}  {Promise<React.ReactNode>}
  */
-export default function Portfolio(): React.ReactNode {
+export default async function Portfolio(): Promise<React.ReactNode> {
+  const { data, error } = await useFetch(queryPortfolio);
+
+  // Error check
+  if (error) {
+    return error;
+  }
+
+  const { headline, tagline, projects } = data[0];
+
   return (
     // Portfolio Start
     <section className="portfolio bg-primary flex-1">
-      <Title
-        keyword="Software Engineering"
-        content="The stages of the chosen path"
-      />
+      <Title keyword={headline} content={tagline} />
       {/* Portfolio Start */}
       <div className="portfolio__container flex flex-col md:flex-row md:flex-wrap">
-        {WORKS.map((project, i) => (
-          <Project key={crypto.randomUUID() + i} project={project} />
-        ))}
+        {(projects as SanityDocument[]).map(
+          ({ _id, cover, images, technologies, ...rest }, i) => (
+            <Project
+              key={crypto.randomUUID() + i + _id}
+              project={{
+                ...rest,
+                cover: String(getImageUrl(cover)),
+                images: (images as SanityDocument[]).map((image) =>
+                  String(getImageUrl(image)),
+                ),
+                technologies: (technologies as SanityDocument[]).map(
+                  (technology) => technology.name,
+                ),
+              }}
+            />
+          ),
+        )}
       </div>
       {/* Portfolio End */}
       <Menu />

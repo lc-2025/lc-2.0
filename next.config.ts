@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  images: {
+    remotePatterns: [
+      { hostname: 'cdn.sanity.io' },
+      new URL(
+        `https://cdn.sanity.io/images/${NEXT_PUBLIC_PROJECT_ID}/${NEXT_PUBLIC_DATASET}/**`,
+      ),
+    ],
+  },
 };
 
 export default nextConfig;

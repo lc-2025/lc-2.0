@@ -4,8 +4,6 @@ import { useRef, useState } from 'react';
 import Carousel from './Carousel';
 import AnimationTypedArticle from '../Animation/AnimationTypedArticle';
 import List from './List';
-import { useStateContext } from '@/hooks/State';
-import { isLightTheme } from '@/utilities/utils';
 import { TPorfolio } from '@/types/components/Project';
 
 /**
@@ -18,12 +16,10 @@ import { TPorfolio } from '@/types/components/Project';
 const Project = ({ project }: TPorfolio): React.ReactNode => {
   // Props
   const { name, cover, images, caseStudy, technologies } = project;
-  const { light, dark } = cover;
   const { title, description } = caseStudy;
   // Hooks
   const carousel = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
-  const { theme } = useStateContext();
 
   // Handlers
   /**
@@ -69,7 +65,7 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
       <div
         ref={carousel}
         style={{
-          backgroundImage: `url(${isLightTheme(theme) ? light : dark})`,
+          backgroundImage: `url(${cover})`,
         }}
         className={`project__preview relative bg-cover bg-center object-cover pb-[66.66%]`}
       >
