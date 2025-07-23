@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Prompt from './Prompt';
 import useAnimation from '@/hooks/Animation';
-import { setRoute } from '@/utilities/utils';
-import { COMMAND, DEFAULT_STATE, ROUTE } from '@/utilities/constants';
+import useStorage from '@/hooks/Storage';
+import { useStateContext } from '@/hooks/State';
+import { setRoute, checkCookiesRequired } from '@/utilities/utils';
+import { COMMAND, DEFAULT_STATE, ROUTE, ACTION } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
 import { TTerminal } from '@/types/components/Terminal';
 import { TRoutePrompt } from '@/types/navigation/Route';
@@ -22,6 +24,9 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   const { COMMAND_HISTORY } = DEFAULT_STATE;
   // Hooks
   const pathname = usePathname();
+  const { getStorage } = useStorage();
+  const cookiesStorage = getStorage(ACTION.COOKIES);
+  const { cookies } = useStateContext();
   const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
   const [visibility, setVisibility] = useState<boolean>(false);
   const { navigate } = useAnimation();
@@ -56,7 +61,12 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
       navigate(ROUTE.HOME.SUB.INTRO.PATH);
     } else if (command.toLowerCase() === COMMAND.BALLOON) {
       // Session storage check
-      if (window.sessionStorage) {
+      if (
+        (window.sessionStorage &&
+          cookiesStorage &&
+          JSON.parse(cookiesStorage).status) ||
+        checkCookiesRequired(cookies)
+      ) {
         sessionStorage.setItem(COMMAND.BALLOON, 'true');
       }
 

@@ -2,7 +2,10 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { COMMAND, ROUTE } from '@/utilities/constants';
+import useStorage from '@/hooks/Storage';
+import { useStateContext } from '@/hooks/State';
+import { checkCookiesRequired } from '@/utilities/utils';
+import { COMMAND, ROUTE, ACTION } from '@/utilities/constants';
 
 /**
  * @description Easter Egg component
@@ -13,10 +16,19 @@ import { COMMAND, ROUTE } from '@/utilities/constants';
 const EasterEgg = (): React.ReactNode => {
   // Hooks
   const router = useRouter();
+  const { getStorage } = useStorage();
+  const cookiesStorage = getStorage(ACTION.COOKIES);
+  const { cookies } = useStateContext();
 
   useEffect(() => {
     // Session storage check
-    if (window.sessionStorage && !sessionStorage.getItem(COMMAND.BALLOON)) {
+    if (
+      window.sessionStorage &&
+        !sessionStorage.getItem(COMMAND.BALLOON) &&
+        ((cookiesStorage &&
+        JSON.parse(cookiesStorage).status) ||
+      checkCookiesRequired(cookies))
+    ) {
       router.push(ROUTE.HOME.PATH);
     }
   }, []);
