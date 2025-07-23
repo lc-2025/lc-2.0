@@ -136,15 +136,15 @@ const setRoute = (pathname: string): TRoute => {
 };
 
 /**
- * @description Required cookies checking helper
- * Verifies if the required cookies are enabled
+ * @description Cookies checking helper
+ * Verifies if the requested cookies are enabled
  * @author Luca Cattide
  * @date 23/07/2025
  * @param {TStateCookies} cookies
  * @returns {*}  {boolean}
  */
-const checkCookiesRequired = (cookies: TStateCookies): boolean =>
-  cookies.active.includes(Cookie.Essentials);
+const checkCookies = (cookies: TStateCookies, type: Cookie): boolean =>
+  cookies.active.includes(type);
 
 /**
  * @description Date formatter helper
@@ -169,6 +169,6 @@ export {
   getReverseC,
   isCookieActive,
   setRoute,
-  checkCookiesRequired,
+  checkCookies,
   formatDate,
 };

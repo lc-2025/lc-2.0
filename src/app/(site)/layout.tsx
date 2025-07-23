@@ -1,8 +1,10 @@
 import localFont from 'next/font/local';
 import { ViewTransitions } from 'next-view-transitions';
+import Analytics from '@/components/analytics/Analytics';
 import DocumentNode from '@/components/Layout/DocumentNode';
 import StateProvider from '@/components/StateProvider';
 import { METADATA_VIEWPORT, METADATA_LAYOUT } from '@/data/content';
+import { NEXT_PUBLIC_ANALYTICS_ID } from '@/utilities/environment';
 import type { Metadata, Viewport } from 'next';
 import '../../scss/global.scss';
 import '../../css/globals.css';
@@ -65,6 +67,7 @@ export default function RootLayout({
         <html className="text-rem max-h-dvh min-h-dvh" lang="en">
           {/* Head Start */}
           <head>
+            <Analytics id={NEXT_PUBLIC_ANALYTICS_ID} />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
           </head>
           {/* Head End */}

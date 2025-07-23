@@ -1,8 +1,10 @@
 import StateProvider from '@/components/StateProvider';
+import Analytics from '@/components/analytics/Analytics';
 import { ERROR } from '@/utilities/constants';
-import '../../css/globals.css';
-import type { Metadata, Viewport } from 'next';
 import { METADATA_LAYOUT, METADATA_VIEWPORT } from '@/data/content';
+import { NEXT_PUBLIC_ANALYTICS_ID } from '@/utilities/environment';
+import type { Metadata, Viewport } from 'next';
+import '../../css/globals.css';
 
 // Metadata
 export const metadata: Metadata = METADATA_LAYOUT;
@@ -32,6 +34,7 @@ export default function SecretLayout({
       <html className="text-rem max-h-dvh min-h-dvh" lang="en">
         {/* Head Start */}
         <head>
+          <Analytics id={NEXT_PUBLIC_ANALYTICS_ID} />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </head>
         {/* Head End */}

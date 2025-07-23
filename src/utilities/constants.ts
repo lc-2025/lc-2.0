@@ -138,6 +138,10 @@ const COOKIES = [
     level: COOKIE_LEVEL.ESSENTIAL,
   },
   {
+    name: 'Google Analytics',
+    level: COOKIE_LEVEL.OPTIONAL,
+  },
+  {
     name: 'Linkedin',
     level: COOKIE_LEVEL.OPTIONAL,
   },

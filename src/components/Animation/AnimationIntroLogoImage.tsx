@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 import handleState from '@/state/actions';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
-import { checkCookiesRequired } from '@/utilities/utils';
+import { checkCookies } from '@/utilities/utils';
 import { ROUTE, ACTION, ANIMATION_TIMELINE } from '@/utilities/constants';
 import {
   AnimationIntroType,
@@ -53,7 +53,7 @@ const AnimationIntroImage = ({
     // Storage + state check
     if (
       (cookiesStorage && JSON.parse(cookiesStorage).status) ||
-      checkCookiesRequired(cookies)
+      checkCookies(cookies, Cookie.Essentials)
     ) {
       setStorage(TITLE, 'true');
     }

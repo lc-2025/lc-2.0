@@ -30,6 +30,7 @@ enum Status {
 
 enum Cookie {
   Essentials = 'essentials',
+  Analytics = 'google analytics',
   LinkedIn = 'linkedin',
   GitHub = 'github',
 }

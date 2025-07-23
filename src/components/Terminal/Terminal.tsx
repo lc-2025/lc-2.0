@@ -6,11 +6,12 @@ import Prompt from './Prompt';
 import useAnimation from '@/hooks/Animation';
 import useStorage from '@/hooks/Storage';
 import { useStateContext } from '@/hooks/State';
-import { setRoute, checkCookiesRequired } from '@/utilities/utils';
+import { setRoute, checkCookies } from '@/utilities/utils';
 import { COMMAND, DEFAULT_STATE, ROUTE, ACTION } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
 import { TTerminal } from '@/types/components/Terminal';
 import { TRoutePrompt } from '@/types/navigation/Route';
+import { Cookie } from '@/types/state/State';
 
 /**
  * @description Terminal component
@@ -63,9 +64,9 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
       // Session storage check
       if (
         window.sessionStorage &&
-          ((cookiesStorage &&
-          JSON.parse(cookiesStorage).status) ||
-        checkCookiesRequired(cookies))
+        ((cookiesStorage &&
+          checkCookies(JSON.parse(cookiesStorage), Cookie.Essentials)) ||
+          checkCookies(cookies, Cookie.Essentials))
       ) {
         sessionStorage.setItem(COMMAND.BALLOON, 'true');
       }

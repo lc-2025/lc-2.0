@@ -5,8 +5,9 @@ import { Switch } from '@headlessui/react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
-import { isLightTheme, checkCookiesRequired } from '@/utilities/utils';
+import { isLightTheme, checkCookies } from '@/utilities/utils';
 import { WINDOW, THEME, ACTION } from '@/utilities/constants';
+import { Cookie } from '@/types/state/State';
 
 const ThemeSwitch = (): React.ReactNode => {
   // Variables
@@ -63,7 +64,8 @@ const ThemeSwitch = (): React.ReactNode => {
     // Storage + state check
     if (
       themeSaved !== '' ||
-      (cookiesStorage && checkCookiesRequired(JSON.parse(cookiesStorage)))
+      (cookiesStorage &&
+        checkCookies(JSON.parse(cookiesStorage), Cookie.Essentials))
     ) {
       setStorage(LABEL, value ? LIGHT : DARK);
     }
@@ -90,7 +92,7 @@ const ThemeSwitch = (): React.ReactNode => {
         onChange={handleTheme}
         className={`theme-switcher__field group data-[focus]:outline-accent relative flex h-19 w-38 cursor-pointer p-1 focus:outline-none data-[focus]:outline-1 ${isLightTheme(theme) ? 'bg-primary data-[checked]:bg-accent p-1' : 'bg-accent data-[checked]:bg-primary border-accent border-2 pt-[0.5px] pr-0 pb-0 pl-[2px]'}`}
         tabIndex={0}
-        aria-label='Switch Theme'
+        aria-label="Switch Theme"
       >
         <span
           aria-hidden="true"
