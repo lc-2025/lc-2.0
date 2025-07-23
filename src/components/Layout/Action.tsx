@@ -9,10 +9,10 @@ import { TAction } from '@/types/components/Action';
  * @description Action component
  * @author Luca Cattide
  * @date 07/07/2025
- * @param {TAction} { action, variant, index }
+ * @param {TAction} { action, variant }
  * @returns {*}  {React.ReactNode}
  */
-const Action = ({ action, variant, index }: TAction): React.ReactNode => {
+const Action = ({ action, variant }: TAction): React.ReactNode => {
   // Variables
   const { label } = action;
   // Hooks
@@ -45,7 +45,7 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
       className="actions__action uppercase select-none"
       href={label}
       title={`${label} ${METADATA.TITLE.SUFFIX}`}
-      tabIndex={index}
+      tabIndex={0}
     >
       {setLabel()}
     </Link>
@@ -53,6 +53,7 @@ const Action = ({ action, variant, index }: TAction): React.ReactNode => {
     <button
       className="actions__action uppercase select-none"
       onClick={action.callback ?? undefined}
+      aria-label={setLabel()}
     >
       {setLabel()}
     </button>

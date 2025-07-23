@@ -1,9 +1,13 @@
+import { Metadata } from 'next';
 import AnimationTypedTitles from '@/components/Animation/AnimationTypedTitles';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
-import { Metadata } from 'next';
 import { METADATA } from '@/data/content';
+import { queryHome } from '@/sanity/queries';
+import useFetch from '@/hooks/Fetch';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { HOME } = METADATA.TITLE;
@@ -18,27 +22,31 @@ export const metadata: Metadata = {
 /**
  * @description Home page
  * @author Luca Cattide
- * @date 02/07/2025
+ * @date 22/07/2025
  * @export
- * @returns {*}  {React.ReactNode}
+ * @returns {*}  {Promise<React.ReactNode>}
  */
-export default function Home(): React.ReactNode {
+export default async function Home(): Promise<React.ReactNode> {
+  const { data, error } = await useFetch(queryHome);
+
+  // Error check
+  if (error) {
+    return error;
+  }
+
+  const { metadata, articles } = data[0] as SanityDocument & TPage;
+
   return (
     // Home Start
     <section className="home bg-primary flex-1">
-      <h6 className="home__title hidden">{LABEL}</h6>
+      <h6 className="home__title hidden">{metadata!.title}</h6>
       <AnimationTypedTitles />
-      <AnimationTypedArticle
-        content={[
-          'Welcome to the latest LC version.<br />Please choose your destination (enter or click):',
-        ]}
-        html={true}
-      />
+      <AnimationTypedArticle content={articles[0].contents} html={true} />
       <Menu delay={3800} />
       <AnimationTypedArticle
-        content={['Or type "intro" for a brief summary.<br />Trouble? Enter "help" for the command list.']}
+        content={articles[1].contents}
         html={true}
-        delay={6000}
+        delay={articles[1].animationDelay}
       />
       <Terminal delay={9000} />
     </section>

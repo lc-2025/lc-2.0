@@ -16,7 +16,6 @@ import { TAnimationTyped } from '@/types/components/AnimationTyped';
  * @param {TAnimationTyped} {
  *   path,
  *   title,
- *   tabindex,
  *   delay,
  *   content,
  * }
@@ -25,7 +24,6 @@ import { TAnimationTyped } from '@/types/components/AnimationTyped';
 const AnimationTypedMenu = ({
   path,
   title,
-  tabIndex,
   delay,
   content,
 }: TAnimationTyped): React.ReactNode => {
@@ -54,7 +52,7 @@ const AnimationTypedMenu = ({
         className="entry__link font-bold"
         href={path!}
         title={title}
-        tabIndex={tabIndex}
+        tabIndex={0}
         ref={menu}
         onClick={(e) => navigate(path!, e)}
       ></Link>

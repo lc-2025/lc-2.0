@@ -135,8 +135,30 @@ const setRoute = (pathname: string): TRoute => {
   return rest;
 };
 
+/**
+ * @description Required cookies checking helper
+ * Verifies if the required cookies are enabled
+ * @author Luca Cattide
+ * @date 23/07/2025
+ * @param {TStateCookies} cookies
+ * @returns {*}  {boolean}
+ */
 const checkCookiesRequired = (cookies: TStateCookies): boolean =>
   cookies.active.includes(Cookie.Essentials);
+
+/**
+ * @description Date formatter helper
+ * Converts a default date notation into MM/DD/YYYY
+ * @author Luca Cattide
+ * @date 23/07/2025
+ * @param {string} date
+ * @returns {*}  {string}
+ */
+const formatDate = (date: string): string => {
+  const dateFormat = new Date(date);
+
+  return `${dateFormat.getMonth() + 1}/${dateFormat.getDate()}/${dateFormat.getFullYear()}`;
+};
 
 export {
   setInitial,
@@ -148,4 +170,5 @@ export {
   isCookieActive,
   setRoute,
   checkCookiesRequired,
+  formatDate,
 };

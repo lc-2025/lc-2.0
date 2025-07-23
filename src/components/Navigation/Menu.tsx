@@ -35,7 +35,6 @@ const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
             key={crypto.randomUUID() + i}
             path={PATH}
             title={`${TITLE}`}
-            tabIndex={i * 10}
             delay={delay ? delay + i * 700 : i * 700}
             content={[
               `${i + 1} <${getReverseC(isLightTheme(theme))} ${setInitial(LABEL)}`,

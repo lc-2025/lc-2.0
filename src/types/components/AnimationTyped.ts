@@ -4,7 +4,7 @@ type TAnimationTyped = {
   html?: boolean;
   path?: string;
   title?: string;
-  tabIndex?: number;
+
   speed?: number;
   delay?: number;
 };

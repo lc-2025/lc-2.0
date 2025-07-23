@@ -30,13 +30,13 @@ export const config = {
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
   const cspHeader = `
-    default-src 'self' localhost:3000;
+    default-src 'self' localhost:3000 lucati.dev;
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-${nonce}' 'strict-dynamic';
     style-src 'self' 'unsafe-inline' 'nonce-${nonce}';
-    img-src 'self';
+    img-src 'self' cdn.sanity.io;
     font-src 'self';
     form-action 'self';
-    connect-src: 'self' localhost:3000;
+    connect-src: 'self' localhost:3000 lucati.dev;
 `;
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader

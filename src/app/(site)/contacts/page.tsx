@@ -5,6 +5,11 @@ import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle'
 import Menu from '@/components/Navigation/Menu';
 import Terminal from '@/components/Terminal/Terminal';
 import { METADATA } from '@/data/content';
+import useFetch from '@/hooks/Fetch';
+import { queryContacts } from '@/sanity/queries';
+import { getImageUrl } from '@/sanity/client';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { CONTACTS } = METADATA.TITLE;
@@ -19,41 +24,46 @@ export const metadata: Metadata = {
 /**
  * @description Contacts page
  * @author Luca Cattide
- * @date 04/07/2025
+ * @date 23/07/2025
  * @export
- * @returns {*}  {React.ReactNode}
+ * @returns {*}  {Promise<React.ReactNode>}
  */
-export default function Contacts(): React.ReactNode {
+export default async function Contacts(): Promise<React.ReactNode> {
+  const { data, error } = await useFetch(queryContacts);
+
+  // Error check
+  if (error) {
+    return error;
+  }
+
+  const { headline, tagline, pictures, articles } = data[0] as SanityDocument & TPage;
+  const { imageLight, imageDark, alt } = pictures;
+
   return (
     // Contacts Start
     <section className="about bg-primary flex-1">
-      <Title
-        keyword={'Software Engineer'}
-        content={'<) Talks and professional appointments'}
-      />
       {/* Headline Start */}
+      <Title keyword={headline} content={tagline} />
       <Picture
         className="intro__picture"
-        srcLight="/img/contacts-lc-light.png"
-        srcDark="/img/contacts-lc-dark.png"
-        alt={DESCRIPTION}
+        srcLight={String(getImageUrl(imageLight)!.width(4896).height(3672))}
+        srcDark={String(getImageUrl(imageDark)!.width(4896).height(3672))}
+        alt={alt}
         width={4896}
         height={3672}
       />
-      <AnimationTypedArticle
-        content={[
-          `<mark><strong>Software Engineer</strong></mark> &lt;&rpar; Talks and professional appointments`,
-        ]}
-        html={true}
-        delay={500}
-      />
       {/* Headline End */}
-      {/* Summary Start */}
-      <AnimationTypedArticle
-        content={['Please reach me out at lucacattide[at]pm[dot]me']}
-        html={true}
-        delay={3000}
-      />
+      {articles.map(
+        ({ _id, contents, animationSpeed, animationDelay }, i) => (
+          <AnimationTypedArticle
+            key={crypto.randomUUID() + i + _id}
+            content={contents}
+            html={true}
+            speed={animationSpeed}
+            delay={animationDelay}
+          />
+        ),
+      )}
       {/* Summary End */}
       <Menu delay={4900} />
       <Terminal delay={6900} />

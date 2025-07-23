@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Typed from 'typed.js';
 import { useStateContext } from '@/hooks/State';
 import { TITLES } from '@/data/content';
