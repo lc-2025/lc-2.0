@@ -8,7 +8,8 @@ import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryAbout } from '@/sanity/queries';
 import { getImageUrl } from '@/sanity/client';
-import type { SanityDocument } from 'next-sanity';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { ABOUT } = METADATA.TITLE;
@@ -35,7 +36,8 @@ export default async function About(): Promise<React.ReactNode> {
     return error;
   }
 
-  const { headline, tagline, pictures, articles } = data[0];
+  const { headline, tagline, pictures, articles } = data[0] as SanityDocument &
+    TPage;
   const { imageLight, imageDark, alt } = pictures;
 
   return (
@@ -52,17 +54,15 @@ export default async function About(): Promise<React.ReactNode> {
         height={3672}
       />
       {/* Headline End */}
-      {(articles as SanityDocument[]).map(
-        ({ _id, contents, animationSpeed, animationDelay }, i) => (
-          <AnimationTypedArticle
-            key={crypto.randomUUID() + i + _id}
-            content={contents}
-            html={true}
-            speed={animationSpeed}
-            delay={animationDelay}
-          />
-        ),
-      )}
+      {articles.map(({ _id, contents, animationSpeed, animationDelay }, i) => (
+        <AnimationTypedArticle
+          key={crypto.randomUUID() + i + _id}
+          content={contents}
+          html={true}
+          speed={animationSpeed}
+          delay={animationDelay}
+        />
+      ))}
       <Menu delay={60000} />
       <Terminal delay={62000} />
     </section>

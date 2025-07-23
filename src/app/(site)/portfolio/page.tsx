@@ -7,7 +7,8 @@ import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { getImageUrl } from '@/sanity/client';
 import { queryPortfolio } from '@/sanity/queries';
-import type { SanityDocument } from 'next-sanity';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { PORTFOLIO } = METADATA.TITLE;
@@ -34,7 +35,7 @@ export default async function Portfolio(): Promise<React.ReactNode> {
     return error;
   }
 
-  const { headline, tagline, projects } = data[0];
+  const { headline, tagline, projects } = data[0] as SanityDocument & TPage;
 
   return (
     // Portfolio Start
@@ -42,23 +43,17 @@ export default async function Portfolio(): Promise<React.ReactNode> {
       <Title keyword={headline} content={tagline} />
       {/* Portfolio Start */}
       <div className="portfolio__container flex flex-col md:flex-row md:flex-wrap">
-        {(projects as SanityDocument[]).map(
-          ({ _id, cover, images, technologies, ...rest }, i) => (
-            <Project
-              key={crypto.randomUUID() + i + _id}
-              project={{
-                ...rest,
-                cover: String(getImageUrl(cover)),
-                images: (images as SanityDocument[]).map((image) =>
-                  String(getImageUrl(image)),
-                ),
-                technologies: (technologies as SanityDocument[]).map(
-                  (technology) => technology.name,
-                ),
-              }}
-            />
-          ),
-        )}
+        {projects!.map(({ _id, cover, images, technologies, ...rest }, i) => (
+          <Project
+            key={crypto.randomUUID() + i + _id}
+            project={{
+              ...rest,
+              cover: String(getImageUrl(cover)),
+              images: images.map((image) => String(getImageUrl(image))),
+              technologies: technologies.map((technology) => technology.name),
+            }}
+          />
+        ))}
       </div>
       {/* Portfolio End */}
       <Menu />

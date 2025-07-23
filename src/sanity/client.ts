@@ -6,7 +6,7 @@ import {
   NEXT_PUBLIC_DATASET,
   NEXT_PUBLIC_API_VERSION,
 } from '@/utilities/environment';
-import type { SanityDocument } from 'next-sanity';
+import type { SanityDocument } from '@sanity/types';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 

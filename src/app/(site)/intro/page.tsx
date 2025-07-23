@@ -9,7 +9,8 @@ import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryIntro } from '@/sanity/queries';
 import { getImageUrl } from '@/sanity/client';
-import type { SanityDocument } from 'next-sanity';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { HOME } = METADATA.TITLE;
@@ -37,7 +38,8 @@ export default async function Intro(): Promise<React.ReactNode> {
     return error;
   }
 
-  const { headline, tagline, pictures, articles, lists } = data[0];
+  const { headline, tagline, pictures, articles, lists } =
+    data[0] as SanityDocument & TPage;
   const { imageLight, imageDark, alt } = pictures;
 
   return (
@@ -54,7 +56,7 @@ export default async function Intro(): Promise<React.ReactNode> {
         height={1080}
       />
       {/* Headline End */}
-      {(articles as SanityDocument[])
+      {articles
         .slice(0, 2)
         .map(({ _id, contents, animationSpeed, animationDelay }, i) => (
           <AnimationTypedArticle
@@ -66,7 +68,7 @@ export default async function Intro(): Promise<React.ReactNode> {
           />
         ))}
       {/* Indicators Start */}
-      <List list={lists[0].contents} delay={lists[0].animationDelay} />
+      <List list={lists![0].contents} delay={lists![0].animationDelay} />
       {/* Indicators End */}
       {/* Portfolio Start */}
       <AnimationTypedArticle

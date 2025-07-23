@@ -7,7 +7,8 @@ import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryCookies } from '@/sanity/queries';
 import { formatDate } from '@/utilities/utils';
-import type { SanityDocument } from 'next-sanity';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { COOKIES } = METADATA.TITLE;
@@ -34,22 +35,22 @@ export default async function Cookies(): Promise<React.ReactNode> {
     return error;
   }
 
-  const { headline, tagline, lastUpdate, articles } = data[0];
+  const { headline, tagline, lastUpdate, articles } = data[0] as SanityDocument & TPage;
 
   return (
     // Cookies Start
     <section className="cookies bg-primary flex-1">
       <Title
         keyword={headline}
-        content={`${tagline} ${formatDate(lastUpdate)}`}
+        content={`${tagline} ${formatDate(lastUpdate!)}`}
       />
-      {(articles as SanityDocument[]).map(
+      {articles.map(
         ({ _id, contents, animationSpeed, animationDelay }, i) => (
           <AnimationTypedArticle
             key={crypto.randomUUID() + i + _id}
             content={contents.map((content, j) =>
               i === 0 && j === 1
-                ? `${content} ${formatDate(lastUpdate)}`
+                ? `${content} ${formatDate(lastUpdate!)}`
                 : content,
             )}
             html={true}

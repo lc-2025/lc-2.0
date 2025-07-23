@@ -6,6 +6,8 @@ import Terminal from '@/components/Terminal/Terminal';
 import { METADATA } from '@/data/content';
 import { queryHome } from '@/sanity/queries';
 import useFetch from '@/hooks/Fetch';
+import type { SanityDocument } from '@sanity/types';
+import { TPage } from '@/types/sanity';
 
 // Variables
 const { HOME } = METADATA.TITLE;
@@ -32,12 +34,12 @@ export default async function Home(): Promise<React.ReactNode> {
     return error;
   }
 
-  const { metadata, articles } = data[0];
+  const { metadata, articles } = data[0] as SanityDocument & TPage;
 
   return (
     // Home Start
     <section className="home bg-primary flex-1">
-      <h6 className="home__title hidden">{metadata.title}</h6>
+      <h6 className="home__title hidden">{metadata!.title}</h6>
       <AnimationTypedTitles />
       <AnimationTypedArticle content={articles[0].contents} html={true} />
       <Menu delay={3800} />
