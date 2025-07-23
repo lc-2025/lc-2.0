@@ -77,7 +77,6 @@ const Footer = (): React.ReactNode => {
                     ...action,
                     callback: () => handleOpen(action.label.toLowerCase()),
                   }}
-                  index={i}
                 />
                 {i < FOOTER.length - 1 && cookies.status && (
                   <span className="action__separator pr-3 pl-3">
@@ -108,7 +107,7 @@ const Footer = (): React.ReactNode => {
                     className="entry__link font-bold"
                     href={link}
                     title={title}
-                    tabIndex={20 + i}
+                    tabIndex={0}
                     target={i > 1 ? '_blank' : 'self'}
                     rel={i < 2 ? 'noindex nofollow' : undefined}
                     onClick={

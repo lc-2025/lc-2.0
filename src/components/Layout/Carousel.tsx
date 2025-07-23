@@ -56,12 +56,14 @@ const Carousel = ({ images }: TCarousel): React.ReactNode => {
         <button
           className={`navigation__action navigation__action--previous mr-6 uppercase select-none ${current === 0 && 'opacity-50'}`}
           onClick={() => handleAction(1)}
+          aria-label="Previous"
         >
           Previous
         </button>
         <button
           className={`navigation__action navigation__action--next ml-6 uppercase select-none ${current === images.length - 1 && 'opacity-50'}`}
           onClick={() => handleAction(2)}
+          aria-label="Next"
         >
           Next
         </button>

@@ -89,7 +89,8 @@ const ThemeSwitch = (): React.ReactNode => {
         checked={!isLightTheme(theme)}
         onChange={handleTheme}
         className={`theme-switcher__field group data-[focus]:outline-accent relative flex h-19 w-38 cursor-pointer p-1 focus:outline-none data-[focus]:outline-1 ${isLightTheme(theme) ? 'bg-primary data-[checked]:bg-accent p-1' : 'bg-accent data-[checked]:bg-primary border-accent border-2 pt-[0.5px] pr-0 pb-0 pl-[2px]'}`}
-        tabIndex={3}
+        tabIndex={0}
+        aria-label='Switch Theme'
       >
         <span
           aria-hidden="true"

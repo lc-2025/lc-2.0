@@ -4,7 +4,6 @@ import { MouseEventHandler } from 'react';
 type TAction = {
   action: TActionProps;
   variant?: boolean;
-  index?: number;
 };
 type TActionProps = {
   label: string;
