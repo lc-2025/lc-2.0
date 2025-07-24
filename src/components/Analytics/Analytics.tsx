@@ -22,17 +22,30 @@ const Analytics = ({ id }: TAnalytics): React.ReactNode => {
   const { cookies } = useStateContext();
 
   return (
-    (cookiesStorage &&
+    ((cookiesStorage &&
       checkCookies(JSON.parse(cookiesStorage), Cookie.Analytics)) ||
-    (checkCookies(cookies, Cookie.Analytics) && (
+      checkCookies(cookies, Cookie.Analytics)) && (
       <>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
           strategy="afterInteractive"
+          onReady={() => {
+            // @ts-ignore
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+              // @ts-ignore
+              dataLayer.push(arguments);
+            }
+
+            // @ts-ignore
+            gtag('js', new Date());
+            // @ts-ignore
+            gtag('config', id);
+          }}
         />
-        <Script src="js/analytics.js" strategy="afterInteractive" />
       </>
-    ))
+    )
   );
 };
 
