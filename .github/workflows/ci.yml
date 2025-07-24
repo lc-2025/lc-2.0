@@ -1,0 +1,89 @@
+name: LC 2.0 CI
+run-name: LC 2.0 Content-Integration
+on:
+  push:
+    branches: [main]
+  # For collaborations
+  pull_request:
+    branches: [main]
+jobs:
+  # Following jobs might be simplified into single one
+  # Splitting as pipeline demonstration
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installing dependencies
+        run: |
+          npm run setup
+      # Cache dependencies for future reuse
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      # Store project for future reuse
+      - name: Archive project artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lc-2.0
+          include-hidden-files: true
+          # Exclude dependencies to lighten artifacts (provided via cache)
+          path: |
+            .
+            !./node_modules
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      # Get dependencies
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      # Download stored project
+      - name: Getting project artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: lc-2.0
+      - name: Test applications
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: |
+          npm run test:ci
+      # Tests report storing for QA/checks
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: lc-2.0-test
+          path: |
+            ./**/coverage/**/*
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      # Get dependencies
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      # Download stored project
+      - name: Getting project artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: lc-2.0
+      - name: Build packages
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: |
+          npm run build
+      # Store production versions for future reuse
+      - name: Archive production verions
+        uses: actions/upload-artifact@v4
+        with:
+          name: lc-2.0-production
+          path: |
+            ./backend/.sanity
+            ./backend/dist
+            ./frontend/.next
