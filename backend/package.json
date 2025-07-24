@@ -1,0 +1,45 @@
+{
+  "name": "lc-20",
+  "version": "1.0.0",
+  "description": "LC 2.0 Website Backend. © LC 2025 <ↄ All Rights reserved.",
+  "homepage": "https://lcv3.sanity.studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lc-2025/lc-2.0/backend"
+  },
+  "bugs": {
+    "url": "https://github.com/lc-2025/lc-2.0/issues"
+  },
+  "license": "UNLICENSED",
+  "main": "package.json",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/vision": "^4.1.1",
+    "react": "^19.1",
+    "react-dom": "^19.1",
+    "sanity": "^4.1.1",
+    "styled-components": "^6.1.18"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/react": "^19.1",
+    "eslint": "^9.28",
+    "prettier": "^3.5",
+    "typescript": "^5.8"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
+  }
+}
