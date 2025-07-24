@@ -4,7 +4,7 @@ import Picture from '@/components/Layout/Picture';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import List from '@/components/Layout/List';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryIntro } from '@/sanity/queries';
@@ -79,7 +79,7 @@ export default async function Intro(): Promise<React.ReactNode> {
       />
       {/* Portfolio End */}
       <Menu delay={63500} />
-      <Terminal delay={66500} />
+      <TerminalWrapper delay={66500} />
     </section>
     // Intro End
   );

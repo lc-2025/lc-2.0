@@ -3,7 +3,7 @@ import Title from '@/components/Layout/Title';
 import Picture from '@/components/Layout/Picture';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryAbout } from '@/sanity/queries';
@@ -64,7 +64,7 @@ export default async function About(): Promise<React.ReactNode> {
         />
       ))}
       <Menu delay={60000} />
-      <Terminal delay={62000} />
+      <TerminalWrapper delay={62000} />
     </section>
     // About End
   );

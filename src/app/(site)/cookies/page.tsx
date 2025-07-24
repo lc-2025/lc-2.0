@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Title from '@/components/Layout/Title';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryCookies } from '@/sanity/queries';
@@ -60,7 +60,7 @@ export default async function Cookies(): Promise<React.ReactNode> {
         ),
       )}
       <Menu delay={34700} />
-      <Terminal delay={37500} />
+      <TerminalWrapper delay={37500} />
     </section>
     // Cookies End
   );

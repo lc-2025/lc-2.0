@@ -3,7 +3,7 @@ import Title from '@/components/Layout/Title';
 import Picture from '@/components/Layout/Picture';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryContacts } from '@/sanity/queries';
@@ -66,7 +66,7 @@ export default async function Contacts(): Promise<React.ReactNode> {
       )}
       {/* Summary End */}
       <Menu delay={4900} />
-      <Terminal delay={6900} />
+      <TerminalWrapper delay={6900} />
     </section>
     // Contacts End
   );

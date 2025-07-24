@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import AnimationTypedTitles from '@/components/Animation/AnimationTypedTitles';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import { queryHome } from '@/sanity/queries';
 import useFetch from '@/hooks/Fetch';
@@ -48,7 +48,7 @@ export default async function Home(): Promise<React.ReactNode> {
         html={true}
         delay={articles[1].animationDelay}
       />
-      <Terminal delay={9000} />
+      <TerminalWrapper delay={9000} />
     </section>
     // Home End
   );

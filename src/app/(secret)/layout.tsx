@@ -1,5 +1,5 @@
 import StateProvider from '@/components/StateProvider';
-import Analytics from '@/components/analytics/Analytics';
+import AnalyticsWrapper from '@/components/Analytics/AnalyticsWrapper';
 import { ERROR } from '@/utilities/constants';
 import { METADATA_LAYOUT, METADATA_VIEWPORT } from '@/data/content';
 import { NEXT_PUBLIC_ANALYTICS_ID } from '@/utilities/environment';
@@ -34,7 +34,7 @@ export default function SecretLayout({
       <html className="text-rem max-h-dvh min-h-dvh" lang="en">
         {/* Head Start */}
         <head>
-          <Analytics id={NEXT_PUBLIC_ANALYTICS_ID} />
+          <AnalyticsWrapper id={NEXT_PUBLIC_ANALYTICS_ID} />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </head>
         {/* Head End */}

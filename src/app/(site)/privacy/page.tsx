@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Title from '@/components/Layout/Title';
 import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryPrivacy } from '@/sanity/queries';
@@ -61,7 +61,7 @@ export default async function Privacy(): Promise<React.ReactNode> {
         ),
       )}
       <Menu delay={108000} />
-      <Terminal delay={111000} />
+      <TerminalWrapper delay={111000} />
     </section>
     // Privacy End
   );

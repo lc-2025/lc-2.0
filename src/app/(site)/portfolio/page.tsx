@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Title from '@/components/Layout/Title';
 import Project from '@/components/Layout/Project';
 import Menu from '@/components/Navigation/Menu';
-import Terminal from '@/components/Terminal/Terminal';
+import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { getImageUrl } from '@/sanity/client';
@@ -57,7 +57,7 @@ export default async function Portfolio(): Promise<React.ReactNode> {
       </div>
       {/* Portfolio End */}
       <Menu />
-      <Terminal delay={2500} />
+      <TerminalWrapper delay={2500} />
     </section>
     // Portfolio End
   );
