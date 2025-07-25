@@ -6,7 +6,7 @@ import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
-import { ACTIONS, ACTION, COOKIES_STATE } from '@/utilities/constants';
+import { ACTIONS, ACTION, COOKIES_STATE, TEST } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { Cookie, Status } from '@/types/state/State';
 
@@ -116,6 +116,7 @@ const CookiesBanner = (): React.ReactNode => {
     // Cookies Start
     <aside
       className={`cookies-banner bg-accent text-primary ${!open && 'hidden'}`}
+      data-testid={TEST.COOKIE.BANNER}
     >
       <h6 className="cookies-banner__title hidden">
         {METADATA.TITLE.COOKIES.LABEL}

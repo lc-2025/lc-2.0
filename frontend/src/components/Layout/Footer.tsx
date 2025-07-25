@@ -12,7 +12,13 @@ import {
   isLightTheme,
   setInitial,
 } from '@/utilities/utils';
-import { ACTIONS, ACTION, COOKIES, COOKIE_LEVEL } from '@/utilities/constants';
+import {
+  ACTIONS,
+  ACTION,
+  COOKIES,
+  COOKIE_LEVEL,
+  TEST,
+} from '@/utilities/constants';
 import { LINKS } from '@/data/content';
 
 /**
@@ -118,6 +124,7 @@ const Footer = (): React.ReactNode => {
                           }
                         : undefined
                     }
+                    data-testid={TEST.LINK_STRUCTURAL}
                   >
                     {setInitial(label)}
                   </Link>
@@ -136,7 +143,12 @@ const Footer = (): React.ReactNode => {
       >
         <div className="cookies-consent">
           <CookiesConsentForm title="Required" fields={[COOKIES[0]]} />
-          <CookiesConsentForm title="Optional" fields={COOKIES.filter((cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL)} />
+          <CookiesConsentForm
+            title="Optional"
+            fields={COOKIES.filter(
+              (cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL,
+            )}
+          />
         </div>
       </Modal>
       {/* Cookies End */}

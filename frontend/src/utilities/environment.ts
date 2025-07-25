@@ -2,6 +2,7 @@ import '../env';
 
 // Utilities - Environment Variables
 const {
+  FRONTEND_URL,
   NEXT_PUBLIC_PROJECT_ID,
   NEXT_PUBLIC_DATASET,
   NEXT_PUBLIC_API_VERSION,
@@ -9,6 +10,7 @@ const {
 } = process.env;
 
 export {
+  FRONTEND_URL,
   NEXT_PUBLIC_PROJECT_ID,
   NEXT_PUBLIC_DATASET,
   NEXT_PUBLIC_API_VERSION,

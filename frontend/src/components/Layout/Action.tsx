@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
-import { ACTIONS, KEY } from '@/utilities/constants';
+import { ACTIONS, KEY, TEST } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { TAction } from '@/types/components/Action';
 
@@ -14,6 +14,8 @@ import { TAction } from '@/types/components/Action';
  */
 const Action = ({ action, variant }: TAction): React.ReactNode => {
   // Variables
+  const { FOOTER, MODAL } = ACTIONS;
+  const { LINK, CLOSE, COOKIE } = TEST;
   const { label } = action;
   // Hooks
   const { theme } = useStateContext();
@@ -46,6 +48,7 @@ const Action = ({ action, variant }: TAction): React.ReactNode => {
       href={label}
       title={`${label} ${METADATA.TITLE.SUFFIX}`}
       tabIndex={0}
+      data-testid={LINK}
     >
       {setLabel()}
     </Link>
@@ -54,6 +57,13 @@ const Action = ({ action, variant }: TAction): React.ReactNode => {
       className="actions__action uppercase select-none"
       onClick={action.callback ?? undefined}
       aria-label={setLabel()}
+      data-testid={
+        label === FOOTER[0].label
+          ? LINK
+          : label === MODAL[0].label
+            ? CLOSE
+            : COOKIE[label.toUpperCase() as keyof typeof COOKIE]
+      }
     >
       {setLabel()}
     </button>

@@ -222,6 +222,27 @@ const CONSOLE_TYPE = {
   TITLE: 'title',
   SUBTITLE: 'subtitle',
 };
+const TEST = {
+  ASSERTION: {
+    HAVE_CLASS: 'have.class',
+    HAVE_CLASS_NOT: 'not.have.class',
+    HIDDEN: 'hidden',
+    EXIST: 'exist',
+    EXIST_NOT: 'not.exist',
+  },
+  INTRO: 'test-intro',
+  COOKIE: {
+    BANNER: 'test-banner',
+    ACCEPT: 'test-accept',
+    REQUIRED: 'test-required',
+    DECLINE: 'test-decline',
+  },
+  LINK: 'test-link',
+  LINK_STRUCTURAL: 'test-link-structural',
+  MODAL: 'test-modal',
+  CLOSE: 'test-close',
+  PROMPT: 'test-prompt',
+};
 
 export {
   WINDOW,
@@ -247,4 +268,5 @@ export {
   MENU_LOADING,
   PROMPT_ERROR,
   CONSOLE_TYPE,
+  TEST,
 };

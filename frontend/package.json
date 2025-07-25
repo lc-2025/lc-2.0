@@ -8,15 +8,17 @@
     "url": "https://github.com/lc-2025/lc-2.0/frontend"
   },
   "bugs": {
-     "url": "https://github.com/lc-2025/lc-2.0/issues"
+    "url": "https://github.com/lc-2025/lc-2.0/issues"
   },
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "lint": "next lint && prettier --write . && prettier --check .",
+    "cypress:open": "cypress open",
+    "test:ci": "cypress run --e2e",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -33,10 +35,12 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/cypress": "^10.0.3",
     "@types/lodash": "^4.17.18",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^14.5.2",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "eslint-config-prettier": "^10.1.5",

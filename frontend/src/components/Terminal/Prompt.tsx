@@ -16,6 +16,7 @@ import {
   COMMAND_OUTPUT,
   MENU_LOADING,
   PROMPT_ERROR,
+  TEST,
 } from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
 
@@ -208,6 +209,7 @@ const Prompt = ({
       <p
         className={`prompt__tag ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop basis-full'}`}
         onClick={handleFocus}
+        data-testid={TEST.PROMPT}
       >
         {isLightTheme(theme) ? (
           <span className="tag__user">Ready.</span>

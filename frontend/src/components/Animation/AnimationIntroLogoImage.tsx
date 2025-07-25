@@ -8,7 +8,7 @@ import handleState from '@/state/actions';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { checkCookies } from '@/utilities/utils';
-import { ROUTE, ACTION, ANIMATION_TIMELINE } from '@/utilities/constants';
+import { ROUTE, ACTION, ANIMATION_TIMELINE, TEST } from '@/utilities/constants';
 import {
   AnimationIntroType,
   TAnimationIntroImage,
@@ -126,6 +126,7 @@ const AnimationIntroImage = ({
     <aside
       className="animation-intro__image pointer-events-none mt-6 mr-auto mb-6 ml-auto p-6 select-none"
       ref={image}
+      data-testid={TEST.INTRO}
     >
       <h6 className="image__title hidden">Title</h6>
       {children}
