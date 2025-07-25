@@ -1,3 +1,4 @@
+import { EASTER_EGG } from '@/data/content';
 import { Status } from '@/types/state/State';
 
 const WINDOW = {
@@ -230,18 +231,25 @@ const TEST = {
     EXIST: 'exist',
     EXIST_NOT: 'not.exist',
   },
+  KEY: {
+    ENTER: '{enter}',
+  },
   INTRO: 'test-intro',
   COOKIE: {
     BANNER: 'test-banner',
     ACCEPT: 'test-accept',
     REQUIRED: 'test-required',
     DECLINE: 'test-decline',
+    LINK: 'test-cookies',
+    FIELD: 'test-cookies-field'
   },
   LINK: 'test-link',
   LINK_STRUCTURAL: 'test-link-structural',
   MODAL: 'test-modal',
   CLOSE: 'test-close',
   PROMPT: 'test-prompt',
+  EASTER_EGG: 'test-easter-egg',
+  PAGE_DELAY: 10000,
 };
 
 export {

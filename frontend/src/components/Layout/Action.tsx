@@ -60,9 +60,11 @@ const Action = ({ action, variant }: TAction): React.ReactNode => {
       data-testid={
         label === FOOTER[0].label
           ? LINK
-          : label === MODAL[0].label
-            ? CLOSE
-            : COOKIE[label.toUpperCase() as keyof typeof COOKIE]
+          : label === FOOTER[1].label
+            ? COOKIE.LINK
+            : label === MODAL[0].label
+              ? CLOSE
+              : COOKIE[label.toUpperCase() as keyof typeof COOKIE]
       }
     >
       {setLabel()}

@@ -6,7 +6,7 @@ import { Cookie, Status } from '@/types/state/State';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { isCookieActive } from '@/utilities/utils';
-import { ACTION, COOKIE_LEVEL, COOKIES } from '@/utilities/constants';
+import { ACTION, COOKIE_LEVEL, COOKIES, TEST } from '@/utilities/constants';
 import { TCookiesConsentForm } from '@/types/components/Cookies';
 
 /**
@@ -61,28 +61,48 @@ const CookiesConsentForm = ({
       [Status.Required]:
         (activeCookies.length === 1 &&
           COOKIES.find((element) =>
-            checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.ESSENTIAL),
+            checkExistingCookiesLevel(
+              activeCookies,
+              element,
+              COOKIE_LEVEL.ESSENTIAL,
+            ),
           )) ||
         (activeCookies.length > 0 &&
           COOKIES.every((element) =>
-            checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.ESSENTIAL),
+            checkExistingCookiesLevel(
+              activeCookies,
+              element,
+              COOKIE_LEVEL.ESSENTIAL,
+            ),
           ))
           ? true
           : false,
       [Status.Accepted]:
         activeCookies.length > 0 &&
         COOKIES.some((element) =>
-          checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.OPTIONAL),
+          checkExistingCookiesLevel(
+            activeCookies,
+            element,
+            COOKIE_LEVEL.OPTIONAL,
+          ),
         ) &&
         COOKIES.find((element) =>
-          checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.ESSENTIAL),
+          checkExistingCookiesLevel(
+            activeCookies,
+            element,
+            COOKIE_LEVEL.ESSENTIAL,
+          ),
         )
           ? true
           : false,
       [Status.Optional]:
         activeCookies.length > 0 &&
         COOKIES.some((element) =>
-          checkExistingCookiesLevel(activeCookies, element, COOKIE_LEVEL.OPTIONAL),
+          checkExistingCookiesLevel(
+            activeCookies,
+            element,
+            COOKIE_LEVEL.OPTIONAL,
+          ),
         ),
     };
 
@@ -150,6 +170,7 @@ const CookiesConsentForm = ({
                 title={title}
                 defaultChecked={isCookieActive(active, name)}
                 onChange={() => handleCookie(name.toLowerCase())}
+                data-testid={TEST.COOKIE.FIELD}
               />
               <span className="label__copy pl-6">{name}</span>
             </label>

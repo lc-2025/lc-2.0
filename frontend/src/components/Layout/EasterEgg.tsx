@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import useStorage from '@/hooks/Storage';
 import { useStateContext } from '@/hooks/State';
 import { checkCookies } from '@/utilities/utils';
-import { COMMAND, ROUTE, ACTION } from '@/utilities/constants';
+import { COMMAND, ROUTE, ACTION, TEST } from '@/utilities/constants';
 import { Cookie } from '@/types/state/State';
 
 /**
@@ -42,6 +42,7 @@ const EasterEgg = (): React.ReactNode => {
       <canvas
         id="canvas"
         className="easter-egg h-full max-h-dvh min-h-dvh w-full border-0 p-0"
+        data-testid={TEST.EASTER_EGG}
       ></canvas>
       <div
         id="c64TextInputReceiver"
