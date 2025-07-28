@@ -30,17 +30,17 @@ const Analytics = ({ id }: TAnalytics): React.ReactNode => {
           src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
           strategy="afterInteractive"
           onReady={() => {
-            // @ts-ignore
+            // @ts-expect-error Google Analytics API
             window.dataLayer = window.dataLayer || [];
 
             function gtag() {
-              // @ts-ignore
+              // @ts-expect-error Google Analytics API
               dataLayer.push(arguments);
             }
 
-            // @ts-ignore
+            // @ts-expect-error Google Analytics API
             gtag('js', new Date());
-            // @ts-ignore
+            // @ts-expect-error Google Analytics API
             gtag('config', id);
           }}
         />

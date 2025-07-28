@@ -5,7 +5,7 @@ import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
 import { queryHome } from '@/sanity/queries';
-import useFetch from '@/hooks/Fetch';
+import fetchCms from '@/sanity/fetch';
 import type { SanityDocument } from '@sanity/types';
 import { TPage } from '@/types/sanity';
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
  * @returns {*}  {Promise<React.ReactNode>}
  */
 export default async function Home(): Promise<React.ReactNode> {
-  const { data, error } = await useFetch(queryHome);
+  const { data, error } = await fetchCms(queryHome);
 
   // Error check
   if (error) {

@@ -16,8 +16,7 @@ import PixelMask from './PixelMask';
 const Picture = (props: TPictureProps): React.ReactNode => {
   // Variables
   const { srcLight, srcDark, ...rest } = props;
-  const classes =
-    'pointer-events-none m-auto p-6 select-none md:max-w-[62%]';
+  const classes = 'pointer-events-none m-auto p-6 select-none md:max-w-[62%]';
   const sizes =
     '(width >= 40rem) 33vw, (width >= 48rem) 80vw, (width >= 64rem) 106vw, (width >= 80rem) 133vw, (width >= 96rem) 160vw';
   // Hooks
@@ -31,6 +30,7 @@ const Picture = (props: TPictureProps): React.ReactNode => {
         src={srcLight}
         sizes={sizes}
         priority={true}
+        alt={props.alt}
       />
     </PixelMask>
   ) : (
@@ -41,6 +41,7 @@ const Picture = (props: TPictureProps): React.ReactNode => {
         src={srcDark}
         sizes={sizes}
         priority={true}
+        alt={props.alt}
       />
     </PixelMask>
   );

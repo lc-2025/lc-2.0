@@ -4,7 +4,7 @@ import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle'
 import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
-import useFetch from '@/hooks/Fetch';
+import fetchCms from '@/sanity/fetch';
 import { queryPrivacy } from '@/sanity/queries';
 import { formatDate } from '@/utilities/utils';
 import type { SanityDocument } from '@sanity/types';
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
  * @returns {*}  {Promise<React.ReactNode>}
  */
 export default async function Privacy(): Promise<React.ReactNode> {
-  const { data, error } = await useFetch(queryPrivacy);
+  const { data, error } = await fetchCms(queryPrivacy);
 
   // Error check
   if (error) {
@@ -45,21 +45,19 @@ export default async function Privacy(): Promise<React.ReactNode> {
         keyword={headline}
         content={`${tagline} ${formatDate(lastUpdate!)}`}
       />
-      {articles.map(
-        ({ _id, contents, animationSpeed, animationDelay }, i) => (
-          <AnimationTypedArticle
-            key={crypto.randomUUID() + i + _id}
-            content={contents.map((content, j) =>
-              i === 0 && j === 1
-                ? `${content} ${formatDate(lastUpdate!)}`
-                : content,
-            )}
-            html={true}
-            speed={animationSpeed}
-            delay={animationDelay}
-          />
-        ),
-      )}
+      {articles.map(({ _id, contents, animationSpeed, animationDelay }, i) => (
+        <AnimationTypedArticle
+          key={crypto.randomUUID() + i + _id}
+          content={contents.map((content, j) =>
+            i === 0 && j === 1
+              ? `${content} ${formatDate(lastUpdate!)}`
+              : content,
+          )}
+          html={true}
+          speed={animationSpeed}
+          delay={animationDelay}
+        />
+      ))}
       <Menu delay={108000} />
       <TerminalWrapper delay={111000} />
     </section>

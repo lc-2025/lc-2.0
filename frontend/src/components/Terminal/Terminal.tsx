@@ -21,7 +21,6 @@ import { Cookie } from '@/types/state/State';
  */
 const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   // Variables
-  let timeout = delay ?? 0;
   const { COMMAND_HISTORY } = DEFAULT_STATE;
   // Hooks
   const pathname = usePathname();
@@ -36,7 +35,7 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
     const timer = setTimeout(() => {
       setVisibility(true);
       clearTimeout(timer);
-    }, timeout);
+    }, delay ?? 0);
   });
 
   // Handlers

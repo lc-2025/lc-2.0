@@ -1,4 +1,3 @@
-import { EASTER_EGG } from '@/data/content';
 import { Status } from '@/types/state/State';
 
 const WINDOW = {

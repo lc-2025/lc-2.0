@@ -34,14 +34,14 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
     const projects = document.getElementsByClassName('container__project');
     const carousels = document.getElementsByClassName('project__study');
 
-    for (let project of projects) {
+    for (const project of projects) {
       project.classList.remove('basis-full');
       project.classList.add(
         '[&:nth-child(odd)>div>div]:bg-accent',
         '[&:nth-child(even)>div>div]:bg-primary',
       );
     }
-    for (let carousel of carousels) {
+    for (const carousel of carousels) {
       carousel.classList.add('hidden');
     }
 
@@ -60,7 +60,10 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
 
   return (
     // Element Start
-    <div className="container__project [&:nth-child(odd)>div>div]:bg-accent [&:nth-child(even)>div>div]:bg-primary flex-1/3" data-testid={`test-${name.toLowerCase().replace(/ /g, '')}`}>
+    <div
+      className="container__project [&:nth-child(odd)>div>div]:bg-accent [&:nth-child(even)>div>div]:bg-primary flex-1/3"
+      data-testid={`test-${name.toLowerCase().replace(/ /g, '')}`}
+    >
       {/* Cover Start */}
       <div
         ref={carousel}

@@ -23,7 +23,7 @@ const AnimationTypedArticle = ({
   content,
   html,
   speed,
-  delay
+  delay,
 }: TAnimationTyped): React.ReactNode => {
   // Hooks
   const pathname = usePathname();
@@ -36,7 +36,12 @@ const AnimationTypedArticle = ({
       contentType: html ? 'html' : '',
       strings: content,
       typeSpeed: speed ?? 25,
-      startDelay: setTimeline(pathname, SECTION.ARTICLE, isLightTheme(theme), delay),
+      startDelay: setTimeline(
+        pathname,
+        SECTION.ARTICLE,
+        isLightTheme(theme),
+        delay,
+      ),
     });
 
     return () => {
@@ -48,7 +53,7 @@ const AnimationTypedArticle = ({
     // Article Start
     <article className="content">
       <h6 className="content__title hidden">Content</h6>
-      <p className='content__placeholder hidden'>{content}</p>
+      <p className="content__placeholder hidden">{content}</p>
       <span
         className={`content__entry block p-6 ${isLightTheme(theme) && 'leading-mobile lg:leading-desktop'}`}
         ref={article}

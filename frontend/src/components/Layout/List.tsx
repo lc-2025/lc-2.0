@@ -25,9 +25,7 @@ const List = ({ list, speed, delay }: TAnimationList): React.ReactNode => {
           key={crypto.randomUUID() + i}
           speed={speed}
           delay={delay ? delay + i * 700 : i * 700}
-          content={[
-            `${setInitial(entry)}`,
-          ]}
+          content={[`${setInitial(entry)}`]}
         />
       ))}
     </ul>

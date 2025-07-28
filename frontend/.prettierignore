@@ -1,8 +1,5 @@
 node_modules
- .next
- .husky
- coverage
- .prettierignore
- .stylelintignore
- .eslintignore
- *.log
+coverage
+public/js
+.*
+*.log

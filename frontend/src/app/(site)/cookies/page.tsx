@@ -4,7 +4,7 @@ import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle'
 import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
-import useFetch from '@/hooks/Fetch';
+import fetchCms from '@/sanity/fetch';
 import { queryCookies } from '@/sanity/queries';
 import { formatDate } from '@/utilities/utils';
 import type { SanityDocument } from '@sanity/types';
@@ -28,14 +28,15 @@ export const metadata: Metadata = {
  * @returns {*}  {React.ReactNode}
  */
 export default async function Cookies(): Promise<React.ReactNode> {
-  const { data, error } = await useFetch(queryCookies);
+  const { data, error } = await fetchCms(queryCookies);
 
   // Error check
   if (error) {
     return error;
   }
 
-  const { headline, tagline, lastUpdate, articles } = data[0] as SanityDocument & TPage;
+  const { headline, tagline, lastUpdate, articles } =
+    data[0] as SanityDocument & TPage;
 
   return (
     // Cookies Start
@@ -44,21 +45,19 @@ export default async function Cookies(): Promise<React.ReactNode> {
         keyword={headline}
         content={`${tagline} ${formatDate(lastUpdate!)}`}
       />
-      {articles.map(
-        ({ _id, contents, animationSpeed, animationDelay }, i) => (
-          <AnimationTypedArticle
-            key={crypto.randomUUID() + i + _id}
-            content={contents.map((content, j) =>
-              i === 0 && j === 1
-                ? `${content} ${formatDate(lastUpdate!)}`
-                : content,
-            )}
-            html={true}
-            speed={animationSpeed}
-            delay={animationDelay}
-          />
-        ),
-      )}
+      {articles.map(({ _id, contents, animationSpeed, animationDelay }, i) => (
+        <AnimationTypedArticle
+          key={crypto.randomUUID() + i + _id}
+          content={contents.map((content, j) =>
+            i === 0 && j === 1
+              ? `${content} ${formatDate(lastUpdate!)}`
+              : content,
+          )}
+          html={true}
+          speed={animationSpeed}
+          delay={animationDelay}
+        />
+      ))}
       <Menu delay={34700} />
       <TerminalWrapper delay={37500} />
     </section>

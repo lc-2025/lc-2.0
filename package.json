@@ -18,9 +18,10 @@
   ],
   "scripts": {
     "setup": "npm i --legacy-peer-deps && npm i --legacy-peer-deps --ws",
-    "test": "npm run test:ci --workspace=frontend",
+    "lint": "npm run lint -w frontend",
+    "test": "npm run test:ci -w=frontend",
     "build": "npm run build --ws",
-    "deploy": "npm run deploy --workspace=backend",
+    "deploy": "npm run deploy -w=backend",
     "prepare": "husky"
   },
   "devDependencies": {

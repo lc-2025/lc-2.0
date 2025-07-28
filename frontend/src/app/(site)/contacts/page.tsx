@@ -5,7 +5,7 @@ import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle'
 import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
-import useFetch from '@/hooks/Fetch';
+import fetchCms from '@/sanity/fetch';
 import { queryContacts } from '@/sanity/queries';
 import { getImageUrl } from '@/sanity/client';
 import type { SanityDocument } from '@sanity/types';
@@ -29,14 +29,15 @@ export const metadata: Metadata = {
  * @returns {*}  {Promise<React.ReactNode>}
  */
 export default async function Contacts(): Promise<React.ReactNode> {
-  const { data, error } = await useFetch(queryContacts);
+  const { data, error } = await fetchCms(queryContacts);
 
   // Error check
   if (error) {
     return error;
   }
 
-  const { headline, tagline, pictures, articles } = data[0] as SanityDocument & TPage;
+  const { headline, tagline, pictures, articles } = data[0] as SanityDocument &
+    TPage;
   const { imageLight, imageDark, alt } = pictures;
 
   return (
@@ -53,17 +54,15 @@ export default async function Contacts(): Promise<React.ReactNode> {
         height={3672}
       />
       {/* Headline End */}
-      {articles.map(
-        ({ _id, contents, animationSpeed, animationDelay }, i) => (
-          <AnimationTypedArticle
-            key={crypto.randomUUID() + i + _id}
-            content={contents}
-            html={true}
-            speed={animationSpeed}
-            delay={animationDelay}
-          />
-        ),
-      )}
+      {articles.map(({ _id, contents, animationSpeed, animationDelay }, i) => (
+        <AnimationTypedArticle
+          key={crypto.randomUUID() + i + _id}
+          content={contents}
+          html={true}
+          speed={animationSpeed}
+          delay={animationDelay}
+        />
+      ))}
       {/* Summary End */}
       <Menu delay={4900} />
       <TerminalWrapper delay={6900} />

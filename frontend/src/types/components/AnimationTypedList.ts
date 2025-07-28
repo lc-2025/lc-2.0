@@ -1,6 +1,6 @@
 // Animation - List
 type TAnimationList = {
-  list: Array<string>
+  list: Array<string>;
   speed?: number;
   delay?: number;
 };

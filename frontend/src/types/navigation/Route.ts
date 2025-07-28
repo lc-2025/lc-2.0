@@ -6,7 +6,7 @@ type TRoute = {
 };
 
 type TRoutePrompt = {
-  [x: string]: string
+  [x: string]: string;
 };
 
 export type { TRoute, TRoutePrompt };

@@ -5,7 +5,7 @@ import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle'
 import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
-import useFetch from '@/hooks/Fetch';
+import fetchCms from '@/sanity/fetch';
 import { queryAbout } from '@/sanity/queries';
 import { getImageUrl } from '@/sanity/client';
 import type { SanityDocument } from '@sanity/types';
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
  * @returns {*}  {Promise<React.ReactNode>}
  */
 export default async function About(): Promise<React.ReactNode> {
-  const { data, error } = await useFetch(queryAbout);
+  const { data, error } = await fetchCms(queryAbout);
 
   // Error check
   if (error) {

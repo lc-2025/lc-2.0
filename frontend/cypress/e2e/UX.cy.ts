@@ -10,8 +10,7 @@ import { COMMAND, ROUTE, TEST } from '@/utilities/constants';
 describe('UX E2E Test', () => {
   // Variables
   const { PATH, SUB } = ROUTE.HOME;
-  const { INTRO, PROMPT, EASTER_EGG, PAGE_DELAY, TRANSITION, KEY } =
-    TEST;
+  const { INTRO, PROMPT, EASTER_EGG, PAGE_DELAY, TRANSITION, KEY } = TEST;
   const { wait, window } = cy;
 
   // Tests

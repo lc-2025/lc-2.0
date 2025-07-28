@@ -10,13 +10,15 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 const eslintConfig = [
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'prettier',
-    'stylelint-config-standard-scss',
-    'stylelint-config-prettier-scss',
-  ),
+  ...compat.config({
+    extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
+    rules: {
+      ...compat.config.rules,
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      'prefer-rest-params': 'warn',
+    },
+  }),
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
 ];

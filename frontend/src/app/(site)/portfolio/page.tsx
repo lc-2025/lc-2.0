@@ -4,7 +4,7 @@ import Project from '@/components/Layout/Project';
 import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
 import { METADATA } from '@/data/content';
-import useFetch from '@/hooks/Fetch';
+import fetchCms from '@/sanity/fetch';
 import { getImageUrl } from '@/sanity/client';
 import { queryPortfolio } from '@/sanity/queries';
 import type { SanityDocument } from '@sanity/types';
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
  * @returns {*}  {Promise<React.ReactNode>}
  */
 export default async function Portfolio(): Promise<React.ReactNode> {
-  const { data, error } = await useFetch(queryPortfolio);
+  const { data, error } = await fetchCms(queryPortfolio);
 
   // Error check
   if (error) {

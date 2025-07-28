@@ -29,7 +29,7 @@ const AnimationTypedTitles = ({
   const pathname = usePathname();
   const { theme } = useStateContext();
   const { LIGHT, DARK } = TITLES.HOME;
-  let data: Array<string> =
+  const data: Array<string> =
     (content ?? isLightTheme(theme))
       ? [LIGHT.HEADLINE, LIGHT.TAGLINE]
       : [DARK.HEADLINE, DARK.TAGLINE];
