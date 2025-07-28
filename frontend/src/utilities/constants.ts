@@ -143,11 +143,11 @@ const COOKIES = [
     level: COOKIE_LEVEL.OPTIONAL,
   },
   {
-    name: 'Linkedin',
+    name: 'LinkedIn',
     level: COOKIE_LEVEL.OPTIONAL,
   },
   {
-    name: 'Github',
+    name: 'GitHub',
     level: COOKIE_LEVEL.OPTIONAL,
   },
 ];
@@ -227,12 +227,18 @@ const TEST = {
   ASSERTION: {
     HAVE_CLASS: 'have.class',
     HAVE_CLASS_NOT: 'not.have.class',
+    HAVE_LENGTH: 'have.length',
     HIDDEN: 'hidden',
     EXIST: 'exist',
     EXIST_NOT: 'not.exist',
+    EQUAL: 'equal',
+    CONTAIN: 'contain',
   },
   KEY: {
     ENTER: '{enter}',
+    ONE: '{1}',
+    TWO: '{2}',
+    THREE: '{3}',
   },
   INTRO: 'test-intro',
   COOKIE: {
@@ -241,15 +247,23 @@ const TEST = {
     REQUIRED: 'test-required',
     DECLINE: 'test-decline',
     LINK: 'test-cookies',
-    FIELD: 'test-cookies-field'
+    FIELD: 'test-cookies-field',
   },
   LINK: 'test-link',
   LINK_STRUCTURAL: 'test-link-structural',
+  LINK_ASSOCIATIVE: {
+    ABOUT: 'test-link-about',
+    RESUME: 'test-link-resume',
+  },
   MODAL: 'test-modal',
   CLOSE: 'test-close',
   PROMPT: 'test-prompt',
   EASTER_EGG: 'test-easter-egg',
   PAGE_DELAY: 10000,
+  TRANSITION: 'test-transition',
+  PROJECT: 'test-discotram',
+  SLIDESHOW: 'test-slideshow',
+  SLIDESHOW_NAVIGATION: 'test-slideshow-navigation',
 };
 
 export {

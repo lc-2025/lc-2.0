@@ -60,7 +60,7 @@ const Project = ({ project }: TPorfolio): React.ReactNode => {
 
   return (
     // Element Start
-    <div className="container__project flex-1/3">
+    <div className="container__project [&:nth-child(odd)>div>div]:bg-accent [&:nth-child(even)>div>div]:bg-primary flex-1/3" data-testid={`test-${name.toLowerCase().replace(/ /g, '')}`}>
       {/* Cover Start */}
       <div
         ref={carousel}

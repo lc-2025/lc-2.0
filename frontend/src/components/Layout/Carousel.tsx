@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import PixelMask from './PixelMask';
+import { TEST } from '@/utilities/constants';
 import { TCarousel } from '@/types/components/Carousel';
 
 /**
@@ -35,7 +36,10 @@ const Carousel = ({ images }: TCarousel): React.ReactNode => {
 
   return (
     // Slideshow Start
-    <div className="study__slideshow flex flex-col items-center justify-center">
+    <div
+      className="study__slideshow flex flex-col items-center justify-center"
+      data-testid={TEST.SLIDESHOW}
+    >
       {images.map((image, i) => (
         // Container Start
         <div
@@ -64,6 +68,7 @@ const Carousel = ({ images }: TCarousel): React.ReactNode => {
           className={`navigation__action navigation__action--next ml-6 uppercase select-none ${current === images.length - 1 && 'opacity-50'}`}
           onClick={() => handleAction(2)}
           aria-label="Next"
+          data-testid={TEST.SLIDESHOW_NAVIGATION}
         >
           Next
         </button>

@@ -1,46 +1,39 @@
 import {
   getPath,
   assertPresence,
+  assertCookies,
+  assertModal,
   clickElement,
   enterCommand,
+  clickLinkStructural,
 } from '@/utilities/testingE2e';
-import { THEME, ROUTE, TEST, COMMAND } from '@/utilities/constants';
+import { THEME, ROUTE, TEST, COMMAND, COOKIES } from '@/utilities/constants';
 
 // Interaction End-to-End Test
 describe('Interaction E2E Test', () => {
   // Variables
+  const { HOME, ABOUT, PORTFOLIO } = ROUTE;
   const { INTRO, HELP } = COMMAND;
-  const { ASSERTION, COOKIE, LINK, LINK_STRUCTURAL, MODAL, CLOSE, PAGE_DELAY } =
-    TEST;
-  const { HAVE_CLASS, HAVE_CLASS_NOT, HIDDEN, EXIST, EXIST_NOT } = ASSERTION;
-  const { BANNER, ACCEPT, REQUIRED, DECLINE, FIELD } = COOKIE;
-  const { findByTestId, findByRole, get, findAllByTestId, wait } = cy;
-
-  // Helpers
-  /**
-   * @description Cookies banner status assertion helper
-   * @author Luca Cattide
-   * @date 25/07/2025
-   */
-  const assertHiddenBanner = (): void => {
-    findByTestId(BANNER).should(HAVE_CLASS, HIDDEN);
-  };
-
-  /**
-   * @description Cookies consent assertion helper
-   * @author Luca Cattide
-   * @date 25/07/2025
-   * @param {string} type
-   */
-  const assertCookies = (type: string): void => {
-    assertPresence(type);
-    clickElement(type);
-    assertHiddenBanner();
-  };
+  const {
+    ASSERTION,
+    COOKIE,
+    LINK,
+    LINK_STRUCTURAL,
+    LINK_ASSOCIATIVE,
+    CLOSE,
+    PAGE_DELAY,
+    PROJECT,
+    SLIDESHOW,
+    SLIDESHOW_NAVIGATION,
+  } = TEST;
+  const { RESUME } = LINK_ASSOCIATIVE;
+  const { HAVE_CLASS, HAVE_CLASS_NOT, HIDDEN, HAVE_LENGTH, EXIST } = ASSERTION;
+  const { ACCEPT, REQUIRED, DECLINE, FIELD } = COOKIE;
+  const { findByRole, get, findByTestId, findAllByTestId, wait } = cy;
 
   // Setup
   beforeEach(() => {
-    getPath(ROUTE.HOME.PATH);
+    getPath(HOME.PATH);
   });
   // TESTS
   it('Switches the template theme', () => {
@@ -56,53 +49,51 @@ describe('Interaction E2E Test', () => {
   it('Declines all the cookies', () => {
     assertCookies(DECLINE);
   });
-  it('Manages the cookies preferences', () => {
+  it('Manages the cookies preferences and verifies them', () => {
     assertCookies(ACCEPT);
-    assertPresence(COOKIE.LINK);
-    clickElement(COOKIE.LINK);
-
-    const modal = findByTestId(MODAL);
-
-    modal.should(HAVE_CLASS_NOT, HIDDEN);
+    clickLinkStructural(COOKIE.LINK);
 
     const cookies = findAllByTestId(FIELD);
-    console.log(cookies);
+
     cookies.should(EXIST);
-    cookies.contains().click();
+    cookies.parent().contains(COOKIES[2].name).click();
 
     clickElement(CLOSE);
-
-    modal.should(EXIST_NOT);
-
-    assertPresence(LINK);
-    clickElement(LINK);
-
-    modal.should(HAVE_CLASS_NOT, HIDDEN);
-
-    findAllByTestId(LINK_STRUCTURAL).should('have.length', 3);
+    assertModal(false);
+    clickLinkStructural(LINK);
+    findAllByTestId(LINK_STRUCTURAL).should(HAVE_LENGTH, 3);
   });
   it('Displays the available links then closes them', () => {
-    assertPresence(LINK);
-    clickElement(LINK);
-
-    const modal = findByTestId(MODAL);
-
-    modal.should(HAVE_CLASS_NOT, HIDDEN);
-
-    findAllByTestId(LINK_STRUCTURAL).should(EXIST);
+    clickLinkStructural(LINK);
+    assertPresence(LINK_STRUCTURAL);
     clickElement(CLOSE);
-
-    modal.should(EXIST_NOT);
+    assertModal(false);
   });
   it('Displays a website intro summary', () => {
     wait(PAGE_DELAY).then(() => {
       enterCommand(INTRO);
-      // TODO:
+      assertPresence(TEST.INTRO);
     });
   });
   it('Prints the commands list', () => {
     wait(PAGE_DELAY).then(() => {
       enterCommand(HELP);
+    });
+  });
+  it('Downloads the resume', () => {
+    getPath(ABOUT.PATH);
+    wait(62000).then(() => {
+      assertPresence(RESUME);
+      clickElement(RESUME);
+    });
+  });
+  it('Checks the portfolio', () => {
+    getPath(PORTFOLIO.PATH);
+    findByTestId(PROJECT).within(() => {
+      get('> div > div').click();
+      get('aside').should(HAVE_CLASS_NOT, HIDDEN);
+      findByTestId(SLIDESHOW).should(EXIST);
+      findByTestId(SLIDESHOW_NAVIGATION).click();
     });
   });
 });

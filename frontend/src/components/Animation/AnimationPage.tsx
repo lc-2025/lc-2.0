@@ -3,8 +3,8 @@
 import { useEffect, useRef, Ref } from 'react';
 import { useDispatchContext, useStateContext } from '@/hooks/State';
 import handleState from '@/state/actions';
-import { ACTION, COLOR } from '@/utilities/constants';
 import { isLightTheme } from '@/utilities/utils';
+import { ACTION, COLOR, TEST } from '@/utilities/constants';
 
 /**
  * @description Page transition component
@@ -61,6 +61,7 @@ const AnimationPage = (): React.ReactNode => {
     // Page Transition Start
     <aside
       className={`page-transition pointer-events-none fixed z-50 flex h-full w-full flex-col overflow-hidden select-none ${!loading && 'hidden'}`}
+      data-testid={TEST.TRANSITION}
     >
       <h6 className="page-transition__title hidden">Transition</h6>
       {Object.values(COLOR).map((color, i) => (

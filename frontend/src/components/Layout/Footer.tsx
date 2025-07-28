@@ -99,6 +99,7 @@ const Footer = (): React.ReactNode => {
         open={modal.links}
         title={ACTIONS.FOOTER[0].label}
         callback={() => handleOpen(ACTIONS.FOOTER[0].label.toLowerCase())}
+        data-testid={TEST.MODAL}
       >
         <ul className="footer__links">
           {LINKS.map(

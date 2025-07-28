@@ -5,9 +5,10 @@ import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle'
 import List from '@/components/Layout/List';
 import Menu from '@/components/Navigation/Menu';
 import TerminalWrapper from '@/components/Terminal/TerminalWrapper';
-import { METADATA } from '@/data/content';
 import useFetch from '@/hooks/Fetch';
 import { queryIntro } from '@/sanity/queries';
+import { TEST } from '@/utilities/constants';
+import { METADATA } from '@/data/content';
 import { getImageUrl } from '@/sanity/client';
 import type { SanityDocument } from '@sanity/types';
 import { TPage } from '@/types/sanity';
@@ -44,7 +45,7 @@ export default async function Intro(): Promise<React.ReactNode> {
 
   return (
     // Intro Start
-    <section className="intro bg-primary flex-1">
+    <section className="intro bg-primary flex-1" data-testid={TEST.INTRO}>
       {/* Headline Start */}
       <Title keyword={headline} content={tagline} />
       <Picture
