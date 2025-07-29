@@ -4,7 +4,7 @@ import Script from 'next/script';
 import useStorage from '@/hooks/Storage';
 import { useStateContext } from '@/hooks/State';
 import { checkCookies } from '@/utilities/utils';
-import { ACTION } from '@/utilities/constants';
+import { ACTION, TEST } from '@/utilities/constants';
 import { Cookie } from '@/types/state/State';
 import { TAnalytics } from '@/types/components/Analytics';
 
@@ -43,6 +43,7 @@ const Analytics = ({ id }: TAnalytics): React.ReactNode => {
             // @ts-expect-error Google Analytics API
             gtag('config', id);
           }}
+          data-testid={TEST.ANALYTICS}
         />
       </>
     )

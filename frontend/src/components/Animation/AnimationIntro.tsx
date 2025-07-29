@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { ACTION, ROUTE } from '@/utilities/constants';
+import { ACTION, ROUTE, TEST } from '@/utilities/constants';
 import { useRouter } from 'next/navigation';
 import AnimationIntroLogo from './AnimationIntroLogo';
 import AnimationIntroImage from './AnimationIntroLogoImage';
@@ -50,7 +50,10 @@ const AnimationIntro = (): React.ReactNode => {
   return (
     !titleStorage && (
       // Intro Animation Start
-      <section className="animation-intro flex w-full flex-col items-center justify-center">
+      <section
+        className="animation-intro flex w-full flex-col items-center justify-center"
+        data-testid={TEST.ANIMATION}
+      >
         <h6 className="animation-intro__title hidden">Intro</h6>
         <AnimationIntroImage type={AnimationIntroType.Logo}>
           <AnimationIntroLogo />

@@ -7,7 +7,13 @@ import useAnimation from '@/hooks/Animation';
 import useStorage from '@/hooks/Storage';
 import { useStateContext } from '@/hooks/State';
 import { setRoute, checkCookies } from '@/utilities/utils';
-import { COMMAND, DEFAULT_STATE, ROUTE, ACTION } from '@/utilities/constants';
+import {
+  COMMAND,
+  DEFAULT_STATE,
+  ROUTE,
+  ACTION,
+  TEST,
+} from '@/utilities/constants';
 import { TCommandHistory } from '@/types/components/Command';
 import { TTerminal } from '@/types/components/Terminal';
 import { TRoutePrompt } from '@/types/navigation/Route';
@@ -77,7 +83,7 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   return (
     // Terminal Start
     visibility && (
-      <section className="terminal">
+      <section className="terminal" data-testid={TEST.TERMINAL}>
         {/* First Prompt Start */}
         <Prompt
           key={crypto.randomUUID()}

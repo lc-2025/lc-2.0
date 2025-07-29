@@ -3,7 +3,11 @@
 import { useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Typed from 'typed.js';
-import { ANIMATION_OPTIONS_GENERIC, SECTION } from '@/utilities/constants';
+import {
+  ANIMATION_OPTIONS_GENERIC,
+  SECTION,
+  TEST,
+} from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 import { isLightTheme, setTimeline } from '@/utilities/utils';
 import { useStateContext } from '@/hooks/State';
@@ -51,7 +55,7 @@ const AnimationTypedArticle = ({
 
   return (
     // Article Start
-    <article className="content">
+    <article className="content" data-testid={TEST.ARTICLE}>
       <h6 className="content__title hidden">Content</h6>
       <p className="content__placeholder hidden">{content}</p>
       <span

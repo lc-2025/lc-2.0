@@ -1,3 +1,4 @@
+import { TEST } from '@/utilities/constants';
 import { TTitle } from '@/types/components/Title';
 
 /**
@@ -10,7 +11,7 @@ import { TTitle } from '@/types/components/Title';
 const Title = ({ keyword, content }: TTitle): React.ReactNode => {
   return (
     // Title Start
-    <h1 className="title hidden">
+    <h1 className="title hidden" data-testid={TEST.TITLE}>
       <mark>
         <strong>{keyword}</strong>
       </mark>{' '}

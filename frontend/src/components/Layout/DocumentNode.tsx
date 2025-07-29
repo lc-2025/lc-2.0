@@ -7,7 +7,7 @@ import Footer from '@/components/Layout/Footer';
 import CookiesBanner from '../Cookies/CookiesBanner';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
-import { ERROR, CONSOLE_TYPE } from '@/utilities/constants';
+import { ERROR, CONSOLE_TYPE, TEST } from '@/utilities/constants';
 import { EASTER_EGG, TITLES } from '@/data/content';
 import { TDocumentNode } from '@/types/components/DocumentNode';
 
@@ -66,6 +66,7 @@ const DocumentNode = ({
     // Body Start
     <body
       className={`bg-primary text-accent text-mobile lg:text-desktop max-h-dvh min-h-dvh overflow-hidden ${isLightTheme(theme) ? `${fontLight} uppercase` : fontDark} antialiased`}
+      data-testid={TEST.BODY}
     >
       <noscript>{ERROR.JS}</noscript>
       {isLightTheme(theme) && loading && <AnimationPage />}

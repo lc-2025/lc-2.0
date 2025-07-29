@@ -1,10 +1,11 @@
 'use client';
 
 import Image from 'next/image';
+import PixelMask from './PixelMask';
 import { useStateContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
+import { TEST } from '@/utilities/constants';
 import { TPictureProps } from '@/types/components/Picture';
-import PixelMask from './PixelMask';
 
 /**
  * @description Picture component
@@ -31,6 +32,7 @@ const Picture = (props: TPictureProps): React.ReactNode => {
         sizes={sizes}
         priority={true}
         alt={props.alt}
+        data-testid={TEST.PICTURE}
       />
     </PixelMask>
   ) : (
@@ -42,6 +44,7 @@ const Picture = (props: TPictureProps): React.ReactNode => {
         sizes={sizes}
         priority={true}
         alt={props.alt}
+        data-testid={TEST.PICTURE}
       />
     </PixelMask>
   );

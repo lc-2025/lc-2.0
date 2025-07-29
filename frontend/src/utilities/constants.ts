@@ -263,6 +263,15 @@ const TEST = {
   PROJECT: 'test-discotram',
   SLIDESHOW: 'test-slideshow',
   SLIDESHOW_NAVIGATION: 'test-slideshow-navigation',
+  ANALYTICS: 'test-analytics',
+  ANIMATION: 'test-animation',
+  BODY: 'test-body',
+  TITLES: 'test-titles',
+  ARTICLE: 'test-article',
+  TERMINAL: 'test-terminal',
+  TITLE: 'test-title',
+  PICTURE: 'test-picture',
+  MENU: 'test-menu',
 };
 
 export {

@@ -6,7 +6,7 @@ import Typed from 'typed.js';
 import { useStateContext } from '@/hooks/State';
 import { TITLES } from '@/data/content';
 import { isLightTheme, setTimeline } from '@/utilities/utils';
-import { ANIMATION_OPTIONS, SECTION } from '@/utilities/constants';
+import { ANIMATION_OPTIONS, SECTION, TEST } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 
@@ -70,7 +70,7 @@ const AnimationTypedTitles = ({
 
   return (
     // Titles Start
-    <hgroup className="terminal__titles">
+    <hgroup className="terminal__titles" data-testid={TEST.TITLES}>
       {data.map((_, i) =>
         i === 0 ? (
           <div key={crypto.randomUUID() + i}>

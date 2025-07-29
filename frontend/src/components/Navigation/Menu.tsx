@@ -9,6 +9,7 @@ import {
   getReverseC,
   setRoute,
 } from '@/utilities/utils';
+import { TEST } from '@/utilities/constants';
 import { TAnimationMenu } from '@/types/components/AnimationTypedMenu';
 
 /**
@@ -24,7 +25,7 @@ const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
 
   return (
     // Menu Start
-    <nav className="menu flex flex-col">
+    <nav className="menu flex flex-col" data-testid={TEST.MENU}>
       <h6 className="menu__title hidden">Menu</h6>
       {/* Entries Start */}
       <ul

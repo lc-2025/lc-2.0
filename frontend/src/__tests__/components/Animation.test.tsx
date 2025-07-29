@@ -1,0 +1,46 @@
+import { render, screen } from '@testing-library/react';
+import AnimationWrapper from '@/components/Animation/AnimationWrapper';
+import AnimationTypedTitles from '@/components/Animation/AnimationTypedTitles';
+import { TEST } from '@/utilities/constants';
+import { METADATA } from '@/data/content';
+import { assertRender } from '@/utilities/testing';
+import AnimationTypedArticle from '@/components/Animation/AnimationTypedArticle';
+
+// Animation Unit/Integration Test
+describe('Animation Unit/Integration Test', () => {
+  // Variables
+  const { NAME, KEYWORD } = METADATA;
+  const { TITLES, ARTICLE } = TEST;
+  const { getByTestId, getByRole } = screen;
+
+  // Helpers
+  /**
+   * @description Title assertion helper
+   * @author Luca Cattide
+   * @date 29/07/2025
+   * @param {number} level
+   * @param {string} title
+   */
+  const assertTitle = (level: number, title: string): void => {
+    expect(getByRole('heading', { level })).toHaveTextContent(title);
+  };
+
+  // Tests
+  it('Renders the intro animation', () => {
+    /* render(<AnimationWrapper />);
+    expect(screen.getByTestId(TEST.ANALYTICS)).toBeInTheDocument(); */
+  });
+  it('Renders the titles animation', () => {
+    render(<AnimationTypedTitles />);
+    assertRender(TITLES);
+    assertTitle(1, NAME);
+    assertTitle(2, KEYWORD);
+  });
+  it('Renders the article animaton', () => {
+    const content = ['foo'];
+
+    render(<AnimationTypedArticle content={content} />);
+    assertRender(ARTICLE);
+    expect(getByRole('paragraph')).toHaveTextContent(content[0]);
+  });
+});
