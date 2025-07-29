@@ -7,6 +7,7 @@ describe('Analytics Unit/Integration Test', () => {
   // Tests
   it('Renders the Analytics plugin', () => {
     render(<AnalyticsWrapper id="foo" />);
+    // @ts-expect-error Testing Library issue
     expect(screen.getByTestId(TEST.ANALYTICS)).toBeInTheDocument();
   });
 });

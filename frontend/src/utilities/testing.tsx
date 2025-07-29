@@ -12,6 +12,7 @@ const { getByTestId } = screen;
  * @param {string} id
  */
 const assertRender = (id: string): void => {
+  // @ts-expect-error Testing Library issue
   expect(getByTestId(id)).toBeInTheDocument();
 };
 

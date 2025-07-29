@@ -10,7 +10,7 @@ describe('Animation Unit/Integration Test', () => {
   // Variables
   const { NAME, KEYWORD } = METADATA;
   const { TITLES, ARTICLE } = TEST;
-  const { getByTestId, getByRole } = screen;
+  const { getByRole } = screen;
 
   // Helpers
   /**
@@ -21,6 +21,7 @@ describe('Animation Unit/Integration Test', () => {
    * @param {string} title
    */
   const assertTitle = (level: number, title: string): void => {
+    // @ts-expect-error Testing Library issue
     expect(getByRole('heading', { level })).toHaveTextContent(title);
   };
 
@@ -36,6 +37,7 @@ describe('Animation Unit/Integration Test', () => {
 
     render(<AnimationTypedArticle content={content} />);
     assertRender(ARTICLE);
+    // @ts-expect-error Testing Library issue
     expect(getByRole('paragraph')).toHaveTextContent(content[0]);
   });
 });
