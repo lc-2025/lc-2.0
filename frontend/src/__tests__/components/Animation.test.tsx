@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import AnimationWrapper from '@/components/Animation/AnimationWrapper';
 import AnimationTypedTitles from '@/components/Animation/AnimationTypedTitles';
 import { TEST } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
@@ -26,10 +25,6 @@ describe('Animation Unit/Integration Test', () => {
   };
 
   // Tests
-  it('Renders the intro animation', () => {
-    /* render(<AnimationWrapper />);
-    expect(screen.getByTestId(TEST.ANALYTICS)).toBeInTheDocument(); */
-  });
   it('Renders the titles animation', () => {
     render(<AnimationTypedTitles />);
     assertRender(TITLES);
