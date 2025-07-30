@@ -122,7 +122,3 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lc-2.0-production
-          path: |
-            ./backend/.sanity
-            ./backend/dist
-            ./frontend/.next
