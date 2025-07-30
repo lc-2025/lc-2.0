@@ -26,7 +26,7 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ./node_modules
+          path: ./**/node_modules/**/*
           key: modules-${{ hashFiles('package-lock.json') }}
       # Store project for future reuse
       - name: Archive project artifacts
@@ -37,7 +37,7 @@ jobs:
           # Exclude dependencies to lighten artifacts (provided via cache)
           path: |
             .
-            !./node_modules
+            !./**/node_modules/**/*
   test:
     runs-on: ubuntu-latest
     needs: setup
@@ -47,7 +47,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ./node_modules
+          path: ./**/node_modules/**/*
           key: modules-${{ hashFiles('package-lock.json') }}
       # Download stored project
       - name: Getting project artifacts
@@ -74,7 +74,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ./node_modules
+          path: ./**/node_modules/**/*
           key: modules-${{ hashFiles('package-lock.json') }}
       # Download stored project
       - name: Getting project artifacts
