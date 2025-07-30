@@ -91,21 +91,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      # Get dependencies
       - name: Getting dependencies
         id: cache
         uses: actions/cache@v3
         with:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
-      # Download stored project
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
         with:
           name: lc-2.0
       - name: Build packages
         run: npm run build
-      # Cache production dependencies for future reuse
       - name: Cache production dependencies
         uses: actions/cache@v4
         with:
@@ -123,7 +120,6 @@ jobs:
         with:
           name: lc-2.0-production
           include-hidden-files: true
-          # Exclude dependencies to lighten artifacts (provided via cache)
           path: |
             .
             !./node_modules
