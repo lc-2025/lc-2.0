@@ -68,11 +68,11 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      # Download stored project
-      - name: Getting project artifacts
+      # Download stored production version
+      - name: Getting production artifacts
         uses: actions/download-artifact@v4
         with:
-          name: lc-2.0
+          name: lc-2.0-production
           github-token: ${{ secrets.GH_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
       - name: Install Vercel CLI
