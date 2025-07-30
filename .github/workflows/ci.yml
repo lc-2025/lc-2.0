@@ -7,8 +7,6 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  # Following jobs might be simplified into single one
-  # Splitting as pipeline demonstration
   setup:
     runs-on: ubuntu-latest
     steps:
@@ -20,13 +18,14 @@ jobs:
           node-version: '22.x'
           cache: 'npm'
       - name: Installing dependencies
-        run: |
-          npm run setup
+        run: npm run setup:ci
       # Cache dependencies for future reuse
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ./node_modules
+          path: |
+            ~/.cache
+            ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
       # Store project for future reuse
       - name: Archive project artifacts
@@ -43,11 +42,13 @@ jobs:
     needs: setup
     steps:
       # Get dependencies
-      - name: Cache dependencies
+      - name: Getting dependencies
         id: cache
         uses: actions/cache@v3
         with:
-          path: ./node_modules
+          path: |
+            ~/.cache
+            ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
       # Download stored project
       - name: Getting project artifacts
@@ -56,21 +57,19 @@ jobs:
           name: lc-2.0
       - name: Test applications
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: |
-          npm run test
+        run: npm run test
       # Tests report storing for QA/checks
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
           name: lc-2.0-test
-          path: |
-            ./**/coverage/**/*
+          path: ./**/coverage/**/*
   build:
     runs-on: ubuntu-latest
     needs: test
     steps:
       # Get dependencies
-      - name: Cache dependencies
+      - name: Getting dependencies
         id: cache
         uses: actions/cache@v3
         with:
@@ -83,8 +82,7 @@ jobs:
           name: lc-2.0
       - name: Build packages
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: |
-          npm run build
+        run: npm run build
       # Store production versions for future reuse
       - name: Archive production verions
         uses: actions/upload-artifact@v4
