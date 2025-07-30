@@ -17,8 +17,8 @@
     "./frontend"
   ],
   "scripts": {
-    "setup": "npm i --legacy-peer-deps && npm i --legacy-peer-deps --ws",
-    "setup:ci": "npm ci --legacy-peer-deps && npm ci --legacy-peer-deps --ws",
+    "setup": "npm i --legacy-peer-deps",
+    "setup:ci": "npm ci --legacy-peer-deps",
     "lint": "npm run lint -w frontend",
     "test": "npm run test:ci -w frontend",
     "build": "npm run build --ws",
