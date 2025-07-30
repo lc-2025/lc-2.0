@@ -12,8 +12,9 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 jobs:
   deploy-backend:
-    runs-on: ubuntu-latest
-     # Pipeline Check
+    runs-on:
+      ubuntu-latest
+      # Pipeline Check
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       # Get dependencies
@@ -23,8 +24,18 @@ jobs:
         with:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
-      # Download stored project
-      - name: Getting project artifacts
+      # Get production dependencies
+      - name: Getting production dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      # Download stored production version
+      - name: Getting production artifacts
         uses: actions/download-artifact@v4
         with:
           name: lc-2.0-production
