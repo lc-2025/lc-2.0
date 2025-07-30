@@ -38,7 +38,9 @@ jobs:
       - name: Getting production artifacts
         uses: actions/download-artifact@v4
         with:
+          name: lc-2.0-production
           github-token: ${{ secrets.GH_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
       - name: Deploy Backend
         run: npm run deploy
   deploy-frontend:
