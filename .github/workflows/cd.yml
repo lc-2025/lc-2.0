@@ -40,6 +40,7 @@ jobs:
         with:
           name: lc-2.0-production
           github-token: ${{ secrets.GH_TOKEN }}
+          repository: lc-2025/lc-2.0
           run-id: ${{ github.event.workflow_run.id }}
       - name: Deploy Backend
         run: npm run deploy
