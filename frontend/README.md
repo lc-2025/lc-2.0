@@ -2,9 +2,9 @@
 
 LC website version 2.0 (3) frontend.
 
-![LC 2.0 Preview](./docs/preview.gif "LC 2.0 Preview")
-![LC 2.0 Preview - Light theme](./docs/preview-light.png "LC 2.0 Preview - Light theme")
-![LC 2.0 Preview - Dark theme](./docs/preview-dark.png "LC 2.0 Preview - Dark theme")
+![LC 2.0 Preview](./docs/preview.gif 'LC 2.0 Preview')
+![LC 2.0 Preview - Light theme](./docs/preview-light.png 'LC 2.0 Preview - Light theme')
+![LC 2.0 Preview - Dark theme](./docs/preview-dark.png 'LC 2.0 Preview - Dark theme')
 
 [![LC 2.0 CI](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml) [![LC 2.0 CD](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml)
 
