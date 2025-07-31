@@ -2,7 +2,7 @@
 
 LC website version 2.0 (3) frontend.
 
-![LC 2.0 Preview](./docs/preview.gif "LC 2.0 Preview")
+![LC 2.0 Preview](./docs/preview.gif 'LC 2.0 Preview')
 
 [![LC 2.0 CI](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml) [![LC 2.0 CD](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml)
 
