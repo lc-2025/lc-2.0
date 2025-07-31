@@ -44,11 +44,7 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
       - name: Deploy Backend
-        uses: sanity-io/github-action-sanity@v0.6-alpha
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_TOKEN_LC }}
-        with:
-          args: deploy
+        run: npm run deploy
   deploy-frontend:
     runs-on: ubuntu-latest
     needs: deploy-backend
