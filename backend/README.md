@@ -1,9 +1,89 @@
-# Sanity Clean Content Studio
+# LC 2.0 - Backend
 
-Congratulations, you have now installed the Sanity Content Studio, an open-source real-time content editing environment connected to the Sanity backend.
+LC 2.0 backend.
 
-Now you can do the following things:
+[![LC 2.0 CI](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml) [![LC 2.0 CD](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml)
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- [Join the Sanity community](https://www.sanity.io/community/join?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+## About
+
+A server application that provides an UI and a **REST API** to access and manage the website data stored on the _Sanity_ headless CMS.
+
+© LC 2025 <ↄ All Rights reserved.
+
+## Stack
+
+### Languages
+
+- JavaScript
+- TypeScript
+
+### Environments
+
+- DOM
+
+### Frameworks
+
+- Sanity
+
+### Compilers
+
+- TypeScript
+
+### Testing
+
+- Jest
+- Cypress
+
+### Versioning
+
+- GitHub
+- Husky
+
+### Content-integration/Delivery
+
+- GitHub Actions
+
+### Deployment
+
+- Sanity
+
+## Getting Started
+
+The project production version is available on _Sanity_.
+For any contribution, maintanance and/or trial needs, please refer to the following specifications.
+
+### Server
+
+On terminal, from project root:
+
+- To run in `development` mode
+
+```bash
+npm run dev
+```
+
+- To build the production version
+
+```bash
+npm run build
+```
+
+- To run in `production` mode
+
+```bash
+npm run start
+```
+
+- To deploy the production version:
+
+```bash
+npm run deploy
+```
+
+## Deploy
+
+_LC Backend_ is integrated and delivered to production via _GitHub Actions_ workflows pipeline, where the server is being set up and built with _Sanity_.
+
+## Contributing
+
+Please read more about required best practices on the specific [contributing reference document](../.github/CONTRIBUTING.md)
