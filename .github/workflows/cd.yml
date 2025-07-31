@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       # Download stored production version
       - name: Getting production artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.6
         with:
           name: lc-2.0-production
           github-token: ${{ secrets.GH_TOKEN }}
@@ -69,11 +69,9 @@ jobs:
       - name: Getting production artifacts
         uses: actions/download-artifact@v4
         with:
-          name: lc-2.0
+          name: lc-2.0-production
           github-token: ${{ secrets.GH_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
-      - name: Build packages
-        run: npm run build
       - name: Install Vercel CLI
         run: npm i --g vercel@latest
       - name: Pull Vercel Environment Information
