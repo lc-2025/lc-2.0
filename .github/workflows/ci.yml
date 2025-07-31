@@ -122,6 +122,5 @@ jobs:
           name: lc-2.0-production
           include-hidden-files: true
           path: |
-            ./backend
-            ./frontend
-            ./package*
+            .
+            !./node_modules
