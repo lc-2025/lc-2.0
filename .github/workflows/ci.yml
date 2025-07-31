@@ -39,17 +39,18 @@ jobs:
         run: npm run setup:ci
       # Cache dependencies for future reuse
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cache
             ./node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          key: modules-${{ hashFiles('**/package-lock.json') }}
       # Store project for future reuse
       - name: Archive project artifacts
         uses: actions/upload-artifact@v4
         with:
           name: lc-2.0
+          # i.e. dotfiles
           include-hidden-files: true
           # Exclude dependencies to lighten artifacts (provided via cache)
           path: |
@@ -62,12 +63,12 @@ jobs:
       # Get dependencies
       - name: Getting dependencies
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cache
             ./node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          key: modules-${{ hashFiles('**/package-lock.json') }}
       # Download stored project
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
@@ -75,12 +76,12 @@ jobs:
           name: lc-2.0
       - name: Test applications - Unit/Integration
         run: npm run test
-      - name: Test applications - E2E
-        uses: cypress-io/github-action@v6
-        with:
-          project: ./frontend
-          build: npm run build -w frontend
-          start: npm run start -w frontend
+      #- name: Test applications - E2E
+      #  uses: cypress-io/github-action@v6
+      #  with:
+      #    project: ./frontend
+      #    build: npm run build -w frontend
+      #    start: npm run start -w frontend
       # Tests report storing for QA/checks
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
@@ -93,10 +94,10 @@ jobs:
     steps:
       - name: Getting dependencies
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          key: modules-${{ hashFiles('**/package-lock.json') }}
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
         with:

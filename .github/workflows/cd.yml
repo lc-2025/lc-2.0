@@ -22,10 +22,10 @@ jobs:
       # Get dependencies
       - name: Getting dependencies
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          key: modules-${{ hashFiles('**/package-lock.json') }}
       # Get production dependencies
       - name: Getting production dependencies
         uses: actions/cache@v4
@@ -53,10 +53,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Getting dependencies
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          key: modules-${{ hashFiles('**/package-lock.json') }}
       - name: Getting production dependencies
         uses: actions/cache@v4
         with:
