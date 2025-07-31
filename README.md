@@ -2,11 +2,7 @@
 
 LC website version 2.0 (3).
 
-<div style="text-align: center;">
-  <img src="./docs/logo.svg" alt="LC 2.0 Logo" style="user-select: none;" />
-  <img src="./docs/tagline.svg" alt="LC 2.0 Tagline" style="margin: 2rem 0 0; user-select: none;" />
-</div>
-
+![LC 2.0](./docs/tagline.svg "LC 2.0")
 ![LC 2.0 Preview](./docs/preview.gif "LC 2.0 Preview")
 
 [![LC 2.0 CI](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml) [![LC 2.0 CD](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml)
