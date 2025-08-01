@@ -76,12 +76,12 @@ jobs:
           name: lc-2.0
       - name: Test applications - Unit/Integration
         run: npm run test
-      #- name: Test applications - E2E
-      #  uses: cypress-io/github-action@v6
-      #  with:
-      #    project: ./frontend
-      #    build: npm run build -w frontend
-      #    start: npm run start -w frontend
+      - name: Test applications - E2E
+        uses: cypress-io/github-action@v6
+        with:
+          project: ./frontend
+          build: npm run build -w frontend
+          start: npm run start -w frontend
       # Tests report storing for QA/checks
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
