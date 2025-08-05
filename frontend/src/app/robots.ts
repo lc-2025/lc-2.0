@@ -13,8 +13,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/.next', '/public'],
-        disallow: ['/node_modules/', '/src/', '/*.*', '/.*'],
+        disallow: '*',
       },
     ],
     sitemap: `${METADATA.BASEURL}/sitemap.xml`,
