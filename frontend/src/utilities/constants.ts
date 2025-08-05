@@ -57,7 +57,7 @@ const ACTION = {
 const ROUTE = {
   HOME: {
     LABEL: 'home',
-    TITLE: 'Developer <ↄ Scholar and martial artist <ↄ Luca Cattide',
+    TITLE: 'Developer <ↄ Scholar and martial artist <ↄ LC',
     PATH: '/home',
     SUB: {
       INTRO: {
@@ -76,24 +76,24 @@ const ROUTE = {
   },
   ABOUT: {
     LABEL: 'about',
-    TITLE: 'The story <ↄ The qualities and passions <ↄ Luca Cattide',
+    TITLE: 'The story <ↄ The qualities and passions <ↄ LC',
     PATH: '/about',
   },
   PORTFOLIO: {
     LABEL: 'portfolio',
-    TITLE: 'Projects <ↄ Web and Mobile selection <ↄ Luca Cattide',
+    TITLE: 'Projects <ↄ Web and Mobile selection <ↄ LC',
     PATH: '/portfolio',
   },
   CONTACTS: {
     LABEL: 'contacts',
-    TITLE: 'Communications and requests <ↄ Direct line <ↄ Luca Cattide',
+    TITLE: 'Communications and requests <ↄ Direct line <ↄ LC',
     PATH: '/contacts',
   },
 };
 const LINKS_STRUCTURAL = {
   PRIVACY: {
     LABEL: 'privacy',
-    TITLE: 'Personal data processing policy <ↄ Luca Cattide',
+    TITLE: 'Personal data processing policy <ↄ LC',
     PATH: '/privacy',
   },
   COOKIES: {
