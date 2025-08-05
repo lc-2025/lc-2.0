@@ -3,12 +3,12 @@ import { LINKS_STRUCTURAL, WINDOW } from '@/utilities/constants';
 const { LIGHT, DARK } = WINDOW.MEDIA.THEME;
 const { PRIVACY, COOKIES } = LINKS_STRUCTURAL;
 const METADATA = {
-  NAME: 'Luca Cattide',
+  NAME: 'LC',
   KEYWORD: 'Software Engineer',
   BASEURL: 'https://lucati.dev',
   TITLE: {
     HOME: {
-      LABEL: 'Home <ↄ Software Engineer <ↄ Luca Cattide',
+      LABEL: 'Home <ↄ Software Engineer <ↄ LC',
       DESCRIPTION:
         'Software Engineer <ↄ Mobile <ↄ Desktop and currently techniques',
     },
@@ -32,7 +32,7 @@ const METADATA = {
       LABEL: 'Cookies',
       DESCRIPTION: 'Cookies <ↄ Management <ↄ Functioning and protection',
     },
-    SUFFIX: '<ↄ Software Engineer <ↄ Luca Cattide',
+    SUFFIX: '<ↄ Software Engineer <ↄ LC',
   },
   DESCRIPTION: 'Software Engineer <ↄ Full-Stack on the Web all over the world',
 };
@@ -100,12 +100,12 @@ const LINKS = [
   },
   {
     label: 'LinkedIn',
-    title: 'Follow Luca Cattide on the LinkedIn professional profile',
+    title: 'Follow LC on the LinkedIn professional profile',
     link: 'https://tinyurl.com/5556a4en',
   },
   {
     label: 'GitHub',
-    title: 'Follow Luca Cattide on the GitHub digital repository',
+    title: 'Follow LC on the GitHub digital repository',
     link: 'https://tinyurl.com/2przrwrx',
   },
 ];
