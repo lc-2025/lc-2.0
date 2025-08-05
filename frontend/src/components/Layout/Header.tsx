@@ -29,7 +29,7 @@ const Header = (): React.ReactNode => {
       <Link
         className="header__link"
         href={ROUTE.HOME.PATH}
-        title="Software Engineer <ↄ Luca Cattide <ↄ Back to the Home Page"
+        title="Software Engineer <ↄ LC <ↄ Back to the Home Page"
         tabIndex={0}
         onClick={(e) => navigate(ROUTE.HOME.PATH, e)}
       >
