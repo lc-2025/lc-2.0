@@ -78,7 +78,7 @@ const METADATA_VIEWPORT = {
 const TITLES = {
   HOME: {
     LIGHT: {
-      HEADLINE: `**** ${METADATA.NAME} V3 ****`,
+      HEADLINE: `**** Luca Cattide V3 ****`,
       TAGLINE: METADATA.KEYWORD,
     },
     DARK: {
