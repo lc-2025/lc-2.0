@@ -44,8 +44,10 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
       # Proceeding manually since official action got issues
-      - name: Install Sanity CLI & Deploy Backend
-        run: npm i -g sanity@latest && npm run deploy
+      - name: Install Sanity CLI
+        run: npm i --g sanity@latest
+      - name: Deploy Backend
+        run: npm run deploy
   deploy-frontend:
     runs-on: ubuntu-latest
     needs: deploy-backend
