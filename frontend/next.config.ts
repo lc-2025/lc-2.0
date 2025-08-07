@@ -1,4 +1,3 @@
-import bundleAnalyzer from '@next/bundle-analyzer';
 import {
   NEXT_PUBLIC_PROJECT_ID,
   NEXT_PUBLIC_DATASET,
@@ -24,9 +23,5 @@ const nextConfig: NextConfig = {
     ],
   },
 };
-// Build Analyzer
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-});
 
-export default withBundleAnalyzer(nextConfig);
+export default nextConfig;
