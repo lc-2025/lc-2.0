@@ -18,7 +18,7 @@
     "cypress:open": "cypress open",
     "test": "jest --watch",
     "test:ci": "jest",
-    "build": "ANALYZE=true next build",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
@@ -36,7 +36,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@jest/globals": "^30.0.5",
-    "@next/bundle-analyzer": "^15.4.6",
     "@tailwindcss/postcss": "^4",
     "@testing-library/cypress": "^10.0.3",
     "@testing-library/dom": "^10.4.1",
