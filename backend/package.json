@@ -17,6 +17,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
+    "deploy:ci": "npx @sanity/cli deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [

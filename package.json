@@ -22,7 +22,7 @@
     "lint": "npm run lint -w frontend",
     "test": "npm run test:ci -w frontend",
     "build": "npm run build --ws",
-    "deploy": "npm run deploy -w backend",
+    "deploy": "npm run deploy:ci -w backend",
     "prepare": "husky"
   },
   "devDependencies": {
