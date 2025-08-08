@@ -39,7 +39,7 @@ A server application that provides an UI and a **REST API** to access and manage
 - GitHub
 - Husky
 
-### Content-integration/Delivery
+### Continuous-Integration/Delivery
 
 - GitHub Actions
 

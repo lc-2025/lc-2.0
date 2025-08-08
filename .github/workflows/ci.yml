@@ -1,5 +1,5 @@
 name: LC 2.0 CI
-run-name: LC 2.0 Content-Integration
+run-name: LC 2.0 Continuous-Integration
 on:
   push:
     branches: [main]

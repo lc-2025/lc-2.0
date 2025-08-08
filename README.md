@@ -86,7 +86,7 @@ A full-stack website based on _NextJS_ and _Sanity_ consisting of a professional
 - GitHub
 - Husky
 
-### Content-integration/Delivery
+### Continuous-integration/Delivery
 
 - GitHub Actions
 

@@ -70,7 +70,7 @@ A front-end website based on _NextJS_ consisting of a professional portfolio pop
 - GitHub
 - Husky
 
-### Content-integration/Delivery
+### Continuous-Integration/Delivery
 
 - GitHub Actions
 

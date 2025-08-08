@@ -1,5 +1,5 @@
 name: LC 2.0 CD
-run-name: LC 2.0 Content-Delivery
+run-name: LC 2.0 Continuous-Delivery
 on:
   # Pipeline dependency
   workflow_run:
