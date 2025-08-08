@@ -15,6 +15,12 @@ env:
   NEXT_PUBLIC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_PROJECT_ID }}
   # Analytics
   NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_ANALYTICS_ID }}
+  # Repository
+  DEPENDENCIES_PATH: |
+    ~/.cache
+    ./node_modules
+  DEPENDENCIES_KEY: '**/package-lock.json'
+  ARTIFACTS_NAME: lc-2.0
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -39,17 +45,16 @@ jobs:
         run: npm run setup:ci
       # Cache dependencies for future reuse
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
-          path: |
-            ~/.cache
-            ./node_modules
-          key: modules-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ env.DEPENDENCIES_PATH }}
+          # Generate a new cache whenever packages or source files change.
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
       # Store project for future reuse
       - name: Archive project artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: lc-2.0
+          name: ${{ env.ARTIFACTS_NAME }}
           # i.e. dotfiles
           include-hidden-files: true
           # Exclude dependencies to lighten artifacts (provided via cache)
@@ -62,17 +67,16 @@ jobs:
     steps:
       # Get dependencies
       - name: Getting dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          path: |
-            ~/.cache
-            ./node_modules
-          key: modules-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ env.DEPENDENCIES_PATH }}
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
+          fail-on-cache-miss: true
       # Download stored project
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
         with:
-          name: lc-2.0
+          name: ${{ env.ARTIFACTS_NAME }}
       - name: Test applications - Unit/Integration
         run: npm run test
       - name: Test applications - E2E
@@ -92,14 +96,15 @@ jobs:
     needs: test
     steps:
       - name: Getting dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          path: ./node_modules
-          key: modules-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ env.DEPENDENCIES_PATH }}
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
+          fail-on-cache-miss: true
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
         with:
-          name: lc-2.0
+          name: ${{ env.ARTIFACTS_NAME }}
       - name: Build packages
         run: npm run build
       - name: Cache production dependencies
@@ -108,11 +113,9 @@ jobs:
           path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
       # Store production versions for future reuse
       - name: Archive production verions
         uses: actions/upload-artifact@v4
