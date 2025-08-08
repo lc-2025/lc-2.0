@@ -15,7 +15,7 @@ env:
   NEXT_PUBLIC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_PROJECT_ID }}
   # Analytics
   NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_ANALYTICS_ID }}
-  # Repository
+  # Repository - TODO: Abstract to pass via `vars`
   DEPENDENCIES_PATH: |
     ~/.cache
     ./node_modules
@@ -65,18 +65,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      # Get dependencies
-      - name: Getting dependencies
-        uses: actions/cache/restore@v4
+      - name: Getting dependencies & project artifacts
+        uses: ./.github/actions/dependencies
         with:
-          path: ${{ env.DEPENDENCIES_PATH }}
-          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
-          fail-on-cache-miss: true
-      # Download stored project
-      - name: Getting project artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ env.ARTIFACTS_NAME }}
+          dependencies-path: ${{ env.DEPENDENCIES_PATH }}
+          dependencies-key: ${{ env.DEPENDENCIES_KEY }}
+          artifacts-name: ${{ env.ARTIFACTS_NAME }}
       - name: Test applications - Unit/Integration
         run: npm run test
       - name: Test applications - E2E
@@ -95,27 +89,24 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Getting dependencies
-        uses: actions/cache/restore@v4
+      - name: Getting dependencies & project artifacts
+        uses: ./.github/actions/dependencies
         with:
-          path: ${{ env.DEPENDENCIES_PATH }}
-          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
-          fail-on-cache-miss: true
-      - name: Getting project artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ env.ARTIFACTS_NAME }}
+          dependencies-path: ${{ env.DEPENDENCIES_PATH }}
+          dependencies-key: ${{ env.DEPENDENCIES_KEY }}
+          artifacts-name: ${{ env.ARTIFACTS_NAME }}
       - name: Build packages
         run: npm run build
       - name: Cache production dependencies
-        uses: actions/cache@v4
+        uses: ./.github/actions/dependencies
         with:
-          path: |
+          dependencies-path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: |
+          dependencies-key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          dependencies-key-restore: |
             ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
+          production: true
       # Store production versions for future reuse
       - name: Archive production verions
         uses: actions/upload-artifact@v4

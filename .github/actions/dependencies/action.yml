@@ -1,0 +1,49 @@
+name: dependencies
+description: Dependencies cache & artifacts restoring
+inputs:
+  dependencies-path:
+    description: Cached dependencies path
+    required: true
+  dependencies-key:
+    description: Cached dependencies key
+    required: true
+  dependencies-key-restore:
+    description: Cached dependencies restoring key
+  artifacts-name:
+    description: Saved artifacts name
+  external:
+    description: External workflow flag
+  production:
+    description: Production dependencies flag
+runs:
+  using: composite
+  steps:
+    # Get dependencies
+    - name: Getting dependencies
+      uses: actions/cache/restore@v4
+      with:
+        path: ${{ inputs.dependencies-path }}
+        key: modules-${{ hashFiles(inputs.dependencies-key) }}
+        fail-on-cache-miss: true
+    # Manage production dependencies
+      if: ${{ inputs.production == 'true' }}
+    - name: Cache production dependencies
+      uses: actions/cache@v4
+      with:
+        path: ${{ inputs.dependencies-path }}
+        key: ${{ inputs.dependencies-key }}
+        restore-keys: ${{ inputs.dependencies-key-restore }}
+      if: ${{ inputs.external == 'true' }}
+    # Download stored project from another workflow
+    - name: Getting production artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.artifacts-name }}
+        github-token: ${{ secrets.GH_TOKEN }}
+        run-id: ${{ github.event.workflow_run.id }}
+      if: ${{ !inputs.external }}
+    # Download stored project
+    - name: Getting project artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.artifacts-name }}

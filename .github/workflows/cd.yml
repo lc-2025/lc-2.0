@@ -10,11 +10,12 @@ env:
   # Vercel
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  # Repository
+  # Repository - TODO: Abstract to pass via `vars`
   DEPENDENCIES_PATH: |
     ~/.cache
     ./node_modules
   DEPENDENCIES_KEY: '**/package-lock.json'
+  ARTIFACTS_NAME: lc-2.0-production
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
@@ -25,29 +26,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      # Get dependencies
-      - name: Getting dependencies
-        uses: actions/cache/restore@v4
+      - name: Getting dependencies & production artifacts
+        uses: ./.github/actions/dependencies
         with:
-          path: ${{ env.DEPENDENCIES_PATH }}
-          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
-      # Get production dependencies
+          dependencies-path: ${{ env.DEPENDENCIES_PATH }}
+          dependencies-key: ${{ env.DEPENDENCIES_KEY }}
+          artifacts-name: ${{ env.ARTIFACTS_NAME }}
+          external: true
       - name: Getting production dependencies
-        uses: actions/cache@v4
+        uses: ./.github/actions/dependencies
         with:
-          path: |
+          dependencies-path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      # Download stored production version
-      - name: Getting production artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: lc-2.0-production
-          github-token: ${{ secrets.GH_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
+          dependencies-key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          dependencies-key-restore: |
+            ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
+          production: true
       # Proceeding manually since official action got issues
       - name: Install Sanity CLI
         run: npm i -g sanity@latest
@@ -59,26 +54,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Getting dependencies
-        uses: actions/cache/restore@v4
+      - name: Getting dependencies & production artifacts
+        uses: ./.github/actions/dependencies
         with:
-          path: ${{ env.DEPENDENCIES_PATH }}
-          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
+          dependencies-path: ${{ env.DEPENDENCIES_PATH }}
+          dependencies-key: ${{ env.DEPENDENCIES_KEY }}
+          artifacts-name: ${{ env.ARTIFACTS_NAME }}
+          external: true
       - name: Getting production dependencies
-        uses: actions/cache@v4
+        uses: ./.github/actions/dependencies
         with:
-          path: |
+          dependencies-path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - name: Getting production artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: lc-2.0-production
-          github-token: ${{ secrets.GH_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
+          dependencies-key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          dependencies-key-restore: |
+            ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
+          production: true
       - name: Install Vercel CLI
         run: npm i --g vercel@latest
       - name: Pull Vercel Environment Information
