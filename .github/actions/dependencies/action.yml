@@ -7,8 +7,10 @@ inputs:
   dependencies-key:
     description: Cached dependencies key
     required: true
-  dependencies-key-restore:
-    description: Cached dependencies restoring key
+  dependencies-key-production:
+    description: Cached dependencies production key
+  dependencies-key-production-extensions:
+    description: Cached dependencies production key extensions
   artifacts-name:
     description: Saved artifacts name
   external:
@@ -31,8 +33,8 @@ runs:
       uses: actions/cache@v4
       with:
         path: ${{ inputs.dependencies-path }}
-        key: ${{ inputs.dependencies-key }}
-        restore-keys: ${{ inputs.dependencies-key-restore }}
+        key: ${{ runner.os }}-${{ (inputs.dependencies-key-production }}-${{ hashFiles(inputs.dependencies-key) }}-${{ hashFiles(inputs.dependencies-key-production-extensions) }}
+        restore-keys: ${{ runner.os }}-${{ (inputs.dependencies-key-production }}-${{ hashFiles(inputs.dependencies-key) }}-
       if: ${{ inputs.external == 'true' }}
     # Download stored project from another workflow
     - name: Getting production artifacts

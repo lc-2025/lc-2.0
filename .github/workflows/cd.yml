@@ -14,7 +14,12 @@ env:
   DEPENDENCIES_PATH: |
     ~/.cache
     ./node_modules
+  DEPENDENCIES_PATH_PRODUCTION: |
+    ~/.npm
+    ${{ github.workspace }}/.next/cache
   DEPENDENCIES_KEY: '**/package-lock.json'
+  DEPENDENCIES_KEY_PRODUCTION: 'nextjs'
+  DEPENDENCIES_KEY_PRODUCTION_EXTENSIONS: "'**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'"
   ARTIFACTS_NAME: lc-2.0-production
 jobs:
   deploy-backend:
@@ -36,12 +41,9 @@ jobs:
       - name: Getting production dependencies
         uses: ./.github/actions/dependencies
         with:
-          dependencies-path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          dependencies-key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          dependencies-key-restore: |
-            ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
+          dependencies-path: ${{ env.DEPENDENCIES_PATH_PRODUCTION }}
+          dependencies-key: ${{ env.DEPENDENCIES_KEY_PRODUCTION }}
+          dependencies-key-extensions: ${{ env.DEPENDENCIES_KEY_PRODUCTION_EXTENSIONS }}
           production: true
       # Proceeding manually since official action got issues
       - name: Install Sanity CLI
@@ -64,12 +66,9 @@ jobs:
       - name: Getting production dependencies
         uses: ./.github/actions/dependencies
         with:
-          dependencies-path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          dependencies-key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          dependencies-key-restore: |
-            ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
+          dependencies-path: ${{ env.DEPENDENCIES_PATH_PRODUCTION }}
+          dependencies-key: ${{ env.DEPENDENCIES_KEY_PRODUCTION }}
+          dependencies-key-extensions: ${{ env.DEPENDENCIES_KEY_PRODUCTION_EXTENSIONS }}
           production: true
       - name: Install Vercel CLI
         run: npm i --g vercel@latest
