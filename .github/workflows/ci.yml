@@ -15,6 +15,12 @@ env:
   NEXT_PUBLIC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_PROJECT_ID }}
   # Analytics
   NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_ANALYTICS_ID }}
+  # Repository
+  DEPENDENCIES_PATH: |
+    ~/.cache
+    ./node_modules
+  DEPENDENCIES_KEY: '**/package-lock.json'
+  ARTIFACTS_NAME: lc-2.0
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -39,50 +45,44 @@ jobs:
         run: npm run setup:ci
       # Cache dependencies for future reuse
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
-          path: |
-            ~/.cache
-            ${{ github.workspace }}/node_modules
+          path: ${{ env.DEPENDENCIES_PATH }}
           # Generate a new cache whenever packages or source files change.
-          key: modules-${{ hashFiles('**/package-lock.json') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: modules-
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
       # Store project for future reuse
       - name: Archive project artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: lc-2.0
+          name: ${{ env.ARTIFACTS_NAME }}
           # i.e. dotfiles
           include-hidden-files: true
           # Exclude dependencies to lighten artifacts (provided via cache)
           path: |
-            ${{ github.workspace }}
-            !${{ github.workspace }}/node_modules
+            .
+            !./node_modules
   test:
     runs-on: ubuntu-latest
     needs: setup
     steps:
       # Get dependencies
       - name: Getting dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          path: |
-            ~/.cache
-            ${{ github.workspace }}/node_modules
-          key: modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: modules-
+          path: ${{ env.DEPENDENCIES_PATH }}
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
+          fail-on-cache-miss: true
       # Download stored project
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
         with:
-          name: lc-2.0
+          name: ${{ env.ARTIFACTS_NAME }}
       - name: Test applications - Unit/Integration
         run: npm run test
       - name: Test applications - E2E
         uses: cypress-io/github-action@v6
         with:
-          project: ${{ github.workspace }}/frontend
+          project: ./frontend
           build: npm run build -w frontend
           start: npm run start -w frontend
       # Tests report storing for QA/checks
@@ -90,21 +90,21 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lc-2.0-test
-          path: ${{ github.workspace }}/**/coverage/**/*
+          path: ./**/coverage/**/*
   build:
     runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Getting dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          path: ${{ github.workspace }}/node_modules
-          key: modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: modules-
+          path: ${{ env.DEPENDENCIES_PATH }}
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
+          fail-on-cache-miss: true
       - name: Getting project artifacts
         uses: actions/download-artifact@v4
         with:
-          name: lc-2.0
+          name: ${{ env.ARTIFACTS_NAME }}
       - name: Build packages
         run: npm run build
       - name: Cache production dependencies
@@ -113,8 +113,9 @@ jobs:
           path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+          key: ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles(env.DEPENDENCIES_KEY) }}-
       # Store production versions for future reuse
       - name: Archive production verions
         uses: actions/upload-artifact@v4
@@ -122,6 +123,6 @@ jobs:
           name: lc-2.0-production
           include-hidden-files: true
           path: |
-            ${{ github.workspace }}/backend
-            ${{ github.workspace }}/frontend
-            ${{ github.workspace }}/package*
+            ./backend
+            ./frontend
+            ./package*
