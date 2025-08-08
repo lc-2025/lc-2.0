@@ -78,6 +78,7 @@ jobs:
           dependencies-path: ${{ env.DEPENDENCIES_PATH }}
           dependencies-key: ${{ env.DEPENDENCIES_KEY }}
           artifacts-name: ${{ env.ARTIFACTS_NAME }}
+          artifacts-path: .
       - name: Test applications - Unit/Integration
         run: npm run test
       - name: Test applications - E2E
@@ -104,6 +105,7 @@ jobs:
           dependencies-path: ${{ env.DEPENDENCIES_PATH }}
           dependencies-key: ${{ env.DEPENDENCIES_KEY }}
           artifacts-name: ${{ env.ARTIFACTS_NAME }}
+          artifacts-path: .
       - name: Build packages
         run: npm run build
       - name: Cache production dependencies

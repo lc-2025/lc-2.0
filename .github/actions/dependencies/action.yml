@@ -13,6 +13,8 @@ inputs:
     description: Cached dependencies production key extensions
   artifacts-name:
     description: Saved artifacts name
+  artifacts-path:
+    description: Saved artifacts destination path
   external:
     description: External workflow flag
   production:
@@ -45,9 +47,11 @@ runs:
         name: ${{ inputs.artifacts-name }}
         github-token: ${{ inputs.token }}
         run-id: ${{ github.event.workflow_run.id }}
+        path: ${{ inputs.artifacts-path }}
       if: ${{ !inputs.external }}
     # Download stored project
     - name: Getting project artifacts
       uses: actions/download-artifact@v4
       with:
         name: ${{ inputs.artifacts-name }}
+        path: ${{ inputs.artifacts-path }}
