@@ -10,17 +10,11 @@ env:
   # Vercel
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  # Repository - TODO: Abstract to pass via `vars`
+  # Repository
   DEPENDENCIES_PATH: |
     ~/.cache
     ./node_modules
-  DEPENDENCIES_PATH_PRODUCTION: |
-    ~/.npm
-    ${{ github.workspace }}/.next/cache
   DEPENDENCIES_KEY: '**/package-lock.json'
-  DEPENDENCIES_KEY_PRODUCTION: 'nextjs'
-  DEPENDENCIES_KEY_PRODUCTION_EXTENSIONS: "'**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'"
-  ARTIFACTS_NAME: lc-2.0-production
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
@@ -31,21 +25,29 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Getting dependencies & production artifacts
-        uses: ./.github/actions/dependencies
+      # Get dependencies
+      - name: Getting dependencies
+        uses: actions/cache/restore@v4
         with:
-          dependencies-path: ${{ env.DEPENDENCIES_PATH }}
-          dependencies-key: ${{ env.DEPENDENCIES_KEY }}
-          artifacts-name: ${{ env.ARTIFACTS_NAME }}
-          external: true
-          token: ${{ secrets.GH_TOKEN }}
+          path: ${{ env.DEPENDENCIES_PATH }}
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
+      # Get production dependencies
       - name: Getting production dependencies
-        uses: ./.github/actions/dependencies
+        uses: actions/cache@v4
         with:
-          dependencies-path: ${{ env.DEPENDENCIES_PATH_PRODUCTION }}
-          dependencies-key: ${{ env.DEPENDENCIES_KEY_PRODUCTION }}
-          dependencies-key-extensions: ${{ env.DEPENDENCIES_KEY_PRODUCTION_EXTENSIONS }}
-          production: true
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      # Download stored production version
+      - name: Getting production artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: lc-2.0-production
+          github-token: ${{ secrets.GH_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
       # Proceeding manually since official action got issues
       - name: Install Sanity CLI
         run: npm i -g sanity@latest
@@ -57,21 +59,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Getting dependencies & production artifacts
-        uses: ./.github/actions/dependencies
+      - name: Getting dependencies
+        uses: actions/cache/restore@v4
         with:
-          dependencies-path: ${{ env.DEPENDENCIES_PATH }}
-          dependencies-key: ${{ env.DEPENDENCIES_KEY }}
-          artifacts-name: ${{ env.ARTIFACTS_NAME }}
-          external: true
-          token: ${{ secrets.GH_TOKEN }}
+          path: ${{ env.DEPENDENCIES_PATH }}
+          key: modules-${{ hashFiles(env.DEPENDENCIES_KEY) }}
       - name: Getting production dependencies
-        uses: ./.github/actions/dependencies
+        uses: actions/cache@v4
         with:
-          dependencies-path: ${{ env.DEPENDENCIES_PATH_PRODUCTION }}
-          dependencies-key: ${{ env.DEPENDENCIES_KEY_PRODUCTION }}
-          dependencies-key-extensions: ${{ env.DEPENDENCIES_KEY_PRODUCTION_EXTENSIONS }}
-          production: true
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: Getting production artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: lc-2.0-production
+          github-token: ${{ secrets.GH_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
       - name: Install Vercel CLI
         run: npm i --g vercel@latest
       - name: Pull Vercel Environment Information
