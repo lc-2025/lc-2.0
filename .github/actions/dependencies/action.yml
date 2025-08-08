@@ -17,6 +17,8 @@ inputs:
     description: External workflow flag
   production:
     description: Production dependencies flag
+  token:
+    description: GitHub or Personal Access Token (See https://docs.github.com/en/actions/tutorials/authenticate-with-github_token)
 runs:
   using: composite
   steps:
@@ -33,15 +35,15 @@ runs:
       uses: actions/cache@v4
       with:
         path: ${{ inputs.dependencies-path }}
-        key: ${{ runner.os }}-${{ (inputs.dependencies-key-production }}-${{ hashFiles(inputs.dependencies-key) }}-${{ hashFiles(inputs.dependencies-key-production-extensions) }}
-        restore-keys: ${{ runner.os }}-${{ (inputs.dependencies-key-production }}-${{ hashFiles(inputs.dependencies-key) }}-
+        key: ${{ runner.os }}-${{ inputs.dependencies-key-production }}-${{ hashFiles(inputs.dependencies-key) }}-${{ hashFiles(inputs.dependencies-key-production-extensions) }}
+        restore-keys: ${{ runner.os }}-${{ inputs.dependencies-key-production }}-${{ hashFiles(inputs.dependencies-key) }}-
       if: ${{ inputs.external == 'true' }}
     # Download stored project from another workflow
     - name: Getting production artifacts
       uses: actions/download-artifact@v4
       with:
         name: ${{ inputs.artifacts-name }}
-        github-token: ${{ secrets.GH_TOKEN }}
+        github-token: ${{ inputs.token }}
         run-id: ${{ github.event.workflow_run.id }}
       if: ${{ !inputs.external }}
     # Download stored project
