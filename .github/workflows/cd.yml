@@ -24,10 +24,8 @@ jobs:
       - name: Getting dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/node_modules
+          path: ./node_modules
           key: modules-${{ hashFiles('**/package-lock.json') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: modules-
       # Get production dependencies
       - name: Getting production dependencies
         uses: actions/cache@v4
@@ -59,9 +57,8 @@ jobs:
       - name: Getting dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/node_modules
+          path: ./node_modules
           key: modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: modules-
       - name: Getting production dependencies
         uses: actions/cache@v4
         with:
