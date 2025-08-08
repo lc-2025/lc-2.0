@@ -37,7 +37,6 @@ jobs:
           dependencies-path: ${{ env.DEPENDENCIES_PATH }}
           dependencies-key: ${{ env.DEPENDENCIES_KEY }}
           artifacts-name: ${{ env.ARTIFACTS_NAME }}
-          artifacts-path: .
           external: true
           token: ${{ secrets.GH_TOKEN }}
       - name: Getting production dependencies
@@ -64,7 +63,6 @@ jobs:
           dependencies-path: ${{ env.DEPENDENCIES_PATH }}
           dependencies-key: ${{ env.DEPENDENCIES_KEY }}
           artifacts-name: ${{ env.ARTIFACTS_NAME }}
-          artifacts-path: .
           external: true
           token: ${{ secrets.GH_TOKEN }}
       - name: Getting production dependencies
