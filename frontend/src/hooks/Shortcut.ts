@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatchContext, useStateContext } from './State';
+import { useDispatchContext, useModalContext } from './State';
 import { KEY, ACTION } from '@/utilities/constants';
 import handleState from '@/state/actions';
 
@@ -14,7 +14,7 @@ const useShortcut = (): void => {
   const { MODAL } = ACTION;
   const { SHIFT, C, L, X } = KEY;
   // Hooks
-  const { modal } = useStateContext();
+  const modal = useModalContext();
   const dispatch = useDispatchContext();
 
   useEffect(() => {
@@ -35,7 +35,6 @@ const useShortcut = (): void => {
     const shortcut = {
       [C]: { type: MODAL, element: { ...modal, cookies: true } },
       [L]: { type: MODAL, element: { ...modal, links: true } },
-
       [X]: { type: MODAL, element: { links: false, cookies: false } },
     };
     const value = e.key;

@@ -1,12 +1,8 @@
 import { ActionDispatch } from 'react';
 import { THEME, ROUTE, ERROR, SECTION, LINKS_STRUCTURAL } from './constants';
-import {
-  TState,
-  TStateAction,
-  TStateCookies,
-  Cookie,
-} from '@/types/state/State';
+import { TStateAction, TStateCookies, Cookie } from '@/types/state/State';
 import { TRoute } from '@/types/navigation/Route';
+import { TModalOpen } from '@/types/components/Modal';
 
 // Utilities
 const { HOME, ABOUT, PORTFOLIO, CONTACTS } = ROUTE;
@@ -28,15 +24,25 @@ const setInitial = (value: string): string =>
  * @description Context helper
  * Checks if the context is properly defined
  * @author Luca Cattide
- * @date 01/07/2025
- * @param {(TState | ActionDispatch<[action)} context
+ * @date 04/09/2025
+ * @param {(TStateCookies
+ *     | boolean
+ *     | TModalOpen
+ *     | string
+ *     | ActionDispatch<[action)} context
  * @param {*} TStateAction
  */
 const checkContext = (
-  context: TState | ActionDispatch<[action: TStateAction]> | null,
+  context:
+    | TStateCookies
+    | boolean
+    | TModalOpen
+    | string
+    | ActionDispatch<[action: TStateAction]>
+    | null,
 ): void => {
   // Context check
-  if (!context) {
+  if (context === null) {
     throw new Error(ERROR.CONTEXT);
   }
 };

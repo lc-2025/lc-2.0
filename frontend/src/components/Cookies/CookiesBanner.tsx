@@ -2,7 +2,11 @@
 
 import { useEffect } from 'react';
 import Action from '../Layout/Action';
-import { useDispatchContext, useStateContext } from '@/hooks/State';
+import {
+  useCookiesContext,
+  useDispatchContext,
+  useThemeContext,
+} from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
@@ -21,7 +25,8 @@ const CookiesBanner = (): React.ReactNode => {
   const { COOKIES } = ACTIONS;
   // Hooks
   const { getStorage, setStorage } = useStorage();
-  const { theme, cookies } = useStateContext();
+  const theme = useThemeContext();
+  const cookies = useCookiesContext();
   const { open } = cookies;
   const dispatch = useDispatchContext();
 

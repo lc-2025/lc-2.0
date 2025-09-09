@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import useStorage from '@/hooks/Storage';
-import { useStateContext } from '@/hooks/State';
+import { useCookiesContext } from '@/hooks/State';
 import { checkCookies } from '@/utilities/utils';
 import { COMMAND, ROUTE, ACTION, TEST } from '@/utilities/constants';
 import { Cookie } from '@/types/state/State';
@@ -19,7 +19,7 @@ const EasterEgg = (): React.ReactNode => {
   const router = useRouter();
   const { getStorage } = useStorage();
   const cookiesStorage = getStorage(ACTION.COOKIES);
-  const { cookies } = useStateContext();
+  const cookies = useCookiesContext();
 
   useEffect(() => {
     // Session storage check

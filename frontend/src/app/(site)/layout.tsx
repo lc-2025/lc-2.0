@@ -2,7 +2,7 @@ import localFont from 'next/font/local';
 import { ViewTransitions } from 'next-view-transitions';
 import AnalyticsWrapper from '@/components/Analytics/AnalyticsWrapper';
 import DocumentNode from '@/components/Layout/DocumentNode';
-import StateProvider from '@/components/StateProvider';
+import { LoadingProvider, ThemeProvider } from '@/components/StateProvider';
 import { METADATA_VIEWPORT, METADATA_LAYOUT } from '@/data/content';
 import { NEXT_PUBLIC_ANALYTICS_ID } from '@/utilities/environment';
 import type { Metadata, Viewport } from 'next';
@@ -61,26 +61,28 @@ export default function RootLayout({
 }>): React.ReactNode {
   return (
     // HTML Start
-    <StateProvider>
-      <ViewTransitions>
-        {/* HTML Start */}
-        <html className="text-rem max-h-dvh min-h-dvh" lang="en">
-          {/* Head Start */}
-          <head>
-            <AnalyticsWrapper id={NEXT_PUBLIC_ANALYTICS_ID} />
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          </head>
-          {/* Head End */}
-          <DocumentNode
-            fontLight={vt323.className}
-            fontDark={ubuntuMono.className}
-          >
-            {children}
-          </DocumentNode>
-        </html>
-        {/* HTML End */}
-      </ViewTransitions>
-    </StateProvider>
+    <ThemeProvider>
+      <LoadingProvider>
+        <ViewTransitions>
+          {/* HTML Start */}
+          <html className="text-rem max-h-dvh min-h-dvh" lang="en">
+            {/* Head Start */}
+            <head>
+              <AnalyticsWrapper id={NEXT_PUBLIC_ANALYTICS_ID} />
+              <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+            </head>
+            {/* Head End */}
+            <DocumentNode
+              fontLight={vt323.className}
+              fontDark={ubuntuMono.className}
+            >
+              {children}
+            </DocumentNode>
+          </html>
+          {/* HTML End */}
+        </ViewTransitions>
+      </LoadingProvider>
+    </ThemeProvider>
     // HTML End
   );
 }

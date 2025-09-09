@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { TitleProvider } from '../StateProvider';
 
 const AnimationIntro = dynamic(
   () => import('@/components/Animation/AnimationIntro'),
@@ -14,7 +15,11 @@ const AnimationIntro = dynamic(
  * @returns {*}  {React.ReactNode}
  */
 const AnimationWrapper = (): React.ReactNode => {
-  return <AnimationIntro />;
+  return (
+    <TitleProvider>
+      <AnimationIntro />
+    </TitleProvider>
+  );
 };
 
 export default AnimationWrapper;

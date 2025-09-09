@@ -1,4 +1,3 @@
-import StateProvider from '@/components/StateProvider';
 import AnalyticsWrapper from '@/components/Analytics/AnalyticsWrapper';
 import { ERROR } from '@/utilities/constants';
 import { METADATA_LAYOUT, METADATA_VIEWPORT } from '@/data/content';
@@ -29,32 +28,28 @@ export default function SecretLayout({
 }>): React.ReactNode {
   return (
     // HTML Start
-    <StateProvider>
-      {/* HTML Start */}
-      <html className="text-rem max-h-dvh min-h-dvh" lang="en">
-        {/* Head Start */}
-        <head>
-          <AnalyticsWrapper id={NEXT_PUBLIC_ANALYTICS_ID} />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        </head>
-        {/* Head End */}
-        {/* Body Start */}
-        <body className="body bg-accent max-h-dvh min-h-dvh overflow-hidden antialiased">
-          <noscript>{ERROR.JS}</noscript>
-          {/* Container Start */}
-          <div className="main-container flex max-h-dvh min-h-dvh flex-col">
-            {/* Wrapper Start */}
-            <main className="main-container__wrapper flex max-w-full flex-1 flex-col items-center justify-center overflow-hidden">
-              {children}
-            </main>
-            {/* Wrapper End */}
-          </div>
-          {/* Container End */}
-        </body>
-        {/* Body End */}
-      </html>
-      {/* HTML End */}
-    </StateProvider>
+    <html className="text-rem max-h-dvh min-h-dvh" lang="en">
+      {/* Head Start */}
+      <head>
+        <AnalyticsWrapper id={NEXT_PUBLIC_ANALYTICS_ID} />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      </head>
+      {/* Head End */}
+      {/* Body Start */}
+      <body className="body bg-accent max-h-dvh min-h-dvh overflow-hidden antialiased">
+        <noscript>{ERROR.JS}</noscript>
+        {/* Container Start */}
+        <div className="main-container flex max-h-dvh min-h-dvh flex-col">
+          {/* Wrapper Start */}
+          <main className="main-container__wrapper flex max-w-full flex-1 flex-col items-center justify-center overflow-hidden">
+            {children}
+          </main>
+          {/* Wrapper End */}
+        </div>
+        {/* Container End */}
+      </body>
+      {/* Body End */}
+    </html>
     // HTML End
   );
 }

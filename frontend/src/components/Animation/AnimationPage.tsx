@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useRef, Ref } from 'react';
-import { useDispatchContext, useStateContext } from '@/hooks/State';
+import {
+  useDispatchContext,
+  useLoadingContext,
+  useThemeContext,
+} from '@/hooks/State';
 import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
 import { ACTION, COLOR, TEST } from '@/utilities/constants';
@@ -15,7 +19,8 @@ import { ACTION, COLOR, TEST } from '@/utilities/constants';
 const AnimationPage = (): React.ReactNode => {
   // Hooks
   const bars = useRef<Array<HTMLDivElement>>([]);
-  const { theme, loading } = useStateContext();
+  const theme = useThemeContext();
+  const loading = useLoadingContext();
   const dispatch = useDispatchContext();
 
   useEffect(() => {

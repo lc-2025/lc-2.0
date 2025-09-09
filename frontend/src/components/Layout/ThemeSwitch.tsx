@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { Switch } from '@headlessui/react';
-import { useDispatchContext, useStateContext } from '@/hooks/State';
+import { useDispatchContext, useThemeContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
 import { isLightTheme, checkCookies } from '@/utilities/utils';
@@ -18,7 +18,7 @@ const ThemeSwitch = (): React.ReactNode => {
   const { getStorage, setStorage } = useStorage();
   const themeSaved = getStorage(LABEL) ?? '';
   const cookiesStorage = getStorage(ACTION.COOKIES);
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
   const dispatch = useDispatchContext();
 
   useEffect(() => {

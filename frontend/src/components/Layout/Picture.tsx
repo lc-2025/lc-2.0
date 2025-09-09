@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import PixelMask from './PixelMask';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { TEST } from '@/utilities/constants';
 import { TPictureProps } from '@/types/components/Picture';
@@ -21,7 +21,7 @@ const Picture = (props: TPictureProps): React.ReactNode => {
   const sizes =
     '(width >= 40rem) 33vw, (width >= 48rem) 80vw, (width >= 64rem) 106vw, (width >= 80rem) 133vw, (width >= 96rem) 160vw';
   // Hooks
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   return isLightTheme(theme) ? (
     <PixelMask>

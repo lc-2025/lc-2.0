@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { CookiesProvider } from '../StateProvider';
 import { TAnalytics } from '@/types/components/Analytics';
 
 const Analytics = dynamic(() => import('@/components/Analytics/Analytics'), {
@@ -15,7 +16,11 @@ const Analytics = dynamic(() => import('@/components/Analytics/Analytics'), {
  * @returns {*}  {React.ReactNode}
  */
 const AnalyticsWrapper = ({ id }: TAnalytics): React.ReactNode => {
-  return <Analytics id={id} />;
+  return (
+    <CookiesProvider>
+      <Analytics id={id} />
+    </CookiesProvider>
+  );
 };
 
 export default AnalyticsWrapper;

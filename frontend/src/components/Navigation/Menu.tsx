@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import AnimationTypedMenu from '../Animation/AnimationTypedMenu';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import {
   setInitial,
   isLightTheme,
@@ -21,7 +21,7 @@ import { TAnimationMenu } from '@/types/components/AnimationTypedMenu';
 const Menu = ({ delay }: TAnimationMenu): React.ReactNode => {
   // Hooks
   const pathname = usePathname();
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   return (
     // Menu Start

@@ -1,6 +1,7 @@
 import Script from 'next/script';
 import { headers } from 'next/headers';
 import EasterEgg from '@/components/Layout/EasterEgg';
+import { CookiesProvider } from '@/components/StateProvider';
 
 /**
  * @description Secret page
@@ -15,7 +16,9 @@ export default async function Secret(): Promise<React.ReactNode> {
   return (
     // Secret Start
     <>
-      <EasterEgg />
+      <CookiesProvider>
+        <EasterEgg />
+      </CookiesProvider>
       <Script src="js/secret.js" strategy="afterInteractive" nonce={nonce!} />
       <Script src="js/c64.js" strategy="afterInteractive" nonce={nonce!} />
     </>

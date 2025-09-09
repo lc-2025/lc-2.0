@@ -7,9 +7,10 @@ import AnimationIntroLogo from './AnimationIntroLogo';
 import AnimationIntroImage from './AnimationIntroLogoImage';
 import AnimationIntroTagline from './AnimationIntroTagline';
 import handleState from '@/state/actions';
-import { useDispatchContext, useStateContext } from '@/hooks/State';
+import { useDispatchContext, useTitleContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { AnimationIntroType } from '@/types/components/AnimationIntroImage';
+import { CookiesProvider } from '../StateProvider';
 
 /**
  * @description Intro animation component
@@ -23,7 +24,7 @@ const AnimationIntro = (): React.ReactNode => {
   // Hooks
   const router = useRouter();
   const { getStorage } = useStorage();
-  const { title } = useStateContext();
+  const title = useTitleContext();
   const dispatch = useDispatchContext();
   const titleStorage = getStorage(TITLE) ?? false;
 
@@ -55,12 +56,14 @@ const AnimationIntro = (): React.ReactNode => {
         data-testid={TEST.ANIMATION}
       >
         <h6 className="animation-intro__title hidden">Intro</h6>
-        <AnimationIntroImage type={AnimationIntroType.Logo}>
-          <AnimationIntroLogo />
-        </AnimationIntroImage>
-        <AnimationIntroImage type={AnimationIntroType.Tagline}>
-          <AnimationIntroTagline />
-        </AnimationIntroImage>
+        <CookiesProvider>
+          <AnimationIntroImage type={AnimationIntroType.Logo}>
+            <AnimationIntroLogo />
+          </AnimationIntroImage>
+          <AnimationIntroImage type={AnimationIntroType.Tagline}>
+            <AnimationIntroTagline />
+          </AnimationIntroImage>
+        </CookiesProvider>
       </section>
     )
     // Intro Animation End

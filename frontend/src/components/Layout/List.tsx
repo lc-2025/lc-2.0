@@ -1,7 +1,7 @@
 'use client';
 
 import AnimationTypedList from '../Animation/AnimationTypedList';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import { setInitial, isLightTheme } from '@/utilities/utils';
 import { TAnimationList } from '@/types/components/AnimationTypedList';
 
@@ -13,7 +13,7 @@ import { TAnimationList } from '@/types/components/AnimationTypedList';
  */
 const List = ({ list, speed, delay }: TAnimationList): React.ReactNode => {
   // Hooks
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   return (
     // List Start

@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { TTerminal } from '@/types/components/Terminal';
+import { CookiesProvider } from '../StateProvider';
 
 const Terminal = dynamic(() => import('@/components/Terminal/Terminal'), {
   ssr: false,
@@ -15,7 +16,11 @@ const Terminal = dynamic(() => import('@/components/Terminal/Terminal'), {
  * @returns {*}  {React.ReactNode}
  */
 const TerminalWrapper = ({ delay }: TTerminal): React.ReactNode => {
-  return <Terminal delay={delay} />;
+  return (
+    <CookiesProvider>
+      <Terminal delay={delay} />
+    </CookiesProvider>
+  );
 };
 
 export default TerminalWrapper;

@@ -2,7 +2,12 @@ import Link from 'next/link';
 import Action from './Action';
 import Modal from './Modal';
 import CookiesConsentForm from '../Cookies/CookiesConsentForm';
-import { useDispatchContext, useStateContext } from '@/hooks/State';
+import {
+  useCookiesContext,
+  useDispatchContext,
+  useModalContext,
+  useThemeContext,
+} from '@/hooks/State';
 import useShortcut from '@/hooks/Shortcut';
 import useAnimation from '@/hooks/Animation';
 import handleState from '@/state/actions';
@@ -32,7 +37,9 @@ const Footer = (): React.ReactNode => {
   const { FOOTER } = ACTIONS;
   const { MODAL } = ACTION;
   // Hooks
-  const { theme, cookies, modal } = useStateContext();
+  const theme = useThemeContext();
+  const cookies = useCookiesContext();
+  const modal = useModalContext();
   const dispatch = useDispatchContext();
   const { navigate } = useAnimation();
 
@@ -143,13 +150,13 @@ const Footer = (): React.ReactNode => {
         callback={() => handleOpen(ACTIONS.FOOTER[1].label.toLowerCase())}
       >
         <div className="cookies-consent">
-          <CookiesConsentForm title="Required" fields={[COOKIES[0]]} />
-          <CookiesConsentForm
-            title="Optional"
-            fields={COOKIES.filter(
-              (cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL,
-            )}
-          />
+            <CookiesConsentForm title="Required" fields={[COOKIES[0]]} />
+            <CookiesConsentForm
+              title="Optional"
+              fields={COOKIES.filter(
+                (cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL,
+              )}
+            />
         </div>
       </Modal>
       {/* Cookies End */}

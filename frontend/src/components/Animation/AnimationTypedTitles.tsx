@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Typed from 'typed.js';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import { TITLES } from '@/data/content';
 import { isLightTheme, setTimeline } from '@/utilities/utils';
 import { ANIMATION_OPTIONS, SECTION, TEST } from '@/utilities/constants';
@@ -27,7 +27,7 @@ const AnimationTypedTitles = ({
   // Variables
   const { NAME, KEYWORD } = METADATA;
   const pathname = usePathname();
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
   const { LIGHT, DARK } = TITLES.HOME;
   const data: Array<string> =
     (content ?? isLightTheme(theme))

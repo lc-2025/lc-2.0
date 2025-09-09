@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import useAnimation from '@/hooks/Animation';
 import { isLightTheme } from '@/utilities/utils';
 import { ROUTE } from '@/utilities/constants';
@@ -16,7 +16,7 @@ const ThemeSwitch = dynamic(() => import('./ThemeSwitch'), { ssr: false });
  */
 const Header = (): React.ReactNode => {
   // Hooks
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
   const { navigate } = useAnimation();
 
   return (

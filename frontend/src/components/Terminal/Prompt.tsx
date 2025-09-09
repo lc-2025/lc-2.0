@@ -8,7 +8,7 @@ import {
   HTMLAttributes,
 } from 'react';
 import { usePathname } from 'next/navigation';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import { isHome, isLightTheme, setRoute } from '@/utilities/utils';
 import {
   KEY,
@@ -56,7 +56,7 @@ const Prompt = ({
     history.length > 0 ? history.length - 1 : history.length,
   );
   const [commandOutput, setCommandOutput] = useState<string>(entry.output);
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   useEffect(() => {
     refPrompt.current.innerText = isEditable ? null : entry.command;

@@ -10,7 +10,7 @@ import {
 } from '@/utilities/constants';
 import { TAnimationTyped } from '@/types/components/AnimationTyped';
 import { isLightTheme, setTimeline } from '@/utilities/utils';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 
 /**
  * @description Typed animation component - Article variant
@@ -32,7 +32,7 @@ const AnimationTypedArticle = ({
   // Hooks
   const pathname = usePathname();
   const article = useRef<any>(null);
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   useEffect(() => {
     const paragraph = new Typed(article.current, {

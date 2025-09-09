@@ -1,14 +1,4 @@
-import { TModalOpen } from '../components/Modal';
-
 // State Management
-type TState = {
-  theme: string;
-  cookies: TStateCookies;
-  modal: TModalOpen;
-  loading: boolean;
-  title: boolean;
-};
-
 type TStateAction = {
   type: string;
   element: any;
@@ -36,4 +26,4 @@ enum Cookie {
 }
 
 export { Status, Cookie };
-export type { TState, TStateAction, TStateCookies };
+export type { TStateAction, TStateCookies };

@@ -4,7 +4,8 @@ import Action from './Action';
 import { ACTIONS, TEST } from '@/utilities/constants';
 import { TModal } from '@/types/components/Modal';
 import { isLightTheme } from '@/utilities/utils';
-import { useStateContext } from '@/hooks/State';
+import {
+  useThemeContext } from '@/hooks/State';
 
 /**
  * @description Modal component
@@ -20,7 +21,7 @@ const Modal = ({
   children,
 }: TModal): React.ReactNode => {
   // Hooks
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   return (
     // Modal Start

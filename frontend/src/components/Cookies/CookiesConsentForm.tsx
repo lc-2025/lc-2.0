@@ -3,7 +3,7 @@
 import Form from 'next/form';
 import handleState from '@/state/actions';
 import { Cookie, Status } from '@/types/state/State';
-import { useDispatchContext, useStateContext } from '@/hooks/State';
+import { useCookiesContext, useDispatchContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { isCookieActive } from '@/utilities/utils';
 import { ACTION, COOKIE_LEVEL, COOKIES, TEST } from '@/utilities/constants';
@@ -25,7 +25,7 @@ const CookiesConsentForm = ({
 }: TCookiesConsentForm): React.ReactNode => {
   // Hooks
   const { setStorage, deleteStorages } = useStorage();
-  const { cookies } = useStateContext();
+  const cookies = useCookiesContext();
   const { active } = cookies;
   const dispatch = useDispatchContext();
 
@@ -119,7 +119,7 @@ const CookiesConsentForm = ({
    */
   const handleCookie = (cookie: string): void => {
     const activeCookies = active.includes(cookie as Cookie)
-      ? active.filter((activeCookie) => activeCookie !== cookie)
+      ? active.filter((activeCookie: string) => activeCookie !== cookie)
       : [...active, cookie];
     const selection = {
       ...cookies,

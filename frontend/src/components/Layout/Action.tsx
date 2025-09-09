@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS, KEY, TEST } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
@@ -18,7 +18,7 @@ const Action = ({ action, variant }: TAction): React.ReactNode => {
   const { LINK, CLOSE, COOKIE } = TEST;
   const { label } = action;
   // Hooks
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   // Helpers
   /**

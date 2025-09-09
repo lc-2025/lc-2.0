@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 import useStorage from '@/hooks/Storage';
-import { useStateContext } from '@/hooks/State';
+import { useCookiesContext } from '@/hooks/State';
 import { checkCookies } from '@/utilities/utils';
 import { ACTION, TEST } from '@/utilities/constants';
 import { Cookie } from '@/types/state/State';
@@ -19,7 +19,7 @@ const Analytics = ({ id }: TAnalytics): React.ReactNode => {
   // Hooks
   const { getStorage } = useStorage();
   const cookiesStorage = getStorage(ACTION.COOKIES);
-  const { cookies } = useStateContext();
+  const cookies = useCookiesContext();
 
   return (
     ((cookiesStorage &&

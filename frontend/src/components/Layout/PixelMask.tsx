@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useStateContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 
 type TPixelMask = {
@@ -13,7 +13,7 @@ type TPixelMask = {
 const PixelMask = ({ children }: TPixelMask): React.ReactNode => {
   // Hooks
   const mask = useRef(null);
-  const { theme } = useStateContext();
+  const theme = useThemeContext();
 
   gsap.registerPlugin(useGSAP);
 

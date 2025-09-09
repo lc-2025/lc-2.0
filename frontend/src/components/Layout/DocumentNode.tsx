@@ -5,11 +5,12 @@ import AnimationPage from '../Animation/AnimationPage';
 import Header from '@/components/Layout/Header';
 import Footer from '@/components/Layout/Footer';
 import CookiesBanner from '../Cookies/CookiesBanner';
-import { useStateContext } from '@/hooks/State';
+import { useLoadingContext, useThemeContext } from '@/hooks/State';
 import { isLightTheme } from '@/utilities/utils';
 import { ERROR, CONSOLE_TYPE, TEST } from '@/utilities/constants';
 import { EASTER_EGG, TITLES } from '@/data/content';
 import { TDocumentNode } from '@/types/components/DocumentNode';
+import { CookiesProvider, ModalProvider } from '../StateProvider';
 
 /**
  * @description Body component
@@ -36,7 +37,8 @@ const DocumentNode = ({
   const { HEADLINE, TAGLINE, SUMMARY } = EASTER_EGG;
   const { TITLE, SUBTITLE } = CONSOLE_TYPE;
   // Hooks
-  const { theme, loading } = useStateContext();
+  const theme = useThemeContext();
+  const loading = useLoadingContext();
 
   useEffect(() => {
     console.log(
@@ -80,8 +82,12 @@ const DocumentNode = ({
           {children}
         </main>
         {/* Wrapper End */}
-        <CookiesBanner />
-        <Footer />
+        <CookiesProvider>
+          <CookiesBanner />
+          <ModalProvider>
+            <Footer />
+          </ModalProvider>
+        </CookiesProvider>
       </div>
       {/* Container End */}
     </body>

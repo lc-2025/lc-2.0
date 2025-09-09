@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import Prompt from './Prompt';
 import useAnimation from '@/hooks/Animation';
 import useStorage from '@/hooks/Storage';
-import { useStateContext } from '@/hooks/State';
+import { useCookiesContext } from '@/hooks/State';
 import { setRoute, checkCookies } from '@/utilities/utils';
 import {
   COMMAND,
@@ -32,7 +32,7 @@ const Terminal = ({ delay }: TTerminal): React.ReactNode => {
   const pathname = usePathname();
   const { getStorage } = useStorage();
   const cookiesStorage = getStorage(ACTION.COOKIES);
-  const { cookies } = useStateContext();
+  const cookies = useCookiesContext();
   const [commandsHistory, setCommandsHistory] = useState<TCommandHistory[]>([]);
   const [visibility, setVisibility] = useState<boolean>(false);
   const { navigate } = useAnimation();
