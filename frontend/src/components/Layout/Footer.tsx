@@ -150,13 +150,13 @@ const Footer = (): React.ReactNode => {
         callback={() => handleOpen(ACTIONS.FOOTER[1].label.toLowerCase())}
       >
         <div className="cookies-consent">
-            <CookiesConsentForm title="Required" fields={[COOKIES[0]]} />
-            <CookiesConsentForm
-              title="Optional"
-              fields={COOKIES.filter(
-                (cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL,
-              )}
-            />
+          <CookiesConsentForm title="Required" fields={[COOKIES[0]]} />
+          <CookiesConsentForm
+            title="Optional"
+            fields={COOKIES.filter(
+              (cookie) => cookie.level === COOKIE_LEVEL.OPTIONAL,
+            )}
+          />
         </div>
       </Modal>
       {/* Cookies End */}

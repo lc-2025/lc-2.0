@@ -148,7 +148,7 @@ const reducerTitle = (state: boolean, action: TStateAction): boolean => {
 
   switch (type) {
     case TITLE:
-      state = element
+      state = element;
       reducerTitle = state;
       break;
 

@@ -4,8 +4,7 @@ import Action from './Action';
 import { ACTIONS, TEST } from '@/utilities/constants';
 import { TModal } from '@/types/components/Modal';
 import { isLightTheme } from '@/utilities/utils';
-import {
-  useThemeContext } from '@/hooks/State';
+import { useThemeContext } from '@/hooks/State';
 
 /**
  * @description Modal component
