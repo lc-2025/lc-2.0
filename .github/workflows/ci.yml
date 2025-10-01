@@ -3,6 +3,9 @@ run-name: LC 2.0 Continuous-Integration
 on:
   push:
     branches: [main]
+permissions:
+  actions: write
+  contents: write
 env:
   # Frontend
   FRONTEND_URL: ${{ vars.FRONTEND_URL }}
