@@ -3,9 +3,6 @@ run-name: LC 2.0 Continuous-Integration
 on:
   push:
     branches: [main]
-  # For collaborations
-  pull_request:
-    branches: [main]
 env:
   # Frontend
   FRONTEND_URL: ${{ vars.FRONTEND_URL }}
