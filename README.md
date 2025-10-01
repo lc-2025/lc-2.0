@@ -31,69 +31,17 @@ A full-stack website based on _NextJS_ and _Sanity_ consisting of a professional
 
 ## Stack
 
-### Languages
-
-- HTML
-- CSS
-- SASS
-- JavaScript
-- TypeScript
-- GROQ
-- YAML
-- Bash
-
-### Environments
-
-- DOM
-
-### Libraries
-
-- Headless UI
-- GSAP
-- TypedJS
-
-### Frameworks
-
-- React
-- NextJS
-- TailwindCSS
-- Sanity
-- Jest
-- Cypress
-
-### Pre/Post-Processors
-
-- PostCSS
-- Sass
-
-### Linters/Plugins
-
-- stylelint
-- ESLint
-- Prettier
-
-### Compilers
-
-- TypeScript
-
-### Testing
-
-- Jest
-- Cypress
-
-### Versioning
-
-- GitHub
-- Husky
-
-### Continuous-integration/Delivery
-
-- GitHub Actions
-
-### Deployment
-
-- Vercel
-- Sanity
+- **Languages**: HTML, CSS, SASS, JavaScript, Typescript, GraphQL, YAML, Bash
+- **Environments**: DOM
+- **Libraries**: Headless UI, GSAP, TypedJS, Testing Library
+- **Frameworks**: React, Next.js, TailwindCSS, Sanity, Jest, Cypress
+- **Pre/Post-Processors**: PostCSS, Sass
+- **Linters/Plugins**: stylelint, ESLint, Prettier
+- **Compilers**: TypeScript
+- **Testing**: Jest, Testing Library, Cypress
+- **Versioning**: GitHub, Husky
+- **Continuous-Integration/Delivery**: GitHub Actions
+- **Deployment**: Vercel, Sanity
 
 ## Getting Started
 
@@ -141,7 +89,3 @@ npm run test
 ```bash
 npm run deploy
 ```
-
-## Contributing
-
-Please read more about required best practices on the specific [contributing reference document](./.github/CONTRIBUTING.md)
