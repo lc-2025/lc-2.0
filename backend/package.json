@@ -20,7 +20,14 @@
     "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
-    "sanity"
+    "sanity",
+    "cms",
+    "graphql",
+    "typescript",
+    "styled-components",
+    "backend",
+    "content-management",
+    "web-development"
   ],
   "dependencies": {
     "@sanity/vision": "^4.2.0",
