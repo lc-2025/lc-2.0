@@ -13,7 +13,7 @@ LC website version 2.0 (3).
 
 A full-stack website based on _NextJS_ and _Sanity_ consisting of a professional portfolio for personal branding.
 
-© LC 2025 <ↄ All Rights reserved.
+© LC <ↄ All Rights reserved.
 
 ## Features
 

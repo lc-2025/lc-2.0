@@ -12,71 +12,21 @@ LC website version 2.0 (3) frontend.
 
 A front-end website based on _NextJS_ consisting of a professional portfolio populated and managed by _Sanity_.
 
-© LC 2025 <ↄ All Rights reserved.
+© LC <ↄ All Rights reserved.
 
 ## Stack
 
-### Languages
-
-- HTML
-- CSS
-- SASS
-- JavaScript
-- TypeScript
-- GROQ
-- YAML
-- Bash
-
-### Environments
-
-- DOM
-
-### Libraries
-
-- Headless UI
-- GSAP
-- TypedJS
-
-### Frameworks
-
-- React
-- NextJS
-- TailwindCSS
-- Jest
-- Cypress
-
-### Pre/Post-Processors
-
-- PostCSS
-- Sass
-
-### Linters/Plugins
-
-- stylelint
-- ESLint
-- Prettier
-
-### Compilers
-
-- TypeScript
-
-### Testing
-
-- Jest
-- Cypress
-
-### Versioning
-
-- GitHub
-- Husky
-
-### Continuous-Integration/Delivery
-
-- GitHub Actions
-
-### Deployment
-
-- Vercel
+- **Languages**: HTML, CSS, SASS, JavaScript, Typescript, GraphQL, YAML, Bash
+- **Environments**: DOM
+- **Libraries**: Headless UI, GSAP, TypedJS, Testing Library
+- **Frameworks**: React, Next.js, TailwindCSS, Jest, Cypress
+- **Pre/Post-Processors**: PostCSS, Sass
+- **Linters/Plugins**: stylelint, ESLint, Prettier
+- **Compilers**: TypeScript
+- **Testing**: Jest, Testing Library, Cypress
+- **Versioning**: GitHub, Husky
+- **Continuous-Integration/Delivery**: GitHub Actions
+- **Deployment**: Vercel
 
 ## Getting Started
 
