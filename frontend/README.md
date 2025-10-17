@@ -88,7 +88,3 @@ npm run test:ci
 
 _LC 2.0 Frontend_ is integrated and delivered to production via _GitHub Actions_ workflows pipeline, where the client is being set up, tested and built.
 Then the artifacts are deployed on _Vercel_ production environment available at [https://lucati.dev](https://lucati.dev)
-
-## Contributing
-
-Please read more about required best practices on the specific [contributing reference document](../.github/CONTRIBUTING.md)
