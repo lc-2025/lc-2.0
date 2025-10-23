@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Action from '../Layout/Action';
 import {
   useCookiesContext,
-  useDispatchContext,
+  useDispatchContextCookies,
   useThemeContext,
 } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
@@ -12,7 +12,7 @@ import handleState from '@/state/actions';
 import { isLightTheme } from '@/utilities/utils';
 import { ACTIONS, ACTION, COOKIES_STATE, TEST } from '@/utilities/constants';
 import { METADATA } from '@/data/content';
-import { Cookie, Status } from '@/types/state/State';
+import { Cookie, Status, TStateCookies } from '@/types/state/State';
 
 /**
  * @description Cookies banner component
@@ -28,7 +28,7 @@ const CookiesBanner = (): React.ReactNode => {
   const theme = useThemeContext();
   const cookies = useCookiesContext();
   const { open } = cookies;
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextCookies();
 
   useEffect(() => {
     initCookies();
@@ -59,7 +59,7 @@ const CookiesBanner = (): React.ReactNode => {
           active: cookiesSaved.active ?? cookies.active,
         },
       },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
   };
 
@@ -111,9 +111,9 @@ const CookiesBanner = (): React.ReactNode => {
     handleState(
       {
         type: ACTION.COOKIES,
-        element: selection,
+        element: selection as TStateCookies,
       },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
   };
 

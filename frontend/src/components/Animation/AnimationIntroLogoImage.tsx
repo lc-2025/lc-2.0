@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import handleState from '@/state/actions';
-import { useCookiesContext, useDispatchContext } from '@/hooks/State';
+import { useCookiesContext, useDispatchContextCookies } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { checkCookies } from '@/utilities/utils';
 import { ROUTE, ACTION, ANIMATION_TIMELINE, TEST } from '@/utilities/constants';
@@ -37,7 +37,7 @@ const AnimationIntroImage = ({
   const { getStorage, setStorage } = useStorage();
   const cookiesStorage = getStorage(COOKIES);
   const cookies = useCookiesContext();
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextCookies();
 
   gsap.registerPlugin(useGSAP);
 
@@ -63,7 +63,7 @@ const AnimationIntroImage = ({
         type: TITLE,
         element: true,
       },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
   };
 

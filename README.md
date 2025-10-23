@@ -33,7 +33,7 @@ A JAMstack website based on _NextJS_ and _Sanity_ consisting of a professional p
 
 - **Languages**: HTML, CSS, SASS, JavaScript, Typescript, GraphQL, YAML, Bash
 - **Environments**: DOM
-- **Libraries**: Headless UI, GSAP, TypedJS, Testing Library
+- **Libraries**: Headless UI, GSAP, TypedJS, Testing Library, C64JS
 - **Frameworks**: React, Next.js, TailwindCSS, Sanity, Jest, Cypress
 - **Pre/Post-Processors**: PostCSS, Sass
 - **Linters/Plugins**: stylelint, ESLint, Prettier

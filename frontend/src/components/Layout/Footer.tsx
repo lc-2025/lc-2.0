@@ -4,7 +4,7 @@ import Modal from './Modal';
 import CookiesConsentForm from '../Cookies/CookiesConsentForm';
 import {
   useCookiesContext,
-  useDispatchContext,
+  useDispatchContextModal,
   useModalContext,
   useThemeContext,
 } from '@/hooks/State';
@@ -40,7 +40,7 @@ const Footer = (): React.ReactNode => {
   const theme = useThemeContext();
   const cookies = useCookiesContext();
   const modal = useModalContext();
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextModal();
   const { navigate } = useAnimation();
 
   useShortcut();
@@ -70,7 +70,7 @@ const Footer = (): React.ReactNode => {
           [type]: !modal[type as keyof typeof modal],
         },
       },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
   };
 

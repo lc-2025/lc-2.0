@@ -1,6 +1,6 @@
 import { MouseEvent } from 'react';
 import { useTransitionRouter } from 'next-view-transitions';
-import { useDispatchContext } from './State';
+import { useDispatchContextLoading } from './State';
 import handleState from '@/state/actions';
 import { ACTION } from '@/utilities/constants';
 import { TUseAnimation } from '@/types/hooks/Animation';
@@ -13,7 +13,7 @@ import { TUseAnimation } from '@/types/hooks/Animation';
  */
 const useAnimation = (): TUseAnimation => {
   // Hooks
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextLoading();
   const router = useTransitionRouter();
 
   // Helpers
@@ -29,7 +29,7 @@ const useAnimation = (): TUseAnimation => {
         type: ACTION.LOADING,
         element: true,
       },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
   };
 

@@ -1,14 +1,25 @@
 import { useContext, ActionDispatch } from 'react';
 import {
-  DispatchContext,
   CookiesContext,
   LoadingContext,
   ModalContext,
   ThemeContext,
   TitleContext,
+  CookiesDispatchContext,
+  LoadingDispatchContext,
+  ModalDispatchContext,
+  ThemeDispatchContext,
+  TitleDispatchContext,
 } from '@/state/contexts';
 import { checkContext } from '@/utilities/utils';
-import { TStateAction, TStateCookies } from '@/types/state/State';
+import {
+  TStateActionCookies,
+  TStateActionLoading,
+  TStateActionModal,
+  TStateActionTheme,
+  TStateActionTitle,
+  TStateCookies,
+} from '@/types/state/State';
 import { TModalOpen } from '@/types/components/Modal';
 
 /**
@@ -92,18 +103,93 @@ const useTitleContext = (): boolean => {
 };
 
 /**
- * @description Dispatch Context hook
+ * @description Cookies Dispatch Context hook
  * @author Luca Cattide
- * @date 01/07/2025
- * @returns {*}  {ActionDispatch<[action}
+ * @date 23/10/2025
+ * @returns {*}  {ActionDispatch<
+ *   [action}
  */
-const useDispatchContext = (): ActionDispatch<[action: TStateAction]> => {
+const useDispatchContextCookies = (): ActionDispatch<
+  [action: TStateActionCookies]
+> => {
   // Hooks
-  const context = useContext(DispatchContext);
+  const context = useContext(CookiesDispatchContext);
 
-  checkContext(context);
+  checkContext(context as keyof typeof context);
 
-  return context as ActionDispatch<[action: TStateAction]>;
+  return context as ActionDispatch<[action: TStateActionCookies]>;
+};
+
+/**
+ * @description Loading Dispatch Context hook
+ * @author Luca Cattide
+ * @date 23/10/2025
+ * @returns {*}  {ActionDispatch<
+ *   [action}
+ */
+const useDispatchContextLoading = (): ActionDispatch<
+  [action: TStateActionLoading]
+> => {
+  // Hooks
+  const context = useContext(LoadingDispatchContext);
+
+  checkContext(context as keyof typeof context);
+
+  return context as ActionDispatch<[action: TStateActionLoading]>;
+};
+
+/**
+ * @description Modal Dispatch Context hook
+ * @author Luca Cattide
+ * @date 23/10/2025
+ * @returns {*}  {ActionDispatch<
+ *   [action}
+ */
+const useDispatchContextModal = (): ActionDispatch<
+  [action: TStateActionModal]
+> => {
+  // Hooks
+  const context = useContext(ModalDispatchContext);
+
+  checkContext(context as keyof typeof context);
+
+  return context as ActionDispatch<[action: TStateActionModal]>;
+};
+
+/**
+ * @description Theme Dispatch Context hook
+ * @author Luca Cattide
+ * @date 23/10/2025
+ * @returns {*}  {ActionDispatch<
+ *   [action}
+ */
+const useDispatchContextTheme = (): ActionDispatch<
+  [action: TStateActionTheme]
+> => {
+  // Hooks
+  const context = useContext(ThemeDispatchContext);
+
+  checkContext(context as keyof typeof context);
+
+  return context as ActionDispatch<[action: TStateActionTheme]>;
+};
+
+/**
+ * @description Title Dispatch Context hook
+ * @author Luca Cattide
+ * @date 23/10/2025
+ * @returns {*}  {ActionDispatch<
+ *   [action}
+ */
+const useDispatchContextTitle = (): ActionDispatch<
+  [action: TStateActionTitle]
+> => {
+  // Hooks
+  const context = useContext(TitleDispatchContext);
+
+  checkContext(context as keyof typeof context);
+
+  return context as ActionDispatch<[action: TStateActionTitle]>;
 };
 
 export {
@@ -112,5 +198,9 @@ export {
   useModalContext,
   useThemeContext,
   useTitleContext,
-  useDispatchContext,
+  useDispatchContextCookies,
+  useDispatchContextLoading,
+  useDispatchContextModal,
+  useDispatchContextTheme,
+  useDispatchContextTitle,
 };

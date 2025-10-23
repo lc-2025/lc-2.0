@@ -2,12 +2,16 @@
 
 import { useMemo, useCallback, useReducer } from 'react';
 import {
-  DispatchContext,
   CookiesContext,
   LoadingContext,
   ModalContext,
   ThemeContext,
   TitleContext,
+  CookiesDispatchContext,
+  LoadingDispatchContext,
+  ModalDispatchContext,
+  ThemeDispatchContext,
+  TitleDispatchContext,
 } from '@/state/contexts';
 import {
   reducerCookies,
@@ -48,7 +52,9 @@ const CookiesProvider = ({
 
   return (
     <CookiesContext value={cookies}>
-      <DispatchContext value={setCookies}>{children}</DispatchContext>
+      <CookiesDispatchContext value={setCookies}>
+        {children}
+      </CookiesDispatchContext>
     </CookiesContext>
   );
 };
@@ -78,7 +84,9 @@ const LoadingProvider = ({
 
   return (
     <LoadingContext value={loading}>
-      <DispatchContext value={setLoading}>{children}</DispatchContext>
+      <LoadingDispatchContext value={setLoading}>
+        {children}
+      </LoadingDispatchContext>
     </LoadingContext>
   );
 };
@@ -108,7 +116,7 @@ const ModalProvider = ({
 
   return (
     <ModalContext value={modal}>
-      <DispatchContext value={setModal}>{children}</DispatchContext>
+      <ModalDispatchContext value={setModal}>{children}</ModalDispatchContext>
     </ModalContext>
   );
 };
@@ -138,7 +146,7 @@ const ThemeProvider = ({
 
   return (
     <ThemeContext value={theme}>
-      <DispatchContext value={setTheme}>{children}</DispatchContext>
+      <ThemeDispatchContext value={setTheme}>{children}</ThemeDispatchContext>
     </ThemeContext>
   );
 };
@@ -156,7 +164,7 @@ const TitleProvider = ({
 
   return (
     <TitleContext value={title}>
-      <DispatchContext value={setTitle}>{children}</DispatchContext>
+      <TitleDispatchContext value={setTitle}>{children}</TitleDispatchContext>
     </TitleContext>
   );
 };

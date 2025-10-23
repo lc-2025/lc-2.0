@@ -1,5 +1,5 @@
 import { ActionDispatch } from 'react';
-import { TStateAction } from '@/types/state/State';
+import { TStateAction, TStateActionElement } from '@/types/state/State';
 
 /**
  * @description State action handler
@@ -13,8 +13,8 @@ import { TStateAction } from '@/types/state/State';
  * @param {*} dispatch
  */
 const handleState = (
-  action: TStateAction,
-  dispatch: ActionDispatch<[action: TStateAction]>,
+  action: TStateAction & TStateActionElement,
+  dispatch: ActionDispatch<[action: TStateAction & TStateActionElement]>,
 ) => {
   dispatch(action);
 };

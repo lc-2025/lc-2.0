@@ -1,9 +1,28 @@
+import { TModalOpen } from '../components/Modal';
+import { TTitle } from '../components/Title';
+
 // State Management
 type TStateAction = {
   type: string;
-  element: any;
 };
-
+type TStateActionElement = TStateAction & {
+  element: boolean | string | TStateCookies | TModalOpen | TTitle;
+};
+type TStateActionCookies = TStateAction & {
+  element: TStateCookies;
+};
+type TStateActionLoading = TStateAction & {
+  element: boolean;
+};
+type TStateActionModal = TStateAction & {
+  element: TModalOpen;
+};
+type TStateActionTheme = TStateAction & {
+  element: string;
+};
+type TStateActionTitle = TStateAction & {
+  element: boolean;
+};
 type TStateCookies = {
   open: boolean;
   status: Status;
@@ -25,5 +44,14 @@ enum Cookie {
   GitHub = 'github',
 }
 
-export { Status, Cookie };
-export type { TStateAction, TStateCookies };
+export { Cookie, Status };
+export type {
+  TStateAction,
+  TStateActionCookies,
+  TStateActionElement,
+  TStateActionLoading,
+  TStateActionModal,
+  TStateActionTheme,
+  TStateActionTitle,
+  TStateCookies,
+};

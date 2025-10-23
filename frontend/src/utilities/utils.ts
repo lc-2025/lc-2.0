@@ -1,6 +1,14 @@
 import { ActionDispatch } from 'react';
 import { THEME, ROUTE, ERROR, SECTION, LINKS_STRUCTURAL } from './constants';
-import { TStateAction, TStateCookies, Cookie } from '@/types/state/State';
+import {
+  TStateCookies,
+  Cookie,
+  TStateActionCookies,
+  TStateActionLoading,
+  TStateActionModal,
+  TStateActionTheme,
+  TStateActionTitle,
+} from '@/types/state/State';
 import { TRoute } from '@/types/navigation/Route';
 import { TModalOpen } from '@/types/components/Modal';
 
@@ -38,7 +46,16 @@ const checkContext = (
     | boolean
     | TModalOpen
     | string
-    | ActionDispatch<[action: TStateAction]>
+    | ActionDispatch<
+        [
+          action:
+            | TStateActionCookies
+            | TStateActionLoading
+            | TStateActionModal
+            | TStateActionTheme
+            | TStateActionTitle,
+        ]
+      >
     | null,
 ): void => {
   // Context check

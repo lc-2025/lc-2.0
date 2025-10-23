@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { Switch } from '@headlessui/react';
-import { useDispatchContext, useThemeContext } from '@/hooks/State';
+import { useDispatchContextTheme, useThemeContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import handleState from '@/state/actions';
 import { isLightTheme, checkCookies } from '@/utilities/utils';
@@ -19,7 +19,7 @@ const ThemeSwitch = (): React.ReactNode => {
   const themeSaved = getStorage(LABEL) ?? '';
   const cookiesStorage = getStorage(ACTION.COOKIES);
   const theme = useThemeContext();
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextTheme();
 
   useEffect(() => {
     // User preference + system-aware detection
@@ -28,7 +28,7 @@ const ThemeSwitch = (): React.ReactNode => {
 
     handleState(
       { type: ACTION.THEME, element: isDark ? DARK : LIGHT },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
     enableTheme(isDark);
   }, []);
@@ -61,18 +61,12 @@ const ThemeSwitch = (): React.ReactNode => {
   const handleTheme = (value: boolean): void => {
     enableTheme(value);
 
-    // Storage + state check
-    if (
-      themeSaved !== '' ||
-      (cookiesStorage &&
-        checkCookies(JSON.parse(cookiesStorage), Cookie.Essentials))
-    ) {
-      setStorage(LABEL, value ? LIGHT : DARK);
-    }
+    const selected = value ? DARK : LIGHT;
 
+    setStorage(LABEL, selected);
     handleState(
-      { type: ACTION.THEME, element: value ? DARK : LIGHT },
-      dispatch,
+      { type: ACTION.THEME, element: selected },
+      dispatch as keyof typeof dispatch,
     );
   };
 

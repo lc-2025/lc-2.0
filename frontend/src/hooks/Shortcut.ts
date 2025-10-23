@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatchContext, useModalContext } from './State';
+import { useDispatchContextModal, useModalContext } from './State';
 import { KEY, ACTION } from '@/utilities/constants';
 import handleState from '@/state/actions';
 
@@ -15,7 +15,7 @@ const useShortcut = (): void => {
   const { SHIFT, C, L, X } = KEY;
   // Hooks
   const modal = useModalContext();
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextModal();
 
   useEffect(() => {
     document.addEventListener('keydown', handleInput);
@@ -41,7 +41,7 @@ const useShortcut = (): void => {
 
     // Sequence check
     if (lastKey === SHIFT) {
-      handleState(shortcut[value], dispatch);
+      handleState(shortcut[value], dispatch as keyof typeof dispatch);
     }
 
     lastKey = value;

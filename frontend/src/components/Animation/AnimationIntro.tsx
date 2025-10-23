@@ -7,7 +7,7 @@ import AnimationIntroLogo from './AnimationIntroLogo';
 import AnimationIntroImage from './AnimationIntroLogoImage';
 import AnimationIntroTagline from './AnimationIntroTagline';
 import handleState from '@/state/actions';
-import { useDispatchContext, useTitleContext } from '@/hooks/State';
+import { useDispatchContextTitle, useTitleContext } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { AnimationIntroType } from '@/types/components/AnimationIntroImage';
 import { CookiesProvider } from '../StateProvider';
@@ -25,7 +25,7 @@ const AnimationIntro = (): React.ReactNode => {
   const router = useRouter();
   const { getStorage } = useStorage();
   const title = useTitleContext();
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextTitle();
   const titleStorage = getStorage(TITLE) ?? false;
 
   useEffect(() => {
@@ -42,7 +42,10 @@ const AnimationIntro = (): React.ReactNode => {
   const handleTitle = (): void => {
     // Storage + state check
     if (titleStorage || title) {
-      handleState({ type: TITLE, element: titleStorage }, dispatch);
+      handleState(
+        { type: TITLE, element: titleStorage },
+        dispatch as keyof typeof dispatch,
+      );
 
       router.push(ROUTE.HOME.PATH);
     }

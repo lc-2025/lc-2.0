@@ -2,8 +2,8 @@
 
 import Form from 'next/form';
 import handleState from '@/state/actions';
-import { Cookie, Status } from '@/types/state/State';
-import { useCookiesContext, useDispatchContext } from '@/hooks/State';
+import { Cookie, Status, TStateCookies } from '@/types/state/State';
+import { useCookiesContext, useDispatchContextCookies } from '@/hooks/State';
 import useStorage from '@/hooks/Storage';
 import { isCookieActive } from '@/utilities/utils';
 import { ACTION, COOKIE_LEVEL, COOKIES, TEST } from '@/utilities/constants';
@@ -27,7 +27,7 @@ const CookiesConsentForm = ({
   const { setStorage, deleteStorages } = useStorage();
   const cookies = useCookiesContext();
   const { active } = cookies;
-  const dispatch = useDispatchContext();
+  const dispatch = useDispatchContextCookies();
 
   // Helpers
   /**
@@ -142,9 +142,9 @@ const CookiesConsentForm = ({
     handleState(
       {
         type: ACTION.COOKIES,
-        element: selection,
+        element: selection as TStateCookies,
       },
-      dispatch,
+      dispatch as keyof typeof dispatch,
     );
   };
 

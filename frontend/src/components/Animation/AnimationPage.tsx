@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, Ref } from 'react';
 import {
-  useDispatchContext,
+  useDispatchContextLoading,
   useLoadingContext,
   useThemeContext,
 } from '@/hooks/State';
@@ -21,7 +21,7 @@ const AnimationPage = (): React.ReactNode => {
   const bars = useRef<Array<HTMLDivElement>>([]);
   const theme = useThemeContext();
   const loading = useLoadingContext();
-  const dispatch = useDispatchContext();
+  const dispatchLoading = useDispatchContextLoading();
 
   useEffect(() => {
     // Theme check
@@ -36,7 +36,7 @@ const AnimationPage = (): React.ReactNode => {
             type: ACTION.LOADING,
             element: false,
           },
-          dispatch,
+          dispatchLoading as keyof typeof dispatchLoading,
         );
         clearTimeout(timer);
       }, 500);

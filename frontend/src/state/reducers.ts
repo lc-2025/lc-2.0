@@ -1,5 +1,12 @@
 import { ACTION, STATE } from '@/utilities/constants';
-import { TStateAction, TStateCookies } from '@/types/state/State';
+import {
+  TStateActionCookies,
+  TStateActionLoading,
+  TStateActionModal,
+  TStateActionTheme,
+  TStateActionTitle,
+  TStateCookies,
+} from '@/types/state/State';
 import { TModalOpen } from '@/types/components/Modal';
 
 /**
@@ -13,12 +20,12 @@ import { TModalOpen } from '@/types/components/Modal';
  * @author Luca Cattide
  * @date 04/09/2025
  * @param {TStateCookies} state
- * @param {TStateAction} action
+ * @param {TStateActionCookies} action
  * @returns {*}  {TStateCookies}
  */
 const reducerCookies = (
   state: TStateCookies,
-  action: TStateAction,
+  action: TStateActionCookies,
 ): TStateCookies => {
   const { COOKIES, RESET } = ACTION;
   const { type, element } = action;
@@ -46,10 +53,13 @@ const reducerCookies = (
  * @author Luca Cattide
  * @date 04/09/2025
  * @param {boolean} state
- * @param {TStateAction} action
+ * @param {TStateActionLoading} action
  * @returns {*}  {boolean}
  */
-const reducerLoading = (state: boolean, action: TStateAction): boolean => {
+const reducerLoading = (
+  state: boolean,
+  action: TStateActionLoading,
+): boolean => {
   const { LOADING, RESET } = ACTION;
   const { type, element } = action;
   let reducerLoading = null;
@@ -77,10 +87,13 @@ const reducerLoading = (state: boolean, action: TStateAction): boolean => {
  * @author Luca Cattide
  * @date 04/09/2025
  * @param {TModalOpen} state
- * @param {TStateAction} action
+ * @param {TStateActionModal} action
  * @returns {*}  {TModalOpen}
  */
-const reducerModal = (state: TModalOpen, action: TStateAction): TModalOpen => {
+const reducerModal = (
+  state: TModalOpen,
+  action: TStateActionModal,
+): TModalOpen => {
   const { MODAL, RESET } = ACTION;
   const { type, element } = action;
   let reducerModal = null;
@@ -107,10 +120,10 @@ const reducerModal = (state: TModalOpen, action: TStateAction): TModalOpen => {
  * @author Luca Cattide
  * @date 04/09/2025
  * @param {string} state
- * @param {TStateAction} action
+ * @param {TStateActionTheme} action
  * @returns {*}  {string}
  */
-const reducerTheme = (state: string, action: TStateAction): string => {
+const reducerTheme = (state: string, action: TStateActionTheme): string => {
   const { THEME, RESET } = ACTION;
   const { type, element } = action;
   let reducerTheme = null;
@@ -138,10 +151,10 @@ const reducerTheme = (state: string, action: TStateAction): string => {
  * @author Luca Cattide
  * @date 04/09/2025
  * @param {boolean} state
- * @param {TStateAction} action
+ * @param {TStateActionTitle} action
  * @returns {*}  {boolean}
  */
-const reducerTitle = (state: boolean, action: TStateAction): boolean => {
+const reducerTitle = (state: boolean, action: TStateActionTitle): boolean => {
   const { TITLE, RESET } = ACTION;
   const { type, element } = action;
   let reducerTitle = null;
