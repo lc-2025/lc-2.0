@@ -18,7 +18,7 @@ A front-end website based on _NextJS_ consisting of a professional portfolio pop
 
 - **Languages**: HTML, CSS, SASS, JavaScript, Typescript, GraphQL, YAML, Bash
 - **Environments**: DOM
-- **Libraries**: Headless UI, GSAP, TypedJS, Testing Library
+- **Libraries**: Headless UI, GSAP, TypedJS, C64JS, Testing Library
 - **Frameworks**: React, Next.js, TailwindCSS, Jest, Cypress
 - **Pre/Post-Processors**: PostCSS, Sass
 - **Linters/Plugins**: stylelint, ESLint, Prettier
