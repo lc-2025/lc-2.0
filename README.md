@@ -11,7 +11,7 @@ LC website version 2.0 (3).
 
 ## About
 
-A full-stack website based on _NextJS_ and _Sanity_ consisting of a professional portfolio for personal branding.
+A JAMstack website based on _NextJS_ and _Sanity_ consisting of a professional portfolio for personal branding.
 
 © LC <ↄ All Rights reserved.
 
