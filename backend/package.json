@@ -1,7 +1,7 @@
 {
   "name": "lc-20",
   "version": "1.0.0",
-  "description": "LC 2.0 Website Backend. © LC 2025 <ↄ All Rights reserved.",
+  "description": "LC 2.0 Website Backend. © LC <ↄ All Rights reserved.",
   "homepage": "https://lcv3.sanity.studio",
   "repository": {
     "type": "git",
@@ -20,7 +20,14 @@
     "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
-    "sanity"
+    "sanity",
+    "cms",
+    "graphql",
+    "typescript",
+    "styled-components",
+    "backend",
+    "content-management",
+    "web-development"
   ],
   "dependencies": {
     "@sanity/vision": "^4.6.1",

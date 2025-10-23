@@ -8,44 +8,20 @@ LC 2.0 backend.
 
 A server application that provides an UI and a **REST API** to access and manage the website data stored on the _Sanity_ headless CMS.
 
-© LC 2025 <ↄ All Rights reserved.
+© LC <ↄ All Rights reserved.
 
 ## Stack
 
-### Languages
-
-- JavaScript
-- TypeScript
-
-### Environments
-
-- DOM
-
-### Frameworks
-
-- Sanity
-
-### Compilers
-
-- TypeScript
-
-### Testing
-
-- Jest
-- Cypress
-
-### Versioning
-
-- GitHub
-- Husky
-
-### Continuous-Integration/Delivery
-
-- GitHub Actions
-
-### Deployment
-
-- Sanity
+- **Languages**: JavaScript, Typescript, GraphQL
+- **Environments**: DOM
+- **Libraries**: Testing Library
+- **Frameworks**: Sanity
+- **Linters/Plugins**: ESLint, Prettier
+- **Compilers**: TypeScript
+- **Testing**: Jest, Testing Library
+- **Versioning**: GitHub, Husky
+- **Continuous-Integration/Delivery**: GitHub Actions
+- **Deployment**: Sanity
 
 ## Getting Started
 
@@ -83,7 +59,3 @@ npm run deploy
 ## Deploy
 
 _LC Backend_ is integrated and delivered to production via _GitHub Actions_ workflows pipeline, where the server is being set up and built with _Sanity_.
-
-## Contributing
-
-Please read more about required best practices on the specific [contributing reference document](../.github/CONTRIBUTING.md)

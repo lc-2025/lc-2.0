@@ -2,9 +2,9 @@
 
 LC website version 2.0 (3) frontend.
 
-![LC 2.0 Preview](./docs/preview.gif 'LC 2.0 Preview')
-![LC 2.0 Preview - Light theme](./docs/preview-light.png 'LC 2.0 Preview - Light theme')
-![LC 2.0 Preview - Dark theme](./docs/preview-dark.png 'LC 2.0 Preview - Dark theme')
+![LC 2.0 Preview](../docs/preview.gif 'LC 2.0 Preview')
+![LC 2.0 Preview - Light theme](../docs/preview-light.png 'LC 2.0 Preview - Light theme')
+![LC 2.0 Preview - Dark theme](../docs/preview-dark.png 'LC 2.0 Preview - Dark theme')
 
 [![LC 2.0 CI](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/ci.yml) [![LC 2.0 CD](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml/badge.svg)](https://github.com/lc-2025/lc-2.0/actions/workflows/cd.yml)
 
@@ -12,71 +12,21 @@ LC website version 2.0 (3) frontend.
 
 A front-end website based on _NextJS_ consisting of a professional portfolio populated and managed by _Sanity_.
 
-© LC 2025 <ↄ All Rights reserved.
+© LC <ↄ All Rights reserved.
 
 ## Stack
 
-### Languages
-
-- HTML
-- CSS
-- SASS
-- JavaScript
-- TypeScript
-- GROQ
-- YAML
-- Bash
-
-### Environments
-
-- DOM
-
-### Libraries
-
-- Headless UI
-- GSAP
-- TypedJS
-
-### Frameworks
-
-- React
-- NextJS
-- TailwindCSS
-- Jest
-- Cypress
-
-### Pre/Post-Processors
-
-- PostCSS
-- Sass
-
-### Linters/Plugins
-
-- stylelint
-- ESLint
-- Prettier
-
-### Compilers
-
-- TypeScript
-
-### Testing
-
-- Jest
-- Cypress
-
-### Versioning
-
-- GitHub
-- Husky
-
-### Continuous-Integration/Delivery
-
-- GitHub Actions
-
-### Deployment
-
-- Vercel
+- **Languages**: HTML, CSS, SASS, JavaScript, Typescript, GraphQL, YAML, Bash
+- **Environments**: DOM
+- **Libraries**: Headless UI, GSAP, TypedJS, Testing Library
+- **Frameworks**: React, Next.js, TailwindCSS, Jest, Cypress
+- **Pre/Post-Processors**: PostCSS, Sass
+- **Linters/Plugins**: stylelint, ESLint, Prettier
+- **Compilers**: TypeScript
+- **Testing**: Jest, Testing Library, Cypress
+- **Versioning**: GitHub, Husky
+- **Continuous-Integration/Delivery**: GitHub Actions
+- **Deployment**: Vercel
 
 ## Getting Started
 
@@ -138,7 +88,3 @@ npm run test:ci
 
 _LC 2.0 Frontend_ is integrated and delivered to production via _GitHub Actions_ workflows pipeline, where the client is being set up, tested and built.
 Then the artifacts are deployed on _Vercel_ production environment available at [https://lucati.dev](https://lucati.dev)
-
-## Contributing
-
-Please read more about required best practices on the specific [contributing reference document](../.github/CONTRIBUTING.md)
