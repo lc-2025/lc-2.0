@@ -45,7 +45,7 @@ A JAMstack website based on _NextJS_ and _Sanity_ consisting of a professional p
 
 ## Getting Started
 
-The project production version is available on _Vercel_ at [https://lucati.dev](https://lucati.dev).
+The project production version is available on _Vercel_ at [https://lucatide.vercel.app](https://lucatide.vercel.app).
 For any contribution, maintanance and/or trial needs, please refer to the following specifications and side-ones:
 
 - [Frontend](./frontend/README.md)
